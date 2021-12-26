@@ -3,7 +3,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-
 #include "window.hpp"
 
 //________________________
@@ -95,6 +94,11 @@ void Window::manageWindow()
 				auto location = m_window.mapPixelToCoords(
 					{ event.mouseButton.x, event.mouseButton.y });
 				handleClickInWindow(location);
+				if (m_currentWindow[EXIT])
+				{
+					m_window.close();
+					break;
+				}
 			}
 			}
 		}
