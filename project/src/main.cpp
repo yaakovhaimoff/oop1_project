@@ -1,7 +1,12 @@
-#include <iostream>
+#include <SFML/Graphics.hpp>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+#include <iostream>
+#include "window.hpp"
+
+int main() 
+{
+    auto window = Window();
+    window.manageWindow();
+
     return 0;
 }
