@@ -5,5 +5,6 @@
 												"players.cpp"
 												"staticObjects.cpp"
 												"Controller.cpp"
-												"Window.cpp")
+												"Window.cpp"
+												"Direction.cpp")
 												

@@ -8,5 +8,6 @@ class MovingObjects : public GameObjects
 {
 public:
 	MovingObjects(std::string fileName) : GameObjects(fileName) {}
+	void update();
 
 };
