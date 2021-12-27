@@ -1,6 +1,6 @@
 #include "Window.hpp"
 
-//________________________
+//______________
 Window::Window()
 {
 	m_font.loadFromFile("font.ttf");
@@ -97,7 +97,7 @@ void Window::checkHelpPressed(const sf::Vector2f& location)
 		m_currentWindow[MENU] = true;
 	}
 }
-//__________________
+//_______________________________________________
 void Window::print(sf::RenderWindow& window)const
 {
 	if (m_currentWindow[MENU])
@@ -107,7 +107,7 @@ void Window::print(sf::RenderWindow& window)const
 	else if (m_currentWindow[PLAY])
 		this->printPlay(window);
 }
-//______________________
+//___________________________________________________
 void Window::printMenu(sf::RenderWindow& window)const
 {
 	window.clear();
@@ -120,7 +120,7 @@ void Window::printMenu(sf::RenderWindow& window)const
 	}
 	window.display();
 }
-//______________________
+//___________________________________________________
 void Window::printHelp(sf::RenderWindow& window)const
 {
 	window.clear();
@@ -129,15 +129,19 @@ void Window::printHelp(sf::RenderWindow& window)const
 	window.draw(m_helpText);
 	window.display();
 }
-//______________________
+//___________________________________________________
 void Window::printPlay(sf::RenderWindow& window)const
 {
 	window.clear();
 	window.draw(m_background[PLAY]);
 	window.display();
 }
-//___________________
-bool Window::isExit()
+}//__________________________
+bool Window::isPlaying()const
+{
+	return m_currentWindow[PLAY];
+}
+//________________________
+bool Window::isExit()const
 {
 	return m_currentWindow[EXIT];
-}

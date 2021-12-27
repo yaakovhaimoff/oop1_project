@@ -1,13 +1,36 @@
-//
-//  players.hpp
-//  project
-//
-//  Created by Yaakov Haimoff on 16/12/2021.
-//
+#pragma once 
 
-#ifndef players_hpp
-#define players_hpp
+#include "MovingObjects.hpp"
+#include "macros.hpp"
 
-#include <stdio.h>
+//_____________________________________
+class KingObject : public MovingObjects
+{
+public:
+	KingObject();
 
-#endif /* players_hpp */
+};
+
+//______________________________________
+class MageObject : public MovingObjects
+{
+public:
+	MageObject();
+
+};
+
+//________________________________________
+class WarriorObject : public MovingObjects
+{
+public:
+	WarriorObject();
+
+};
+
+//_______________________________________
+class ThiefObject : public MovingObjects
+{
+public:
+	ThiefObject();
+
+};

@@ -1,13 +1,12 @@
-//
-//  movingObjects.hpp
-//  project
-//
-//  Created by Yaakov Haimoff on 16/12/2021.
-//
-
-#ifndef movingObjects_hpp
-#define movingObjects_hpp
+#pragma once
 
 #include <stdio.h>
+#include <string>
+#include "GameObjects.hpp"
 
-#endif /* movingObjects_hpp */
+class MovingObjects : public GameObjects
+{
+public:
+	MovingObjects(std::string fileName) : GameObjects(fileName) {}
+
+};

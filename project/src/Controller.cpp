@@ -35,4 +35,8 @@ void Controller::handleEvents()
 			}
 		}
 	}
+	if (m_window.isPlaying())
+	{
+
+	}
 }

@@ -11,6 +11,7 @@ public:
 	Window();
 	void print(sf::RenderWindow&)const;
 	void handleClickInWindow(const sf::Vector2f&);
+	bool isPlaying()const;
 	bool isExit()const;
 
 private:
