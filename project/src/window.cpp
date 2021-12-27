@@ -98,7 +98,7 @@ void Window::checkHelpPressed(const sf::Vector2f& location)
 	}
 }
 //__________________
-void Window::print(sf::RenderWindow& window)
+void Window::print(sf::RenderWindow& window)const
 {
 	if (m_currentWindow[MENU])
 		this->printMenu(window);
@@ -108,7 +108,7 @@ void Window::print(sf::RenderWindow& window)
 		this->printPlay(window);
 }
 //______________________
-void Window::printMenu(sf::RenderWindow& window)
+void Window::printMenu(sf::RenderWindow& window)const
 {
 	window.clear();
 	window.draw(m_background[MENU]);
@@ -121,7 +121,7 @@ void Window::printMenu(sf::RenderWindow& window)
 	window.display();
 }
 //______________________
-void Window::printHelp(sf::RenderWindow& window)
+void Window::printHelp(sf::RenderWindow& window)const
 {
 	window.clear();
 	window.draw(m_background[HELP]);
@@ -130,7 +130,7 @@ void Window::printHelp(sf::RenderWindow& window)
 	window.display();
 }
 //______________________
-void Window::printPlay(sf::RenderWindow& window)
+void Window::printPlay(sf::RenderWindow& window)const
 {
 	window.clear();
 	window.draw(m_background[PLAY]);

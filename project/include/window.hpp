@@ -9,19 +9,19 @@ class Window
 {
 public:
 	Window();
+	void print(sf::RenderWindow&)const;
+	void handleClickInWindow(const sf::Vector2f&);
+	bool isExit()const;
+
+private:
 	void setMenu();
 	void setHelp();
 	void setPlay();
-	void print(sf::RenderWindow&);
-	void printMenu(sf::RenderWindow&);
-	void printHelp(sf::RenderWindow&);
-	void printPlay(sf::RenderWindow&);
-	void handleClickInWindow(const sf::Vector2f&);
 	void checkMenuPressed(const sf::Vector2f&);
 	void checkHelpPressed(const sf::Vector2f&);
-	bool isExit();
-
-private:
+	void printMenu(sf::RenderWindow&)const;
+	void printHelp(sf::RenderWindow&)const;
+	void printPlay(sf::RenderWindow&)const;
 	bool m_currentWindow[AmountOfWindows] = { true, false, false, false };
 	sf::Texture m_texture[AmountOfWindows];
 	sf::Sprite m_background[AmountOfWindows];

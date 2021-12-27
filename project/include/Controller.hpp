@@ -14,7 +14,7 @@ public:
 	void handleEvents();
 
 private:
-	sf::RenderWindow m_boardWindow = { { 1920, 1080 }, "Save the king" };
+	sf::RenderWindow m_gameWindow = { { 1920, 1080 }, "Save the king" };
 	Window m_window;
 
 };
