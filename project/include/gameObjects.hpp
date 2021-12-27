@@ -13,5 +13,6 @@ public:
 	void drawShape(sf::RenderWindow&)const;
 
 protected:
+	sf::Texture m_texture;
 	sf::Sprite m_shape;
 };

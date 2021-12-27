@@ -2,7 +2,7 @@
 
 //______________________
 KingObject::KingObject()
-	: MovingObjects("king.png", sf::Vector2f(60,60)) {}
+	: MovingObjects("king.png", sf::Vector2f(200,200)) {}
 
 //______________________
 MageObject::MageObject()

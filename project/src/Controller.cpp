@@ -3,6 +3,8 @@
 //______________________
 Controller::Controller()
 {
+	m_gameTexture.loadFromFile("play.png");
+	m_gameSprite.setTexture(m_gameTexture);
 	m_players.push_back(std::make_unique<KingObject>());
 	m_players.push_back(std::make_unique<WarriorObject>());
 }
@@ -11,12 +13,14 @@ void Controller::runGame()
 {
 	while (m_gameWindow.isOpen())
 	{
-		m_window.print(m_gameWindow);
-		//m_window.draw(m_players[0]);
+		if (!m_window.isPlaying())
+			m_window.drawWindow(m_gameWindow);
+		else
+			this->drawGameWindow();
 		this->handleEvents();
 	}
 }
-//_________________________
+//_____________________________
 void Controller::handleEvents()
 {
 
@@ -43,4 +47,13 @@ void Controller::handleEvents()
 		const auto deltaTime = m_gameClock.restart();
 		m_players[0]->move(deltaTime);
 	}
+}
+//_______________________________
+void Controller::drawGameWindow()
+{
+	m_gameWindow.clear();
+	m_gameWindow.draw(m_gameSprite);
+	for (int i = 0; i < m_players.size(); i++)
+		m_players[i]->drawShape(m_gameWindow);
+	m_gameWindow.display();
 }

@@ -6,7 +6,6 @@ Window::Window()
 	m_font.loadFromFile("font.ttf");
 	this->setMenu();
 	this->setHelp();
-	this->setPlay();
 }
 //____________________
 void Window::setMenu()
@@ -54,12 +53,6 @@ void Window::setHelp()
 	m_helpText.setPosition(sf::Vector2f(25, 20));
 	m_helpText.setString("BACK");
 }
-//____________________
-void Window::setPlay()
-{
-	m_texture[PLAY].loadFromFile("play.png");
-	m_background[PLAY].setTexture(m_texture[PLAY]);
-}
 //___________________________________________________________
 void Window::handleClickInWindow(const sf::Vector2f& location)
 {
@@ -98,17 +91,15 @@ void Window::checkHelpPressed(const sf::Vector2f& location)
 	}
 }
 //_______________________________________________
-void Window::print(sf::RenderWindow& window)const
+void Window::drawWindow(sf::RenderWindow& window)const
 {
 	if (m_currentWindow[MENU])
-		this->printMenu(window);
+		this->drawMenu(window);
 	else if (m_currentWindow[HELP])
-		this->printHelp(window);
-	else if (m_currentWindow[PLAY])
-		this->printPlay(window);
+		this->drawHelp(window);
 }
 //___________________________________________________
-void Window::printMenu(sf::RenderWindow& window)const
+void Window::drawMenu(sf::RenderWindow& window)const
 {
 	window.clear();
 	window.draw(m_background[MENU]);
@@ -121,19 +112,12 @@ void Window::printMenu(sf::RenderWindow& window)const
 	window.display();
 }
 //___________________________________________________
-void Window::printHelp(sf::RenderWindow& window)const
+void Window::drawHelp(sf::RenderWindow& window)const
 {
 	window.clear();
 	window.draw(m_background[HELP]);
 	window.draw(m_helpRect);
 	window.draw(m_helpText);
-	window.display();
-}
-//___________________________________________________
-void Window::printPlay(sf::RenderWindow& window)const
-{
-	window.clear();
-	window.draw(m_background[PLAY]);
 	window.display();
 }
 //__________________________

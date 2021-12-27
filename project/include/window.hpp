@@ -9,7 +9,7 @@ class Window
 {
 public:
 	Window();
-	void print(sf::RenderWindow&)const;
+	void drawWindow(sf::RenderWindow&)const;
 	void handleClickInWindow(const sf::Vector2f&);
 	bool isPlaying()const;
 	bool isExit()const;
@@ -17,15 +17,14 @@ public:
 private:
 	void setMenu();
 	void setHelp();
-	void setPlay();
 	void checkMenuPressed(const sf::Vector2f&);
 	void checkHelpPressed(const sf::Vector2f&);
-	void printMenu(sf::RenderWindow&)const;
-	void printHelp(sf::RenderWindow&)const;
-	void printPlay(sf::RenderWindow&)const;
+	void drawMenu(sf::RenderWindow&)const;
+	void drawHelp(sf::RenderWindow&)const;
+
 	bool m_currentWindow[AmountOfWindows] = { true, false, false, false };
-	sf::Texture m_texture[AmountOfWindows];
-	sf::Sprite m_background[AmountOfWindows];
+	sf::Texture m_texture[AmountOfWindows-1];
+	sf::Sprite m_background[AmountOfWindows-1];
 	sf::Font m_font;
 	sf::Text m_gameName;
 	sf::RectangleShape m_menuRects[AmountOfWindows - 1];

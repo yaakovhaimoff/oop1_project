@@ -17,11 +17,14 @@ public:
 	Controller();
 	void runGame();
 	void handleEvents();
+	void drawGameWindow();
 
 private:
 	sf::RenderWindow m_gameWindow = { { 1920, 1080 }, "Save the king" };
 	Window m_window;
 	std::vector<std::unique_ptr<MovingObjects>> m_players;
 	sf::Clock m_gameClock;
+	sf::Texture m_gameTexture;
+	sf::Sprite m_gameSprite;
 
 };
