@@ -136,7 +136,7 @@ void Window::printPlay(sf::RenderWindow& window)const
 	window.draw(m_background[PLAY]);
 	window.display();
 }
-}//__________________________
+//__________________________
 bool Window::isPlaying()const
 {
 	return m_currentWindow[PLAY];
@@ -145,3 +145,4 @@ bool Window::isPlaying()const
 bool Window::isExit()const
 {
 	return m_currentWindow[EXIT];
+}

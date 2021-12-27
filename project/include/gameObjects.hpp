@@ -8,10 +8,10 @@
 class GameObjects
 {
 public:
-	GameObjects(std::string);
+	GameObjects(std::string, sf::Vector2f);
 	void handleCollision();
+	void drawShape(sf::RenderWindow&)const;
 
-private:
-	char m_key;
-	sf::Sprite m_sprite;
+protected:
+	sf::Sprite m_shape;
 };

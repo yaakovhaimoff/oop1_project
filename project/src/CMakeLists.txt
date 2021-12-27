@@ -1,10 +1,9 @@
 ﻿target_sources (${CMAKE_PROJECT_NAME} PRIVATE "main.cpp"
 												"board.cpp"
-												"gameObjects.cpp"
-												"movingObjects.cpp"
-												"players.cpp"
+												"GameObjects.cpp"
+												"MovingObjects.cpp"
+												"Players.cpp"
 												"staticObjects.cpp"
 												"Controller.cpp"
-												"Window.cpp"
-												"Direction.cpp")
+												"Window.cpp")
 												
