@@ -8,18 +8,14 @@
 //________________________
 Window::Window()
 {
-	m_currentWindow[PLAY] = false;
-	m_currentWindow[EXIT] = false;
 	m_font.loadFromFile("font.ttf");
-	this->setTexture();
-	this->setBackground();
 	this->setMenu();
 	this->setHelp();
+	this->setPlay();
 }
 //____________________
 void Window::setMenu()
 {
-	m_currentWindow[MENU] = true;
 	m_texture[MENU].loadFromFile("menu.png");
 	m_background[MENU].setTexture(m_texture[MENU]);
 	// set rectangle for the menu buttons and texts
@@ -48,7 +44,6 @@ void Window::setMenu()
 //____________________
 void Window::setHelp()
 {
-	m_currentWindow[HELP] = false;
 	m_texture[HELP].loadFromFile("help.png");
 	m_background[HELP].setTexture(m_texture[HELP]);
 	// set rectangle for the help back button
@@ -64,14 +59,10 @@ void Window::setHelp()
 	m_helpText.setPosition(sf::Vector2f(25, 20));
 	m_helpText.setString("BACK");
 }
-//_______________________
-void Window::setTexture()
+//____________________
+void Window::setPlay()
 {
 	m_texture[PLAY].loadFromFile("play.png");
-}
-//_________________________
-void Window::setBackground()
-{
 	m_background[PLAY].setTexture(m_texture[PLAY]);
 }
 //__________________________
@@ -80,26 +71,28 @@ void Window::manageWindow()
 	while (m_window.isOpen())
 	{
 		this->print();
-		sf::Event event;
-		while (m_window.pollEvent(event))
+		this->handleEvents();
+	}
+}
+//_________________________
+void Window::handleEvents()
+{
+	sf::Event event;
+	while (m_window.pollEvent(event))
+	{
+		if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed &&
+			event.key.code == sf::Keyboard::Escape))
+			m_window.close();	
+		if (sf::Event::MouseButtonReleased)
 		{
-			switch (event.type)
+			// getting the location of where the mouse was pressed
+			auto location = m_window.mapPixelToCoords(
+				{ event.mouseButton.x, event.mouseButton.y });
+			handleClickInWindow(location);
+			if (m_currentWindow[EXIT])
 			{
-			case sf::Event::Closed:
 				m_window.close();
 				break;
-			case sf::Event::MouseButtonReleased:
-			{
-				// getting the location of where the mouse was pressed
-				auto location = m_window.mapPixelToCoords(
-					{ event.mouseButton.x, event.mouseButton.y });
-				handleClickInWindow(location);
-				if (m_currentWindow[EXIT])
-				{
-					m_window.close();
-					break;
-				}
-			}
 			}
 		}
 	}
