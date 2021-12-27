@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <SFML/Graphics.hpp>
 
 // amount of player tools in the game
 const int numOfPlayers = 4;

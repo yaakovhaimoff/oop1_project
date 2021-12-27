@@ -1,13 +1,17 @@
-//
-//  gameObjects.hpp
-//  project
-//
-//  Created by Yaakov Haimoff on 16/12/2021.
-//
+#pragma once
 
-#ifndef gameObjects_hpp
-#define gameObjects_hpp
-
+#include <SFML/Graphics.hpp>
 #include <stdio.h>
+#include <vector>
+#include <string>
 
-#endif /* gameObjects_hpp */
+class GameObjects
+{
+public:
+	GameObjects(std::string);
+	void handleCollision();
+
+private:
+	char m_key;
+	sf::Sprite m_sprite;
+};

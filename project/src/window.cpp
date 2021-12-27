@@ -1,9 +1,4 @@
-#pragma once
-
-#include <iostream>
-#include <SFML/Graphics.hpp>
-
-#include "window.hpp"
+#include "Window.hpp"
 
 //________________________
 Window::Window()
@@ -21,7 +16,7 @@ void Window::setMenu()
 	// set rectangle for the menu buttons and texts
 	for (int row = 1; row < AmountOfWindows; row++)
 	{
-		m_menuRects[row-1] = sf::RectangleShape({ 220, 120 });
+		m_menuRects[row - 1] = sf::RectangleShape({ 220, 120 });
 		m_menuRects[row - 1].setFillColor(sf::Color(0, 0, 0, 3));
 		m_menuRects[row - 1].setOutlineColor(sf::Color::White);
 		m_menuRects[row - 1].setOutlineThickness(4);
@@ -65,38 +60,6 @@ void Window::setPlay()
 	m_texture[PLAY].loadFromFile("play.png");
 	m_background[PLAY].setTexture(m_texture[PLAY]);
 }
-//__________________________
-void Window::manageWindow()
-{
-	while (m_window.isOpen())
-	{
-		this->print();
-		this->handleEvents();
-	}
-}
-//_________________________
-void Window::handleEvents()
-{
-	sf::Event event;
-	while (m_window.pollEvent(event))
-	{
-		if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed &&
-			event.key.code == sf::Keyboard::Escape))
-			m_window.close();	
-		if (sf::Event::MouseButtonReleased)
-		{
-			// getting the location of where the mouse was pressed
-			auto location = m_window.mapPixelToCoords(
-				{ event.mouseButton.x, event.mouseButton.y });
-			handleClickInWindow(location);
-			if (m_currentWindow[EXIT])
-			{
-				m_window.close();
-				break;
-			}
-		}
-	}
-}
 //___________________________________________________________
 void Window::handleClickInWindow(const sf::Vector2f& location)
 {
@@ -104,7 +67,7 @@ void Window::handleClickInWindow(const sf::Vector2f& location)
 		this->checkMenuPressed(location);
 	else if (m_currentWindow[HELP])
 		this->checkHelpPressed(location);
-	
+
 }
 //_________________________________________________________
 void Window::checkMenuPressed(const sf::Vector2f& location)
@@ -135,41 +98,46 @@ void Window::checkHelpPressed(const sf::Vector2f& location)
 	}
 }
 //__________________
-void Window::print()
+void Window::print(sf::RenderWindow& window)
 {
 	if (m_currentWindow[MENU])
-		this->printMenu();
+		this->printMenu(window);
 	else if (m_currentWindow[HELP])
-		this->printHelp();
+		this->printHelp(window);
 	else if (m_currentWindow[PLAY])
-		this->printPlay();
+		this->printPlay(window);
 }
 //______________________
-void Window::printMenu()
+void Window::printMenu(sf::RenderWindow& window)
 {
-	m_window.clear();
-	m_window.draw(m_background[MENU]);
-	m_window.draw(m_gameName);
+	window.clear();
+	window.draw(m_background[MENU]);
+	window.draw(m_gameName);
 	for (int row = 1; row < AmountOfWindows; row++)
 	{
-		m_window.draw(m_menuRects[row-1]);
-		m_window.draw(m_menuText[row-1]);
+		window.draw(m_menuRects[row - 1]);
+		window.draw(m_menuText[row - 1]);
 	}
-	m_window.display();
+	window.display();
 }
 //______________________
-void Window::printHelp()
+void Window::printHelp(sf::RenderWindow& window)
 {
-	m_window.clear();
-	m_window.draw(m_background[HELP]);
-	m_window.draw(m_helpRect);
-	m_window.draw(m_helpText);
-	m_window.display();
+	window.clear();
+	window.draw(m_background[HELP]);
+	window.draw(m_helpRect);
+	window.draw(m_helpText);
+	window.display();
 }
 //______________________
-void Window::printPlay()
+void Window::printPlay(sf::RenderWindow& window)
 {
-	m_window.clear();
-	m_window.draw(m_background[PLAY]);
-	m_window.display();
+	window.clear();
+	window.draw(m_background[PLAY]);
+	window.display();
+}
+//___________________
+bool Window::isExit()
+{
+	return m_currentWindow[EXIT];
 }

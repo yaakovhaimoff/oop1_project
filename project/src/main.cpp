@@ -1,12 +1,12 @@
 #include <SFML/Graphics.hpp>
 
 #include <iostream>
-#include "window.hpp"
+#include "Controller.hpp"
 
 int main() 
 {
-    auto window = Window();
-    window.manageWindow();
+    auto run = Controller();
+    run.runGame();
 
     return 0;
 }

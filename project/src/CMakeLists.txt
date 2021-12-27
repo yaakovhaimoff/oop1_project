@@ -4,6 +4,6 @@
 												"movingObjects.cpp"
 												"players.cpp"
 												"staticObjects.cpp"
-												"window.cpp"
-												"gameController.cpp")
+												"Controller.cpp"
+												"Window.cpp")
 												
