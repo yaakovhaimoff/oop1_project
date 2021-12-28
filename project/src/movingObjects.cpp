@@ -27,7 +27,7 @@ namespace
     }
 }
 
-void MovingObjects::move(sf::Time deltaTime) 
+void MovingObjects::move(sf::Time deltaTime)
 {
     m_shape.move(dirFromKey() * 170.f * deltaTime.asSeconds());
 }

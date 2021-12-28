@@ -3,7 +3,7 @@
 //________________________________________
 Board::Board(const int row, const int col)
 	: m_row(row), m_col(col){}
-//_________________________________
+//_________________________________________________________________________________
 void Board::setObjectsFromBoard(std::vector<std::unique_ptr<GameObjects>>& players)
 {
 	std::ifstream savedFileBoard;
@@ -12,10 +12,8 @@ void Board::setObjectsFromBoard(std::vector<std::unique_ptr<GameObjects>>& playe
 		std::cout << "No baord saved previously\n\n";
 	sf::Vector2f boardCharPosition;
 	int row = 0, col = 0;
-	bool isFile = false;
 	while (savedFileBoard)
 	{
-		isFile = true;
 		std::string boardLine;
 		std::getline(savedFileBoard, boardLine);
 		if (boardLine.size() > col)

@@ -53,8 +53,8 @@ void Controller::handleEvents()
 		this->exitGame(event);
 		this->mouseEventReleased(event);
 		this->mouseEventMoved(event);
-		this->keyboardEvent();
 	}
+	this->keyboardEvent();
 	this->isPlaying();
 }
 //_______________________________________________

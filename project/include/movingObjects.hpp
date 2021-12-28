@@ -9,7 +9,7 @@ class MovingObjects : public GameObjects
 public:
 	MovingObjects(const std::string fileName, const sf::Vector2f& location, const char key) 
         : GameObjects(fileName, location, key) {}
-	void move(sf::Time);
+	void move(sf::Time)override;
 
     enum class Direction
     {
