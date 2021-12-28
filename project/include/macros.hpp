@@ -6,6 +6,11 @@
 // amount of player tools in the game
 const int numOfPlayers = 4;
 
+const int AmountOfSounds = 3;
+const int GAME_SOUND = 0;
+const int CLICK_SOUND = 1;
+const int FAIL_SOUND = 2;
+
 const int AmountOfWindows = 4;
 const int MENU = 0;
 const int HELP = 1;
@@ -26,7 +31,7 @@ const int SIDE_LENGTH = 180;
 const int MenuBar = 14;
 const int PLAYER_EXIST = 2;
 
-
+const std::string SOUNDS_NAMES[] = { "GameOfThrones.wav", "ClickSound.wav","FailSound.wav" };
 
 const std::string FILES_NAMES[] = { "king.png", "mage.png", "thief.png", "warrior.png", "crown.png", "gate.png", "fire.png",
 										"key.png", "monster.png", "teleport.png", "brickWall.png", "eraser.png",

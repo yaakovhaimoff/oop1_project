@@ -6,6 +6,21 @@ Window::Window()
 	m_font.loadFromFile("font.ttf");
 	this->setMenu();
 	this->setHelp();
+	this->setSound();
+}
+//____________________
+void Window::setSound()
+{
+	for (auto i = 0; i < AmountOfSounds; ++i)
+	{
+		if (!m_buffer[i].loadFromFile(SOUNDS_NAMES[i]))
+		{
+			std::cout << "can't load sound: " << SOUNDS_NAMES[i] << std::endl;
+			exit(EXIT_FAILURE);
+		}
+		m_sounds[i].setBuffer(m_buffer[i]);
+	}
+	m_sounds[GAME_SOUND].play();
 }
 //____________________
 void Window::setMenu()
@@ -53,6 +68,40 @@ void Window::setHelp()
 	m_helpText.setPosition(sf::Vector2f(25, 20));
 	m_helpText.setString("BACK");
 }
+//_______________________________________________________________________
+void Window::catchMouseEvent(sf::RenderWindow& window, sf::Event& event)
+{
+	if (m_currentWindow[MENU])
+		checkMouseOnMenu(event);
+	else if (m_currentWindow[HELP])
+		checkMouseOnBack(event);
+}
+//_____________________________________________
+void Window::checkMouseOnBack(sf::Event& event)
+{
+	auto location = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
+
+	if (m_helpRect.getGlobalBounds().contains(location))
+		m_helpRect.setFillColor(sf::Color::Black);
+	else
+		m_helpRect.setFillColor(sf::Color::Transparent);
+}
+//_____________________________________________
+void Window::checkMouseOnMenu(sf::Event& event)
+{
+	auto location = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
+
+	for (int row = 0; row < AmountOfWindows - 1; row++)
+	{
+		if (m_menuRects[row].getGlobalBounds().contains(location))
+		{
+			m_menuRects[row].setFillColor(sf::Color::Black);
+			break;
+		}
+		else
+			m_menuRects[row].setFillColor(sf::Color::Transparent);
+	}
+}
 //___________________________________________________________
 void Window::handleClickInWindow(const sf::Vector2f& location)
 {
@@ -73,6 +122,7 @@ void Window::checkMenuPressed(const sf::Vector2f& location)
 
 		if (menuButton.getGlobalBounds().contains(location))
 		{
+			m_sounds[CLICK_SOUND].play();
 			m_currentWindow[MENU] = false;
 			m_currentWindow[row] = true;
 			break;
@@ -86,6 +136,7 @@ void Window::checkHelpPressed(const sf::Vector2f& location)
 	backButton.setPosition(sf::Vector2f(20, 20));
 	if (backButton.getGlobalBounds().contains(location))
 	{
+		m_sounds[CLICK_SOUND].play();
 		m_currentWindow[HELP] = false;
 		m_currentWindow[MENU] = true;
 	}

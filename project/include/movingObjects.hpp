@@ -7,7 +7,8 @@
 class MovingObjects : public GameObjects
 {
 public:
-	MovingObjects(std::string fileName, sf::Vector2f location) : GameObjects(fileName, location) {}
+	MovingObjects(std::string fileName, sf::Vector2f location, char key) 
+        : GameObjects(fileName, location, key) {}
 	void move(sf::Time);
 
     enum class Direction

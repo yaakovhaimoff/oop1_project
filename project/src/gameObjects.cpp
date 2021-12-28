@@ -2,7 +2,7 @@
 
 //____________________________________________
 GameObjects::GameObjects(std::string fileName,
-	sf::Vector2f location)
+	sf::Vector2f location, char key) : m_key(key)
 {
 	m_texture.loadFromFile(fileName);
 	m_shape.setTexture(m_texture);
@@ -12,6 +12,11 @@ GameObjects::GameObjects(std::string fileName,
 void GameObjects::drawShape(sf::RenderWindow& window)const
 {
 	window.draw(m_shape);
+}
+//________________________
+char GameObjects::getKey()
+{
+	return m_key;
 }
 //_________________________________
 void GameObjects::handleCollision()

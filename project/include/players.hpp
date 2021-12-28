@@ -1,5 +1,6 @@
 #pragma once 
 
+#include <SFML/Graphics.hpp>
 #include "MovingObjects.hpp"
 #include "macros.hpp"
 
@@ -7,7 +8,8 @@
 class KingObject : public MovingObjects
 {
 public:
-	KingObject();
+	KingObject(sf::Vector2f location, char key)
+		:MovingObjects("king.png", location, key){}
 
 };
 
@@ -15,7 +17,8 @@ public:
 class MageObject : public MovingObjects
 {
 public:
-	MageObject();
+	MageObject(sf::Vector2f location, char key)
+		:MovingObjects("mage.png", location, key) {}
 
 };
 
@@ -23,7 +26,8 @@ public:
 class WarriorObject : public MovingObjects
 {
 public:
-	WarriorObject();
+	WarriorObject(sf::Vector2f location, char key)
+		:MovingObjects("warrior.png", location, key) {}
 
 };
 
@@ -31,6 +35,7 @@ public:
 class ThiefObject : public MovingObjects
 {
 public:
-	ThiefObject();
+	ThiefObject(sf::Vector2f location, char key)
+		:MovingObjects("thief.png", location, key) {}
 
 };
