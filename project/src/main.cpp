@@ -8,5 +8,5 @@ int main()
     auto run = Controller();
     run.runGame();
 
-    return 0;
+    return EXIT_SUCCESS;
 }

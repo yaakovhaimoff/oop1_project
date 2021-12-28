@@ -15,7 +15,7 @@
 class Board 
 {
 public:
-	Board(int row = 10, int col = 10 );
+	Board(const int row = 10, const int col = 10 );
 	void setObjectsFromBoard(std::vector<std::unique_ptr<GameObjects>>&);
 	void addObjectsFromBoard(std::vector<std::unique_ptr<GameObjects>>&,
 		const sf::Vector2f&, char);

@@ -8,7 +8,7 @@
 class GameObjects
 {
 public:
-	GameObjects(std::string, sf::Vector2f, char);
+	GameObjects(const std::string, const sf::Vector2f&, const char);
 	void handleCollision();
 	void drawShape(sf::RenderWindow&)const;
 	char getKey();

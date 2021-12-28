@@ -1,8 +1,8 @@
 #include "GameObjects.hpp"
 
-//____________________________________________
-GameObjects::GameObjects(std::string fileName,
-	sf::Vector2f location, char key) : m_key(key)
+//__________________________________________________
+GameObjects::GameObjects(const std::string fileName,
+	const sf::Vector2f& location, const char key) : m_key(key)
 {
 	m_texture.loadFromFile(fileName);
 	m_shape.setTexture(m_texture);

@@ -7,7 +7,7 @@
 class WallObject : public GameObjects
 {
 public:
-	WallObject(sf::Vector2f location, char key) 
+	WallObject(const sf::Vector2f& location, const char key)
 		:GameObjects("brickWall.png", location, key) {}
 
 };
@@ -16,7 +16,7 @@ public:
 class CrownObject : public GameObjects
 {
 public:
-	CrownObject(sf::Vector2f location, char key)
+	CrownObject(const sf::Vector2f& location, const char key)
 		:GameObjects("crown.png", location, key) {}
 
 };
@@ -25,7 +25,7 @@ public:
 class FireObject : public GameObjects
 {
 public:
-	FireObject(sf::Vector2f location, char key)
+	FireObject(const sf::Vector2f& location, const char key)
 		:GameObjects("fire.png", location, key) {}
 
 };
@@ -34,7 +34,7 @@ public:
 class GateObject : public GameObjects
 {
 public:
-	GateObject(sf::Vector2f location, char key)
+	GateObject(const sf::Vector2f& location, const char key)
 		:GameObjects("gate.png", location, key) {}
 
 };
@@ -43,7 +43,7 @@ public:
 class KeyObject : public GameObjects
 {
 public:
-	KeyObject(sf::Vector2f location, char key)
+	KeyObject(const sf::Vector2f& location, const char key)
 		:GameObjects("key.png", location, key) {}
 
 };
@@ -52,7 +52,7 @@ public:
 class MonsterObject : public GameObjects
 {
 public:
-	MonsterObject(sf::Vector2f location, char key)
+	MonsterObject(const sf::Vector2f& location, const char key)
 		:GameObjects("monster.png", location, key) {}
 
 };
@@ -61,7 +61,7 @@ public:
 class TeleporterObject : public GameObjects
 {
 public:
-	TeleporterObject(sf::Vector2f location, char key)
+	TeleporterObject(const sf::Vector2f& location, const char key)
 		:GameObjects("teleport.png", location, key) {}
 
 };

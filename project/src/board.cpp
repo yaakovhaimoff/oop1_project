@@ -1,7 +1,7 @@
 #include "board.hpp"
 
-//____________________________
-Board::Board(int row, int col)
+//________________________________________
+Board::Board(const int row, const int col)
 	: m_row(row), m_col(col){}
 //_________________________________
 void Board::setObjectsFromBoard(std::vector<std::unique_ptr<GameObjects>>& players)

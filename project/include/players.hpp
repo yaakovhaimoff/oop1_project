@@ -8,7 +8,7 @@
 class KingObject : public MovingObjects
 {
 public:
-	KingObject(sf::Vector2f location, char key)
+	KingObject(const sf::Vector2f& location, const char key)
 		:MovingObjects("king.png", location, key){}
 
 };
@@ -17,7 +17,7 @@ public:
 class MageObject : public MovingObjects
 {
 public:
-	MageObject(sf::Vector2f location, char key)
+	MageObject(const sf::Vector2f& location, const char key)
 		:MovingObjects("mage.png", location, key) {}
 
 };
@@ -26,7 +26,7 @@ public:
 class WarriorObject : public MovingObjects
 {
 public:
-	WarriorObject(sf::Vector2f location, char key)
+	WarriorObject(const sf::Vector2f& location, const char key)
 		:MovingObjects("warrior.png", location, key) {}
 
 };
@@ -35,7 +35,7 @@ public:
 class ThiefObject : public MovingObjects
 {
 public:
-	ThiefObject(sf::Vector2f location, char key)
+	ThiefObject(const sf::Vector2f& location, const char key)
 		:MovingObjects("thief.png", location, key) {}
 
 };

@@ -7,7 +7,7 @@
 class MovingObjects : public GameObjects
 {
 public:
-	MovingObjects(std::string fileName, sf::Vector2f location, char key) 
+	MovingObjects(const std::string fileName, const sf::Vector2f& location, const char key) 
         : GameObjects(fileName, location, key) {}
 	void move(sf::Time);
 
