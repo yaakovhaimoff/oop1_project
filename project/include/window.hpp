@@ -14,14 +14,14 @@ public:
 	void handleClickInWindow(const sf::Vector2f&);
 	bool isPlaying()const;
 	bool isExit()const;
-	void catchMouseEvent(sf::RenderWindow&, sf::Event&);
+	void catchMouseEvent(sf::RenderWindow&, const sf::Event&);
 
 private:
 	void setSound();
 	void setMenu();
 	void setHelp();
-	void checkMouseOnMenu(sf::Event&);
-	void checkMouseOnBack(sf::Event&);
+	void checkMouseOnMenu(const sf::Event&);
+	void checkMouseOnBack(const sf::Event&);
 	void checkMenuPressed(const sf::Vector2f&);
 	void checkHelpPressed(const sf::Vector2f&);
 	void drawMenu(sf::RenderWindow&)const;

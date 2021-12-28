@@ -31,7 +31,7 @@ void Window::setMenu()
 	for (int row = 1; row < AmountOfWindows; row++)
 	{
 		m_menuRects[row - 1] = sf::RectangleShape({ 220, 120 });
-		m_menuRects[row - 1].setFillColor(sf::Color(0, 0, 0, 3));
+		m_menuRects[row - 1].setFillColor(sf::Color::Transparent);
 		m_menuRects[row - 1].setOutlineColor(sf::Color::White);
 		m_menuRects[row - 1].setOutlineThickness(4);
 		m_menuRects[row - 1].setPosition(sf::Vector2f((CELL + SPACE) * row, SPACE + 100));
@@ -57,7 +57,7 @@ void Window::setHelp()
 	m_background[HELP].setTexture(m_texture[HELP]);
 	// set rectangle for the help back button
 	m_helpRect = sf::RectangleShape({ 160, 90 });
-	m_helpRect.setFillColor(sf::Color(0, 0, 0, 3));
+	m_helpRect.setFillColor(sf::Color::Transparent);
 	m_helpRect.setOutlineColor(sf::Color::White);
 	m_helpRect.setOutlineThickness(4);
 	m_helpRect.setPosition(sf::Vector2f(20, 20));
@@ -68,16 +68,16 @@ void Window::setHelp()
 	m_helpText.setPosition(sf::Vector2f(25, 20));
 	m_helpText.setString("BACK");
 }
-//_______________________________________________________________________
-void Window::catchMouseEvent(sf::RenderWindow& window, sf::Event& event)
+//____________________________________________________________________________
+void Window::catchMouseEvent(sf::RenderWindow& window, const sf::Event& event)
 {
 	if (m_currentWindow[MENU])
 		checkMouseOnMenu(event);
 	else if (m_currentWindow[HELP])
 		checkMouseOnBack(event);
 }
-//_____________________________________________
-void Window::checkMouseOnBack(sf::Event& event)
+//___________________________________________________
+void Window::checkMouseOnBack(const sf::Event& event)
 {
 	auto location = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
 
@@ -86,8 +86,8 @@ void Window::checkMouseOnBack(sf::Event& event)
 	else
 		m_helpRect.setFillColor(sf::Color::Transparent);
 }
-//_____________________________________________
-void Window::checkMouseOnMenu(sf::Event& event)
+//___________________________________________________
+void Window::checkMouseOnMenu(const sf::Event& event)
 {
 	auto location = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
 

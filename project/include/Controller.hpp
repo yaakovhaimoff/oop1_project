@@ -17,12 +17,17 @@ class Controller
 public:
 	Controller();
 	void runGame();
-	void handleEvents();
-	void drawGameWindow();
 
 private:
+	void handleEvents();
+	void drawGameWindow();
 	void findMovingPlayersLocation();
-	int decideActivePlayer(int&);
+	void exitGame(const sf::Event&);
+	void mouseEventReleased(const sf::Event&);
+	void keyboardEvent();
+	void decideActivePlayer();
+	void mouseEventMoved(const sf::Event&);
+	void isPlaying();
 	sf::RenderWindow m_gameWindow = { { 1920, 1080 }, "Save the king" };
 	Window m_window;
 	Board m_board;
@@ -31,6 +36,5 @@ private:
 	sf::Texture m_gameTexture;
 	sf::Sprite m_gameSprite;
 	int m_playersLocation[numOfPlayers];
-	int m_activePlayer = KING_BOARD_OBJECT;
-	int m_count = 0;
+	int m_activePlayer = 0;
 };

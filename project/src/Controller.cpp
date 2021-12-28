@@ -48,60 +48,60 @@ void Controller::runGame()
 //_____________________________
 void Controller::handleEvents()
 {
-	
 	for (auto event = sf::Event(); m_gameWindow.pollEvent(event);)
 	{
-		if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed &&
-			event.key.code == sf::Keyboard::Escape))
-			m_gameWindow.close();
-		if (sf::Event::MouseButtonReleased)
-		{
-			// getting the location of where the mouse was pressed
-			auto location = m_gameWindow.mapPixelToCoords(
-				{ event.mouseButton.x, event.mouseButton.y });
-			m_window.handleClickInWindow(location);
-			if (m_window.isExit())
-			{
-				m_gameWindow.close();
-				break;
-			}
-		}
-		if (event.type == sf::Event::MouseMoved)
-			m_window.catchMouseEvent(m_gameWindow, event);
-
-		if (sf::Keyboard::Key::P)
-			m_activePlayer = decideActivePlayer(m_count);
-			
+		this->exitGame(event);
+		this->mouseEventReleased(event);
+		this->mouseEventMoved(event);
+		this->keyboardEvent();
 	}
+	this->isPlaying();
+}
+//_______________________________________________
+void Controller::exitGame(const sf::Event& event)
+{
+	if ((event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+		|| event.type == sf::Event::Closed || m_window.isExit())
+		m_gameWindow.close();
+}
+//_________________________________________________________
+void Controller::mouseEventReleased(const sf::Event& event)
+{
+	if (sf::Event::MouseButtonReleased)
+	{
+		// getting the location of where the mouse was pressed
+		auto location = m_gameWindow.mapPixelToCoords(
+			{ event.mouseButton.x, event.mouseButton.y });
+		m_window.handleClickInWindow(location);
+	}
+}
+//______________________________________________________
+void Controller::mouseEventMoved(const sf::Event& event)
+{
+	if (event.type == sf::Event::MouseMoved)
+		m_window.catchMouseEvent(m_gameWindow, event);
+}
+//______________________________
+void Controller::keyboardEvent()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+		this->decideActivePlayer();
+}
+//___________________________________
+void Controller::decideActivePlayer()
+{
+	m_activePlayer++;
+	if (m_activePlayer > 3)
+		m_activePlayer = 0;
+}
+//__________________________
+void Controller::isPlaying()
+{
 	if (m_window.isPlaying())
 	{
 		const auto deltaTime = m_gameClock.restart();
-		//m_players[m_playersLocation[m_activePlayer]]->move(deltaTime);
-		m_players[m_playersLocation[KING_BOARD_OBJECT]]->move(deltaTime);
-		
+		m_players[m_playersLocation[m_activePlayer]]->move(deltaTime);
 	}
-}
-//___________________________________________________
-int Controller::decideActivePlayer(int& countKeyBoard)
-{
-	countKeyBoard++;
-	if ((countKeyBoard - 1) % numOfPlayers == 0)
-	{
-		return KING_BOARD_OBJECT;
-	}
-	else if ((countKeyBoard - 1) % numOfPlayers == 1)
-	{
-		return MAGE_BOARD_OBJECT;
-	}
-	else if ((countKeyBoard - 1) % numOfPlayers == 2)
-	{
-		return WARRIOR_BOARD_OBJECT;
-	}
-	else if ((countKeyBoard - 1) % numOfPlayers == 3)
-	{
-		return THIEF_BOARD_OBJECT;
-	}
-	return 1;
 }
 //_______________________________
 void Controller::drawGameWindow()
