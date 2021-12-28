@@ -68,6 +68,7 @@ void Controller::handleEvents()
 		}
 		if (event.type == sf::Event::MouseMoved)
 			m_window.catchMouseEvent(m_gameWindow, event);
+
 		if (sf::Keyboard::Key::P)
 			m_activePlayer = decideActivePlayer(m_count);
 			
@@ -75,7 +76,9 @@ void Controller::handleEvents()
 	if (m_window.isPlaying())
 	{
 		const auto deltaTime = m_gameClock.restart();
-		m_players[m_playersLocation[m_activePlayer]]->move(deltaTime);
+		//m_players[m_playersLocation[m_activePlayer]]->move(deltaTime);
+		m_players[m_playersLocation[KING_BOARD_OBJECT]]->move(deltaTime);
+		
 	}
 }
 //___________________________________________________
