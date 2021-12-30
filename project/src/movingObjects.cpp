@@ -1,6 +1,6 @@
 #include "MovingObjects.hpp"
 
-
+//_______
 namespace
 {
     sf::Vector2f dirFromKey()
@@ -14,7 +14,6 @@ namespace
             { sf::Keyboard::Up   , { 0, -1 } },
             { sf::Keyboard::Down , { 0, 1 } },
         };
-
         for (const auto& pair : keyToVectorMapping)
         {
             if (sf::Keyboard::isKeyPressed(pair.first))
@@ -22,11 +21,10 @@ namespace
                 return pair.second;
             }
         }
-
         return { 0, 0 };
     }
 }
-
+//__________________________________________
 void MovingObjects::move(sf::Time deltaTime)
 {
     m_shape.move(dirFromKey() * 170.f * deltaTime.asSeconds());

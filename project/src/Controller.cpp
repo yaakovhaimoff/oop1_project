@@ -24,7 +24,7 @@ void Controller::runGame()
 void Controller::handleEvents()
 {
 	auto event = sf::Event();
-	while (m_gameWindow.pollEvent(event))
+	while ( m_gameWindow.pollEvent(event))
 	{
 		this->exitGame(event);
 		this->mouseEventReleased(event);

@@ -12,7 +12,6 @@ public:
 	void handleCollision();
 	void drawShape(sf::RenderWindow&)const;
 	char getKey();
-	virtual void move(sf::Time){}
 	virtual ~GameObjects() = default;
 
 protected:
