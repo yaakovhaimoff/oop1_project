@@ -2,36 +2,11 @@
 
 //______________________
 Controller::Controller()
+	: m_activePlayer(0)
 {
 	m_gameTexture.loadFromFile("play.png");
 	m_gameSprite.setTexture(m_gameTexture);
-	m_board.setObjectsFromBoard(m_players);
-	this->findMovingPlayersLocation();
-}
-//__________________________________________
-void Controller::findMovingPlayersLocation()
-{
-	for (int i = 0; i < m_players.size(); i++)
-	{
-		switch (m_players[i]->getKey())
-		{
-		case KING:
-			m_playersLocation[KING_BOARD_OBJECT] = i;
-			break;
-
-		case MAGE:
-			m_playersLocation[MAGE_BOARD_OBJECT] = i;
-			break;
-
-		case WARRIOR:
-			m_playersLocation[WARRIOR_BOARD_OBJECT] = i;
-			break;
-
-		case THIEF:
-			m_playersLocation[THIEF_BOARD_OBJECT] = i;
-			break;
-		}
-	}
+	m_board.setObjectsFromBoard(m_players, m_statics);
 }
 //________________________
 void Controller::runGame()
@@ -48,13 +23,14 @@ void Controller::runGame()
 //_____________________________
 void Controller::handleEvents()
 {
-	for (auto event = sf::Event(); m_gameWindow.pollEvent(event);)
+	auto event = sf::Event();
+	while (m_gameWindow.pollEvent(event))
 	{
 		this->exitGame(event);
 		this->mouseEventReleased(event);
 		this->mouseEventMoved(event);
 	}
-	this->keyboardEvent();
+	this->keyboardEvent(event);
 	this->isPlaying();
 }
 //_______________________________________________
@@ -81,18 +57,16 @@ void Controller::mouseEventMoved(const sf::Event& event)
 	if (event.type == sf::Event::MouseMoved)
 		m_window.catchMouseEvent(m_gameWindow, event);
 }
-//______________________________
-void Controller::keyboardEvent()
+//____________________________________________________
+void Controller::keyboardEvent(const sf::Event& event)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+	if (event.key.code == sf::Keyboard::P)
 		this->decideActivePlayer();
 }
 //___________________________________
 void Controller::decideActivePlayer()
 {
-	m_activePlayer++;
-	if (m_activePlayer > 3)
-		m_activePlayer = 0;
+	m_activePlayer < 3 ? m_activePlayer++ : m_activePlayer = 0;
 }
 //__________________________
 void Controller::isPlaying()
@@ -100,7 +74,7 @@ void Controller::isPlaying()
 	if (m_window.isPlaying())
 	{
 		const auto deltaTime = m_gameClock.restart();
-		m_players[m_playersLocation[m_activePlayer]]->move(deltaTime);
+		m_players[m_activePlayer]->move(deltaTime);
 	}
 }
 //_______________________________
@@ -108,7 +82,14 @@ void Controller::drawGameWindow()
 {
 	m_gameWindow.clear();
 	m_gameWindow.draw(m_gameSprite);
+	this->drawObjects();
+	m_gameWindow.display();
+}
+//____________________________
+void Controller::drawObjects()
+{
+	for (int i = 0; i < m_statics.size(); i++)
+		m_statics[i]->drawShape(m_gameWindow);
 	for (int i = 0; i < m_players.size(); i++)
 		m_players[i]->drawShape(m_gameWindow);
-	m_gameWindow.display();
 }

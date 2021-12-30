@@ -4,7 +4,8 @@
 Board::Board(const int row, const int col)
 	: m_row(row), m_col(col){}
 //_________________________________________________________________________________
-void Board::setObjectsFromBoard(std::vector<std::unique_ptr<GameObjects>>& players)
+void Board::setObjectsFromBoard(std::vector<std::unique_ptr<MovingObjects>>& players,
+								std::vector<std::unique_ptr<StaticObjects>>& statics)
 {
 	std::ifstream savedFileBoard;
 	savedFileBoard.open("Board.txt");
@@ -23,14 +24,15 @@ void Board::setObjectsFromBoard(std::vector<std::unique_ptr<GameObjects>>& playe
 			char c = boardLine[i];
 			boardCharPosition.x = (float)(SIDE_WIDTH + (63) * i);
 			boardCharPosition.y = (float)(SIDE_LENGTH + (63) * row);
-			this->addObjectsFromBoard(players, boardCharPosition, c);
+			this->addMovingObjects(players, boardCharPosition, c);
+			this->addStaticObjects(statics, boardCharPosition, c);
 		}
 		row++;
 	}
 	Board(row, col);
 }
-//__________________________________________________________________________________
-void Board::addObjectsFromBoard(std::vector<std::unique_ptr<GameObjects>>& players,
+//________________________________________________________________________________
+void Board::addMovingObjects(std::vector<std::unique_ptr<MovingObjects>>& players,
 	const sf::Vector2f& location, char object)
 {
 	switch (object)
@@ -51,35 +53,46 @@ void Board::addObjectsFromBoard(std::vector<std::unique_ptr<GameObjects>>& playe
 		players.push_back(std::make_unique<ThiefObject>(location, THIEF));
 		break;
 
+	default:
+		break;
+	}
+}
+//________________________________________________________________________________
+void Board::addStaticObjects(std::vector<std::unique_ptr<StaticObjects>>& statics,
+	const sf::Vector2f& location, char object)
+{
+	switch (object)
+	{
 	case WALL:
-		players.push_back(std::make_unique<WallObject>(location, WALL));
+		statics.push_back(std::make_unique<WallObject>(location, WALL));
 		break;
 
 	case CROWN:
-		players.push_back(std::make_unique<CrownObject>(location, CROWN));
+		statics.push_back(std::make_unique<CrownObject>(location, CROWN));
 		break;
 
 	case FIRE:
-		players.push_back(std::make_unique<FireObject>(location, FIRE));
+		statics.push_back(std::make_unique<FireObject>(location, FIRE));
 		break;
 
 	case GATE:
-		players.push_back(std::make_unique<GateObject>(location, GATE));
+		statics.push_back(std::make_unique<GateObject>(location, GATE));
 		break;
 
 	case GATE_KEY:
-		players.push_back(std::make_unique<KeyObject>(location, GATE_KEY));
+		statics.push_back(std::make_unique<KeyObject>(location, GATE_KEY));
 		break;
 
 	case MONSTER:
-		players.push_back(std::make_unique<MonsterObject>(location, MONSTER));
+		statics.push_back(std::make_unique<MonsterObject>(location, MONSTER));
 		break;
 
 	case TELEPORT:
-		players.push_back(std::make_unique<TeleporterObject>(location, TELEPORT));
+		statics.push_back(std::make_unique<TeleporterObject>(location, TELEPORT));
 		break;
 
 	default:
 		break;
 	}
+
 }

@@ -8,16 +8,19 @@
 #include <memory>
 
 #include "macros.hpp"
-#include "GameObjects.hpp"
 #include "Players.hpp"
+#include "movingObjects.hpp"
 #include "staticObjects.hpp"
 
 class Board 
 {
 public:
 	Board(const int row = 10, const int col = 10 );
-	void setObjectsFromBoard(std::vector<std::unique_ptr<GameObjects>>&);
-	void addObjectsFromBoard(std::vector<std::unique_ptr<GameObjects>>&,
+	void setObjectsFromBoard(std::vector<std::unique_ptr<MovingObjects>>&, 
+							std::vector<std::unique_ptr<StaticObjects>>&);
+	void addMovingObjects(std::vector<std::unique_ptr<MovingObjects>>&,
+		const sf::Vector2f&, char);
+	void addStaticObjects(std::vector<std::unique_ptr<StaticObjects>>&,
 		const sf::Vector2f&, char);
 
 private:
