@@ -29,6 +29,7 @@ private:
 	void decideActivePlayer();
 	void mouseEventMoved(const sf::Event&);
 	void isPlaying();
+	bool checkCollision(sf::Time deltaTime);
 	sf::RenderWindow m_gameWindow = { { 1920, 1080 }, "Save the king" };
 	Window m_window;
 	Board m_board;

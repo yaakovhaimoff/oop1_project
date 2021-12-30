@@ -3,5 +3,6 @@
 												"GameObjects.cpp"
 												"MovingObjects.cpp"
 												"Controller.cpp"
-												"Window.cpp")
+												"Window.cpp"
+												"king.cpp")
 												

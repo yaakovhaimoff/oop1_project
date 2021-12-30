@@ -24,7 +24,7 @@ void Controller::runGame()
 void Controller::handleEvents()
 {
 	auto event = sf::Event();
-	while ( m_gameWindow.pollEvent(event))
+	while (m_gameWindow.pollEvent(event))
 	{
 		this->exitGame(event);
 		this->mouseEventReleased(event);
@@ -74,8 +74,23 @@ void Controller::isPlaying()
 	if (m_window.isPlaying())
 	{
 		const auto deltaTime = m_gameClock.restart();
-		m_players[m_activePlayer]->move(deltaTime);
+		if (!this->checkCollision(deltaTime))
+			m_players[m_activePlayer]->move(deltaTime);
 	}
+}
+//_________________________________________________
+bool Controller::checkCollision(sf::Time deltaTime)
+{
+	auto nextStep = sf::Sprite();
+	nextStep.setPosition(m_players[m_activePlayer]->getNextPosition(deltaTime));
+
+	for (int i = 0; i < m_statics.size(); i++)
+		//if(m_players[m_activePlayer]->checkCollision(*m_statics[i]))
+		if (m_statics[i]->getShapeBoundingRect().contains(m_players[m_activePlayer]->getNextPosition(deltaTime))
+			|| nextStep.getGlobalBounds().contains( m_statics[i]->getPosition()))
+			return true;
+
+	return false;
 }
 //_______________________________
 void Controller::drawGameWindow()
