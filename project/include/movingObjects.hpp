@@ -11,10 +11,7 @@ class MovingObjects : public GameObjects
 public:
 	MovingObjects(const std::string fileName, const sf::Vector2f& location, const char key) 
         : GameObjects(fileName, location, key) {}
-	void move(sf::Time);
-    sf::Vector2f getNextPosition(sf::Time);
-    sf::Vector2f direction(sf::Time);
-
+    virtual void move(sf::Time) {};
     enum class Direction
     {
         Stay,
@@ -23,4 +20,22 @@ public:
         Left,
         Right,
     };
+};
+
+class Players : public MovingObjects
+{
+public:
+    Players(const std::string fileName, const sf::Vector2f& location, const char key)
+        : MovingObjects(fileName, location, key) {}
+    void move(sf::Time)override;
+protected:
+    sf::Vector2f m_prev_location;
+};
+
+class Midgets : public MovingObjects
+{
+public:
+    void move(sf::Time)override;
+private:
+
 };

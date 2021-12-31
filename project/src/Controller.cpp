@@ -75,24 +75,23 @@ void Controller::isPlaying()
 	{
 		sf::RectangleShape save;
 		const auto deltaTime = m_gameClock.restart();
-		save.setPosition(m_players[m_activePlayer]->getNextPosition(deltaTime));
-		if (!this->checkCollision(deltaTime))
-		{
-			m_players[m_activePlayer]->move(deltaTime);
-			//m_players[]
-		}
+		m_players[m_activePlayer]->move(deltaTime);
+		this->checkCollision();
 	}
 }
-//_________________________________________________
-bool Controller::checkCollision(sf::Time deltaTime)
+//_______________________________
+void Controller::checkCollision()
 {
-	auto nextStep = sf::Sprite();
-	nextStep.setPosition(m_players[m_activePlayer]->getNextPosition(deltaTime));
-
 	for (int i = 0; i < m_statics.size(); i++)
-		if(m_players[m_activePlayer]->checkCollision(*m_statics[i]))
-			return true;
-	return false;
+		if (m_players[m_activePlayer]->checkCollision(*m_statics[i]))
+		{
+			m_players[m_activePlayer]->collide(*m_statics[i]);
+		}	
+	for (int i = 0; i < m_players.size(); i++)
+		if (m_players[m_activePlayer]->checkCollision(*m_players[i]) && i!= m_activePlayer)
+		{
+			m_players[m_activePlayer]->collide(*m_players[i]);
+		}
 }
 //_______________________________
 void Controller::drawGameWindow()

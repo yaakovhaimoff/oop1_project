@@ -10,7 +10,6 @@
 #include "Window.hpp"
 #include "movingObjects.hpp"
 #include "staticObjects.hpp"
-#include "Players.hpp"
 #include "board.hpp"
 
 class Controller
@@ -29,7 +28,7 @@ private:
 	void decideActivePlayer();
 	void mouseEventMoved(const sf::Event&);
 	void isPlaying();
-	bool checkCollision(sf::Time deltaTime);
+	void checkCollision();
 	sf::RenderWindow m_gameWindow = { { 1920, 1080 }, "Save the king" };
 	Window m_window;
 	Board m_board;

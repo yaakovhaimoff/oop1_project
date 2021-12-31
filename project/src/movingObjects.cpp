@@ -25,17 +25,8 @@ namespace
 	}
 }
 //__________________________________________
-void MovingObjects::move(sf::Time deltaTime)
+void Players::move(sf::Time deltaTime)
 {
+	m_prev_location = m_shape.getPosition();
 	m_shape.move(dirFromKey() * 170.f * deltaTime.asSeconds());
-}
-//_____________________________________________________________
-sf::Vector2f MovingObjects::getNextPosition(sf::Time deltaTime)
-{
-	return m_shape.getPosition() + this->direction(deltaTime);
-}
-//_______________________________________________________
-sf::Vector2f MovingObjects::direction(sf::Time deltaTime)
-{
-	return (dirFromKey() * 170.f * deltaTime.asSeconds());
 }
