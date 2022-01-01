@@ -5,23 +5,29 @@
 
 #include "MovingObjects.hpp"
 #include "macros.hpp"
+//#include "king.hpp"
+//#include "mage.hpp"
+//#include "warrior.hpp"
+//class KingObject;
+//class MageObject;
+//class WarriorObject;
 
 //________________________________
 class ThiefObject : public Players
 {
 public:
 	ThiefObject(const sf::Vector2f& location, const char key)
-		: Players("thief.png", location, key), m_hasKey(false) {}
+		: Players(location, key), m_hasKey(false) {}
 	bool thiefHasKey()const { return m_hasKey; }
 	void collide(GameObjects& other)override
 	{
 		if (this == &other) return;
 		other.collide(*this);
 	}
-	void collide(KingObject&) override { m_shape.setPosition(m_prev_location); }
-	void collide(MageObject&)override { m_shape.setPosition(m_prev_location); }
-	void collide(WarriorObject&)override { m_shape.setPosition(m_prev_location); }
-	void collide(ThiefObject& other)override { other.collide(*this); }
+	void collide(KingObject& /*other*/) override { /*other.collide(*this);*/ }
+	void collide(MageObject& /*other*/)override { /*other.collide(*this);*/ }
+	void collide(WarriorObject& /*other*/)override { /*other.collide(*this);*/ }
+	void collide(ThiefObject&)override { m_shape.setPosition(m_prev_location); }
 
 	void collide(WallObject&)override { m_shape.setPosition(m_prev_location); }
 	void collide(CrownObject&)override { m_shape.setPosition(m_prev_location); }

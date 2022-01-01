@@ -11,8 +11,8 @@
 class StaticObjects : public GameObjects 
 {
 public:
-	StaticObjects(const std::string fileName, const sf::Vector2f& location, const char key)
-		: GameObjects(fileName, location, key) {}
+	StaticObjects(const sf::Vector2f& location, const char key)
+		: GameObjects(location, key) {}
 };
 
 
@@ -21,7 +21,7 @@ class WallObject : public StaticObjects
 {
 public:
 	WallObject(const sf::Vector2f& location, const char key)
-		: StaticObjects("brickWall.png", location, key) {}
+		: StaticObjects(location, key) {}
 	void collide(GameObjects& other)override
 	{
 		if (this == &other)
@@ -46,7 +46,7 @@ class CrownObject : public StaticObjects
 {
 public:
 	CrownObject(const sf::Vector2f& location, const char key)
-		: StaticObjects("crown.png", location, key) {}
+		: StaticObjects(location, key) {}
 	void collide(GameObjects& other)override
 	{
 		if (this == &other)
@@ -71,7 +71,7 @@ class FireObject : public StaticObjects
 {
 public:
 	FireObject(const sf::Vector2f& location, const char key)
-		: StaticObjects("fire.png", location, key) {}
+		: StaticObjects(location, key) {}
 	void collide(GameObjects& other)override
 	{
 		if (this == &other)
@@ -96,7 +96,7 @@ class GateObject : public StaticObjects
 {
 public:
 	GateObject(const sf::Vector2f& location, const char key)
-		: StaticObjects("gate.png", location, key) {}
+		: StaticObjects(location, key) {}
 	void collide(GameObjects& other)override
 	{
 		if (this == &other)
@@ -121,7 +121,7 @@ class KeyObject : public StaticObjects
 {
 public:
 	KeyObject(const sf::Vector2f& location, const char key)
-		: StaticObjects("key.png", location, key) {}
+		: StaticObjects(location, key) {}
 	void collide(GameObjects& other)override
 	{
 		if (this == &other)
@@ -146,7 +146,7 @@ class MonsterObject : public StaticObjects
 {
 public:
 	MonsterObject(const sf::Vector2f& location, const char key)
-		: StaticObjects("monster.png", location, key) {}
+		: StaticObjects(location, key) {}
 	void collide(GameObjects& other)override
 	{
 		if (this == &other)
@@ -171,7 +171,7 @@ class TeleporterObject : public StaticObjects
 {
 public:
 	TeleporterObject(const sf::Vector2f& location, const char key)
-		: StaticObjects("teleport.png", location, key) {}
+		: StaticObjects(location, key) {}
 	void collide(GameObjects& other)override
 	{
 		if (this == &other)

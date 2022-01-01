@@ -38,19 +38,19 @@ void Board::addMovingObjects(std::vector<std::unique_ptr<MovingObjects>>& player
 	switch (object)
 	{
 	case KING:
-		players.push_back(std::make_unique<KingObject>(location, KING));
+		players.push_back(std::make_unique<KingObject>(location, King));
 		break;
 
 	case MAGE:
-		players.push_back(std::make_unique<MageObject>(location, MAGE));
+		players.push_back(std::make_unique<MageObject>(location, Mage));
 		break;
 
 	case WARRIOR:
-		players.push_back(std::make_unique<WarriorObject>(location, WARRIOR));
+		players.push_back(std::make_unique<WarriorObject>(location, Warrior));
 		break;
 
 	case THIEF:
-		players.push_back(std::make_unique<ThiefObject>(location, THIEF));
+		players.push_back(std::make_unique<ThiefObject>(location, Thief));
 		break;
 
 	default:
@@ -64,31 +64,31 @@ void Board::addStaticObjects(std::vector<std::unique_ptr<StaticObjects>>& static
 	switch (object)
 	{
 	case WALL:
-		statics.push_back(std::make_unique<WallObject>(location, WALL));
+		statics.push_back(std::make_unique<WallObject>(location, Wall));
 		break;
 
 	case CROWN:
-		statics.push_back(std::make_unique<CrownObject>(location, CROWN));
+		statics.push_back(std::make_unique<CrownObject>(location, Crown));
 		break;
 
 	case FIRE:
-		statics.push_back(std::make_unique<FireObject>(location, FIRE));
+		statics.push_back(std::make_unique<FireObject>(location, Fire));
 		break;
 
 	case GATE:
-		statics.push_back(std::make_unique<GateObject>(location, GATE));
+		statics.push_back(std::make_unique<GateObject>(location, Gate));
 		break;
 
 	case GATE_KEY:
-		statics.push_back(std::make_unique<KeyObject>(location, GATE_KEY));
+		statics.push_back(std::make_unique<KeyObject>(location, Key));
 		break;
 
 	case MONSTER:
-		statics.push_back(std::make_unique<MonsterObject>(location, MONSTER));
+		statics.push_back(std::make_unique<MonsterObject>(location, Monster));
 		break;
 
 	case TELEPORT:
-		statics.push_back(std::make_unique<TeleporterObject>(location, TELEPORT));
+		statics.push_back(std::make_unique<TeleporterObject>(location, Teleport));
 		break;
 
 	default:

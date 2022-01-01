@@ -17,7 +17,7 @@ const int HELP = 1;
 const int PLAY = 2;
 const int EXIT = 3;
 
-const std::string menu_names[] = { "HELP", "PLAY", "EXIT"};
+const std::string menu_names[] = { "HELP", "PLAY", "EXIT" };
 
 // what the tiles in the game can posses
 
@@ -31,17 +31,38 @@ const int SIDE_LENGTH = 180;
 const int MenuBar = 14;
 const int PLAYER_EXIST = 2;
 
-const std::string SOUNDS_NAMES[] = { "GameOfThrones.wav", "ClickSound.wav","FailSound.wav" };
-
-const std::string FILES_NAMES[] = { "king.png", "mage.png", "thief.png", "warrior.png", "crown.png", "gate.png", "fire.png",
-										"key.png", "monster.png", "teleport.png", "brickWall.png", "eraser.png",
-										"newBoard.png", "saveBoard.png" };
-// 
+const std::string FontName = "font.ttf";
+const std::vector SOUNDS_NAMES = { "GameOfThrones.wav", "ClickSound.wav","FailSound.wav" };
+const std::vector NAMES = { "play.png","menu.png","help.png","king.png", "mage.png",
+							"thief.png","warrior.png","crown.png", "gate.png", "fire.png",
+							"key.png","monster.png", "teleport.png", "brickWall.png" };
+enum rcsNames
+{
+	BoardBackground,
+	MenuBackground,
+	HelpScreen,
+	King,
+	Mage,
+	Thief,
+	Warrior,
+	Crown,
+	Gate,
+	Fire,
+	Key,
+	Monster,
+	Teleport,
+	Wall,
+};
+enum SoundsNames {
+	GameSound,
+	ClickSound,
+	FailSound,
+};
 // the player tools in the games
 enum playersKeys
 {
-	KING = 75,      // 'K'
-	MAGE = 77,     // 'M'
+	KING = 75,    // 'K'
+	MAGE = 77,    // 'M'
 	WARRIOR = 87, // 'W'
 	THIEF = 84    // 'T'
 };
@@ -74,8 +95,5 @@ enum BoardRectObjects
 	GATE_KEY_BOARD_OBJECT = 8,
 	MONSTER_BOARD_OBJECT = 9,
 	TELEPORT_BOARD_OBJECT = 10,
-	ERASE_BOARD_OBJECT = 11,
-	NEW_BOARD_BOARD_OBJECT = 12,
-	SAVE_BOARD_BOARD_OBJECT = 13,
-	DO_NOTHING = 14
+	DO_NOTHING = 11
 };

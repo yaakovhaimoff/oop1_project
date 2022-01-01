@@ -9,8 +9,8 @@
 class MovingObjects : public GameObjects
 {
 public:
-	MovingObjects(const std::string fileName, const sf::Vector2f& location, const char key) 
-        : GameObjects(fileName, location, key) {}
+	MovingObjects(const sf::Vector2f& location, const char key) 
+        : GameObjects(location, key) {}
     virtual void move(sf::Time) {};
     enum class Direction
     {
@@ -25,8 +25,8 @@ public:
 class Players : public MovingObjects
 {
 public:
-    Players(const std::string fileName, const sf::Vector2f& location, const char key)
-        : MovingObjects(fileName, location, key) {}
+    Players(const sf::Vector2f& location, const char key)
+        : MovingObjects(location, key) {}
     void move(sf::Time)override;
 protected:
     sf::Vector2f m_prev_location;

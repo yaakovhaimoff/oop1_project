@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <vector>
 #include <string>
+#include "Resources.hpp"
 
 class StaticObjects;
 
@@ -23,9 +24,8 @@ class TeleporterObject;
 class GameObjects
 {
 public:
-	GameObjects(const std::string, const sf::Vector2f&, const char);
+	GameObjects(const sf::Vector2f&, const int);
 	void drawShape(sf::RenderWindow&)const;
-	sf::FloatRect getShapeBoundingRect()const;
 	sf::Vector2f getPosition()const;
 	char getKey();
 	bool checkCollision(const GameObjects&) const;
@@ -47,7 +47,6 @@ public:
 	virtual ~GameObjects() = default;
 
 protected:
-	sf::Texture m_texture;
 	sf::Sprite m_shape;
 	char m_key;
 };

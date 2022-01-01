@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stdio.h>
 #include "macros.hpp"
+#include "Resources.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
@@ -17,6 +18,7 @@ public:
 	void catchMouseEvent(sf::RenderWindow&, const sf::Event&);
 
 private:
+	void setFont();
 	void setSound();
 	void setMenu();
 	void setHelp();
@@ -28,9 +30,7 @@ private:
 	void drawHelp(sf::RenderWindow&)const;
 
 	bool m_currentWindow[AmountOfWindows] = { true, false, false, false };
-	sf::SoundBuffer m_buffer[AmountOfSounds];
 	sf::Sound m_sounds[AmountOfSounds];
-	sf::Texture m_texture[AmountOfWindows-1];
 	sf::Sprite m_background[AmountOfWindows-1];
 	sf::Font m_font;
 	sf::Text m_gameName;

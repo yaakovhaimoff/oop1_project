@@ -4,8 +4,9 @@
 Controller::Controller()
 	: m_activePlayer(0)
 {
-	m_gameTexture.loadFromFile("play.png");
-	m_gameSprite.setTexture(m_gameTexture);
+	auto m_texture = Resources::pToRsc().getTexture(BoardBackground);
+	m_gameSprite.setTexture(*(m_texture));
+	m_gameSprite.setScale(1, 1.4);
 	m_board.setObjectsFromBoard(m_players, m_statics);
 }
 //________________________
@@ -73,7 +74,6 @@ void Controller::isPlaying()
 {
 	if (m_window.isPlaying())
 	{
-		sf::RectangleShape save;
 		const auto deltaTime = m_gameClock.restart();
 		m_players[m_activePlayer]->move(deltaTime);
 		this->checkCollision();

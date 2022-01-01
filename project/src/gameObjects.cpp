@@ -1,22 +1,17 @@
 #include "GameObjects.hpp"
 
-//__________________________________________________
-GameObjects::GameObjects(const std::string fileName,
-	const sf::Vector2f& location, const char key) : m_key(key)
+//___________________________________________________________________
+GameObjects::GameObjects(const sf::Vector2f& location, const int key)
+	: m_key(key)
 {
-	m_texture.loadFromFile(fileName);
-	m_shape.setTexture(m_texture);
+	auto m_texture = Resources::pToRsc().getTexture(key);
+	m_shape.setTexture(*m_texture);
 	m_shape.setPosition(location);
 }
 //________________________________________________________
 void GameObjects::drawShape(sf::RenderWindow& window)const
 {
 	window.draw(m_shape);
-}
-//____________________________________________________
-sf::FloatRect GameObjects::getShapeBoundingRect()const
-{
-	return m_shape.getGlobalBounds();
 }
 //__________________________________________
 sf::Vector2f GameObjects::getPosition()const

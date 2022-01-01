@@ -35,7 +35,6 @@ private:
 	std::vector<std::unique_ptr<MovingObjects>> m_players;
 	std::vector<std::unique_ptr<StaticObjects>> m_statics;
 	sf::Clock m_gameClock;
-	sf::Texture m_gameTexture;
 	sf::Sprite m_gameSprite;
 	int m_activePlayer;
 };

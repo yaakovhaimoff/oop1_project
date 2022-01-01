@@ -3,30 +3,32 @@
 //______________
 Window::Window()
 {
-	m_font.loadFromFile("font.ttf");
+	this->setFont();
 	this->setMenu();
 	this->setHelp();
 	this->setSound();
 }
 //____________________
+void Window::setFont()
+{
+	auto font = Resources::pToRsc().getFont();
+	m_font = (*font);
+}
+//____________________
 void Window::setSound()
 {
-	for (auto i = 0; i < AmountOfSounds; ++i)
+	for (auto i = 0; i < SOUNDS_NAMES.size(); i++)
 	{
-		if (!m_buffer[i].loadFromFile(SOUNDS_NAMES[i]))
-		{
-			std::cout << "can't load sound: " << SOUNDS_NAMES[i] << std::endl;
-			exit(EXIT_FAILURE);
-		}
-		m_sounds[i].setBuffer(m_buffer[i]);
+		auto Sound = Resources::pToRsc().getSound(i);
+		m_sounds[i].setBuffer(*Sound);
 	}
-	m_sounds[GAME_SOUND].play();
+	m_sounds[GameSound].play();
 }
 //____________________
 void Window::setMenu()
 {
-	m_texture[MENU].loadFromFile("menu.png");
-	m_background[MENU].setTexture(m_texture[MENU]);
+	auto texture = Resources::pToRsc().getTexture(MenuBackground);
+	m_background[MENU].setTexture(*texture);
 	// set rectangle for the menu buttons and texts
 	for (int row = 1; row < AmountOfWindows; row++)
 	{
@@ -53,8 +55,8 @@ void Window::setMenu()
 //____________________
 void Window::setHelp()
 {
-	m_texture[HELP].loadFromFile("help.png");
-	m_background[HELP].setTexture(m_texture[HELP]);
+	auto texture = Resources::pToRsc().getTexture(HelpScreen);
+	m_background[HELP].setTexture(*texture);
 	// set rectangle for the help back button
 	m_helpRect = sf::RectangleShape({ 160, 90 });
 	m_helpRect.setFillColor(sf::Color::Transparent);
@@ -109,7 +111,6 @@ void Window::handleClickInWindow(const sf::Vector2f& location)
 		this->checkMenuPressed(location);
 	else if (m_currentWindow[HELP])
 		this->checkHelpPressed(location);
-
 }
 //_________________________________________________________
 void Window::checkMenuPressed(const sf::Vector2f& location)
@@ -122,9 +123,9 @@ void Window::checkMenuPressed(const sf::Vector2f& location)
 
 		if (menuButton.getGlobalBounds().contains(location))
 		{
-			m_sounds[CLICK_SOUND].play();
 			m_currentWindow[MENU] = false;
 			m_currentWindow[row] = true;
+			m_sounds[CLICK_SOUND].play();
 			break;
 		}
 	}
@@ -136,12 +137,12 @@ void Window::checkHelpPressed(const sf::Vector2f& location)
 	backButton.setPosition(sf::Vector2f(20, 20));
 	if (backButton.getGlobalBounds().contains(location))
 	{
-		m_sounds[CLICK_SOUND].play();
 		m_currentWindow[HELP] = false;
 		m_currentWindow[MENU] = true;
+		m_sounds[CLICK_SOUND].play();
 	}
 }
-//_______________________________________________
+//____________________________________________________
 void Window::drawWindow(sf::RenderWindow& window)const
 {
 	if (m_currentWindow[MENU])
@@ -149,7 +150,7 @@ void Window::drawWindow(sf::RenderWindow& window)const
 	else if (m_currentWindow[HELP])
 		this->drawHelp(window);
 }
-//___________________________________________________
+//__________________________________________________
 void Window::drawMenu(sf::RenderWindow& window)const
 {
 	window.clear();
@@ -162,7 +163,7 @@ void Window::drawMenu(sf::RenderWindow& window)const
 	}
 	window.display();
 }
-//___________________________________________________
+//__________________________________________________
 void Window::drawHelp(sf::RenderWindow& window)const
 {
 	window.clear();
@@ -171,7 +172,7 @@ void Window::drawHelp(sf::RenderWindow& window)const
 	window.draw(m_helpText);
 	window.display();
 }
-//__________________________
+//___________________________
 bool Window::isPlaying()const
 {
 	return m_currentWindow[PLAY];
