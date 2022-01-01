@@ -3,5 +3,6 @@
 												"gameObjects.cpp"
 												"main.cpp"
 												"movingObjects.cpp"
-												"window.cpp")
+												"window.cpp"
+												"Resources.cpp")
 												
