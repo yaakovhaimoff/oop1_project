@@ -8,7 +8,7 @@
 class Resources {
 public:
 	Resources();
-	~Resources();
+	~Resources() {};
 
 	static Resources& pToRsc();
 

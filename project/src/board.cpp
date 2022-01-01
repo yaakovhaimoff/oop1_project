@@ -4,7 +4,7 @@
 Board::Board(const int row, const int col)
 	: m_row(row), m_col(col){}
 //_________________________________________________________________________________
-void Board::setObjectsFromBoard(std::vector<std::unique_ptr<MovingObjects>>& players,
+void Board::setObjectsFromBoard(std::vector<std::unique_ptr<Players>>& players,
 								std::vector<std::unique_ptr<StaticObjects>>& statics)
 {
 	std::ifstream savedFileBoard;
@@ -32,7 +32,7 @@ void Board::setObjectsFromBoard(std::vector<std::unique_ptr<MovingObjects>>& pla
 	Board(row, col);
 }
 //________________________________________________________________________________
-void Board::addMovingObjects(std::vector<std::unique_ptr<MovingObjects>>& players,
+void Board::addMovingObjects(std::vector<std::unique_ptr<Players>>& players,
 	const sf::Vector2f& location, char object)
 {
 	switch (object)

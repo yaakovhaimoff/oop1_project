@@ -9,7 +9,7 @@
 class MovingObjects : public GameObjects
 {
 public:
-	MovingObjects(const sf::Vector2f& location, const char key) 
+	MovingObjects(const sf::Vector2f& location, const int key) 
         : GameObjects(location, key) {}
     virtual void move(sf::Time) {};
     enum class Direction
@@ -25,7 +25,7 @@ public:
 class Players : public MovingObjects
 {
 public:
-    Players(const sf::Vector2f& location, const char key)
+    Players(const sf::Vector2f& location, const int key)
         : MovingObjects(location, key) {}
     void move(sf::Time)override;
 protected:

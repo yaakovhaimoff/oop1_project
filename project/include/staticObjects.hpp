@@ -1,18 +1,22 @@
 #pragma once 
 
 #include "GameObjects.hpp"
+#include "macros.hpp"
 #include "king.hpp"
 #include "mage.hpp"
 #include "warrior.hpp"
 #include "thief.hpp"
-#include "macros.hpp"
 
 //______________________________________
 class StaticObjects : public GameObjects 
 {
 public:
-	StaticObjects(const sf::Vector2f& location, const char key)
+	StaticObjects(const sf::Vector2f& location, const int key)
 		: GameObjects(location, key) {}
+	bool isDead()const { return m_isDeaed; }
+	void setIsDead() { m_isDeaed = true; }
+protected:
+	bool m_isDeaed;
 };
 
 

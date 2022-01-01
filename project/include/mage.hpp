@@ -28,7 +28,7 @@ public:
 
 	void collide(WallObject&)override { m_shape.setPosition(m_prev_location); }
 	void collide(CrownObject&)override { m_shape.setPosition(m_prev_location); }
-	void collide(FireObject&)override { /*delete fire*/ }
+	void collide(FireObject& /*other*/)override { /*other.setIsDead();*/ }
 	void collide(GateObject&)override { m_shape.setPosition(m_prev_location); }
 	void collide(KeyObject&)override {};
 	void collide(MonsterObject&)override { m_shape.setPosition(m_prev_location); }

@@ -15,9 +15,9 @@ class Board
 {
 public:
 	Board(const int row = 10, const int col = 10 );
-	void setObjectsFromBoard(std::vector<std::unique_ptr<MovingObjects>>&, 
+	void setObjectsFromBoard(std::vector<std::unique_ptr<Players>>&,
 							std::vector<std::unique_ptr<StaticObjects>>&);
-	void addMovingObjects(std::vector<std::unique_ptr<MovingObjects>>&,
+	void addMovingObjects(std::vector<std::unique_ptr<Players>>&,
 		const sf::Vector2f&, char);
 	void addStaticObjects(std::vector<std::unique_ptr<StaticObjects>>&,
 		const sf::Vector2f&, char);

@@ -32,7 +32,7 @@ private:
 	sf::RenderWindow m_gameWindow = { { 1920, 1080 }, "Save the king" };
 	Window m_window;
 	Board m_board;
-	std::vector<std::unique_ptr<MovingObjects>> m_players;
+	std::vector<std::unique_ptr<Players>> m_players;
 	std::vector<std::unique_ptr<StaticObjects>> m_statics;
 	sf::Clock m_gameClock;
 	sf::Sprite m_gameSprite;

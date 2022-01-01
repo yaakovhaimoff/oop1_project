@@ -1,20 +1,17 @@
 #include "Resources.hpp"
 
-
+//____________________
 Resources::Resources()
 {
 	this->loadResources();
 }
-
-Resources::~Resources()
-{}
-
+//____________________________
 Resources& Resources::pToRsc()
 {
 	static Resources p;
 	return p;
 }
-
+//_____________________________
 void Resources::loadResources()
 {
 	sf::Texture tex;
