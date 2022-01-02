@@ -9,7 +9,7 @@
 class MageObject;
 class WarriorObject;
 class ThiefObject;
-
+class Crown;
 
 //_______________________________
 class KingObject : public Players
@@ -20,12 +20,8 @@ public:
 	~KingObject() {}
 	bool isKingOnThrone()const { return m_onCrown; }
 
-	void collide(GameObjects& other)override
-	{
-		if (this == &other) return;
-		other.collide(*this);
-	}
-	void collide(KingObject&) override {}
+	void collide(GameObjects&)override;
+	void collide(KingObject&)override {}
 	void collide(MageObject&)override;
 	void collide(WarriorObject&)override;
 	void collide(ThiefObject&)override;

@@ -9,23 +9,21 @@
 class KingObject;
 class MageObject;
 class WarriorObject;
+class GateObject;
+class KeyObject;
 
 //________________________________
 class ThiefObject : public Players
 {
 public:
 	ThiefObject(const sf::Vector2f& location, const char key)
-		: Players(location, key), m_hasKey(false) {}
+		: Players(location, key), m_hasKey(0) {}
 	~ThiefObject() {};
 	bool thiefHasKey()const { return m_hasKey; }
-	void collide(GameObjects& other)override
-	{
-		if (this == &other) return;
-		other.collide(*this);
-	}
-	void collide(KingObject& other)override;
-	void collide(MageObject& other)override;
-	void collide(WarriorObject& other)override;
+	void collide(GameObjects&)override;
+	void collide(KingObject&)override;
+	void collide(MageObject&)override;
+	void collide(WarriorObject&)override;
 	void collide(ThiefObject&)override {}
 	void collide(WallObject&)override;
 	void collide(CrownObject&)override;
@@ -36,6 +34,6 @@ public:
 	void collide(TeleporterObject&)override;
 
 private:
-	bool m_hasKey;
+	int m_hasKey;
 
 };

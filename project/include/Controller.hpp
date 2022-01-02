@@ -29,8 +29,10 @@ private:
 	void decideActivePlayer();
 	void mouseEventMoved(const sf::Event&);
 	void isPlaying();
-	void checkCollision();
+	void checkCollision(Players&);
+	void eraseDeadObjects();
 	bool checkGameTime(const sf::Clock&)const;
+	bool chechKingOnThrone()const;
 	sf::RenderWindow m_gameWindow = { { 1920, 1080 }, "Save the king" };
 	sf::Clock m_moveClock;
 	sf::Time m_gameTime;
