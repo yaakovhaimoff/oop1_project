@@ -2,24 +2,44 @@
 
 //______________________
 Controller::Controller()
-	: m_activePlayer(0)
-{
-	auto m_texture = Resources::pToRsc().getTexture(BoardBackground);
-	m_gameSprite.setTexture(*(m_texture));
-	m_gameSprite.setScale(1, 1.4);
-	m_board.setObjectsFromBoard(m_players, m_statics);
-}
+	: m_activePlayer(0), m_gameTime(sf::seconds(60))
+{}
 //________________________
 void Controller::runGame()
+{
+	while (!m_board.checkEndOfFile())
+	{
+		m_board.setObjectsFromBoard(m_players, m_statics);
+		this->runLevel();
+		m_players.clear();
+		m_statics.clear();
+		m_gameTime += sf::seconds(4);
+	}
+}
+//_________________________
+void Controller::runLevel()
 {
 	while (m_gameWindow.isOpen())
 	{
 		if (!m_window.isPlaying())
 			m_window.drawWindow(m_gameWindow);
 		else
-			this->drawGameWindow();
+		{
+			static sf::Clock clock;
+			m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_players, m_statics);
+			if (checkGameTime(clock))
+			{
+				clock.restart();
+				break;
+			}
+		}
 		this->handleEvents();
 	}
+}
+//__________________________________________________________
+bool Controller::checkGameTime(const sf::Clock& clock)const
+{
+	return clock.getElapsedTime() > m_gameTime;
 }
 //_____________________________
 void Controller::handleEvents()
@@ -74,7 +94,7 @@ void Controller::isPlaying()
 {
 	if (m_window.isPlaying())
 	{
-		const auto deltaTime = m_gameClock.restart();
+		const auto deltaTime = m_moveClock.restart();
 		m_players[m_activePlayer]->move(deltaTime);
 		this->checkCollision();
 	}
@@ -86,26 +106,5 @@ void Controller::checkCollision()
 		if (m_players[m_activePlayer]->checkCollision(*m_statics[i]))
 		{
 			m_players[m_activePlayer]->collide(*m_statics[i]);
-		}	
-	for (int i = 0; i < m_players.size(); i++)
-		if (m_players[m_activePlayer]->checkCollision(*m_players[i]) && i!= m_activePlayer)
-		{
-			m_players[m_activePlayer]->collide(*m_players[i]);
 		}
-}
-//_______________________________
-void Controller::drawGameWindow()
-{
-	m_gameWindow.clear();
-	m_gameWindow.draw(m_gameSprite);
-	this->drawObjects();
-	m_gameWindow.display();
-}
-//____________________________
-void Controller::drawObjects()
-{
-	for (int i = 0; i < m_statics.size(); i++)
-		m_statics[i]->drawShape(m_gameWindow);
-	for (int i = 0; i < m_players.size(); i++)
-		m_players[i]->drawShape(m_gameWindow);
 }

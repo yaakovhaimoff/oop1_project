@@ -2,21 +2,16 @@
 
 //________________________________________
 Board::Board(const int row, const int col)
-	: m_row(row), m_col(col){}
+	: m_row(row), m_col(col), m_boardSrcFiles("Board.txt")
+{}
 //_________________________________________________________________________________
 void Board::setObjectsFromBoard(std::vector<std::unique_ptr<Players>>& players,
 								std::vector<std::unique_ptr<StaticObjects>>& statics)
 {
-	std::ifstream savedFileBoard;
-	savedFileBoard.open("Board.txt");
-	if (!savedFileBoard.is_open())
-		std::cout << "No baord saved previously\n\n";
 	sf::Vector2f boardCharPosition;
 	int row = 0, col = 0;
-	while (savedFileBoard)
+	for (auto boardLine = std::string(); std::getline(m_boardSrcFiles, boardLine) && boardLine.compare("") != 0;)
 	{
-		std::string boardLine;
-		std::getline(savedFileBoard, boardLine);
 		if (boardLine.size() > col)
 			col = (int)boardLine.size();
 		for (int i = 0; i < boardLine.size(); i++)
@@ -30,6 +25,14 @@ void Board::setObjectsFromBoard(std::vector<std::unique_ptr<Players>>& players,
 		row++;
 	}
 	Board(row, col);
+}
+// returning if the file has ended
+// the games will run until the end of file
+// unless the player will choose to quit
+//_______________________________
+bool Board::checkEndOfFile()const
+{
+	return m_boardSrcFiles.eof();
 }
 //________________________________________________________________________________
 void Board::addMovingObjects(std::vector<std::unique_ptr<Players>>& players,

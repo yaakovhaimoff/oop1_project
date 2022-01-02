@@ -28,6 +28,7 @@ public:
     Players(const sf::Vector2f& location, const int key)
         : MovingObjects(location, key) {}
     void move(sf::Time)override;
+    void setPosition() { m_shape.setPosition(m_prev_location); }
 protected:
     sf::Vector2f m_prev_location;
 };

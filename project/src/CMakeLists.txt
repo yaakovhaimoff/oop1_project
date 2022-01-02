@@ -4,5 +4,10 @@
 												"main.cpp"
 												"movingObjects.cpp"
 												"window.cpp"
-												"Resources.cpp")
+												"Resources.cpp"
+												"staticObjects.cpp"
+												"king.cpp"
+												"warrior.cpp"
+												"thief.cpp"
+												"mage.cpp")
 												

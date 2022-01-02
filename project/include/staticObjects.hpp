@@ -1,18 +1,25 @@
-#pragma once 
+#pragma once
+
 
 #include "GameObjects.hpp"
 #include "macros.hpp"
+#include "movingObjects.hpp"
 #include "king.hpp"
 #include "mage.hpp"
 #include "warrior.hpp"
 #include "thief.hpp"
+
+//class MageObject;
+//class WarriorObject;
+//class ThiefObject;
+//class KingObject;
 
 //______________________________________
 class StaticObjects : public GameObjects 
 {
 public:
 	StaticObjects(const sf::Vector2f& location, const int key)
-		: GameObjects(location, key) {}
+		: GameObjects(location, key), m_isDeaed(false){}
 	bool isDead()const { return m_isDeaed; }
 	void setIsDead() { m_isDeaed = true; }
 protected:
@@ -32,10 +39,21 @@ public:
 			return;
 		other.collide(*this);
 	}
-	void collide(KingObject& other) override { other.collide(*this); }
+	/*void collide(KingObject& other) override { other.collide(*this); }
 	void collide(MageObject& other)override { other.collide(*this); }
 	void collide(WarriorObject& other)override { other.collide(*this); }
 	void collide(ThiefObject& other)override { other.collide(*this); }
+	void collide(WallObject&)override {};
+	void collide(CrownObject&)override {};
+	void collide(FireObject&)override {};
+	void collide(GateObject&)override {};
+	void collide(KeyObject&)override {};
+	void collide(MonsterObject&)override {};
+	void collide(TeleporterObject&)override {};*/
+	void collide(KingObject&) override;
+	void collide(MageObject&)override;
+	void collide(WarriorObject&)override;
+	void collide(ThiefObject&)override;
 	void collide(WallObject&)override {};
 	void collide(CrownObject&)override {};
 	void collide(FireObject&)override {};
@@ -57,7 +75,7 @@ public:
 			return;
 		other.collide(*this);
 	}
-	void collide(KingObject& other) override { other.collide(*this); }
+	/*void collide(KingObject& other) override { other.collide(*this); }
 	void collide(MageObject& other)override { other.collide(*this); }
 	void collide(WarriorObject& other)override { other.collide(*this); }
 	void collide(ThiefObject& other)override { other.collide(*this); }
@@ -67,7 +85,18 @@ public:
 	void collide(GateObject&)override{}
 	void collide(KeyObject&)override{}
 	void collide(MonsterObject&)override{}
-	void collide(TeleporterObject&)override{}
+	void collide(TeleporterObject&)override{}*/
+	void collide(KingObject& other) override;
+	void collide(MageObject& other)override;
+	void collide(WarriorObject& other)override;
+	void collide(ThiefObject& other)override;
+	void collide(WallObject&)override {}
+	void collide(CrownObject&)override {}
+	void collide(FireObject&)override {}
+	void collide(GateObject&)override {}
+	void collide(KeyObject&)override {}
+	void collide(MonsterObject&)override {}
+	void collide(TeleporterObject&)override {}
 };
 
 //____________________________________
@@ -82,10 +111,21 @@ public:
 			return;
 		other.collide(*this);
 	}
-	void collide(KingObject& other) override { other.collide(*this); }
+	/*void collide(KingObject& other) override { other.collide(*this); }
 	void collide(MageObject& other)override { other.collide(*this); }
 	void collide(WarriorObject& other)override { other.collide(*this); }
 	void collide(ThiefObject& other)override { other.collide(*this); }
+	void collide(WallObject&)override {}
+	void collide(CrownObject&)override {}
+	void collide(FireObject&)override {}
+	void collide(GateObject&)override {}
+	void collide(KeyObject&)override {}
+	void collide(MonsterObject&)override {}
+	void collide(TeleporterObject&)override {}*/
+	void collide(KingObject&) override;
+	void collide(MageObject&)override;
+	void collide(WarriorObject&)override;
+	void collide(ThiefObject&)override;
 	void collide(WallObject&)override {}
 	void collide(CrownObject&)override {}
 	void collide(FireObject&)override {}
@@ -107,10 +147,21 @@ public:
 			return;
 		other.collide(*this);
 	}
-	void collide(KingObject& other) override { other.collide(*this); }
+	/*void collide(KingObject& other) override { other.collide(*this); }
 	void collide(MageObject& other)override { other.collide(*this); }
 	void collide(WarriorObject& other)override { other.collide(*this); }
 	void collide(ThiefObject& other)override { other.collide(*this); }
+	void collide(WallObject&)override {}
+	void collide(CrownObject&)override {}
+	void collide(FireObject&)override {}
+	void collide(GateObject&)override {}
+	void collide(KeyObject&)override {}
+	void collide(MonsterObject&)override {}
+	void collide(TeleporterObject&)override {}*/
+	void collide(KingObject&) override;
+	void collide(MageObject&)override;
+	void collide(WarriorObject&)override;
+	void collide(ThiefObject&)override;
 	void collide(WallObject&)override {}
 	void collide(CrownObject&)override {}
 	void collide(FireObject&)override {}
@@ -132,10 +183,21 @@ public:
 			return;
 		other.collide(*this);
 	}
-	void collide(KingObject& other) override { other.collide(*this); }
+	/*void collide(KingObject& other) override { other.collide(*this); }
 	void collide(MageObject& other)override { other.collide(*this); }
 	void collide(WarriorObject& other)override { other.collide(*this); }
 	void collide(ThiefObject& other)override { other.collide(*this); }
+	void collide(WallObject&)override {}
+	void collide(CrownObject&)override {}
+	void collide(FireObject&)override {}
+	void collide(GateObject&)override {}
+	void collide(KeyObject&)override {}
+	void collide(MonsterObject&)override {}
+	void collide(TeleporterObject&)override {}*/
+	void collide(KingObject&) override;
+	void collide(MageObject&)override;
+	void collide(WarriorObject&)override;
+	void collide(ThiefObject&)override;
 	void collide(WallObject&)override {}
 	void collide(CrownObject&)override {}
 	void collide(FireObject&)override {}
@@ -157,10 +219,21 @@ public:
 			return;
 		other.collide(*this);
 	}
-	void collide(KingObject& other) override { other.collide(*this); }
+	/*void collide(KingObject& other) override { other.collide(*this); }
 	void collide(MageObject& other)override { other.collide(*this); }
 	void collide(WarriorObject& other)override { other.collide(*this); }
 	void collide(ThiefObject& other)override { other.collide(*this); }
+	void collide(WallObject&)override {}
+	void collide(CrownObject&)override {}
+	void collide(FireObject&)override {}
+	void collide(GateObject&)override {}
+	void collide(KeyObject&)override {}
+	void collide(MonsterObject&)override {}
+	void collide(TeleporterObject&)override {}*/
+	void collide(KingObject&) override;
+	void collide(MageObject&)override;
+	void collide(WarriorObject&)override;
+	void collide(ThiefObject&)override;
 	void collide(WallObject&)override {}
 	void collide(CrownObject&)override {}
 	void collide(FireObject&)override {}
@@ -182,10 +255,21 @@ public:
 			return;
 		other.collide(*this);
 	}
-	void collide(KingObject& other) override { other.collide(*this); }
+	/*void collide(KingObject& other) override { other.collide(*this); }
 	void collide(MageObject& other)override { other.collide(*this); }
 	void collide(WarriorObject& other)override { other.collide(*this); }
 	void collide(ThiefObject& other)override { other.collide(*this); }
+	void collide(WallObject&)override {}
+	void collide(CrownObject&)override {}
+	void collide(FireObject&)override {}
+	void collide(GateObject&)override {}
+	void collide(KeyObject&)override {}
+	void collide(MonsterObject&)override {}
+	void collide(TeleporterObject&)override {}*/
+	void collide(KingObject&) override;
+	void collide(MageObject&)override;
+	void collide(WarriorObject&)override;
+	void collide(ThiefObject&)override;
 	void collide(WallObject&)override {}
 	void collide(CrownObject&)override {}
 	void collide(FireObject&)override {}

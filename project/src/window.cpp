@@ -7,6 +7,7 @@ Window::Window()
 	this->setMenu();
 	this->setHelp();
 	this->setSound();
+	this->setPlay();
 }
 //____________________
 void Window::setFont()
@@ -69,6 +70,19 @@ void Window::setHelp()
 	m_helpText.setFillColor(sf::Color::White);
 	m_helpText.setPosition(sf::Vector2f(25, 20));
 	m_helpText.setString("BACK");
+}
+//____________________
+void Window::setPlay()
+{
+	auto m_texture = Resources::pToRsc().getTexture(BoardBackground);
+	m_gameSprite.setTexture(*(m_texture));
+	m_gameSprite.setScale(1, (float)1.4);
+	// setting the inforamation rectangle
+	m_infoRect = sf::RectangleShape({ 200, 400 });
+	m_infoRect.setPosition(150, 200);
+	m_infoRect.setOutlineColor(sf::Color::Black);
+	m_infoRect.setOutlineThickness(4);
+	m_infoRect.setFillColor(sf::Color(192, 192, 192, 50));
 }
 //____________________________________________________________________________
 void Window::catchMouseEvent(sf::RenderWindow& window, const sf::Event& event)
@@ -172,6 +186,45 @@ void Window::drawHelp(sf::RenderWindow& window)const
 	window.draw(m_helpText);
 	window.display();
 }
+//___________________________________________________________________________________________
+void Window::drawPlay(sf::RenderWindow& window, const sf::Clock& clock, const sf::Time& time,
+	const std::vector<std::unique_ptr<Players>>& players,
+	const std::vector<std::unique_ptr<StaticObjects>>& statics)const
+{
+	window.clear();
+	window.draw(m_gameSprite);
+	this->drawObjects(window, players, statics);
+	this->drawLevelInfo(window, clock, time);
+	window.display();
+}
+//________________________________________________
+void Window::drawObjects(sf::RenderWindow& window,
+	const std::vector<std::unique_ptr<Players>>& players,
+	const std::vector<std::unique_ptr<StaticObjects>>& statics)const
+{
+	for (int i = 0; i < statics.size(); i++)
+		statics[i]->drawShape(window);
+	for (int i = 0; i < players.size(); i++)
+		players[i]->drawShape(window);
+}
+//___________________________________________________________________________________________________________
+void Window::drawLevelInfo(sf::RenderWindow& window, const sf::Clock& clock, const sf::Time& levelTime )const
+{
+	window.draw(m_infoRect);
+	sf::Time gameTime = levelTime - clock.getElapsedTime();
+	int time = gameTime.asSeconds();
+	std::string timeString = "Time ";
+	timeString += std::to_string(time / 60); // time / 60 for minutes 
+	timeString += " : ";
+	timeString += std::to_string(time % 60); // time % 60 for seconds
+	sf::Text text;
+	text.setFont(m_font);
+	text.setPosition(160, 220);
+	text.setCharacterSize(30);
+	text.setString(timeString);
+	window.draw(text);
+}
+
 //___________________________
 bool Window::isPlaying()const
 {

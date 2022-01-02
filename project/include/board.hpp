@@ -17,12 +17,14 @@ public:
 	Board(const int row = 10, const int col = 10 );
 	void setObjectsFromBoard(std::vector<std::unique_ptr<Players>>&,
 							std::vector<std::unique_ptr<StaticObjects>>&);
+	bool checkEndOfFile()const;
 	void addMovingObjects(std::vector<std::unique_ptr<Players>>&,
 		const sf::Vector2f&, char);
 	void addStaticObjects(std::vector<std::unique_ptr<StaticObjects>>&,
 		const sf::Vector2f&, char);
 
 private:
+	std::ifstream m_boardSrcFiles;
 	int m_col;
 	int m_row;
 
