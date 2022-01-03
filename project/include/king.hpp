@@ -17,9 +17,8 @@ class KingObject : public Players
 {
 public:
 	KingObject(const sf::Vector2f& location, const int key)
-		: Players(location, key), m_onCrown(false){}
+		: Players(location, key){}
 	~KingObject() {}
-	bool isKingOnThrone()const { return m_onCrown; }
 
 	void collide(GameObjects&)override;
 	void collide(KingObject&)override {}
@@ -33,7 +32,4 @@ public:
 	void collide(KeyObject&)override;
 	void collide(MonsterObject&)override;
 	void collide(TeleporterObject&)override;
-private:
-	bool m_onCrown;
-
 };

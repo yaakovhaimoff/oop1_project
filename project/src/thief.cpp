@@ -34,3 +34,5 @@ void ThiefObject::collide(KeyObject& other)
 }
 void ThiefObject::collide(MonsterObject&) { m_shape.setPosition(m_prev_location); }
 void ThiefObject::collide(TeleporterObject& other) { m_shape.setPosition(other.getPosition()); }
+
+// 1 2 3 0 4 5

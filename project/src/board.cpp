@@ -97,7 +97,6 @@ void Board::addStaticObjects(std::vector<std::unique_ptr<StaticObjects>>& static
 	default:
 		break;
 	}
-
 }
 //__________________________________________________________________________
 void Board::addTeleport(std::vector<std::unique_ptr<StaticObjects>>& statics,
