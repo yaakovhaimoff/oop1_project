@@ -8,6 +8,7 @@ class KingObject;
 class MageObject;
 class ThiefObject;
 class MonsterObject;
+class TeleporterObject;
 
 //__________________________________
 class WarriorObject : public Players

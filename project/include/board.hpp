@@ -19,9 +19,11 @@ public:
 							std::vector<std::unique_ptr<StaticObjects>>&);
 	bool checkEndOfFile()const;
 	void addMovingObjects(std::vector<std::unique_ptr<Players>>&,
-		const sf::Vector2f&, char);
+		const sf::Vector2f&, const char);
 	void addStaticObjects(std::vector<std::unique_ptr<StaticObjects>>&,
-		const sf::Vector2f&, char);
+		const sf::Vector2f&, const char, int&, int&);
+	void addTeleport(std::vector<std::unique_ptr<StaticObjects>>&,
+		const sf::Vector2f&, int&, int&);
 
 private:
 	std::ifstream m_boardSrcFiles;

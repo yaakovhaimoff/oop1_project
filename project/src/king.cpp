@@ -19,4 +19,4 @@ void KingObject::collide(FireObject&) { m_shape.setPosition(m_prev_location); }
 void KingObject::collide(GateObject&) { m_shape.setPosition(m_prev_location); }
 void KingObject::collide(KeyObject&) {}
 void KingObject::collide(MonsterObject&) { m_shape.setPosition(m_prev_location); }
-void KingObject::collide(TeleporterObject&) { /*need to handle*/ }
+void KingObject::collide(TeleporterObject& other) { m_shape.setPosition(other.getPosition()); }

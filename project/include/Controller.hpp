@@ -30,6 +30,7 @@ private:
 	void mouseEventMoved(const sf::Event&);
 	void isPlaying();
 	void checkCollision(Players&);
+	void nextTeleport(Players& ,const int);
 	void eraseDeadObjects();
 	bool checkGameTime(const sf::Clock&)const;
 	bool chechKingOnThrone()const;

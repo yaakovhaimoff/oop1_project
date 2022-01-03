@@ -10,6 +10,7 @@ class MageObject;
 class WarriorObject;
 class ThiefObject;
 class Crown;
+class TeleporterObject;
 
 //_______________________________
 class KingObject : public Players

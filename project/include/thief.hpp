@@ -2,7 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-
 #include "MovingObjects.hpp"
 #include "macros.hpp"
 
@@ -11,6 +10,7 @@ class MageObject;
 class WarriorObject;
 class GateObject;
 class KeyObject;
+class TeleporterObject;
 
 //________________________________
 class ThiefObject : public Players

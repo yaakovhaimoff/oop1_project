@@ -18,4 +18,4 @@ void WarriorObject::collide(CrownObject&) { m_shape.setPosition(m_prev_location)
 void WarriorObject::collide(FireObject&) { m_shape.setPosition(m_prev_location); }
 void WarriorObject::collide(GateObject&) { m_shape.setPosition(m_prev_location); }
 void WarriorObject::collide(MonsterObject& other) { other.setIsDead(); }
-void WarriorObject::collide(TeleporterObject&) { /*need to handle*/ }
+void WarriorObject::collide(TeleporterObject& other) { m_shape.setPosition(other.getPosition()); }

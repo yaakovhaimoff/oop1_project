@@ -98,29 +98,42 @@ void Controller::isPlaying()
 		m_players[m_activePlayer]->move(deltaTime);
 		this->checkCollision(*m_players[m_activePlayer]);
 		this->eraseDeadObjects();
-		
+
 	}
 }
-//_______________________________________________________
+//____________________________________________________
 void Controller::checkCollision(Players& activePlayer)
 {
-	for (auto& unmovalbe : m_statics)
-		if (activePlayer.checkCollision(*unmovalbe))
-			activePlayer.collide(*unmovalbe);
+	for (int i = 0; i < m_statics.size(); i++)
+		if (activePlayer.checkCollision(*m_statics[i]) && typeid(*m_statics[i]) == typeid(TeleporterObject))
+			this->nextTeleport(activePlayer, i);
+		else if (activePlayer.checkCollision(*m_statics[i]))
+			activePlayer.collide(*m_statics[i]);
 
 	for (auto& movalbe : m_players)
 		if (activePlayer.checkCollision(*movalbe))
 			activePlayer.collide(*movalbe);
+}
+//__________________________________________________________________________
+void Controller::nextTeleport(Players& activePlayer, const int currTeleport)
+{
+	 /*typeid(*m_statics[currTeleport - 1]) == typeid(TeleporterObject) ? 
+		activePlayer.collide(*m_statics[currTeleport - 1]) :
+		activePlayer.collide(*m_statics[currTeleport + 1]);*/
+	if (typeid(*m_statics[currTeleport - 1]) == typeid(TeleporterObject))
+		activePlayer.collide(*m_statics[currTeleport - 1]);
+	else
+		activePlayer.collide(*m_statics[currTeleport + 1]);
 }
 //_________________________________
 void Controller::eraseDeadObjects()
 {
 	for (int i = 0; i < m_statics.size(); i++)
 		if (typeid(*m_statics[i]) == typeid(MonsterObject) && m_statics[i]->isDead())
-			m_board.addStaticObjects(m_statics, m_statics[i]->getPosition(), GATE_KEY);
+			m_board.addStaticObjects(m_statics, m_statics[i]->getPosition(), GATE_KEY, i, i);
 
 	std::erase_if(m_statics, [](auto& staticObject)
-		{ 
+		{
 			return staticObject->isDead();
 		});
 }

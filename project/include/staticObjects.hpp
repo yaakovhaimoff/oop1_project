@@ -16,6 +16,7 @@ public:
 		: GameObjects(location, key), m_isDeaed(false){}
 	bool isDead() { return m_isDeaed; }
 	void setIsDead() { m_isDeaed = true; }
+	void setPOsition(const sf::Vector2f& location) { m_shape.setPosition(location); }
 protected:
 	bool m_isDeaed;
 };

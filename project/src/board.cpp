@@ -6,10 +6,10 @@ Board::Board(const int row, const int col)
 {}
 //_________________________________________________________________________________
 void Board::setObjectsFromBoard(std::vector<std::unique_ptr<Players>>& players,
-								std::vector<std::unique_ptr<StaticObjects>>& statics)
+	std::vector<std::unique_ptr<StaticObjects>>& statics)
 {
 	sf::Vector2f boardCharPosition;
-	int row = 0, col = 0;
+	int row = 0, col = 0, teleportAmount = 0, nextTeleportSpace;
 	for (auto boardLine = std::string(); std::getline(m_boardSrcFiles, boardLine) && boardLine.compare("") != 0;)
 	{
 		if (boardLine.size() > col)
@@ -20,7 +20,7 @@ void Board::setObjectsFromBoard(std::vector<std::unique_ptr<Players>>& players,
 			boardCharPosition.x = (float)(SIDE_WIDTH + (63) * i);
 			boardCharPosition.y = (float)(SIDE_LENGTH + (63) * row);
 			this->addMovingObjects(players, boardCharPosition, c);
-			this->addStaticObjects(statics, boardCharPosition, c);
+			this->addStaticObjects(statics, boardCharPosition, c, teleportAmount, nextTeleportSpace);
 		}
 		row++;
 	}
@@ -36,7 +36,7 @@ bool Board::checkEndOfFile()const
 }
 //________________________________________________________________________________
 void Board::addMovingObjects(std::vector<std::unique_ptr<Players>>& players,
-	const sf::Vector2f& location, char object)
+	const sf::Vector2f& location, const char object)
 {
 	switch (object)
 	{
@@ -62,7 +62,7 @@ void Board::addMovingObjects(std::vector<std::unique_ptr<Players>>& players,
 }
 //________________________________________________________________________________
 void Board::addStaticObjects(std::vector<std::unique_ptr<StaticObjects>>& statics,
-	const sf::Vector2f& location, char object)
+	const sf::Vector2f& location, const char object, int& teleportAmount, int& nextTeleportSpace)
 {
 	switch (object)
 	{
@@ -91,11 +91,25 @@ void Board::addStaticObjects(std::vector<std::unique_ptr<StaticObjects>>& static
 		break;
 
 	case TELEPORT:
-		statics.push_back(std::make_unique<TeleporterObject>(location, Teleport));
+		this->addTeleport(statics, location, teleportAmount, nextTeleportSpace);
 		break;
 
 	default:
 		break;
 	}
 
+}
+//__________________________________________________________________________
+void Board::addTeleport(std::vector<std::unique_ptr<StaticObjects>>& statics,
+	const sf::Vector2f& location, int& amountOfTelports, int& nextTeleportSpace)
+{
+	if (amountOfTelports % 2 == 0)
+	{
+		statics.push_back(std::make_unique<TeleporterObject>(location, Teleport));
+		statics.push_back(std::make_unique<TeleporterObject>(location, Teleport));
+		nextTeleportSpace = (int)statics.size() - 1;
+	}
+	else
+		statics[nextTeleportSpace]->setPOsition(location);
+	amountOfTelports++;
 }
