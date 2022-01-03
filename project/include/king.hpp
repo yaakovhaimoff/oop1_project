@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include "MovingObjects.hpp"
+#include "movingObjects.hpp"
 #include "macros.hpp"
 
 class MageObject;

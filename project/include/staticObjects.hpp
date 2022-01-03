@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameObjects.hpp"
+#include "gameObjects.hpp"
 #include "macros.hpp"
 #include "king.hpp"
 #include "mage.hpp"

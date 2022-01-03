@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <string>
-#include "GameObjects.hpp"
+#include "gameObjects.hpp"
 
 class MovingObjects : public GameObjects
 {

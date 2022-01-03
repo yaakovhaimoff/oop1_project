@@ -9,7 +9,7 @@
 
 #include "Resources.hpp"
 #include "macros.hpp"
-#include "Window.hpp"
+#include "window.hpp"
 #include "movingObjects.hpp"
 #include "staticObjects.hpp"
 #include "board.hpp"

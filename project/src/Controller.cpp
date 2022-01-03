@@ -3,7 +3,8 @@
 //______________________
 Controller::Controller()
 	: m_activePlayer(0), m_gameTime(sf::seconds(300))
-{}
+{
+}
 //________________________
 void Controller::runGame()
 {
@@ -37,7 +38,7 @@ void Controller::runLevel()
 	}
 }
 //__________________________________________________________
-bool Controller::checkGameTime(const sf::Clock& clock)const
+bool Controller::checkGameTime(const sf::Clock &clock) const
 {
 	return clock.getElapsedTime() > m_gameTime;
 }
@@ -55,31 +56,31 @@ void Controller::handleEvents()
 	this->isPlaying();
 }
 //_______________________________________________
-void Controller::exitGame(const sf::Event& event)
+void Controller::exitGame(const sf::Event &event)
 {
-	if ((event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
-		|| event.type == sf::Event::Closed || m_window.isExit())
+	if ((event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) ||
+		event.type == sf::Event::Closed || m_window.isExit())
 		m_gameWindow.close();
 }
 //_________________________________________________________
-void Controller::mouseEventReleased(const sf::Event& event)
+void Controller::mouseEventReleased(const sf::Event &event)
 {
 	if (sf::Event::MouseButtonReleased)
 	{
 		// getting the location of where the mouse was pressed
 		auto location = m_gameWindow.mapPixelToCoords(
-			{ event.mouseButton.x, event.mouseButton.y });
+			{event.mouseButton.x, event.mouseButton.y});
 		m_window.handleClickInWindow(location);
 	}
 }
 //______________________________________________________
-void Controller::mouseEventMoved(const sf::Event& event)
+void Controller::mouseEventMoved(const sf::Event &event)
 {
 	if (event.type == sf::Event::MouseMoved)
 		m_window.catchMouseEvent(m_gameWindow, event);
 }
 //____________________________________________________
-void Controller::keyboardEvent(const sf::Event& event)
+void Controller::keyboardEvent(const sf::Event &event)
 {
 	if (event.key.code == sf::Keyboard::P)
 		this->decideActivePlayer();
@@ -98,11 +99,10 @@ void Controller::isPlaying()
 		m_players[m_activePlayer]->move(deltaTime);
 		this->checkCollision(*m_players[m_activePlayer]);
 		this->eraseDeadObjects();
-
 	}
 }
 //____________________________________________________
-void Controller::checkCollision(Players& activePlayer)
+void Controller::checkCollision(Players &activePlayer)
 {
 	for (int i = 0; i < m_statics.size(); i++)
 		if (activePlayer.checkCollision(*m_statics[i]) && typeid(*m_statics[i]) == typeid(TeleporterObject))
@@ -110,16 +110,16 @@ void Controller::checkCollision(Players& activePlayer)
 		else if (activePlayer.checkCollision(*m_statics[i]))
 			activePlayer.collide(*m_statics[i]);
 
-	for (auto& movalbe : m_players)
+	for (auto &movalbe : m_players)
 		if (activePlayer.checkCollision(*movalbe))
 			activePlayer.collide(*movalbe);
 }
 //__________________________________________________________________________
-void Controller::nextTeleport(Players& activePlayer, const int currTeleport)
+void Controller::nextTeleport(Players &activePlayer, const int currTeleport)
 {
-	 /*typeid(*m_statics[currTeleport - 1]) == typeid(TeleporterObject) ? 
-		activePlayer.collide(*m_statics[currTeleport - 1]) :
-		activePlayer.collide(*m_statics[currTeleport + 1]);*/
+	/*typeid(*m_statics[currTeleport - 1]) == typeid(TeleporterObject) ?
+	   activePlayer.collide(*m_statics[currTeleport - 1]) :
+	   activePlayer.collide(*m_statics[currTeleport + 1]);*/
 	if (typeid(*m_statics[currTeleport - 1]) == typeid(TeleporterObject))
 		activePlayer.collide(*m_statics[currTeleport - 1]);
 	else
@@ -132,13 +132,11 @@ void Controller::eraseDeadObjects()
 		if (typeid(*m_statics[i]) == typeid(MonsterObject) && m_statics[i]->isDead())
 			m_board.addStaticObjects(m_statics, m_statics[i]->getPosition(), GATE_KEY, i, i);
 
-	std::erase_if(m_statics, [](auto& staticObject)
-		{
-			return staticObject->isDead();
-		});
+	std::erase_if(m_statics, [](auto &staticObject)
+				  { return staticObject->isDead(); });
 }
 //_______________________________________
-bool Controller::chechKingOnThrone()const
+bool Controller::chechKingOnThrone() const
 {
 	for (int i = 0; i < m_statics.size(); i++)
 		if (typeid(*m_statics[i]) == typeid(CrownObject))

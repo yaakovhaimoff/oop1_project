@@ -1,4 +1,4 @@
-#include "GameObjects.hpp"
+#include "gameObjects.hpp"
 
 //___________________________________________________________________
 GameObjects::GameObjects(const sf::Vector2f& location, const int key)

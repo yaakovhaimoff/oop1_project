@@ -1,7 +1,7 @@
 #pragma once 
 
 #include <SFML/Graphics.hpp>
-#include "MovingObjects.hpp"
+#include "movingObjects.hpp"
 #include "macros.hpp"
 
 class KingObject;
