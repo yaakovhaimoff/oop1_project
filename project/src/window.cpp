@@ -188,24 +188,28 @@ void Window::drawHelp(sf::RenderWindow& window)const
 }
 //___________________________________________________________________________________________
 void Window::drawPlay(sf::RenderWindow& window, const sf::Clock& clock, const sf::Time& time,
-	const std::vector<std::unique_ptr<Players>>& players,
-	const std::vector<std::unique_ptr<StaticObjects>>& statics)const
+	const std::vector<std::unique_ptr<MovingObjects>>& players,
+	const std::vector<std::unique_ptr<StaticObjects>>& statics,
+		const std::vector<std::unique_ptr<TeleporterObject>>& teleports)const
 {
 	window.clear();
 	window.draw(m_gameSprite);
-	this->drawObjects(window, players, statics);
+	this->drawObjects(window, players, statics, teleports);
 	this->drawLevelInfo(window, clock, time);
 	window.display();
 }
 //________________________________________________
 void Window::drawObjects(sf::RenderWindow& window,
-	const std::vector<std::unique_ptr<Players>>& players,
-	const std::vector<std::unique_ptr<StaticObjects>>& statics)const
+	const std::vector<std::unique_ptr<MovingObjects>>& players,
+	const std::vector<std::unique_ptr<StaticObjects>>& statics,
+		const std::vector<std::unique_ptr<TeleporterObject>>& teleports)const
 {
 	for (int i = 0; i < statics.size(); i++)
 		statics[i]->drawShape(window);
 	for (int i = 0; i < players.size(); i++)
 		players[i]->drawShape(window);
+	for (int i = 0; i < teleports.size(); i++)
+		teleports[i]->drawShape(window);
 }
 //___________________________________________________________________________________________________________
 void Window::drawLevelInfo(sf::RenderWindow& window, const sf::Clock& clock, const sf::Time& levelTime )const

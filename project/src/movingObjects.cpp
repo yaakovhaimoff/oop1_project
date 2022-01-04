@@ -1,4 +1,5 @@
 #include "movingObjects.hpp"
+#include "staticObjects.hpp"
 
 //_______
 namespace
@@ -25,8 +26,21 @@ namespace
 	}
 }
 //__________________________________________
-void Players::move(sf::Time deltaTime)
+void MovingObjects::move(sf::Time deltaTime)
 {
 	m_prev_location = m_shape.getPosition();
 	m_shape.move(dirFromKey() * 170.f * deltaTime.asSeconds());
 }
+//____________________________________________
+void MovingObjects::collide(GameObjects& other)
+{
+	if (this == &other) return;
+	other.collide(*this);
+}
+void MovingObjects::collide(WallObject&) { this->setPosition(); }
+void MovingObjects::collide(CrownObject&) { this->setPosition(); }
+void MovingObjects::collide(FireObject&) { this->setPosition(); }
+void MovingObjects::collide(GateObject&){ this->setPosition(); }
+void MovingObjects::collide(KeyObject&){}
+void MovingObjects::collide(MonsterObject&) { this->setPosition(); }
+void MovingObjects::collide(TeleporterObject& other) { m_shape.setPosition(other.getConnectedTeleportLoc()); }

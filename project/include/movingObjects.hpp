@@ -6,12 +6,31 @@
 #include <string>
 #include "gameObjects.hpp"
 
+class TeleporterObject;
+
 class MovingObjects : public GameObjects
 {
 public:
 	MovingObjects(const sf::Vector2f& location, const int key) 
         : GameObjects(location, key) {}
-    virtual void move(sf::Time) {};
+    virtual void move(sf::Time);
+    void setPosition() { m_shape.setPosition(m_prev_location); }
+    sf::Vector2f getPrevPosition() const{ return m_prev_location; }
+
+    void collide(GameObjects& ) override;
+	void collide(KingObject& )override{}
+	void collide(MageObject& )override{}
+	void collide(WarriorObject& )override{}
+	void collide(ThiefObject& )override{}
+
+	void collide(WallObject& )override;
+	void collide(CrownObject& )override;
+	void collide(FireObject& )override;
+	void collide(GateObject& )override;
+	void collide(KeyObject& )override;
+	void collide(MonsterObject& )override;
+	void collide(TeleporterObject& )override;
+
     enum class Direction
     {
         Stay,
@@ -20,16 +39,7 @@ public:
         Left,
         Right,
     };
-};
-
-class Players : public MovingObjects
-{
-public:
-    Players(const sf::Vector2f& location, const int key)
-        : MovingObjects(location, key) {}
-    void move(sf::Time)override;
-    void setPosition() { m_shape.setPosition(m_prev_location); }
-protected:
+    private:
     sf::Vector2f m_prev_location;
 };
 

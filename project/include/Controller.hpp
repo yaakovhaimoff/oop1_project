@@ -29,8 +29,8 @@ private:
 	void decideActivePlayer();
 	void mouseEventMoved(const sf::Event&);
 	void isPlaying();
-	void checkCollision(Players&);
-	void nextTeleport(Players& ,const int);
+	void checkCollision(MovingObjects&);
+	void openTeleport(MovingObjects &activePlayer);
 	void eraseDeadObjects();
 	bool checkGameTime(const sf::Clock&)const;
 	bool chechKingOnThrone()const;
@@ -40,7 +40,9 @@ private:
 	sf::Text m_timeInfo;
 	Window m_window;
 	Board m_board;
-	std::vector<std::unique_ptr<Players>> m_players;
+	std::vector<std::unique_ptr<MovingObjects>> m_players;
 	std::vector<std::unique_ptr<StaticObjects>> m_statics;
+	std::vector<std::unique_ptr<TeleporterObject>> m_teleports;
 	int m_activePlayer;
+	int m_teleportIndex;
 };

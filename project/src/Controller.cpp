@@ -2,14 +2,15 @@
 
 //______________________
 Controller::Controller()
-	: m_activePlayer(0), m_gameTime(sf::seconds(64))
-{}
+	: m_activePlayer(0), m_gameTime(sf::seconds(300))
+{
+}
 //________________________
 void Controller::runGame()
 {
 	while (!m_board.checkEndOfFile())
 	{
-		m_board.setObjectsFromBoard(m_players, m_statics);
+		m_board.setObjectsFromBoard(m_players, m_statics, m_teleports);
 		this->runLevel();
 		m_players.clear();
 		m_statics.clear();
@@ -26,7 +27,7 @@ void Controller::runLevel()
 		else
 		{
 			static sf::Clock clock;
-			m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_players, m_statics);
+			m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_players, m_statics, m_teleports);
 			if (/*checkGameTime(clock)*/ this->chechKingOnThrone())
 			{
 				clock.restart();
@@ -96,40 +97,52 @@ void Controller::isPlaying()
 	{
 		const auto deltaTime = m_moveClock.restart();
 		m_players[m_activePlayer]->move(deltaTime);
-		this->checkCollision(*m_players[m_activePlayer]);
-		this->eraseDeadObjects();
+		checkCollision(*m_players[m_activePlayer]);
+		eraseDeadObjects();
 	}
 }
 //____________________________________________________
-void Controller::checkCollision(Players &activePlayer)
+void Controller::checkCollision(MovingObjects &activePlayer)
 {
+	openTeleport(activePlayer);
 	for (int i = 0; i < m_statics.size(); i++)
-		if (activePlayer.checkCollision(*m_statics[i]) && typeid(*m_statics[i]) == typeid(TeleporterObject))
-			this->nextTeleport(activePlayer, i);
-		else if (activePlayer.checkCollision(*m_statics[i]))
+		if (activePlayer.checkCollision(*m_statics[i]))
 			activePlayer.collide(*m_statics[i]);
 
 	for (auto &movalbe : m_players)
-		if (activePlayer.checkCollision(*movalbe))
-			activePlayer.collide(*movalbe);
+		if (activePlayer.checkCollision(*movalbe) && &activePlayer != &(*movalbe))
+			activePlayer.setPosition();
+
+	for (auto &teleports : m_teleports)
+		if (activePlayer.checkCollision(*teleports) && teleports->isTelOpen())
+		{
+			activePlayer.collide(*teleports);
+			m_teleports[teleports->getNextTelIndex()]->setClose();
+			m_teleportIndex = teleports->getNextTelIndex();
+		}
 }
-//__________________________________________________________________________
-void Controller::nextTeleport(Players &activePlayer, const int currTeleport)
+//_____________________________
+void Controller::openTeleport(MovingObjects &activePlayer)
 {
-	/*typeid(*m_statics[currTeleport - 1]) == typeid(TeleporterObject) ?
-	   activePlayer.collide(*m_statics[currTeleport - 1]) :
-	   activePlayer.collide(*m_statics[currTeleport + 1]);*/
-	if (typeid(*m_statics[currTeleport - 1]) == typeid(TeleporterObject))
-		activePlayer.collide(*m_statics[currTeleport - 1]);
-	else
-		activePlayer.collide(*m_statics[currTeleport + 1]);
+	for (auto &teleports : m_teleports)
+		if (activePlayer.checkCollision(*teleports))
+			return;
+	for (auto &movalbe : m_players)
+		if (activePlayer.checkCollision(*movalbe) && &activePlayer != &(*movalbe))
+			return;
+	for (auto &movalbe : m_statics)
+		if (activePlayer.checkCollision(*movalbe))
+			return;
+
+		m_teleports[m_teleportIndex]->setOpen();	
 }
+
 //_________________________________
 void Controller::eraseDeadObjects()
 {
 	for (int i = 0; i < m_statics.size(); i++)
 		if (typeid(*m_statics[i]) == typeid(MonsterObject) && m_statics[i]->isDead())
-			m_board.addStaticObjects(m_statics, m_statics[i]->getPosition(), GATE_KEY, i, i);
+			m_board.addStaticObjects(m_statics, m_teleports, m_statics[i]->getPosition(), GATE_KEY);
 
 	std::erase_if(m_statics, [](auto &staticObject)
 				  { return staticObject->isDead(); });

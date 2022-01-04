@@ -17,8 +17,9 @@ public:
 	Window();
 	void drawWindow(sf::RenderWindow&)const;
 	void drawPlay(sf::RenderWindow&, const sf::Clock&, const sf::Time&,
-		const std::vector<std::unique_ptr<Players>>&,
-		const std::vector<std::unique_ptr<StaticObjects>>&)const;
+		const std::vector<std::unique_ptr<MovingObjects>>&,
+		const std::vector<std::unique_ptr<StaticObjects>>&,
+		const std::vector<std::unique_ptr<TeleporterObject>>&)const;
 	void handleClickInWindow(const sf::Vector2f&);
 	bool isPlaying()const;
 	bool isExit()const;
@@ -37,8 +38,9 @@ private:
 	void drawMenu(sf::RenderWindow&)const;
 	void drawHelp(sf::RenderWindow&)const;
 	void drawObjects(sf::RenderWindow&,
-		const std::vector<std::unique_ptr<Players>>&,
-		const std::vector<std::unique_ptr<StaticObjects>>&)const;
+		const std::vector<std::unique_ptr<MovingObjects>>&,
+		const std::vector<std::unique_ptr<StaticObjects>>&,
+		const std::vector<std::unique_ptr<TeleporterObject>>&)const;
 	void drawLevelInfo(sf::RenderWindow&, const sf::Clock&, const sf::Time&)const;
 	bool m_currentWindow[AmountOfWindows] = { true, false, false, false };
 	sf::Sound m_sounds[AmountOfSounds];
@@ -51,4 +53,5 @@ private:
 	sf::Text m_helpText;
 	sf::Sprite m_gameSprite;
 	sf::RectangleShape m_infoRect;
+	sf::Text m_infoText;
 };
