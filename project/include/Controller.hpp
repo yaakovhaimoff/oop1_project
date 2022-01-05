@@ -31,7 +31,7 @@ private:
 	void isPlaying();
 	void checkCollision(MovingObjects&);
 	void openTeleport(MovingObjects &activePlayer);
-	void eraseDeadObjects();
+	void handleDaedObjects();
 	bool checkGameTime(const sf::Clock&)const;
 	bool chechKingOnThrone()const;
 	sf::RenderWindow m_gameWindow = { { 1920, 1080 }, "Save the king" };

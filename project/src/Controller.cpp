@@ -48,12 +48,12 @@ void Controller::handleEvents()
 	auto event = sf::Event();
 	while (m_gameWindow.pollEvent(event))
 	{
-		this->exitGame(event);
-		this->mouseEventReleased(event);
-		this->mouseEventMoved(event);
+		exitGame(event);
+		mouseEventReleased(event);
+		mouseEventMoved(event);
 	}
-	this->keyboardEvent(event);
-	this->isPlaying();
+	keyboardEvent(event);
+	isPlaying();
 }
 //_______________________________________________
 void Controller::exitGame(const sf::Event &event)
@@ -98,7 +98,7 @@ void Controller::isPlaying()
 		const auto deltaTime = m_moveClock.restart();
 		m_players[m_activePlayer]->move(deltaTime);
 		checkCollision(*m_players[m_activePlayer]);
-		eraseDeadObjects();
+		handleDaedObjects();
 	}
 }
 //____________________________________________________
@@ -121,24 +121,15 @@ void Controller::checkCollision(MovingObjects &activePlayer)
 			m_teleportIndex = teleports->getNextTelIndex();
 		}
 }
-//_____________________________
+//________________________________________________________
 void Controller::openTeleport(MovingObjects &activePlayer)
 {
-	for (auto &teleports : m_teleports)
-		if (activePlayer.checkCollision(*teleports))
-			return;
-	for (auto &movalbe : m_players)
-		if (activePlayer.checkCollision(*movalbe) && &activePlayer != &(*movalbe))
-			return;
-	for (auto &movalbe : m_statics)
-		if (activePlayer.checkCollision(*movalbe))
-			return;
-
-		m_teleports[m_teleportIndex]->setOpen();	
+	if (activePlayer.checkCollision(*m_teleports[m_teleportIndex]))
+		return;
+	m_teleports[m_teleportIndex]->setOpen();
 }
-
 //_________________________________
-void Controller::eraseDeadObjects()
+void Controller::handleDaedObjects()
 {
 	for (int i = 0; i < m_statics.size(); i++)
 		if (typeid(*m_statics[i]) == typeid(MonsterObject) && m_statics[i]->isDead())

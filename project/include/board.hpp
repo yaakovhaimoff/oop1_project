@@ -11,6 +11,7 @@
 #include "macros.hpp"
 #include "movingObjects.hpp"
 #include "staticObjects.hpp"
+#include "dwarf.hpp"
 
 class Board
 {

@@ -9,5 +9,6 @@
 												"king.cpp"
 												"warrior.cpp"
 												"thief.cpp"
-												"mage.cpp")
+												"mage.cpp"
+												"dwarf.cpp")
 												

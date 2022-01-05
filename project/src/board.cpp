@@ -11,7 +11,7 @@ void Board::setObjectsFromBoard(std::vector<std::unique_ptr<MovingObjects>> &pla
 								std::vector<std::unique_ptr<TeleporterObject>> &teleports)
 {
 	std::string teleportRegularity;
-	std::getline(m_boardSrcFiles, teleportRegularity); 
+	std::getline(m_boardSrcFiles, teleportRegularity);
 	sf::Vector2f boardCharPosition;
 	int row = 0, col = 0;
 	for (auto boardLine = std::string(); std::getline(m_boardSrcFiles, boardLine) && boardLine.compare("") != 0;)
@@ -60,6 +60,8 @@ void Board::addMovingObjects(std::vector<std::unique_ptr<MovingObjects>> &player
 	case THIEF:
 		players.push_back(std::make_unique<ThiefObject>(location, Thief));
 		break;
+	case DWARF:
+		//players.push_back(std::make_unique<DwarfObject>(location, Dwarf));
 
 	default:
 		break;
@@ -109,8 +111,8 @@ void Board::connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &t
 	int index = std::stoi(teleportRegularity);
 	for (int i = 0; i < teleports.size(); i++)
 	{
-		teleports[i]->setConnectedTeleport(teleports[index%10]->getPosition());
-		teleports[i]->setNextIndex(index%10);
-		index/=10;
+		teleports[i]->setConnectedTeleport(teleports[index % 10]->getPosition());
+		teleports[i]->setNextIndex(index % 10);
+		index /= 10;
 	}
 }

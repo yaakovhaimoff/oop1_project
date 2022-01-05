@@ -6,7 +6,7 @@ Window::Window()
 	this->setFont();
 	this->setMenu();
 	this->setHelp();
-	this->setSound();
+	//this->setSound();
 	this->setPlay();
 }
 //____________________
@@ -33,7 +33,7 @@ void Window::setMenu()
 	// set rectangle for the menu buttons and texts
 	for (int row = 1; row < AmountOfWindows; row++)
 	{
-		m_menuRects[row - 1] = sf::RectangleShape({ 220, 120 });
+		m_menuRects[row - 1] = sf::RectangleShape({220, 120});
 		m_menuRects[row - 1].setFillColor(sf::Color::Transparent);
 		m_menuRects[row - 1].setOutlineColor(sf::Color::White);
 		m_menuRects[row - 1].setOutlineThickness(4);
@@ -46,7 +46,7 @@ void Window::setMenu()
 		m_menuText[row - 1].setString(menu_names[row - 1]);
 	}
 	sf::Text menuButtonText;
-	// set the game name 
+	// set the game name
 	m_gameName.setFont(m_font);
 	m_gameName.setCharacterSize(150);
 	m_gameName.setFillColor(sf::Color::White);
@@ -59,7 +59,7 @@ void Window::setHelp()
 	auto texture = Resources::pToRsc().getTexture(HelpScreen);
 	m_background[HELP].setTexture(*texture);
 	// set rectangle for the help back button
-	m_helpRect = sf::RectangleShape({ 160, 90 });
+	m_helpRect = sf::RectangleShape({160, 90});
 	m_helpRect.setFillColor(sf::Color::Transparent);
 	m_helpRect.setOutlineColor(sf::Color::White);
 	m_helpRect.setOutlineThickness(4);
@@ -78,14 +78,14 @@ void Window::setPlay()
 	m_gameSprite.setTexture(*(m_texture));
 	m_gameSprite.setScale(1, (float)1.4);
 	// setting the inforamation rectangle
-	m_infoRect = sf::RectangleShape({ 200, 400 });
+	m_infoRect = sf::RectangleShape({200, 400});
 	m_infoRect.setPosition(150, 200);
 	m_infoRect.setOutlineColor(sf::Color::Black);
 	m_infoRect.setOutlineThickness(4);
 	m_infoRect.setFillColor(sf::Color(192, 192, 192, 50));
 }
 //____________________________________________________________________________
-void Window::catchMouseEvent(sf::RenderWindow& window, const sf::Event& event)
+void Window::catchMouseEvent(sf::RenderWindow &window, const sf::Event &event)
 {
 	if (m_currentWindow[MENU])
 		checkMouseOnMenu(event);
@@ -93,7 +93,7 @@ void Window::catchMouseEvent(sf::RenderWindow& window, const sf::Event& event)
 		checkMouseOnBack(event);
 }
 //___________________________________________________
-void Window::checkMouseOnBack(const sf::Event& event)
+void Window::checkMouseOnBack(const sf::Event &event)
 {
 	auto location = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
 
@@ -103,7 +103,7 @@ void Window::checkMouseOnBack(const sf::Event& event)
 		m_helpRect.setFillColor(sf::Color::Transparent);
 }
 //___________________________________________________
-void Window::checkMouseOnMenu(const sf::Event& event)
+void Window::checkMouseOnMenu(const sf::Event &event)
 {
 	auto location = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
 
@@ -119,7 +119,7 @@ void Window::checkMouseOnMenu(const sf::Event& event)
 	}
 }
 //___________________________________________________________
-void Window::handleClickInWindow(const sf::Vector2f& location)
+void Window::handleClickInWindow(const sf::Vector2f &location)
 {
 	if (m_currentWindow[MENU])
 		this->checkMenuPressed(location);
@@ -127,9 +127,9 @@ void Window::handleClickInWindow(const sf::Vector2f& location)
 		this->checkHelpPressed(location);
 }
 //_________________________________________________________
-void Window::checkMenuPressed(const sf::Vector2f& location)
+void Window::checkMenuPressed(const sf::Vector2f &location)
 {
-	auto menuButton = sf::RectangleShape({ 220, 120 });
+	auto menuButton = sf::RectangleShape({220, 120});
 
 	for (int row = 1; row < AmountOfWindows; row++)
 	{
@@ -145,9 +145,9 @@ void Window::checkMenuPressed(const sf::Vector2f& location)
 	}
 }
 //_________________________________________________________
-void Window::checkHelpPressed(const sf::Vector2f& location)
+void Window::checkHelpPressed(const sf::Vector2f &location)
 {
-	auto backButton = sf::RectangleShape({ 160, 90 });
+	auto backButton = sf::RectangleShape({160, 90});
 	backButton.setPosition(sf::Vector2f(20, 20));
 	if (backButton.getGlobalBounds().contains(location))
 	{
@@ -157,7 +157,7 @@ void Window::checkHelpPressed(const sf::Vector2f& location)
 	}
 }
 //____________________________________________________
-void Window::drawWindow(sf::RenderWindow& window)const
+void Window::drawWindow(sf::RenderWindow &window) const
 {
 	if (m_currentWindow[MENU])
 		this->drawMenu(window);
@@ -165,7 +165,7 @@ void Window::drawWindow(sf::RenderWindow& window)const
 		this->drawHelp(window);
 }
 //__________________________________________________
-void Window::drawMenu(sf::RenderWindow& window)const
+void Window::drawMenu(sf::RenderWindow &window) const
 {
 	window.clear();
 	window.draw(m_background[MENU]);
@@ -178,7 +178,7 @@ void Window::drawMenu(sf::RenderWindow& window)const
 	window.display();
 }
 //__________________________________________________
-void Window::drawHelp(sf::RenderWindow& window)const
+void Window::drawHelp(sf::RenderWindow &window) const
 {
 	window.clear();
 	window.draw(m_background[HELP]);
@@ -187,10 +187,10 @@ void Window::drawHelp(sf::RenderWindow& window)const
 	window.display();
 }
 //___________________________________________________________________________________________
-void Window::drawPlay(sf::RenderWindow& window, const sf::Clock& clock, const sf::Time& time,
-	const std::vector<std::unique_ptr<MovingObjects>>& players,
-	const std::vector<std::unique_ptr<StaticObjects>>& statics,
-		const std::vector<std::unique_ptr<TeleporterObject>>& teleports)const
+void Window::drawPlay(sf::RenderWindow &window, const sf::Clock &clock, const sf::Time &time,
+					  const std::vector<std::unique_ptr<MovingObjects>> &players,
+					  const std::vector<std::unique_ptr<StaticObjects>> &statics,
+					  const std::vector<std::unique_ptr<TeleporterObject>> &teleports) const
 {
 	window.clear();
 	window.draw(m_gameSprite);
@@ -199,26 +199,28 @@ void Window::drawPlay(sf::RenderWindow& window, const sf::Clock& clock, const sf
 	window.display();
 }
 //________________________________________________
-void Window::drawObjects(sf::RenderWindow& window,
-	const std::vector<std::unique_ptr<MovingObjects>>& players,
-	const std::vector<std::unique_ptr<StaticObjects>>& statics,
-		const std::vector<std::unique_ptr<TeleporterObject>>& teleports)const
+void Window::drawObjects(sf::RenderWindow &window,
+						 const std::vector<std::unique_ptr<MovingObjects>> &players,
+						 const std::vector<std::unique_ptr<StaticObjects>> &statics,
+						 const std::vector<std::unique_ptr<TeleporterObject>> &teleports) const
 {
-	for (int i = 0; i < statics.size(); i++)
-		statics[i]->drawShape(window);
-	for (int i = 0; i < players.size(); i++)
-		players[i]->drawShape(window);
-	for (int i = 0; i < teleports.size(); i++)
-		teleports[i]->drawShape(window);
+	for (auto &unmovable : statics)
+		unmovable->drawShape(window);
+
+	for (auto &movable : players)
+			movable->drawShape(window);
+
+	for (auto &teleport : teleports)
+		teleport->drawShape(window);
 }
 //___________________________________________________________________________________________________________
-void Window::drawLevelInfo(sf::RenderWindow& window, const sf::Clock& clock, const sf::Time& levelTime )const
+void Window::drawLevelInfo(sf::RenderWindow &window, const sf::Clock &clock, const sf::Time &levelTime) const
 {
 	window.draw(m_infoRect);
 	sf::Time gameTime = levelTime - clock.getElapsedTime();
 	int time = gameTime.asSeconds();
 	std::string timeString = "Time ";
-	timeString += std::to_string(time / 60); // time / 60 for minutes 
+	timeString += std::to_string(time / 60); // time / 60 for minutes
 	timeString += " : ";
 	timeString += std::to_string(time % 60); // time % 60 for seconds
 	sf::Text text;
@@ -230,12 +232,12 @@ void Window::drawLevelInfo(sf::RenderWindow& window, const sf::Clock& clock, con
 }
 
 //___________________________
-bool Window::isPlaying()const
+bool Window::isPlaying() const
 {
 	return m_currentWindow[PLAY];
 }
 //________________________
-bool Window::isExit()const
+bool Window::isExit() const
 {
 	return m_currentWindow[EXIT];
 }

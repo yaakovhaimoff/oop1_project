@@ -12,6 +12,7 @@ class KingObject;
 class MageObject;
 class WarriorObject;
 class ThiefObject;
+class DwarfObject;
 
 class WallObject;
 class CrownObject;
@@ -35,6 +36,7 @@ public:
 	virtual void collide(MageObject& ) = 0;
 	virtual void collide(WarriorObject& ) = 0;
 	virtual void collide(ThiefObject& ) = 0;
+	virtual void collide(DwarfObject &) =0;
 
 	virtual void collide(WallObject& ) = 0;
 	virtual void collide(CrownObject& ) = 0;

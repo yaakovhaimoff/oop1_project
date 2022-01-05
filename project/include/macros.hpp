@@ -35,7 +35,7 @@ const std::string FontName = "font.ttf";
 const std::vector SOUNDS_NAMES = { "GameOfThrones.wav", "ClickSound.wav","FailSound.wav" };
 const std::vector NAMES = { "play.png","menu.png","help.png","king.png", "mage.png",
 							"thief.png","warrior.png","crown.png", "gate.png", "fire.png",
-							"key.png","monster.png", "teleport.png", "brickWall.png" };
+							"key.png","monster.png", "teleport.png", "brickWall.png", "dwarf.png" };
 enum rcsNames
 {
 	BoardBackground,
@@ -52,6 +52,7 @@ enum rcsNames
 	Monster,
 	Teleport,
 	Wall,
+	Dwarf,
 };
 enum SoundsNames {
 	GameSound,
@@ -79,7 +80,8 @@ enum gameTools
 	CROWN = 64,
 	MONSTER = 33,
 	GATE = 35,
-	WALL = 61
+	WALL = 61,
+	DWARF = 94
 };
 
 enum BoardRectObjects

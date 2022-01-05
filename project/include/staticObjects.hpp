@@ -33,6 +33,7 @@ public:
 	void collide(MageObject &) override {}
 	void collide(WarriorObject &) override {}
 	void collide(ThiefObject &) override {}
+	void collide(DwarfObject &) override {}
 	void collide(WallObject &) override {}
 	void collide(CrownObject &) override {}
 	void collide(FireObject &) override {}
@@ -54,6 +55,7 @@ public:
 	void collide(MageObject &) override {}
 	void collide(WarriorObject &) override {}
 	void collide(ThiefObject &) override {}
+	void collide(DwarfObject &) override {}
 	void collide(WallObject &) override {}
 	void collide(CrownObject &) override {}
 	void collide(FireObject &) override {}
@@ -75,6 +77,7 @@ public:
 	void collide(MageObject &) override {}
 	void collide(WarriorObject &) override {}
 	void collide(ThiefObject &) override {}
+	void collide(DwarfObject &) override {}
 	void collide(WallObject &) override {}
 	void collide(CrownObject &) override {}
 	void collide(FireObject &) override {}
@@ -96,6 +99,7 @@ public:
 	void collide(MageObject &) override {}
 	void collide(WarriorObject &) override {}
 	void collide(ThiefObject &) override {}
+	void collide(DwarfObject &) override {}
 	void collide(WallObject &) override {}
 	void collide(CrownObject &) override {}
 	void collide(FireObject &) override {}
@@ -117,6 +121,7 @@ public:
 	void collide(MageObject &) override {}
 	void collide(WarriorObject &) override {}
 	void collide(ThiefObject &) override {}
+	void collide(DwarfObject &) override {}
 	void collide(WallObject &) override {}
 	void collide(CrownObject &) override {}
 	void collide(FireObject &) override {}
@@ -138,6 +143,7 @@ public:
 	void collide(MageObject &) override {}
 	void collide(WarriorObject &) override {}
 	void collide(ThiefObject &) override {}
+	void collide(DwarfObject &) override {}
 	void collide(WallObject &) override {}
 	void collide(CrownObject &) override {}
 	void collide(FireObject &) override {}
@@ -166,6 +172,7 @@ public:
 	void collide(MageObject &) override {}
 	void collide(WarriorObject &) override {}
 	void collide(ThiefObject &) override {}
+	void collide(DwarfObject &) override {}
 	void collide(WallObject &) override {}
 	void collide(CrownObject &) override {}
 	void collide(FireObject &) override {}
