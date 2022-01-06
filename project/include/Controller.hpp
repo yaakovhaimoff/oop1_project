@@ -28,12 +28,14 @@ private:
 	void keyboardEvent(const sf::Event&);
 	void decideActivePlayer();
 	void mouseEventMoved(const sf::Event&);
-	void isPlaying();
+	void isPlaying(const sf::Event&);
+	void moveObjects(const sf::Event&);
 	void checkCollision(MovingObjects&);
 	void openTeleport(MovingObjects &activePlayer);
 	void handleDaedObjects();
 	bool checkGameTime(const sf::Clock&)const;
 	bool chechKingOnThrone()const;
+	int getTimeForGift();
 	sf::RenderWindow m_gameWindow = { { 1920, 1080 }, "Save the king" };
 	sf::Clock m_moveClock;
 	sf::Time m_gameTime;
@@ -44,5 +46,5 @@ private:
 	std::vector<std::unique_ptr<StaticObjects>> m_statics;
 	std::vector<std::unique_ptr<TeleporterObject>> m_teleports;
 	int m_activePlayer;
-	int m_teleportIndex;
+	int m_teleportIndex = 0;
 };

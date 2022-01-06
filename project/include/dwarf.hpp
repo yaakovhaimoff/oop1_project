@@ -11,9 +11,9 @@ class DwarfObject : public MovingObjects
 public:
     DwarfObject(const sf::Vector2f &location, const int key)
         : MovingObjects(location, key) {}
-    void move(sf::Time) override;
+    void move(const sf::Time&, const sf::Event&) override;
     void setDirection(int);
-    sf::Clock getElapsedTimeToMove() const { m_canMove.getElapsedTime(); }
+    int getElapsedTimeToMove() const { return m_canMove.getElapsedTime().asSeconds(); }
 
 private:
     Direction m_dir;

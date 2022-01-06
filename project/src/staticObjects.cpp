@@ -55,3 +55,11 @@ void TeleporterObject::collide(GameObjects& other)
 		return;
 	other.collide(*this);
 }
+
+// class gift
+void GiftObject::collide(GameObjects& other)
+{
+	if (this == &other)
+		return;
+	other.collide(*this);
+}

@@ -11,7 +11,7 @@ void Controller::runGame()
 	while (!m_board.checkEndOfFile())
 	{
 		m_board.setObjectsFromBoard(m_players, m_statics, m_teleports);
-		this->runLevel();
+		runLevel();
 		m_players.clear();
 		m_statics.clear();
 		m_gameTime += sf::seconds(4);
@@ -28,13 +28,13 @@ void Controller::runLevel()
 		{
 			static sf::Clock clock;
 			m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_players, m_statics, m_teleports);
-			if (/*checkGameTime(clock)*/ this->chechKingOnThrone())
+			if (/*checkGameTime(clock)*/ chechKingOnThrone())
 			{
 				clock.restart();
 				break;
 			}
 		}
-		this->handleEvents();
+		handleEvents();
 	}
 }
 //__________________________________________________________
@@ -53,7 +53,7 @@ void Controller::handleEvents()
 		mouseEventMoved(event);
 	}
 	keyboardEvent(event);
-	isPlaying();
+	isPlaying(event);
 }
 //_______________________________________________
 void Controller::exitGame(const sf::Event &event)
@@ -83,31 +83,45 @@ void Controller::mouseEventMoved(const sf::Event &event)
 void Controller::keyboardEvent(const sf::Event &event)
 {
 	if (event.key.code == sf::Keyboard::P)
-		this->decideActivePlayer();
+		decideActivePlayer();
 }
 //___________________________________
 void Controller::decideActivePlayer()
 {
 	m_activePlayer < 3 ? m_activePlayer++ : m_activePlayer = 0;
 }
-//__________________________
-void Controller::isPlaying()
+//______________________________________________
+void Controller::isPlaying(const sf::Event& event)
 {
 	if (m_window.isPlaying())
 	{
-		const auto deltaTime = m_moveClock.restart();
-		m_players[m_activePlayer]->move(deltaTime);
+		moveObjects(event);
 		checkCollision(*m_players[m_activePlayer]);
 		handleDaedObjects();
 	}
+}
+//___________________________________________________
+void Controller::moveObjects(const sf::Event& event)
+{
+	const auto deltaTime = m_moveClock.restart();
+	m_players[m_activePlayer]->move(deltaTime, event);
+	for (int i = 4; i < m_players.size(); i++)
+		m_players[i]->move(deltaTime, event);
+	// static sf::Clock clock;
+	// for (int i = 4; i < m_players.size(); i++)
+	// 	if (clock.getElapsedTime().asSeconds() > 2.0f)
+	// 	{
+	// 		m_players[i]->move(deltaTime);
+	// 		clock.restart();
+	// 	}
 }
 //____________________________________________________
 void Controller::checkCollision(MovingObjects &activePlayer)
 {
 	openTeleport(activePlayer);
-	for (int i = 0; i < m_statics.size(); i++)
-		if (activePlayer.checkCollision(*m_statics[i]))
-			activePlayer.collide(*m_statics[i]);
+	for (auto &unmovable : m_statics)
+		if (activePlayer.checkCollision(*unmovable))
+			activePlayer.collide(*unmovable);
 
 	for (auto &movalbe : m_players)
 		if (activePlayer.checkCollision(*movalbe) && &activePlayer != &(*movalbe))
@@ -117,23 +131,33 @@ void Controller::checkCollision(MovingObjects &activePlayer)
 		if (activePlayer.checkCollision(*teleports) && teleports->isTelOpen())
 		{
 			activePlayer.collide(*teleports);
-			m_teleports[teleports->getNextTelIndex()]->setClose();
+			m_teleports[teleports->getNextTelIndex()]->setLock(false);
 			m_teleportIndex = teleports->getNextTelIndex();
 		}
+
+	for (int i = 4; i < m_players.size(); i++)
+		for (int j = 0; j < m_statics.size(); j++)
+			if (m_players[i]->checkCollision(*m_statics[j]))
+				dynamic_cast<DwarfObject *>(m_players[i].get())->setDirection(rand() % 4);
+	// m_players[i]->collide(*m_statics[j]);
 }
 //________________________________________________________
 void Controller::openTeleport(MovingObjects &activePlayer)
 {
 	if (activePlayer.checkCollision(*m_teleports[m_teleportIndex]))
 		return;
-	m_teleports[m_teleportIndex]->setOpen();
+	m_teleports[m_teleportIndex]->setLock(true);
 }
 //_________________________________
 void Controller::handleDaedObjects()
 {
 	for (int i = 0; i < m_statics.size(); i++)
+	{
 		if (typeid(*m_statics[i]) == typeid(MonsterObject) && m_statics[i]->isDead())
-			m_board.addStaticObjects(m_statics, m_teleports, m_statics[i]->getPosition(), GATE_KEY);
+			m_board.addObjects(m_players, m_statics, m_teleports, m_statics[i]->getPosition(), GATE_KEY);
+		if (typeid(*m_statics[i]) == typeid(GiftObject) && m_statics[i]->isDead())
+			m_gameTime += sf::seconds(getTimeForGift());
+	}
 
 	std::erase_if(m_statics, [](auto &staticObject)
 				  { return staticObject->isDead(); });
@@ -145,4 +169,8 @@ bool Controller::chechKingOnThrone() const
 		if (typeid(*m_statics[i]) == typeid(CrownObject))
 			return false;
 	return true;
+}
+int Controller::getTimeForGift()
+{
+	return rand() % 60 +(-60); 
 }

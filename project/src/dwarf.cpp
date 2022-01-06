@@ -23,16 +23,11 @@ namespace
 					   // would be better to throw an exception but we haven't learned about it yet
 	}
 }
-//________________________________________
-void DwarfObject::move(sf::Time deltaTime)
+//______________________________________________________________________
+void DwarfObject::move(const sf::Time& deltaTime, const sf::Event& event)
 {
-	setDwarf(getPosition());
-	srand(17);
-	static int num = 0;
-	num = num % 4;
-	setDirection(num);
-	m_shape.move(dirToVector(m_dir) * 200.f * deltaTime.asSeconds());
-	num++;
+	setDirection(rand()%4);
+	m_shape.move(dirToVector(m_dir) * 150.f * deltaTime.asSeconds());
 }
 //_____________________________________
 void DwarfObject::setDirection(int num)
@@ -51,6 +46,6 @@ void DwarfObject::setDirection(int num)
 	case 3:
 		m_dir = Direction::Down;
 		break;
-		// case 4: m_dir = Direction::Stay;  break;
+		case 4: m_dir = Direction::Stay;  break;
 	}
 }

@@ -3,11 +3,11 @@
 //______________
 Window::Window()
 {
-	this->setFont();
-	this->setMenu();
-	this->setHelp();
+	setFont();
+	setMenu();
+	setHelp();
 	//this->setSound();
-	this->setPlay();
+	setPlay();
 }
 //____________________
 void Window::setFont()
@@ -122,9 +122,9 @@ void Window::checkMouseOnMenu(const sf::Event &event)
 void Window::handleClickInWindow(const sf::Vector2f &location)
 {
 	if (m_currentWindow[MENU])
-		this->checkMenuPressed(location);
+		checkMenuPressed(location);
 	else if (m_currentWindow[HELP])
-		this->checkHelpPressed(location);
+		checkHelpPressed(location);
 }
 //_________________________________________________________
 void Window::checkMenuPressed(const sf::Vector2f &location)
@@ -160,9 +160,9 @@ void Window::checkHelpPressed(const sf::Vector2f &location)
 void Window::drawWindow(sf::RenderWindow &window) const
 {
 	if (m_currentWindow[MENU])
-		this->drawMenu(window);
+		drawMenu(window);
 	else if (m_currentWindow[HELP])
-		this->drawHelp(window);
+		drawHelp(window);
 }
 //__________________________________________________
 void Window::drawMenu(sf::RenderWindow &window) const
@@ -194,9 +194,10 @@ void Window::drawPlay(sf::RenderWindow &window, const sf::Clock &clock, const sf
 {
 	window.clear();
 	window.draw(m_gameSprite);
-	this->drawObjects(window, players, statics, teleports);
-	this->drawLevelInfo(window, clock, time);
+	drawObjects(window, players, statics, teleports);
+	drawLevelInfo(window, clock, time);
 	window.display();
+	window.setFramerateLimit(20);
 }
 //________________________________________________
 void Window::drawObjects(sf::RenderWindow &window,
@@ -219,7 +220,7 @@ void Window::drawLevelInfo(sf::RenderWindow &window, const sf::Clock &clock, con
 	window.draw(m_infoRect);
 	sf::Time gameTime = levelTime - clock.getElapsedTime();
 	int time = gameTime.asSeconds();
-	std::string timeString = "Time ";
+	std::string timeString = "Time 0";
 	timeString += std::to_string(time / 60); // time / 60 for minutes
 	timeString += " : ";
 	timeString += std::to_string(time % 60); // time % 60 for seconds

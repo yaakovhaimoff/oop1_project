@@ -41,6 +41,8 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
+	void collide(GiftObject &) override {}
+
 };
 
 //______________________________________
@@ -63,6 +65,8 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
+	void collide(GiftObject &) override {}
+
 };
 
 //____________________________________
@@ -85,6 +89,8 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
+	void collide(GiftObject &) override {}
+
 };
 
 //_____________________________________
@@ -107,6 +113,8 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
+	void collide(GiftObject &) override {}
+
 };
 
 //____________________________________
@@ -129,6 +137,8 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
+	void collide(GiftObject &) override {}
+
 };
 
 //________________________________________
@@ -151,6 +161,8 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
+	void collide(GiftObject &) override {}
+
 };
 
 //___________________________________________
@@ -164,8 +176,7 @@ public:
 	void setNextIndex(const int index) { m_nextTelIndex = index; }
 	int getNextTelIndex() const { return m_nextTelIndex; }
 	bool isTelOpen() const { return m_open; }
-	void setOpen() { m_open = true; }
-	void setClose() { m_open = false; }
+	void setLock(const bool lock) { m_open = lock; }
 
 	void collide(GameObjects &) override;
 	void collide(KingObject &) override {}
@@ -180,9 +191,34 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
+	void collide(GiftObject &) override {}
 
 private:
 	sf::Vector2f m_connectedTeleport;
 	bool m_open;
 	int m_nextTelIndex;
+};
+
+//___________________________________________
+class GiftObject : public StaticObjects
+{
+public:
+	GiftObject(const sf::Vector2f &location, const char key)
+		: StaticObjects(location, key) {}
+
+	void collide(GameObjects &) override;
+	void collide(KingObject &) override {}
+	void collide(MageObject &) override {}
+	void collide(WarriorObject &) override {}
+	void collide(ThiefObject &) override {}
+	void collide(DwarfObject &) override {}
+	void collide(WallObject &) override {}
+	void collide(CrownObject &) override {}
+	void collide(FireObject &) override {}
+	void collide(GateObject &) override {}
+	void collide(KeyObject &) override {}
+	void collide(MonsterObject &) override {}
+	void collide(TeleporterObject &) override {}
+	void collide(GiftObject &) override {}
+
 };

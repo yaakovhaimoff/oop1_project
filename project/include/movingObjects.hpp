@@ -13,11 +13,13 @@ class MovingObjects : public GameObjects
 public:
     MovingObjects(const sf::Vector2f &location, const int key)
         : GameObjects(location, key) {}
-    virtual void move(sf::Time);
+    virtual void move(const sf::Time &, const sf::Event &);
+    void updateAnimation(const sf::Event &);
+    void getDir(const sf::Event &);
+    void updateCol();
     void setPosition() { m_shape.setPosition(m_prev_location); }
     sf::Vector2f getPrevPosition() const { return m_prev_location; }
-    void setDwarf(const sf::Vector2f& location){m_prev_location = m_shape.getPosition();}
-    
+
     void collide(GameObjects &) override;
     void collide(KingObject &) override {}
     void collide(MageObject &) override {}
@@ -32,6 +34,7 @@ public:
     void collide(KeyObject &) override;
     void collide(MonsterObject &) override;
     void collide(TeleporterObject &) override;
+    void collide(GiftObject &) override;
 
     enum class Direction
     {
@@ -44,5 +47,7 @@ public:
 
 private:
     sf::Vector2f m_prev_location;
+    int m_keyDir = 0;
+    int m_row = 0;
+    int m_col = 0;
 };
-

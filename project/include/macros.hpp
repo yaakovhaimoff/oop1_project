@@ -26,7 +26,7 @@ const auto MENU_COLOR = sf::Color(214, 217, 213);
 const auto BACKGROUND_COLOR = sf::Color(217, 255, 255);
 const int CELL = 70;
 const int SPACE = 350;
-const int SIDE_WIDTH = 700;
+const int SIDE_WIDTH = 450;
 const int SIDE_LENGTH = 180;
 const int MenuBar = 14;
 const int PLAYER_EXIST = 2;
@@ -35,7 +35,7 @@ const std::string FontName = "font.ttf";
 const std::vector SOUNDS_NAMES = { "GameOfThrones.wav", "ClickSound.wav","FailSound.wav" };
 const std::vector NAMES = { "play.png","menu.png","help.png","king.png", "mage.png",
 							"thief.png","warrior.png","crown.png", "gate.png", "fire.png",
-							"key.png","monster.png", "teleport.png", "brickWall.png", "dwarf.png" };
+							"key.png","monster.png", "teleport.png", "brickWall.png", "dwarf.png", "gift.png" };
 enum rcsNames
 {
 	BoardBackground,
@@ -53,6 +53,7 @@ enum rcsNames
 	Teleport,
 	Wall,
 	Dwarf,
+	Gift,
 };
 enum SoundsNames {
 	GameSound,
@@ -81,7 +82,8 @@ enum gameTools
 	MONSTER = 33,
 	GATE = 35,
 	WALL = 61,
-	DWARF = 94
+	DWARF = 94,
+	GIFT = 36
 };
 
 enum BoardRectObjects

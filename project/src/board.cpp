@@ -13,6 +13,7 @@ void Board::setObjectsFromBoard(std::vector<std::unique_ptr<MovingObjects>> &pla
 	std::string teleportRegularity;
 	std::getline(m_boardSrcFiles, teleportRegularity);
 	sf::Vector2f boardCharPosition;
+	players.resize(4);
 	int row = 0, col = 0;
 	for (auto boardLine = std::string(); std::getline(m_boardSrcFiles, boardLine) && boardLine.compare("") != 0;)
 	{
@@ -23,8 +24,7 @@ void Board::setObjectsFromBoard(std::vector<std::unique_ptr<MovingObjects>> &pla
 			char c = boardLine[i];
 			boardCharPosition.x = (float)(SIDE_WIDTH + (63) * i);
 			boardCharPosition.y = (float)(SIDE_LENGTH + (63) * row);
-			addMovingObjects(players, boardCharPosition, c);
-			addStaticObjects(statics, teleports, boardCharPosition, c);
+			addObjects(players, statics, teleports, boardCharPosition, c);
 		}
 		row++;
 	}
@@ -40,40 +40,33 @@ bool Board::checkEndOfFile() const
 	return m_boardSrcFiles.eof();
 }
 //________________________________________________________________________________
-void Board::addMovingObjects(std::vector<std::unique_ptr<MovingObjects>> &players,
-							 const sf::Vector2f &location, const char object)
+void Board::addObjects(std::vector<std::unique_ptr<MovingObjects>> &players,
+					   std::vector<std::unique_ptr<StaticObjects>> &statics,
+					   std::vector<std::unique_ptr<TeleporterObject>> &teleports,
+					   const sf::Vector2f &location, const char object)
 {
 	switch (object)
 	{
 	case KING:
-		players.push_back(std::make_unique<KingObject>(location, King));
+		players[KING_BOARD_OBJECT] = std::make_unique<KingObject>(location, King);
 		break;
 
 	case MAGE:
-		players.push_back(std::make_unique<MageObject>(location, Mage));
+		players[MAGE_BOARD_OBJECT] = std::make_unique<MageObject>(location, Mage);
 		break;
 
 	case WARRIOR:
-		players.push_back(std::make_unique<WarriorObject>(location, Warrior));
+		players[WARRIOR_BOARD_OBJECT] = std::make_unique<WarriorObject>(location, Warrior);
 		break;
 
 	case THIEF:
-		players.push_back(std::make_unique<ThiefObject>(location, Thief));
+		players[THIEF_BOARD_OBJECT] = std::make_unique<ThiefObject>(location, Thief);
 		break;
-	case DWARF:
-		//players.push_back(std::make_unique<DwarfObject>(location, Dwarf));
 
-	default:
+	case DWARF:
+		players.push_back(std::make_unique<DwarfObject>(location, Dwarf));
 		break;
-	}
-}
-//________________________________________________________________________________
-void Board::addStaticObjects(std::vector<std::unique_ptr<StaticObjects>> &statics,
-							 std::vector<std::unique_ptr<TeleporterObject>> &teleports,
-							 const sf::Vector2f &location, const char object)
-{
-	switch (object)
-	{
+		
 	case WALL:
 		statics.push_back(std::make_unique<WallObject>(location, Wall));
 		break;
@@ -100,6 +93,10 @@ void Board::addStaticObjects(std::vector<std::unique_ptr<StaticObjects>> &static
 
 	case TELEPORT:
 		teleports.push_back(std::make_unique<TeleporterObject>(location, Teleport, true));
+		break;
+		
+	case GIFT:
+		statics.push_back(std::make_unique<GiftObject>(location, Gift));
 	default:
 		break;
 	}

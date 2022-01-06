@@ -21,6 +21,7 @@ class GateObject;
 class KeyObject;
 class MonsterObject;
 class TeleporterObject;
+class GiftObject;
 
 class GameObjects
 {
@@ -45,6 +46,7 @@ public:
 	virtual void collide(KeyObject& ) = 0;
 	virtual void collide(MonsterObject& ) = 0;
 	virtual void collide(TeleporterObject& ) = 0;
+	virtual void collide(GiftObject& ) = 0;
 
 	virtual ~GameObjects() = default;
 

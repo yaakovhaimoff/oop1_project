@@ -21,13 +21,12 @@ public:
 							 std::vector<std::unique_ptr<StaticObjects>> &,
 							 std::vector<std::unique_ptr<TeleporterObject>> &);
 	bool checkEndOfFile() const;
-	void addMovingObjects(std::vector<std::unique_ptr<MovingObjects>> &,
-						  const sf::Vector2f &, const char);
-	void addStaticObjects(std::vector<std::unique_ptr<StaticObjects>> &,
+	void addObjects(std::vector<std::unique_ptr<MovingObjects>> &,
+						  std::vector<std::unique_ptr<StaticObjects>> &,
 						  std::vector<std::unique_ptr<TeleporterObject>> &,
 						  const sf::Vector2f &, const char);
-	void connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &, 
-	std::string);
+	void connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &,
+							std::string);
 
 private:
 	std::ifstream m_boardSrcFiles;
