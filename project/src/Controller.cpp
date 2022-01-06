@@ -15,6 +15,7 @@ void Controller::runGame()
 		clearObjects();
 		m_board.clearBoard();
 		m_numOfLevel++;
+		m_gameTime = sf::seconds(levelTimes[m_numOfLevel]);
 	}
 }
 //_________________________
