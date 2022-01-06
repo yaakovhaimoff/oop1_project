@@ -31,6 +31,9 @@ const int SIDE_LENGTH = 180;
 const int MenuBar = 14;
 const int PLAYER_EXIST = 2;
 
+const int teleportsConnection[] ={ 032145, 0312, 012354 };
+const int levelTimes[] = { 10, 300, 350 };
+
 const std::string FontName = "font.ttf";
 const std::vector SOUNDS_NAMES = { "GameOfThrones.wav", "ClickSound.wav","FailSound.wav" };
 const std::vector NAMES = { "play.png","menu.png","help.png","king.png", "mage.png",

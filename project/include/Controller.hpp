@@ -35,6 +35,8 @@ private:
 	void handleDaedObjects();
 	bool checkGameTime(const sf::Clock&)const;
 	bool chechKingOnThrone()const;
+	void restartLevel();
+	void clearObjects();
 	int getTimeForGift();
 	sf::RenderWindow m_gameWindow = { { 1920, 1080 }, "Save the king" };
 	sf::Clock m_moveClock;
@@ -47,4 +49,5 @@ private:
 	std::vector<std::unique_ptr<TeleporterObject>> m_teleports;
 	int m_activePlayer;
 	int m_teleportIndex = 0;
+	int m_numOfLevel;
 };

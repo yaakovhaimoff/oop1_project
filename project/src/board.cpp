@@ -1,43 +1,44 @@
 #include "board.hpp"
 
-//________________________________________
-Board::Board(const int row, const int col)
-	: m_row(row), m_col(col), m_boardSrcFiles("Board.txt")
-{
-}
+//____________
+Board::Board()
+	: m_boardSrcFiles("Board.txt") {}
 //_________________________________________________________________________________
 void Board::setObjectsFromBoard(std::vector<std::unique_ptr<MovingObjects>> &players,
 								std::vector<std::unique_ptr<StaticObjects>> &statics,
-								std::vector<std::unique_ptr<TeleporterObject>> &teleports)
+								std::vector<std::unique_ptr<TeleporterObject>> &teleports, const int level)
 {
-	std::string s;
-	std::getline(m_boardSrcFiles, s);
-	int teleportRegularity;
-	// teleportRegularity = std::stoi(s);
-	// m_boardSrcFiles >> teleportRegularity;
+	m_levelNum = level;
+	readBoardFile(level);
+	sendBoardKeysToObjects(players, statics, teleports, level);
+}
+//________________________________________
+void Board::readBoardFile(const int level)
+{
+	for (auto boardLine = std::string(); std::getline(m_boardSrcFiles, boardLine) && boardLine.compare("") != 0;)
+		m_level.push_back(boardLine);
+}
+//______________________________________________________________________________________
+void Board::sendBoardKeysToObjects(std::vector<std::unique_ptr<MovingObjects>> &players,
+								   std::vector<std::unique_ptr<StaticObjects>> &statics,
+								   std::vector<std::unique_ptr<TeleporterObject>> &teleports, const int level)
+{
+	if (level != m_levelNum)
+		m_level.clear();
 	sf::Vector2f boardCharPosition;
 	players.resize(4);
-	int row = 0, col = 0;
-	for (auto boardLine = std::string(); std::getline(m_boardSrcFiles, boardLine) && boardLine.compare("") != 0;)
+	for (int i = 0; i < m_level.size(); i++)
 	{
-		if (boardLine.size() > col)
-			col = (int)boardLine.size();
-		for (int i = 0; i < boardLine.size(); i++)
+		for (int j = 0; j < m_level[i].size(); j++)
 		{
-			char c = boardLine[i];
-			boardCharPosition.x = (float)(SIDE_WIDTH + (63) * i);
-			boardCharPosition.y = (float)(SIDE_LENGTH + (63) * row);
+			char c = m_level[i][j];
+			boardCharPosition.x = (float)(SIDE_WIDTH + (63) * j);
+			boardCharPosition.y = (float)(SIDE_LENGTH + (63) * i);
 			addObjects(players, statics, teleports, boardCharPosition, c);
 		}
-		row++;
 	}
-	connectToTeleports(teleports, teleportRegularity);
-	Board(row, col);
+	connectToTeleports(teleports);
 }
-void Board::readBoardFile()
-{
-}
-
 // returning if the file has ended
 // the games will run until the end of file
 // unless the player will choose to quit
@@ -46,7 +47,7 @@ bool Board::checkEndOfFile() const
 {
 	return m_boardSrcFiles.eof();
 }
-//________________________________________________________________________________
+//__________________________________________________________________________
 void Board::addObjects(std::vector<std::unique_ptr<MovingObjects>> &players,
 					   std::vector<std::unique_ptr<StaticObjects>> &statics,
 					   std::vector<std::unique_ptr<TeleporterObject>> &teleports,
@@ -108,17 +109,19 @@ void Board::addObjects(std::vector<std::unique_ptr<MovingObjects>> &players,
 		break;
 	}
 }
-//___________________________________________________________________________________
-void Board::connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &teleports,
-							   int teleportRegularity)
+//_______________________________________________________________________________________
+void Board::connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &teleports)
 {
-	// int index = std::stoi(teleportRegularity);
-	int index = teleportRegularity;
-	index = 1023;
+	int index = teleportsConnection[m_levelNum];
 	for (int i = 0; i < teleports.size(); i++)
 	{
 		teleports[i]->setConnectedTeleport(teleports[index % 10]->getPosition());
 		teleports[i]->setNextIndex(index % 10);
 		index /= 10;
 	}
+}
+//______________________
+void Board::clearBoard()
+{
+	m_level.clear();
 }

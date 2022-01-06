@@ -16,22 +16,24 @@
 class Board
 {
 public:
-	Board(const int row = 10, const int col = 10);
+	Board();
 	void setObjectsFromBoard(std::vector<std::unique_ptr<MovingObjects>> &,
 							 std::vector<std::unique_ptr<StaticObjects>> &,
-							 std::vector<std::unique_ptr<TeleporterObject>> &);
+							 std::vector<std::unique_ptr<TeleporterObject>> &, const int);
 	bool checkEndOfFile() const;
-	void readBoardFile();
+	void sendBoardKeysToObjects(std::vector<std::unique_ptr<MovingObjects>> &,
+								std::vector<std::unique_ptr<StaticObjects>> &,
+								std::vector<std::unique_ptr<TeleporterObject>> &, const int);
 	void addObjects(std::vector<std::unique_ptr<MovingObjects>> &,
-						  std::vector<std::unique_ptr<StaticObjects>> &,
-						  std::vector<std::unique_ptr<TeleporterObject>> &,
-						  const sf::Vector2f &, const char);
-	void connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &,
-							int);
+					std::vector<std::unique_ptr<StaticObjects>> &,
+					std::vector<std::unique_ptr<TeleporterObject>> &,
+					const sf::Vector2f &, const char);
+	void clearBoard();
 
 private:
+	void readBoardFile(const int);
+	void connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &);
 	std::ifstream m_boardSrcFiles;
-	std::string m_level;
-	int m_col;
-	int m_row;
+	std::vector<std::string> m_level;
+	int m_levelNum = 0;
 };

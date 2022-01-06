@@ -2,7 +2,7 @@
 
 //______________________
 Controller::Controller()
-	: m_activePlayer(0), m_gameTime(sf::seconds(10))
+	: m_activePlayer(0), m_numOfLevel(0), m_gameTime(sf::seconds(levelTimes[0]))
 {
 }
 //________________________
@@ -10,11 +10,11 @@ void Controller::runGame()
 {
 	while (!m_board.checkEndOfFile())
 	{
-		m_board.setObjectsFromBoard(m_players, m_statics, m_teleports);
+		m_board.setObjectsFromBoard(m_players, m_statics, m_teleports, m_numOfLevel);
 		runLevel();
-		m_players.clear();
-		m_statics.clear();
-		m_gameTime += sf::seconds(4);
+		clearObjects();
+		m_board.clearBoard();
+		m_numOfLevel++;
 	}
 }
 //_________________________
@@ -28,14 +28,34 @@ void Controller::runLevel()
 		{
 			static sf::Clock clock;
 			m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_players, m_statics, m_teleports);
-			if (/*checkGameTime(clock)*/ chechKingOnThrone())
+			if (chechKingOnThrone())
 			{
 				clock.restart();
 				break;
 			}
+			if (checkGameTime(clock))
+			{
+				restartLevel();
+				clock.restart();
+			}
 		}
 		handleEvents();
 	}
+}
+//_____________________________
+void Controller::restartLevel()
+{
+	clearObjects();
+	m_board.sendBoardKeysToObjects(m_players, m_statics, m_teleports, m_numOfLevel);
+	m_gameTime = sf::seconds(levelTimes[m_numOfLevel]);
+	m_activePlayer = 0;
+}
+//_____________________________
+void Controller::clearObjects()
+{
+	m_players.clear();
+	m_statics.clear();
+	m_teleports.clear();
 }
 //__________________________________________________________
 bool Controller::checkGameTime(const sf::Clock &clock) const
@@ -88,10 +108,10 @@ void Controller::keyboardEvent(const sf::Event &event)
 //___________________________________
 void Controller::decideActivePlayer()
 {
-	m_activePlayer < 3 ? m_activePlayer++ : m_activePlayer = 0;
+	m_activePlayer < numOfPlayers - 1 ? m_activePlayer++ : m_activePlayer = 0;
 }
 //______________________________________________
-void Controller::isPlaying(const sf::Event& event)
+void Controller::isPlaying(const sf::Event &event)
 {
 	if (m_window.isPlaying())
 	{
@@ -101,19 +121,12 @@ void Controller::isPlaying(const sf::Event& event)
 	}
 }
 //___________________________________________________
-void Controller::moveObjects(const sf::Event& event)
+void Controller::moveObjects(const sf::Event &event)
 {
 	const auto deltaTime = m_moveClock.restart();
 	m_players[m_activePlayer]->move(deltaTime, event);
-	for (int i = 4; i < m_players.size(); i++)
+	for (int i = numOfPlayers; i < m_players.size(); i++)
 		m_players[i]->move(deltaTime, event);
-	// static sf::Clock clock;
-	// for (int i = 4; i < m_players.size(); i++)
-	// 	if (clock.getElapsedTime().asSeconds() > 2.0f)
-	// 	{
-	// 		m_players[i]->move(deltaTime);
-	// 		clock.restart();
-	// 	}
 }
 //____________________________________________________
 void Controller::checkCollision(MovingObjects &activePlayer)
@@ -135,7 +148,7 @@ void Controller::checkCollision(MovingObjects &activePlayer)
 			m_teleportIndex = teleports->getNextTelIndex();
 		}
 
-	for (int i = 4; i < m_players.size(); i++)
+	for (int i = numOfPlayers; i < m_players.size(); i++)
 		for (int j = 0; j < m_statics.size(); j++)
 			if (m_players[i]->checkCollision(*m_statics[j]))
 				dynamic_cast<DwarfObject *>(m_players[i].get())->setDirection(rand() % 4);
@@ -170,7 +183,8 @@ bool Controller::chechKingOnThrone() const
 			return false;
 	return true;
 }
+//______________________________
 int Controller::getTimeForGift()
 {
-	return rand() % 60 +(-60); 
+	return rand() % 60 + (-60);
 }
