@@ -2,7 +2,7 @@
 
 //______________________
 Controller::Controller()
-	: m_activePlayer(0), m_gameTime(sf::seconds(300))
+	: m_activePlayer(0), m_gameTime(sf::seconds(10))
 {
 }
 //________________________
