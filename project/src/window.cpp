@@ -223,16 +223,6 @@ void Window::drawObjects(sf::RenderWindow &window,
 		teleport->drawShape(window);
 	}
 }
-//_____________________________________________
-void Window::activePleyerMark(sf::RenderWindow &window, const sf::Vector2f &pos) const
-{
-	sf::RectangleShape activePlayerRect(sf::Vector2f(63, 63));
-	activePlayerRect.setOutlineColor(sf::Color(200, 255, 200, 255));
-	activePlayerRect.setOutlineThickness(4);
-	activePlayerRect.setFillColor(sf::Color::Transparent);
-	activePlayerRect.setPosition(pos);
-	window.draw(activePlayerRect);
-}
 //___________________________
 bool Window::isPlaying() const
 {
