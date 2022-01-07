@@ -3,12 +3,11 @@
 //___________________________________________________________________
 GameObjects::GameObjects(const sf::Vector2f &location, const int key)
 {
-	auto m_texture = Resources::pToRsc().getTexture(key);
-	m_shape.setTexture(*m_texture);
+	m_shape.setTexture(Resources::instance().getTexture(key));
 	if (key >= King && key <= Warrior || key == Fire || key == Dwarf)
 	{
 		m_shape.setTextureRect(sf::IntRect(0, 0, 32, 29));
-		m_shape.setScale(1.5, 1.5);
+		m_shape.setScale(1.8, 1.8);
 	}
 	m_shape.setPosition(location);
 }

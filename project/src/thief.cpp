@@ -5,15 +5,16 @@ void ThiefObject::collide(GateObject &other)
 {
 	if (m_hasKey > 0)
 	{
+		Resources::instance().playSound(OpenGate);
 		other.setIsDead();
 		m_hasKey = 0;
 	}
 	else
 		setPosition();
-	// m_shape.setPosition(this->getPrevPosition());
 }
 void ThiefObject::collide(KeyObject &other)
 {
+	Resources::instance().playSound(ThiefTake);
 	if (m_hasKey == 0)
 		other.setIsDead();
 	m_hasKey++;

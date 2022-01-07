@@ -71,12 +71,28 @@ void MovingObjects::collide(GameObjects &other)
 		return;
 	other.collide(*this);
 }
-void MovingObjects::collide(WallObject &) { setPosition(); }
+void MovingObjects::collide(WallObject &) 
+{ 
+	Resources::instance().playSound(DwarfColide);
+	setPosition(); 
+}
 void MovingObjects::collide(CrownObject &) { setPosition(); }
 void MovingObjects::collide(FireObject &) { setPosition(); }
 void MovingObjects::collide(GateObject &) { setPosition(); }
 void MovingObjects::collide(KeyObject &) {}
 void MovingObjects::collide(MonsterObject &) { setPosition(); }
-void MovingObjects::collide(TeleporterObject &other) { setSprite(other.getConnectedTeleportLoc()); }
-void MovingObjects::collide(TimeGiftObject &other) { other.setIsDead(); }
-void MovingObjects::collide(RemoveDwarfsObject &other) { other.setIsDead(); }
+void MovingObjects::collide(TeleporterObject &other) 
+{ 
+	Resources::instance().playSound(TeleportEnter);
+	setSprite(other.getConnectedTeleportLoc());
+ }
+void MovingObjects::collide(TimeGiftObject &other) 
+{ 
+	Resources::instance().playSound(GrabPresent);
+	other.setIsDead(); 
+}
+void MovingObjects::collide(RemoveDwarfsObject &other) 
+{ 
+	Resources::instance().playSound(GrabPresent);
+	other.setIsDead(); 
+}

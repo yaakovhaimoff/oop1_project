@@ -14,7 +14,7 @@ void Controller::runGame()
 		runLevel();
 		clearObjects();
 		m_board.clearBoard();
-		m_window.setIsPlaying();
+		// m_window.setIsPlaying();
 		m_numOfLevel++;
 		m_gameTime = sf::seconds(levelTimes[m_numOfLevel]);
 	}
@@ -31,7 +31,7 @@ void Controller::runLevel()
 			static sf::Clock clock;
 			bool key = dynamic_cast<ThiefObject *>(m_players[THIEF_BOARD_OBJECT].get())->doesThiefhasKey();
 			m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_numOfLevel,
-							  key, m_players, m_statics, m_teleports);
+							  key, m_players, m_statics, m_teleports, false);
 			if (wonLevel())
 			{
 				clock.restart();
@@ -39,6 +39,8 @@ void Controller::runLevel()
 			}
 			if (checkGameTime(clock))
 			{
+				m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_numOfLevel,
+								  key, m_players, m_statics, m_teleports, true);
 				restartLevel();
 				clock.restart();
 			}
@@ -185,9 +187,9 @@ void Controller::handleDaedObjects()
 //_____________________________
 void Controller::removeDwarfs()
 {
-	int size = m_players.size()-numOfPlayers;
+	int size = m_players.size() - numOfPlayers;
 	for (int i = numOfPlayers; size < m_players.size();)
-		m_players.erase(m_players.begin()+i);	
+		m_players.erase(m_players.begin() + i);
 }
 //________________________________
 bool Controller::wonLevel() const

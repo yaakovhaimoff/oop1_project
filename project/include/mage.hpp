@@ -14,6 +14,6 @@ public:
 		: MovingObjects(location, key) {}
 	~MageObject() {}
 	void collide(FireObject&)override;
-	void collide(TeleporterObject&)override;
+	void collide(TeleporterObject&)override{}
 
 };

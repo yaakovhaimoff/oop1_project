@@ -5,19 +5,15 @@
 
 // amount of player tools in the game
 const int numOfPlayers = 4;
+const int LEVELS = 3;
 
-const int AmountOfSounds = 3;
-const int GAME_SOUND = 0;
-const int CLICK_SOUND = 1;
-const int FAIL_SOUND = 2;
-
-const int AmountOfWindows = 4;
+const int AmountOfWindows = 3;
 const int MENU = 0;
 const int HELP = 1;
 const int PLAY = 2;
 const int EXIT = 3;
 
-const std::string menu_names[] = { "HELP", "PLAY", "EXIT" };
+const std::string menu_names[] = {"HELP", "PLAY", "EXIT"};
 
 // what the tiles in the game can posses
 
@@ -31,17 +27,21 @@ const int SIDE_LENGTH = 180;
 const int MenuBar = 14;
 const int PLAYER_EXIST = 2;
 
-const int teleportsConnection[] ={ 032145, 0312, 012354 };
-const int levelTimes[] = { 300, 300, 350 };
+const int teleportsConnection[] = {032145, 0312, 0123};
+const int levelTimes[] = {120, 300, 350};
 
 const std::string FontName = "font.ttf";
-const std::vector SOUNDS_NAMES = { "GameOfThrones.wav", "ClickSound.wav","FailSound.wav" };
-const std::vector NAMES = { "play.png","menu.png","help.png","king.png", "mage.png",
-							"thief.png","warrior.png","crown.png", "gate.png", "fire.png",
-							"key.png","monster.png", "teleport.png", "brickWall.png", "dwarf.png", "gift.png" };
+const std::vector SOUNDS_NAMES = {"gamePlay.wav", "menuMusic.wav", "ClickSound.wav", "FailSound.wav",
+								  "ThiefTakeKey.wav", "GrabPresent.wav", "TeleportEnter.wav",
+								  "StartEndGame.wav", "success.wav", "fire.wav"};
+const std::vector NAMES = {"play1.png", "play2.png", "play3.png", "menu.png", "help.png", "king.png", "mage.png",
+						   "thief.png", "warrior.png", "crown.png", "gate.png", "fire.png",
+						   "key.png", "monster.png", "teleport.png", "brickWall.png", "dwarf.png", "gift.png"};
 enum rcsNames
 {
-	BoardBackground,
+	BoardBackground1,
+	BoardBackground2,
+	BoardBackground3,
 	MenuBackground,
 	HelpScreen,
 	King,
@@ -58,18 +58,26 @@ enum rcsNames
 	Dwarf,
 	Gift,
 };
-enum SoundsNames {
+enum SoundsNames
+{
 	GameSound,
+	menuSound,
 	ClickSound,
-	FailSound,
+	DwarfColide,
+	ThiefTake,
+	GrabPresent,
+	TeleportEnter,
+	OpenGate,
+	KillOrk,
+	MageFire,
 };
 // the player tools in the games
 enum playersKeys
 {
-	KING = 75,    // 'K'
-	MAGE = 77,    // 'M'
+	KING = 75,	  // 'K'
+	MAGE = 77,	  // 'M'
 	WARRIOR = 87, // 'W'
-	THIEF = 84    // 'T'
+	THIEF = 84	  // 'T'
 };
 
 // what the tiles in the game can posses
