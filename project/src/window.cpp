@@ -198,7 +198,7 @@ void Window::drawPlay(sf::RenderWindow &window, const sf::Clock &clock, const sf
 	drawObjects(window, players, statics, teleports);
 	drawLevelInfo(window, clock, time, level, key);
 	window.display();
-	window.setFramerateLimit(9);
+	window.setFramerateLimit(12);
 }
 //________________________________________________
 void Window::drawObjects(sf::RenderWindow &window,
@@ -213,14 +213,14 @@ void Window::drawObjects(sf::RenderWindow &window,
 		else if (typeid(*unmovable) == typeid(CrownObject))
 			unmovable->updateSpriteRect(3, 72, 65, 50);
 		else if (typeid(*unmovable) == typeid(FireObject))
-			unmovable->updateSpriteRect(9, 22.5f, 15, 120);
+			unmovable->updateSpriteRect(9, 16, 30, 80);
 		else if (typeid(*unmovable) == typeid(KeyObject))
 			unmovable->updateSpriteRect(11, 60, 50, 60);
 		else if (typeid(*unmovable) == typeid(MonsterObject))
-			unmovable->updateSpriteRect(8, 42, 44, 60);
-		else if (typeid(*unmovable) == typeid(TimeGiftObject))
+			unmovable->updateSpriteRect(8, 40, 48, 58);
+		else if (typeid(*unmovable) == typeid(TimeGiftObject) || typeid(*unmovable) == typeid(RemoveDwarfsObject))
 			unmovable->updateSpriteRect(2, 50, 46, 60);
-			
+
 		unmovable->drawShape(window);
 	}
 
@@ -229,9 +229,7 @@ void Window::drawObjects(sf::RenderWindow &window,
 
 	for (auto &teleport : teleports)
 	{
-		if (typeid(*teleport) == typeid(TeleporterObject))
-			teleport->updateSpriteRect(2, 48, 46, 60);
-
+		teleport->updateSpriteRect(2, 48, 46, 60);
 		teleport->drawShape(window);
 	}
 }
@@ -259,11 +257,11 @@ void Window::drawLevelInfo(sf::RenderWindow &window, const sf::Clock &clock,
 	textString += std::to_string(time % 60); // time % 60 for seconds
 	timeText.setFont(m_font);
 	timeText.setString(textString);
-	timeText.setCharacterSize(30);
+	timeText.setCharacterSize(40);
 	timeText.setPosition(110, 320);
 	window.draw(timeText);
 	// key text
-	key ? textString = "Thief has key" : textString = "Thief does not has key";
+	key ? textString = "Thief has key" : textString = "Thief does not have key";
 	keyText.setFont(m_font);
 	keyText.setString(textString);
 	keyText.setCharacterSize(30);

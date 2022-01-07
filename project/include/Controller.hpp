@@ -38,6 +38,7 @@ private:
 	void restartLevel();
 	void clearObjects();
 	int getTimeForGift();
+	void removeDwarfs();
 	sf::RenderWindow m_gameWindow = { { 1920, 1080 }, "Save the king" };
 	sf::Clock m_moveClock;
 	sf::Time m_gameTime;

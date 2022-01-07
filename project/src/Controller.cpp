@@ -136,6 +136,7 @@ void Controller::moveObjects(const sf::Event &event)
 void Controller::checkCollision(MovingObjects &activePlayer)
 {
 	openTeleport(activePlayer);
+
 	for (auto &unmovable : m_statics)
 		if (activePlayer.checkCollision(*unmovable))
 			activePlayer.collide(*unmovable);
@@ -168,22 +169,31 @@ void Controller::openTeleport(MovingObjects &activePlayer)
 //_________________________________
 void Controller::handleDaedObjects()
 {
-	for (int i = 0; i < m_statics.size(); i++)
+	for (auto &unmovable : m_statics)
 	{
-		if (typeid(*m_statics[i]) == typeid(MonsterObject) && m_statics[i]->isDead())
-			m_board.addObjects(m_players, m_statics, m_teleports, m_statics[i]->getPosition(), GATE_KEY);
-		if (typeid(*m_statics[i]) == typeid(TimeGiftObject) && m_statics[i]->isDead())
+		if (typeid(*unmovable) == typeid(MonsterObject) && unmovable->isDead())
+			m_board.addObjects(m_players, m_statics, m_teleports, unmovable->getPosition(), GATE_KEY);
+		else if (typeid(*unmovable) == typeid(TimeGiftObject) && unmovable->isDead())
 			m_gameTime += sf::seconds(getTimeForGift());
+		else if (typeid(*unmovable) == typeid(RemoveDwarfsObject) && unmovable->isDead())
+			removeDwarfs();
 	}
 
 	std::erase_if(m_statics, [](auto &staticObject)
 				  { return staticObject->isDead(); });
 }
+//_____________________________
+void Controller::removeDwarfs()
+{
+	int size = m_players.size()-numOfPlayers;
+	for (int i = numOfPlayers; size < m_players.size();)
+		m_players.erase(m_players.begin()+i);	
+}
 //________________________________
 bool Controller::wonLevel() const
 {
-	for (int i = 0; i < m_statics.size(); i++)
-		if (typeid(*m_statics[i]) == typeid(CrownObject))
+	for (auto &unmovable : m_statics)
+		if (typeid(*unmovable) == typeid(CrownObject))
 			return false;
 	return true;
 }

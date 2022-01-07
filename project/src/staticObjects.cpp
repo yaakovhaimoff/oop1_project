@@ -62,8 +62,16 @@ void TeleporterObject::collide(GameObjects &other)
 	other.collide(*this);
 }
 
-// class gift
+// class time gift
 void TimeGiftObject::collide(GameObjects &other)
+{
+	if (this == &other)
+		return;
+	other.collide(*this);
+}
+
+// class remove dwarfs gift
+void RemoveDwarfsObject::collide(GameObjects &other)
 {
 	if (this == &other)
 		return;

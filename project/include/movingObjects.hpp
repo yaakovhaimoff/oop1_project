@@ -7,6 +7,8 @@
 #include "gameObjects.hpp"
 
 class TeleporterObject;
+class TimeGiftObject;
+class RemoveDwarfsObject;
 
 class MovingObjects : public GameObjects
 {
@@ -35,6 +37,7 @@ public:
     void collide(MonsterObject &) override;
     void collide(TeleporterObject &) override;
     void collide(TimeGiftObject &) override;
+	void collide(RemoveDwarfsObject &) override;
 
     enum class Direction
     {
