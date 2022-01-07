@@ -14,6 +14,7 @@ void Controller::runGame()
 		runLevel();
 		clearObjects();
 		m_board.clearBoard();
+		m_window.setIsPlaying();
 		m_numOfLevel++;
 		m_gameTime = sf::seconds(levelTimes[m_numOfLevel]);
 	}
@@ -28,8 +29,9 @@ void Controller::runLevel()
 		else
 		{
 			static sf::Clock clock;
-			m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_players, m_statics, m_teleports);
-			if (chechKingOnThrone())
+			bool key = dynamic_cast<ThiefObject *>(m_players[THIEF_BOARD_OBJECT].get())->doesThiefhasKey();
+			m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_numOfLevel, key, m_players, m_statics, m_teleports);
+			if (wonLevel())
 			{
 				clock.restart();
 				break;
@@ -111,7 +113,7 @@ void Controller::decideActivePlayer()
 {
 	m_activePlayer < numOfPlayers - 1 ? m_activePlayer++ : m_activePlayer = 0;
 }
-//______________________________________________
+//_______________________________________________
 void Controller::isPlaying(const sf::Event &event)
 {
 	if (m_window.isPlaying())
@@ -121,7 +123,7 @@ void Controller::isPlaying(const sf::Event &event)
 		handleDaedObjects();
 	}
 }
-//___________________________________________________
+//__________________________________________________
 void Controller::moveObjects(const sf::Event &event)
 {
 	const auto deltaTime = m_moveClock.restart();
@@ -176,8 +178,8 @@ void Controller::handleDaedObjects()
 	std::erase_if(m_statics, [](auto &staticObject)
 				  { return staticObject->isDead(); });
 }
-//_______________________________________
-bool Controller::chechKingOnThrone() const
+//________________________________
+bool Controller::wonLevel() const
 {
 	for (int i = 0; i < m_statics.size(); i++)
 		if (typeid(*m_statics[i]) == typeid(CrownObject))
@@ -187,5 +189,5 @@ bool Controller::chechKingOnThrone() const
 //______________________________
 int Controller::getTimeForGift()
 {
-	return rand() % 60 + (-60);
+	return (rand() % 30 + (-30));
 }

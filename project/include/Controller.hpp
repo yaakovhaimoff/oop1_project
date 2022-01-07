@@ -34,7 +34,7 @@ private:
 	void openTeleport(MovingObjects &activePlayer);
 	void handleDaedObjects();
 	bool checkGameTime(const sf::Clock&)const;
-	bool chechKingOnThrone()const;
+	bool wonLevel()const;
 	void restartLevel();
 	void clearObjects();
 	int getTimeForGift();

@@ -29,6 +29,9 @@ public:
 	GameObjects(const sf::Vector2f&, const int);
 	void drawShape(sf::RenderWindow&)const;
 	sf::Vector2f getPosition()const;
+	void setSprite(const sf::Vector2f&);
+	void setSpriteRect(const sf::IntRect&);
+	void setMove(const sf::Vector2f&);
 	char getKey();
 	bool checkCollision(const GameObjects&) const;
 
@@ -50,7 +53,7 @@ public:
 
 	virtual ~GameObjects() = default;
 
-protected:
+private:
 	sf::Sprite m_shape;
 	char m_key;
 };

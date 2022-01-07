@@ -16,6 +16,7 @@ public:
 		: MovingObjects(location, key), m_hasKey(0) {}
 	~ThiefObject() {};
 	bool thiefHasKey()const { return m_hasKey; }
+	bool doesThiefhasKey() const;
 
 	void collide(GateObject&)override;
 	void collide(KeyObject&)override;

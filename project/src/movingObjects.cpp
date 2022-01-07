@@ -27,16 +27,16 @@ namespace
 //_________________________________________________________________________
 void MovingObjects::move(const sf::Time &deltaTime, const sf::Event &event)
 {
-	updateAnimation(event);
-	m_prev_location = m_shape.getPosition();
-	m_shape.move(dirFromKey() * 170.f * deltaTime.asSeconds());
-}
-//_________________________________________________________
-void MovingObjects::updateAnimation(const sf::Event &event)
-{
 	getDir(event);
+	updateAnimation();
+	m_prev_location = getPosition();
+	setMove(dirFromKey() * 170.f * deltaTime.asSeconds());
+}
+//____________________________________
+void MovingObjects::updateAnimation()
+{
 	if (m_keyDir != m_row)
-		m_shape.setTextureRect(sf::IntRect(0, m_row * 32, 32, 29));
+		setSpriteRect(sf::IntRect(0, m_row * 32, 32, 29));
 	updateCol();
 }
 //_______________________________________________________
@@ -61,7 +61,7 @@ void MovingObjects::getDir(const sf::Event &event)
 //_____________________________
 void MovingObjects::updateCol()
 {
-	m_shape.setTextureRect(sf::IntRect(32 * m_col, m_row * 32, 32, 29));
+	setSpriteRect(sf::IntRect(32 * m_col, m_row * 32, 32, 29));
 	m_col > 2 ? m_col = 0 : m_col++;
 }
 //____________________________________________
@@ -77,5 +77,5 @@ void MovingObjects::collide(FireObject &) { setPosition(); }
 void MovingObjects::collide(GateObject &) { setPosition(); }
 void MovingObjects::collide(KeyObject &) {}
 void MovingObjects::collide(MonsterObject &) { setPosition(); }
-void MovingObjects::collide(TeleporterObject &other) { m_shape.setPosition(other.getConnectedTeleportLoc()); }
+void MovingObjects::collide(TeleporterObject &other) { setSprite(other.getConnectedTeleportLoc()); }
 void MovingObjects::collide(GiftObject &other) { other.setIsDead(); }

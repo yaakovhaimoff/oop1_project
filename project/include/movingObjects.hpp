@@ -12,12 +12,12 @@ class MovingObjects : public GameObjects
 {
 public:
     MovingObjects(const sf::Vector2f &location, const int key)
-        : GameObjects(location, key) {}
+        : GameObjects(location, key), m_keyDir(0), m_row(0), m_col(0) {}
     virtual void move(const sf::Time &, const sf::Event &);
-    void updateAnimation(const sf::Event &);
+    void updateAnimation();
     void getDir(const sf::Event &);
     void updateCol();
-    void setPosition() { m_shape.setPosition(m_prev_location); }
+    void setPosition() { setSprite(m_prev_location); }
     sf::Vector2f getPrevPosition() const { return m_prev_location; }
 
     void collide(GameObjects &) override;
@@ -47,7 +47,7 @@ public:
 
 private:
     sf::Vector2f m_prev_location;
-    int m_keyDir = 0;
-    int m_row = 0;
-    int m_col = 0;
+    int m_keyDir;
+    int m_row;
+    int m_col;
 };

@@ -31,9 +31,8 @@ public:
 	void clearBoard();
 
 private:
-	void readBoardFile(const int);
-	void connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &);
+	void readBoardFile();
+	void connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &, const int);
 	std::ifstream m_boardSrcFiles;
 	std::vector<std::string> m_level;
-	int m_levelNum = 0;
 };

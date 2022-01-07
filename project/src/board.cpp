@@ -8,12 +8,11 @@ void Board::setObjectsFromBoard(std::vector<std::unique_ptr<MovingObjects>> &pla
 								std::vector<std::unique_ptr<StaticObjects>> &statics,
 								std::vector<std::unique_ptr<TeleporterObject>> &teleports, const int level)
 {
-	m_levelNum = level;
-	readBoardFile(level);
+	readBoardFile();
 	sendBoardKeysToObjects(players, statics, teleports, level);
 }
-//________________________________________
-void Board::readBoardFile(const int level)
+//_________________________
+void Board::readBoardFile()
 {
 	for (auto boardLine = std::string(); std::getline(m_boardSrcFiles, boardLine) && boardLine.compare("") != 0;)
 		m_level.push_back(boardLine);
@@ -23,8 +22,6 @@ void Board::sendBoardKeysToObjects(std::vector<std::unique_ptr<MovingObjects>> &
 								   std::vector<std::unique_ptr<StaticObjects>> &statics,
 								   std::vector<std::unique_ptr<TeleporterObject>> &teleports, const int level)
 {
-	if (level != m_levelNum)
-		m_level.clear();
 	sf::Vector2f boardCharPosition;
 	players.resize(4);
 	for (int i = 0; i < m_level.size(); i++)
@@ -37,7 +34,7 @@ void Board::sendBoardKeysToObjects(std::vector<std::unique_ptr<MovingObjects>> &
 			addObjects(players, statics, teleports, boardCharPosition, c);
 		}
 	}
-	connectToTeleports(teleports);
+	connectToTeleports(teleports, level);
 }
 // returning if the file has ended
 // the games will run until the end of file
@@ -109,10 +106,10 @@ void Board::addObjects(std::vector<std::unique_ptr<MovingObjects>> &players,
 		break;
 	}
 }
-//_______________________________________________________________________________________
-void Board::connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &teleports)
+//________________________________________________________________________________________________________
+void Board::connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &teleports, const int level)
 {
-	int index = teleportsConnection[m_levelNum];
+	int index = teleportsConnection[level];
 	for (int i = 0; i < teleports.size(); i++)
 	{
 		teleports[i]->setConnectedTeleport(teleports[index % 10]->getPosition());

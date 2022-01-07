@@ -32,7 +32,7 @@ const int MenuBar = 14;
 const int PLAYER_EXIST = 2;
 
 const int teleportsConnection[] ={ 032145, 0312, 012354 };
-const int levelTimes[] = { 10, 300, 350 };
+const int levelTimes[] = { 300, 300, 350 };
 
 const std::string FontName = "font.ttf";
 const std::vector SOUNDS_NAMES = { "GameOfThrones.wav", "ClickSound.wav","FailSound.wav" };

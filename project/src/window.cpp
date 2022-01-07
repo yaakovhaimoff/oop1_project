@@ -6,7 +6,7 @@ Window::Window()
 	setFont();
 	setMenu();
 	setHelp();
-	//this->setSound();
+	// setSound();
 	setPlay();
 }
 //____________________
@@ -78,8 +78,9 @@ void Window::setPlay()
 	m_gameSprite.setTexture(*(m_texture));
 	m_gameSprite.setScale(1, (float)1.4);
 	// setting the inforamation rectangle
-	m_infoRect = sf::RectangleShape({200, 400});
-	m_infoRect.setPosition(150, 200);
+	// m_infoRect = sf::RectangleShape({165, 300});
+	m_infoRect = sf::RectangleShape({280, 280});
+	m_infoRect.setPosition(100, 200);
 	m_infoRect.setOutlineColor(sf::Color::Black);
 	m_infoRect.setOutlineThickness(4);
 	m_infoRect.setFillColor(sf::Color(192, 192, 192, 50));
@@ -186,8 +187,8 @@ void Window::drawHelp(sf::RenderWindow &window) const
 	window.draw(m_helpText);
 	window.display();
 }
-//___________________________________________________________________________________________
-void Window::drawPlay(sf::RenderWindow &window, const sf::Clock &clock, const sf::Time &time,
+//___________________________________________________________________________________________________________________________
+void Window::drawPlay(sf::RenderWindow &window, const sf::Clock &clock, const sf::Time &time, const int level, const bool key,
 					  const std::vector<std::unique_ptr<MovingObjects>> &players,
 					  const std::vector<std::unique_ptr<StaticObjects>> &statics,
 					  const std::vector<std::unique_ptr<TeleporterObject>> &teleports) const
@@ -195,9 +196,9 @@ void Window::drawPlay(sf::RenderWindow &window, const sf::Clock &clock, const sf
 	window.clear();
 	window.draw(m_gameSprite);
 	drawObjects(window, players, statics, teleports);
-	drawLevelInfo(window, clock, time);
+	drawLevelInfo(window, clock, time, level, key);
 	window.display();
-	window.setFramerateLimit(20);
+	window.setFramerateLimit(15);
 }
 //________________________________________________
 void Window::drawObjects(sf::RenderWindow &window,
@@ -206,30 +207,62 @@ void Window::drawObjects(sf::RenderWindow &window,
 						 const std::vector<std::unique_ptr<TeleporterObject>> &teleports) const
 {
 	for (auto &unmovable : statics)
+	{
+		if (typeid(*unmovable) == typeid(KeyObject))
+			dynamic_cast<KeyObject *>(unmovable.get())->updateSpriteRect();
+		else if (typeid(*unmovable) == typeid(CrownObject))
+			dynamic_cast<CrownObject *>(unmovable.get())->updateSpriteRect();
+
 		unmovable->drawShape(window);
+	}
 
 	for (auto &movable : players)
-			movable->drawShape(window);
+		movable->drawShape(window);
 
 	for (auto &teleport : teleports)
+	{
+		if (typeid(*teleport) == typeid(TeleporterObject))
+		{
+			dynamic_cast<TeleporterObject *>(teleport.get())->updateSpriteRect();
+		}
+
 		teleport->drawShape(window);
+	}
 }
-//___________________________________________________________________________________________________________
-void Window::drawLevelInfo(sf::RenderWindow &window, const sf::Clock &clock, const sf::Time &levelTime) const
+//__________________________________________________________________________
+void Window::drawLevelInfo(sf::RenderWindow &window, const sf::Clock &clock,
+						   const sf::Time &levelTime, const int level, const bool key) const
 {
+	// information on board rectangle
 	window.draw(m_infoRect);
+	// number of level text
+	std::string textString = "Level: ";
+	textString += std::to_string(level + 1);
+	sf::Text levelText, timeText, keyText;
+	levelText.setFont(m_font);
+	levelText.setCharacterSize(50);
+	levelText.setPosition(110, 220);
+	levelText.setString(textString);
+	window.draw(levelText);
+	// time text
 	sf::Time gameTime = levelTime - clock.getElapsedTime();
 	int time = gameTime.asSeconds();
-	std::string timeString = "Time 0";
-	timeString += std::to_string(time / 60); // time / 60 for minutes
-	timeString += " : ";
-	timeString += std::to_string(time % 60); // time % 60 for seconds
-	sf::Text text;
-	text.setFont(m_font);
-	text.setPosition(160, 220);
-	text.setCharacterSize(30);
-	text.setString(timeString);
-	window.draw(text);
+	textString = "Time 0";
+	textString += std::to_string(time / 60); // time / 60 for minutes
+	textString += " : ";
+	textString += std::to_string(time % 60); // time % 60 for seconds
+	timeText.setFont(m_font);
+	timeText.setString(textString);
+	timeText.setCharacterSize(30);
+	timeText.setPosition(110, 320);
+	window.draw(timeText);
+	// key text
+	key ? textString = "Thief has key" : textString = "Thief does not has key";
+	keyText.setFont(m_font);
+	keyText.setString(textString);
+	keyText.setCharacterSize(30);
+	keyText.setPosition(110, 400);
+	window.draw(keyText);
 }
 
 //___________________________
@@ -241,4 +274,10 @@ bool Window::isPlaying() const
 bool Window::isExit() const
 {
 	return m_currentWindow[EXIT];
+}
+//_________________________
+void Window::setIsPlaying()
+{
+	m_currentWindow[PLAY] = false;
+	m_currentWindow[MENU] = true;
 }

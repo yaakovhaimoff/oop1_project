@@ -18,3 +18,8 @@ void ThiefObject::collide(KeyObject &other)
 		other.setIsDead();
 	m_hasKey++;
 }
+//_______________________________________
+bool ThiefObject::doesThiefhasKey() const
+{
+	return m_hasKey > 0;
+}

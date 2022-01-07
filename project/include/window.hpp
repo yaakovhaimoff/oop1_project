@@ -16,12 +16,13 @@ class Window
 public:
 	Window();
 	void drawWindow(sf::RenderWindow&)const;
-	void drawPlay(sf::RenderWindow&, const sf::Clock&, const sf::Time&,
+	void drawPlay(sf::RenderWindow&, const sf::Clock&, const sf::Time&, const int, const bool,
 		const std::vector<std::unique_ptr<MovingObjects>>&,
 		const std::vector<std::unique_ptr<StaticObjects>>&,
 		const std::vector<std::unique_ptr<TeleporterObject>>&)const;
 	void handleClickInWindow(const sf::Vector2f&);
 	bool isPlaying()const;
+	void setIsPlaying();
 	bool isExit()const;
 	void catchMouseEvent(sf::RenderWindow&, const sf::Event&);
 
@@ -41,7 +42,7 @@ private:
 		const std::vector<std::unique_ptr<MovingObjects>>&,
 		const std::vector<std::unique_ptr<StaticObjects>>&,
 		const std::vector<std::unique_ptr<TeleporterObject>>&)const;
-	void drawLevelInfo(sf::RenderWindow&, const sf::Clock&, const sf::Time&)const;
+	void drawLevelInfo(sf::RenderWindow&, const sf::Clock&, const sf::Time&, const int, const bool)const;
 	bool m_currentWindow[AmountOfWindows] = { true, false, false, false };
 	sf::Sound m_sounds[AmountOfSounds];
 	sf::Sprite m_background[AmountOfWindows - 1];
