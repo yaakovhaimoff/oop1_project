@@ -78,4 +78,4 @@ void MovingObjects::collide(GateObject &) { setPosition(); }
 void MovingObjects::collide(KeyObject &) {}
 void MovingObjects::collide(MonsterObject &) { setPosition(); }
 void MovingObjects::collide(TeleporterObject &other) { setSprite(other.getConnectedTeleportLoc()); }
-void MovingObjects::collide(GiftObject &other) { other.setIsDead(); }
+void MovingObjects::collide(TimeGiftObject &other) { other.setIsDead(); }

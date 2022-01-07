@@ -2,7 +2,6 @@
 
 //___________________________________________________________________
 GameObjects::GameObjects(const sf::Vector2f &location, const int key)
-	: m_key(key)
 {
 	auto m_texture = Resources::pToRsc().getTexture(key);
 	m_shape.setTexture(*m_texture);
@@ -37,11 +36,6 @@ void GameObjects::setMove(const sf::Vector2f &offset)
 void GameObjects::setSpriteRect(const sf::IntRect &update)
 {
 	m_shape.setTextureRect(update);
-}
-//________________________
-char GameObjects::getKey()
-{
-	return m_key;
 }
 //______________________________________________________________
 bool GameObjects::checkCollision(const GameObjects &other) const

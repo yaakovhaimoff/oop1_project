@@ -26,7 +26,8 @@ class WallObject : public StaticObjects
 {
 public:
 	WallObject(const sf::Vector2f &location, const char key)
-		: StaticObjects(location, key) {}
+		: StaticObjects(location, key), m_col(0) {}
+	void updateSpriteRect();
 
 	void collide(GameObjects &other) override;
 	void collide(KingObject &) override {}
@@ -41,7 +42,10 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
-	void collide(GiftObject &) override {}
+	void collide(TimeGiftObject &) override {}
+
+private:
+	int m_col;
 };
 
 //______________________________________
@@ -65,7 +69,7 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
-	void collide(GiftObject &) override {}
+	void collide(TimeGiftObject &) override {}
 
 private:
 	int m_col;
@@ -76,7 +80,8 @@ class FireObject : public StaticObjects
 {
 public:
 	FireObject(const sf::Vector2f &location, const char key)
-		: StaticObjects(location, key) {}
+		: StaticObjects(location, key), m_col(0) {}
+	void updateSpriteRect();
 
 	void collide(GameObjects &) override;
 	void collide(KingObject &) override {}
@@ -91,7 +96,10 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
-	void collide(GiftObject &) override {}
+	void collide(TimeGiftObject &) override {}
+
+private:
+	int m_col;
 };
 
 //_____________________________________
@@ -114,7 +122,7 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
-	void collide(GiftObject &) override {}
+	void collide(TimeGiftObject &) override {}
 };
 
 //____________________________________
@@ -138,7 +146,7 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
-	void collide(GiftObject &) override {}
+	void collide(TimeGiftObject &) override {}
 
 private:
 	int m_col;
@@ -149,7 +157,8 @@ class MonsterObject : public StaticObjects
 {
 public:
 	MonsterObject(const sf::Vector2f &location, const char key)
-		: StaticObjects(location, key) {}
+		: StaticObjects(location, key), m_col(0) {}
+	void updateSpriteRect();
 
 	void collide(GameObjects &) override;
 	void collide(KingObject &) override {}
@@ -164,7 +173,10 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
-	void collide(GiftObject &) override {}
+	void collide(TimeGiftObject &) override {}
+
+private:
+	int m_col;
 };
 
 //___________________________________________
@@ -194,7 +206,7 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
-	void collide(GiftObject &) override {}
+	void collide(TimeGiftObject &) override {}
 
 private:
 	sf::Vector2f m_connectedTeleport;
@@ -204,11 +216,12 @@ private:
 };
 
 //___________________________________________
-class GiftObject : public StaticObjects
+class TimeGiftObject : public StaticObjects
 {
 public:
-	GiftObject(const sf::Vector2f &location, const char key)
-		: StaticObjects(location, key) {}
+	TimeGiftObject(const sf::Vector2f &location, const char key)
+		: StaticObjects(location, key), m_col(0) {}
+	void updateSpriteRect();
 
 	void collide(GameObjects &) override;
 	void collide(KingObject &) override {}
@@ -223,5 +236,8 @@ public:
 	void collide(KeyObject &) override {}
 	void collide(MonsterObject &) override {}
 	void collide(TeleporterObject &) override {}
-	void collide(GiftObject &) override {}
+	void collide(TimeGiftObject &) override {}
+
+private:
+	int m_col;
 };

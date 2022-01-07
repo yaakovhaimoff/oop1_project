@@ -34,7 +34,7 @@ public:
     void collide(KeyObject &) override;
     void collide(MonsterObject &) override;
     void collide(TeleporterObject &) override;
-    void collide(GiftObject &) override;
+    void collide(TimeGiftObject &) override;
 
     enum class Direction
     {

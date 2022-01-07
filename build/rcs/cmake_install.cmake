@@ -1,4 +1,4 @@
-# Install script for directory: /Users/yaakovhaimoff/Desktop/school/year2/semester1/oop1/exercises/project/oop1_project/project/rcs
+# Install script for directory: /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

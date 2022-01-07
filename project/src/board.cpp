@@ -101,7 +101,7 @@ void Board::addObjects(std::vector<std::unique_ptr<MovingObjects>> &players,
 		break;
 
 	case GIFT:
-		statics.push_back(std::make_unique<GiftObject>(location, Gift));
+		statics.push_back(std::make_unique<TimeGiftObject>(location, Gift));
 	default:
 		break;
 	}

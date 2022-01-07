@@ -21,7 +21,7 @@ class GateObject;
 class KeyObject;
 class MonsterObject;
 class TeleporterObject;
-class GiftObject;
+class TimeGiftObject;
 
 class GameObjects
 {
@@ -32,7 +32,6 @@ public:
 	void setSprite(const sf::Vector2f&);
 	void setSpriteRect(const sf::IntRect&);
 	void setMove(const sf::Vector2f&);
-	char getKey();
 	bool checkCollision(const GameObjects&) const;
 
 	virtual void collide(GameObjects& ) = 0;
@@ -49,11 +48,10 @@ public:
 	virtual void collide(KeyObject& ) = 0;
 	virtual void collide(MonsterObject& ) = 0;
 	virtual void collide(TeleporterObject& ) = 0;
-	virtual void collide(GiftObject& ) = 0;
+	virtual void collide(TimeGiftObject& ) = 0;
 
 	virtual ~GameObjects() = default;
 
 private:
 	sf::Sprite m_shape;
-	char m_key;
 };

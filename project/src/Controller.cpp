@@ -30,7 +30,8 @@ void Controller::runLevel()
 		{
 			static sf::Clock clock;
 			bool key = dynamic_cast<ThiefObject *>(m_players[THIEF_BOARD_OBJECT].get())->doesThiefhasKey();
-			m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_numOfLevel, key, m_players, m_statics, m_teleports);
+			m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_numOfLevel,
+							  key, m_players, m_statics, m_teleports);
 			if (wonLevel())
 			{
 				clock.restart();
@@ -171,7 +172,7 @@ void Controller::handleDaedObjects()
 	{
 		if (typeid(*m_statics[i]) == typeid(MonsterObject) && m_statics[i]->isDead())
 			m_board.addObjects(m_players, m_statics, m_teleports, m_statics[i]->getPosition(), GATE_KEY);
-		if (typeid(*m_statics[i]) == typeid(GiftObject) && m_statics[i]->isDead())
+		if (typeid(*m_statics[i]) == typeid(TimeGiftObject) && m_statics[i]->isDead())
 			m_gameTime += sf::seconds(getTimeForGift());
 	}
 

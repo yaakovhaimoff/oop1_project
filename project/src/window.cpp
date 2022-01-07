@@ -76,7 +76,7 @@ void Window::setPlay()
 {
 	auto m_texture = Resources::pToRsc().getTexture(BoardBackground);
 	m_gameSprite.setTexture(*(m_texture));
-	m_gameSprite.setScale(1, (float)1.4);
+	m_gameSprite.setScale(1, (float)1);
 	// setting the inforamation rectangle
 	// m_infoRect = sf::RectangleShape({165, 300});
 	m_infoRect = sf::RectangleShape({280, 280});
@@ -198,7 +198,7 @@ void Window::drawPlay(sf::RenderWindow &window, const sf::Clock &clock, const sf
 	drawObjects(window, players, statics, teleports);
 	drawLevelInfo(window, clock, time, level, key);
 	window.display();
-	window.setFramerateLimit(15);
+	window.setFramerateLimit(9);
 }
 //________________________________________________
 void Window::drawObjects(sf::RenderWindow &window,
@@ -212,6 +212,14 @@ void Window::drawObjects(sf::RenderWindow &window,
 			dynamic_cast<KeyObject *>(unmovable.get())->updateSpriteRect();
 		else if (typeid(*unmovable) == typeid(CrownObject))
 			dynamic_cast<CrownObject *>(unmovable.get())->updateSpriteRect();
+		else if (typeid(*unmovable) == typeid(TimeGiftObject))
+			dynamic_cast<TimeGiftObject *>(unmovable.get())->updateSpriteRect();
+		else if (typeid(*unmovable) == typeid(WallObject))
+			dynamic_cast<WallObject *>(unmovable.get())->updateSpriteRect();
+		else if (typeid(*unmovable) == typeid(FireObject))
+			dynamic_cast<FireObject *>(unmovable.get())->updateSpriteRect();
+		else if (typeid(*unmovable) == typeid(MonsterObject))
+			dynamic_cast<MonsterObject *>(unmovable.get())->updateSpriteRect();
 
 		unmovable->drawShape(window);
 	}
