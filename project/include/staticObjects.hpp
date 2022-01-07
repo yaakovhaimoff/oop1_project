@@ -12,13 +12,15 @@ class StaticObjects : public GameObjects
 {
 public:
 	StaticObjects(const sf::Vector2f &location, const int key)
-		: GameObjects(location, key), m_isDeaed(false) {}
+		: GameObjects(location, key), m_isDeaed(false), m_col(0) {}
 	bool isDead() { return m_isDeaed; }
 	void setIsDead() { m_isDeaed = true; }
 	void setPOsition(const sf::Vector2f &location) { setSprite(location); }
+	void updateSpriteRect(const int, const float, const float, const float);
 
 private:
 	bool m_isDeaed;
+	int m_col;
 };
 
 //_____________________________________
@@ -27,7 +29,6 @@ class WallObject : public StaticObjects
 public:
 	WallObject(const sf::Vector2f &location, const char key)
 		: StaticObjects(location, key), m_col(0) {}
-	void updateSpriteRect();
 
 	void collide(GameObjects &other) override;
 	void collide(KingObject &) override {}
@@ -54,7 +55,6 @@ class CrownObject : public StaticObjects
 public:
 	CrownObject(const sf::Vector2f &location, const char key)
 		: StaticObjects(location, key), m_col(0) {}
-	void updateSpriteRect();
 
 	void collide(GameObjects &) override;
 	void collide(KingObject &) override {}
@@ -81,7 +81,6 @@ class FireObject : public StaticObjects
 public:
 	FireObject(const sf::Vector2f &location, const char key)
 		: StaticObjects(location, key), m_col(0) {}
-	void updateSpriteRect();
 
 	void collide(GameObjects &) override;
 	void collide(KingObject &) override {}
@@ -131,7 +130,6 @@ class KeyObject : public StaticObjects
 public:
 	KeyObject(const sf::Vector2f &location, const char key)
 		: StaticObjects(location, key), m_col(0) {}
-	void updateSpriteRect();
 
 	void collide(GameObjects &) override;
 	void collide(KingObject &) override {}
@@ -158,7 +156,6 @@ class MonsterObject : public StaticObjects
 public:
 	MonsterObject(const sf::Vector2f &location, const char key)
 		: StaticObjects(location, key), m_col(0) {}
-	void updateSpriteRect();
 
 	void collide(GameObjects &) override;
 	void collide(KingObject &) override {}
@@ -191,7 +188,6 @@ public:
 	int getNextTelIndex() const { return m_nextTelIndex; }
 	bool isTelOpen() const { return m_open; }
 	void setLock(const bool lock) { m_open = lock; }
-	void updateSpriteRect();
 
 	void collide(GameObjects &) override;
 	void collide(KingObject &) override {}
@@ -221,7 +217,6 @@ class TimeGiftObject : public StaticObjects
 public:
 	TimeGiftObject(const sf::Vector2f &location, const char key)
 		: StaticObjects(location, key), m_col(0) {}
-	void updateSpriteRect();
 
 	void collide(GameObjects &) override;
 	void collide(KingObject &) override {}

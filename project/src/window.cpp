@@ -208,19 +208,19 @@ void Window::drawObjects(sf::RenderWindow &window,
 {
 	for (auto &unmovable : statics)
 	{
-		if (typeid(*unmovable) == typeid(KeyObject))
-			dynamic_cast<KeyObject *>(unmovable.get())->updateSpriteRect();
+		if (typeid(*unmovable) == typeid(WallObject))
+			unmovable->updateSpriteRect(0, 0, 55, 60);
 		else if (typeid(*unmovable) == typeid(CrownObject))
-			dynamic_cast<CrownObject *>(unmovable.get())->updateSpriteRect();
-		else if (typeid(*unmovable) == typeid(TimeGiftObject))
-			dynamic_cast<TimeGiftObject *>(unmovable.get())->updateSpriteRect();
-		else if (typeid(*unmovable) == typeid(WallObject))
-			dynamic_cast<WallObject *>(unmovable.get())->updateSpriteRect();
+			unmovable->updateSpriteRect(3, 72, 65, 50);
 		else if (typeid(*unmovable) == typeid(FireObject))
-			dynamic_cast<FireObject *>(unmovable.get())->updateSpriteRect();
+			unmovable->updateSpriteRect(9, 22.5f, 15, 120);
+		else if (typeid(*unmovable) == typeid(KeyObject))
+			unmovable->updateSpriteRect(11, 60, 50, 60);
 		else if (typeid(*unmovable) == typeid(MonsterObject))
-			dynamic_cast<MonsterObject *>(unmovable.get())->updateSpriteRect();
-
+			unmovable->updateSpriteRect(8, 42, 44, 60);
+		else if (typeid(*unmovable) == typeid(TimeGiftObject))
+			unmovable->updateSpriteRect(2, 50, 46, 60);
+			
 		unmovable->drawShape(window);
 	}
 
@@ -230,9 +230,7 @@ void Window::drawObjects(sf::RenderWindow &window,
 	for (auto &teleport : teleports)
 	{
 		if (typeid(*teleport) == typeid(TeleporterObject))
-		{
-			dynamic_cast<TeleporterObject *>(teleport.get())->updateSpriteRect();
-		}
+			teleport->updateSpriteRect(2, 48, 46, 60);
 
 		teleport->drawShape(window);
 	}
