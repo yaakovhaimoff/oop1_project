@@ -39,10 +39,11 @@ const int levelTimes[LEVELS] = {120, 300, 350};
 const std::string FontName = "font.ttf";
 const std::vector SOUNDS_NAMES = {"gamePlay.wav", "menuMusic.wav", "ClickSound.wav", "FailSound.wav",
 								  "ThiefTakeKey.wav", "GrabPresent.wav", "TeleportEnter.wav",
-								  "StartEndGame.wav", "success.wav", "fire.wav"};
+								  "OpenGate.wav", "WinLevel.wav", "fire.wav","OrkDeathSoundEffect.wav"};
 const std::vector NAMES = {"play1.png", "play2.png", "play3.png", "menu.png", "help.png", "king.png", "mage.png",
 						   "thief.png", "warrior.png", "crown.png", "gate.png", "fire.png",
-						   "key.png", "monster.png", "teleport.png", "brickWall.png", "dwarf.png", "gift.png"};
+						   "key.png", "monster.png", "teleport.png", "brickWall.png", "dwarf.png", "gift.png"
+						   "pause.png", "paused.png"};
 enum rcsNames
 {
 	BoardBackground1,
@@ -63,6 +64,8 @@ enum rcsNames
 	Wall,
 	Dwarf,
 	Gift,
+	Pause,
+	Paused,
 };
 enum SoundsNames
 {
@@ -74,8 +77,9 @@ enum SoundsNames
 	GrabPresent,
 	TeleportEnter,
 	OpenGate,
-	KillOrk,
+	LevelWin,
 	MageFire,
+	KillOrk,
 };
 // the player tools in the games
 enum playersKeys

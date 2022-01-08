@@ -31,10 +31,11 @@ private:
 	void decideActivePlayer();
 	void mouseEventMoved(const sf::Event&);
 	void isPlaying(const sf::Event&);
-	void moveObjects(const sf::Event&);
+	void movePlayerObject(const sf::Event&, const sf::Time&);
+	void moveDwarfsObjects(const sf::Event&, const sf::Time&);
 	void checkDwarfCollision(const sf::Event&);
 	void checkPlayerCollision(MovingObjects&);
-	void openTeleport(MovingObjects &activePlayer);
+	void checkToopenTeleport(MovingObjects &activePlayer);
 	void handleDaedObjects();
 	bool wonLevel()const;
 	void restartLevel();

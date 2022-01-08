@@ -120,44 +120,47 @@ void Controller::decideActivePlayer()
 {
 	m_activePlayer < numOfPlayers - 1 ? m_activePlayer++ : m_activePlayer = 0;
 }
-//_______________________________________________
+//________________________________________________
 void Controller::isPlaying(const sf::Event &event)
 {
 	if (m_window.isPlaying())
 	{
-		moveObjects(event);
+		const auto deltaTime = m_moveClock.restart();
+		movePlayerObject(event, deltaTime);
+		moveDwarfsObjects(event, deltaTime);
+		checkToopenTeleport(*m_players[m_activePlayer]);
 		checkPlayerCollision(*m_players[m_activePlayer]);
 		checkDwarfCollision(event);
 		handleDaedObjects();
 	}
 }
-//__________________________________________________
-void Controller::moveObjects(const sf::Event &event)
+//__________________________________________________________________________________
+void Controller::movePlayerObject(const sf::Event &event, const sf::Time &deltaTime)
 {
-	const auto deltaTime = m_moveClock.restart();
 	m_players[m_activePlayer]->move(deltaTime, event);
-	static sf::Clock clock;
-
+}
+//___________________________________________________________________________________
+void Controller::moveDwarfsObjects(const sf::Event &event, const sf::Time &deltaTime)
+{
+	static sf::Clock canDwarfMove;
 	for (int i = numOfPlayers; i < m_players.size(); i++)
 	{
-		m_players[i]->move(deltaTime, event);
-		if (clock.getElapsedTime().asSeconds() > 1.0f)
+		if (canDwarfMove.getElapsedTime().asSeconds() > 1.5f)
 		{
 			dynamic_cast<DwarfObject *>(m_players[i].get())->setDirection();
 			m_changeDwarfDir = true;
 		}
+		m_players[i]->move(deltaTime, event);
 	}
 	if (m_changeDwarfDir)
 	{
 		m_changeDwarfDir = false;
-		clock.restart();
+		canDwarfMove.restart();
 	}
 }
-//____________________________________________________
+//________________________________________________________________
 void Controller::checkPlayerCollision(MovingObjects &activePlayer)
 {
-	openTeleport(activePlayer);
-
 	for (auto &unmovable : m_statics)
 		if (activePlayer.checkCollision(*unmovable))
 			activePlayer.collide(*unmovable);
@@ -174,7 +177,7 @@ void Controller::checkPlayerCollision(MovingObjects &activePlayer)
 			m_teleportIndex = teleports->getNextTelIndex();
 		}
 }
-//___________________________________________________________
+//__________________________________________________________
 void Controller::checkDwarfCollision(const sf::Event &event)
 {
 	for (int i = numOfPlayers; i < m_players.size(); i++)
@@ -182,8 +185,8 @@ void Controller::checkDwarfCollision(const sf::Event &event)
 			if (m_players[i]->checkCollision(*m_statics[j]))
 				m_players[i]->collide(*m_statics[j]);
 }
-//________________________________________________________
-void Controller::openTeleport(MovingObjects &activePlayer)
+//_______________________________________________________________
+void Controller::checkToopenTeleport(MovingObjects &activePlayer)
 {
 	// while the player is on the teleport, the teleport stays closed,
 	//  and the collision is not checked
@@ -191,7 +194,7 @@ void Controller::openTeleport(MovingObjects &activePlayer)
 		return;
 	m_teleports[m_teleportIndex]->setLock(true);
 }
-//_________________________________
+//__________________________________
 void Controller::handleDaedObjects()
 {
 	for (auto &unmovable : m_statics)

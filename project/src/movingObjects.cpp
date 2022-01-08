@@ -26,12 +26,20 @@ namespace
 }
 //_______________________________________________
  sf::Vector2f MovingObjects::getDirFromKey()const { return dirFromKey(); }
-//____________________________________
+//___________________________________
 void MovingObjects::updateAnimation()
 {
-	if (m_keyDir != m_row)
-		setSpriteRect(sf::IntRect(0, m_row * 32, 32, 29));
-	updateCol();
+	setSpriteRect(sf::IntRect(32, m_row * 32, 32, 32));
+}
+//_____________________________
+void MovingObjects::updateCol()
+{
+	while (m_col < 3)
+	{
+		setSpriteRect(sf::IntRect(m_col*32, m_row * 32, 32, 32));
+		++m_col;
+	}
+	m_col > 3 ? m_col = 0 : ++m_col;
 }
 //_______________________________________________________
 void MovingObjects::getDir(const sf::Event &event)
@@ -40,23 +48,28 @@ void MovingObjects::getDir(const sf::Event &event)
 	{
 	case sf::Keyboard::Down:
 		m_row = 0;
+		updateAnimation();
+		updateCol();
 		break;
 	case sf::Keyboard::Left:
 		m_row = 1;
+		updateAnimation();
+		updateCol();
 		break;
 	case sf::Keyboard::Right:
 		m_row = 2;
+		updateAnimation();
+		updateCol();
 		break;
 	case sf::Keyboard::Up:
 		m_row = 3;
+		updateAnimation();
+		updateCol();
+		break;
+	default:
+		updateAnimation();
 		break;
 	}
-}
-//_____________________________
-void MovingObjects::updateCol()
-{
-	setSpriteRect(sf::IntRect(32 * m_col, m_row * 32, 32, 29));
-	m_col > 2 ? m_col = 0 : m_col++;
 }
 //____________________________________________
 void MovingObjects::collide(GameObjects &other)

@@ -31,6 +31,7 @@ private:
 	void setHelp();
 	void setPlay();
 	void setActivePlayerInfo();
+	void setPauseGame();
 	void checkMouseOnMenu(const sf::Event &);
 	void checkMouseOnBack(const sf::Event &);
 	void checkMenuPressed(const sf::Vector2f &);
@@ -44,6 +45,7 @@ private:
 					 const std::vector<std::unique_ptr<TeleporterObject>> &) const;
 	void drawLevelInfo(sf::RenderWindow &, const sf::Clock &, const sf::Time &, const int, const bool) const;
 	void drawActivePlayer(sf::RenderWindow&, const int)const;
+	void drawPasuse()const;
 	bool m_currentWindow[AmountOfWindows+1] = {true, false, false, false};
 	sf::Sprite m_background[AmountOfWindows];
 	sf::Sprite m_gameSprite[LEVELS];

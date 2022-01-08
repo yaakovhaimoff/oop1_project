@@ -11,18 +11,20 @@ class DwarfObject : public MovingObjects
 public:
     DwarfObject(const sf::Vector2f &location, const int key)
         : MovingObjects(location, key), m_keyDir(0), m_row(0), m_col(0) {}
-    void move(const sf::Time&, const sf::Event&) override;
+    void move(const sf::Time &, const sf::Event &) override;
     void setDirection();
-    void newDirection(int);
-    void collide(TeleporterObject &) override{}
-    void collide(TimeGiftObject &) override{}
-	void collide(RemoveDwarfsObject &) override{}
-    void updateAnimation();
-    void updateCol();
+    void collide(TeleporterObject &) override {}
+    void collide(TimeGiftObject &) override {}
+    void collide(RemoveDwarfsObject &) override {}
 
 private:
+    void saveAnimation(const sf::IntRect &currAnimation) { m_prevAnimation = currAnimation; }
+    void newDirection(int);
+    void updateAnimation() override;
+    void updateCol() override;
     Direction m_dir;
+    sf::IntRect m_prevAnimation;
     int m_keyDir;
     int m_row;
-   int m_col;
+    int m_col;
 };

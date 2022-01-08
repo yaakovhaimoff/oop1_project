@@ -74,7 +74,7 @@ void Window::setPlay()
 //________________________________
 void Window::setActivePlayerInfo()
 {
-	// active player name on board 
+	// active player name on board
 	std::string textString = "Active player:";
 	m_activePlayerText.setFont(Resources::instance().getFont());
 	m_activePlayerText.setString(textString);
@@ -218,18 +218,14 @@ void Window::drawObjects(sf::RenderWindow &window,
 {
 	for (auto &unmovable : statics)
 	{
-		if (typeid(*unmovable) == typeid(WallObject))
-			unmovable->updateSpriteRect(0, 0, 55, 60);
-		else if (typeid(*unmovable) == typeid(CrownObject))
+		if (typeid(*unmovable) == typeid(CrownObject))
 			unmovable->updateSpriteRect(3, 72, 65, 50);
 		else if (typeid(*unmovable) == typeid(FireObject))
-			unmovable->updateSpriteRect(9, 16, 30, 80);
+			unmovable->updateSpriteRect(8, 25, 25, 50);
 		else if (typeid(*unmovable) == typeid(KeyObject))
 			unmovable->updateSpriteRect(11, 60, 50, 60);
 		else if (typeid(*unmovable) == typeid(MonsterObject))
-			unmovable->updateSpriteRect(8, 40, 48, 58);
-		else if (typeid(*unmovable) == typeid(TimeGiftObject) || typeid(*unmovable) == typeid(RemoveDwarfsObject))
-			unmovable->updateSpriteRect(2, 50, 46, 60);
+			unmovable->updateSpriteRect(8, 65, 52, 58);
 
 		unmovable->drawShape(window);
 	}
@@ -239,7 +235,7 @@ void Window::drawObjects(sf::RenderWindow &window,
 
 	for (auto &teleport : teleports)
 	{
-		teleport->updateSpriteRect(2, 48, 46, 60);
+		teleport->updateSpriteRect(5, 48, 48, 60);
 		teleport->drawShape(window);
 	}
 }
