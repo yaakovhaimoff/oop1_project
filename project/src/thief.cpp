@@ -26,3 +26,11 @@ bool ThiefObject::doesThiefhasKey() const
 {
 	return m_hasKey;
 }
+//_________________________________________________________________________
+void ThiefObject::move(const sf::Time &deltaTime, const sf::Event &event)
+{
+	getDir(event);
+	updateAnimation();
+	setPrevPosition(getPosition());
+	setMove(getDirFromKey() * thiefSpeed * deltaTime.asSeconds());
+}

@@ -24,14 +24,8 @@ namespace
 		return {0, 0};
 	}
 }
-//_________________________________________________________________________
-void MovingObjects::move(const sf::Time &deltaTime, const sf::Event &event)
-{
-	getDir(event);
-	updateAnimation();
-	m_prev_location = getPosition();
-	setMove(dirFromKey() * 170.f * deltaTime.asSeconds());
-}
+//_______________________________________________
+ sf::Vector2f MovingObjects::getDirFromKey()const { return dirFromKey(); }
 //____________________________________
 void MovingObjects::updateAnimation()
 {

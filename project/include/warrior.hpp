@@ -13,6 +13,7 @@ public:
 	WarriorObject(const sf::Vector2f& location, const char key)
 		: MovingObjects(location, key) {}
 	~WarriorObject() {};
+	void move(const sf::Time&, const sf::Event&) override;
 	void collide(MonsterObject&) override;
 
 };

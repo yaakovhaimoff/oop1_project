@@ -15,6 +15,6 @@ public:
 	KingObject(const sf::Vector2f& location, const int key)
 		: MovingObjects(location, key){}
 	~KingObject() {}
-
+	void move(const sf::Time&, const sf::Event&) override;
 	void collide(CrownObject&)override;
 };

@@ -15,7 +15,6 @@ public:
 		: GameObjects(location, key), m_isDeaed(false), m_col(0) {}
 	bool isDead() { return m_isDeaed; }
 	void setIsDead() { m_isDeaed = true; }
-	void setPOsition(const sf::Vector2f &location) { setSprite(location); }
 	void updateSpriteRect(const int, const float, const float, const float);
 
 private:

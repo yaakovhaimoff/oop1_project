@@ -13,6 +13,7 @@ public:
 	MageObject(const sf::Vector2f& location, const char key)
 		: MovingObjects(location, key) {}
 	~MageObject() {}
+	void move(const sf::Time&, const sf::Event&) override;
 	void collide(FireObject&)override;
 	void collide(TeleporterObject&)override{}
 

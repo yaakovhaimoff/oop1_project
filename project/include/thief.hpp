@@ -17,6 +17,7 @@ public:
 	~ThiefObject() {};
 	bool thiefHasKey()const { return m_hasKey; }
 	bool doesThiefhasKey() const;
+	void move(const sf::Time&, const sf::Event&) override;
 	void collide(GateObject&)override;
 	void collide(KeyObject&)override;
 
