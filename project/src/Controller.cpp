@@ -2,19 +2,17 @@
 
 //______________________
 Controller::Controller()
-	: m_activePlayer(0), m_numOfLevel(0), m_gameTime(sf::seconds(levelTimes[0]))
-{
-}
+	: m_activePlayer(0), m_numOfLevel(0), m_teleportIndex(0),
+	 m_gameTime(sf::seconds(levelTimes[0])) {}
 //________________________
 void Controller::runGame()
 {
 	while (!m_board.checkEndOfFile())
 	{
-		m_board.setObjectsFromBoard(m_players, m_statics, m_teleports, m_numOfLevel);
+		m_board.setObjectsFromBoard(m_players, m_statics, m_teleports);
 		runLevel();
 		clearObjects();
 		m_board.clearBoard();
-		// m_window.setIsPlaying();
 		m_numOfLevel++;
 		m_gameTime = sf::seconds(levelTimes[m_numOfLevel]);
 	}
@@ -31,28 +29,34 @@ void Controller::runLevel()
 			static sf::Clock clock;
 			bool key = dynamic_cast<ThiefObject *>(m_players[THIEF_BOARD_OBJECT].get())->doesThiefhasKey();
 			m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_numOfLevel,
-							  key, m_players, m_statics, m_teleports, false);
+							  key, m_players, m_statics, m_teleports, false, m_activePlayer);
 			if (wonLevel())
 			{
 				clock.restart();
 				break;
 			}
-			if (checkGameTime(clock))
-			{
-				m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_numOfLevel,
-								  key, m_players, m_statics, m_teleports, true);
-				restartLevel();
-				clock.restart();
-			}
+			handleGameOver(clock, key);
 		}
 		handleEvents();
+	}
+}
+
+//_______________________________________________________________
+void Controller::handleGameOver(sf::Clock &clock, const bool key)
+{
+	if (checkGameTime(clock))
+	{
+		m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_numOfLevel,
+						  key, m_players, m_statics, m_teleports, true, m_activePlayer);
+		restartLevel();
+		clock.restart();
 	}
 }
 //_____________________________
 void Controller::restartLevel()
 {
 	clearObjects();
-	m_board.sendBoardKeysToObjects(m_players, m_statics, m_teleports, m_numOfLevel);
+	m_board.sendBoardKeysToObjects(m_players, m_statics, m_teleports);
 	m_gameTime = sf::seconds(levelTimes[m_numOfLevel]);
 	m_activePlayer = 0;
 }
@@ -164,6 +168,8 @@ void Controller::checkCollision(MovingObjects &activePlayer)
 //________________________________________________________
 void Controller::openTeleport(MovingObjects &activePlayer)
 {
+	// while the player is on the teleport, the teleport stays closed,
+	//  and the collision is not checked
 	if (activePlayer.checkCollision(*m_teleports[m_teleportIndex]))
 		return;
 	m_teleports[m_teleportIndex]->setLock(true);

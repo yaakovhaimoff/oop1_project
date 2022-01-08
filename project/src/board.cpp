@@ -6,10 +6,10 @@ Board::Board()
 //_________________________________________________________________________________
 void Board::setObjectsFromBoard(std::vector<std::unique_ptr<MovingObjects>> &players,
 								std::vector<std::unique_ptr<StaticObjects>> &statics,
-								std::vector<std::unique_ptr<TeleporterObject>> &teleports, const int level)
+								std::vector<std::unique_ptr<TeleporterObject>> &teleports)
 {
 	readBoardFile();
-	sendBoardKeysToObjects(players, statics, teleports, level);
+	sendBoardKeysToObjects(players, statics, teleports);
 }
 //_________________________
 void Board::readBoardFile()
@@ -20,7 +20,7 @@ void Board::readBoardFile()
 //______________________________________________________________________________________
 void Board::sendBoardKeysToObjects(std::vector<std::unique_ptr<MovingObjects>> &players,
 								   std::vector<std::unique_ptr<StaticObjects>> &statics,
-								   std::vector<std::unique_ptr<TeleporterObject>> &teleports, const int level)
+								   std::vector<std::unique_ptr<TeleporterObject>> &teleports)
 {
 	sf::Vector2f boardCharPosition;
 	players.resize(4);
@@ -34,7 +34,7 @@ void Board::sendBoardKeysToObjects(std::vector<std::unique_ptr<MovingObjects>> &
 			addObjects(players, statics, teleports, boardCharPosition, c);
 		}
 	}
-	connectToTeleports(teleports, level);
+	connectToTeleports(teleports);
 }
 // returning if the file has ended
 // the games will run until the end of file
@@ -110,15 +110,16 @@ void Board::addObjects(std::vector<std::unique_ptr<MovingObjects>> &players,
 		break;
 	}
 }
-//________________________________________________________________________________________________________
-void Board::connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &teleports, const int level)
+//_______________________________________________________________________________________
+void Board::connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &teleports)
 {
-	int index = teleportsConnection[level];
+	// combinning the teleports randomly to each other
+	int index = teleports.size()-1, random;
 	for (int i = 0; i < teleports.size(); i++)
 	{
-		teleports[i]->setConnectedTeleport(teleports[index % 10]->getPosition());
-		teleports[i]->setNextIndex(index % 10);
-		index /= 10;
+		random = rand() % index;
+		teleports[i]->setConnectedTeleport(teleports[random]->getPosition());
+		teleports[i]->setNextIndex(random);
 	}
 }
 //______________________

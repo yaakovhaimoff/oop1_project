@@ -3,11 +3,11 @@
 
 void ThiefObject::collide(GateObject &other)
 {
-	if (m_hasKey > 0)
+	if (m_hasKey)
 	{
 		Resources::instance().playSound(OpenGate);
 		other.setIsDead();
-		m_hasKey = 0;
+		m_hasKey = false;
 	}
 	else
 		setPosition();
@@ -15,12 +15,14 @@ void ThiefObject::collide(GateObject &other)
 void ThiefObject::collide(KeyObject &other)
 {
 	Resources::instance().playSound(ThiefTake);
-	if (m_hasKey == 0)
+	if (!m_hasKey)
+	{
 		other.setIsDead();
-	m_hasKey++;
+		m_hasKey =true;
+	}
 }
 //_______________________________________
 bool ThiefObject::doesThiefhasKey() const
 {
-	return m_hasKey > 0;
+	return m_hasKey;
 }

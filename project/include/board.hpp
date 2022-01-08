@@ -19,11 +19,11 @@ public:
 	Board();
 	void setObjectsFromBoard(std::vector<std::unique_ptr<MovingObjects>> &,
 							 std::vector<std::unique_ptr<StaticObjects>> &,
-							 std::vector<std::unique_ptr<TeleporterObject>> &, const int);
+							 std::vector<std::unique_ptr<TeleporterObject>> &);
 	bool checkEndOfFile() const;
 	void sendBoardKeysToObjects(std::vector<std::unique_ptr<MovingObjects>> &,
 								std::vector<std::unique_ptr<StaticObjects>> &,
-								std::vector<std::unique_ptr<TeleporterObject>> &, const int);
+								std::vector<std::unique_ptr<TeleporterObject>> &);
 	void addObjects(std::vector<std::unique_ptr<MovingObjects>> &,
 					std::vector<std::unique_ptr<StaticObjects>> &,
 					std::vector<std::unique_ptr<TeleporterObject>> &,
@@ -32,7 +32,7 @@ public:
 
 private:
 	void readBoardFile();
-	void connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &, const int);
+	void connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &);
 	std::ifstream m_boardSrcFiles;
 	std::vector<std::string> m_level;
 };

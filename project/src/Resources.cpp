@@ -3,7 +3,7 @@
 //____________________
 Resources::Resources()
 {
-	this->loadResources();
+	loadResources();
 }
 //____________________________
 Resources& Resources::instance()

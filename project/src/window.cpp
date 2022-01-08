@@ -7,6 +7,7 @@ Window::Window()
 	setMenu();
 	setHelp();
 	setPlay();
+	setActivePlayerInfo();
 }
 //____________________
 void Window::setMenu()
@@ -55,20 +56,38 @@ void Window::setHelp()
 //____________________
 void Window::setPlay()
 {
+	// setting the levels backgrounds
 	for (int i = 0; i < LEVELS; i++)
-	{
 		m_gameSprite[i].setTexture(Resources::instance().getTexture(i));
-	}
+
 	m_gameSprite[0].setScale(1, (float)1);
 	m_gameSprite[1].setScale(3, (float)3);
 	m_gameSprite[2].setScale(3, (float)3);
 	// setting the inforamation rectangle
 	// m_infoRect = sf::RectangleShape({165, 300});
-	m_infoRect = sf::RectangleShape({280, 280});
+	m_infoRect = sf::RectangleShape({295, 450});
 	m_infoRect.setPosition(100, 200);
 	m_infoRect.setOutlineColor(sf::Color::Black);
 	m_infoRect.setOutlineThickness(4);
 	m_infoRect.setFillColor(sf::Color(192, 192, 192, 50));
+}
+//________________________________
+void Window::setActivePlayerInfo()
+{
+	// active player name on board 
+	std::string textString = "Active player:";
+	m_activePlayerText.setFont(Resources::instance().getFont());
+	m_activePlayerText.setString(textString);
+	m_activePlayerText.setCharacterSize(50);
+	m_activePlayerText.setPosition(110, 450);
+	// setting the spriite of the active player
+	for (int i = 0; i < numOfPlayers; i++)
+	{
+		m_activePlayer[i].setTexture(Resources::instance().getTexture(i + 5));
+		m_activePlayer[i].setPosition(265, 540);
+		m_activePlayer[i].setTextureRect(sf::IntRect(0, 0, 32, 29));
+		m_activePlayer[i].setScale(3, 3);
+	}
 }
 //____________________________________________________________________________
 void Window::catchMouseEvent(sf::RenderWindow &window, const sf::Event &event)
@@ -178,14 +197,15 @@ void Window::drawHelp(sf::RenderWindow &window) const
 void Window::drawPlay(sf::RenderWindow &window, const sf::Clock &clock, const sf::Time &time, const int level, const bool key,
 					  const std::vector<std::unique_ptr<MovingObjects>> &players,
 					  const std::vector<std::unique_ptr<StaticObjects>> &statics,
-					  const std::vector<std::unique_ptr<TeleporterObject>> &teleports, const bool restart) const
+					  const std::vector<std::unique_ptr<TeleporterObject>> &teleports, const bool gameOver, const int player) const
 {
 	window.clear();
 	window.draw(m_gameSprite[level]);
 	drawObjects(window, players, statics, teleports);
 	drawLevelInfo(window, clock, time, level, key);
-	if (restart)
-		restartLevelMessage(window);
+	drawActivePlayer(window, player);
+	if (gameOver)
+		gameOverLevelMessage(window);
 	window.display();
 	Resources::instance().stopLoop(menuSound);
 	window.setFramerateLimit(12);
@@ -216,12 +236,40 @@ void Window::drawObjects(sf::RenderWindow &window,
 
 	for (auto &player : players)
 		player->drawShape(window);
-	
+
 	for (auto &teleport : teleports)
 	{
 		teleport->updateSpriteRect(2, 48, 46, 60);
 		teleport->drawShape(window);
 	}
+}
+//____________________________________________________________________________
+void Window::drawActivePlayer(sf::RenderWindow &window, const int player) const
+{
+	sf::Text nameText;
+	std::string name;
+	switch (player)
+	{
+	case KING_BOARD_OBJECT:
+		name = "KING";
+		break;
+	case MAGE_BOARD_OBJECT:
+		name = "MAGE";
+		break;
+	case WARRIOR_BOARD_OBJECT:
+		name = "WARRIOR";
+		break;
+	case THIEF_BOARD_OBJECT:
+		name = "THIEF";
+		break;
+	}
+	nameText.setFont(Resources::instance().getFont());
+	nameText.setString(name);
+	nameText.setCharacterSize(50);
+	nameText.setPosition(110, 510);
+	window.draw(m_activePlayerText);
+	window.draw(nameText);
+	window.draw(m_activePlayer[player]);
 }
 //___________________________
 bool Window::isPlaying() const
@@ -275,7 +323,7 @@ void Window::drawLevelInfo(sf::RenderWindow &window, const sf::Clock &clock,
 	window.draw(keyText);
 }
 //______________________________________________________________
-void Window::restartLevelMessage(sf::RenderWindow &window) const
+void Window::gameOverLevelMessage(sf::RenderWindow &window) const
 {
 	std::string restart = "Game Over!";
 	sf::Text restartText;

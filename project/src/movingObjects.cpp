@@ -71,11 +71,14 @@ void MovingObjects::collide(GameObjects &other)
 		return;
 	other.collide(*this);
 }
+//_______________________________________
 void MovingObjects::collide(WallObject &) 
 { 
 	Resources::instance().playSound(DwarfColide);
 	setPosition(); 
 }
+// by default a player goes back, unless he's got a special case
+// which will be over written in his class
 void MovingObjects::collide(CrownObject &) { setPosition(); }
 void MovingObjects::collide(FireObject &) { setPosition(); }
 void MovingObjects::collide(GateObject &) { setPosition(); }

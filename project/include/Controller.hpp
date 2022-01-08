@@ -22,6 +22,8 @@ public:
 
 private:
 	void runLevel();
+	void handleGameOver(sf::Clock&, const bool);
+	bool checkGameTime(const sf::Clock&)const;
 	void handleEvents();
 	void exitGame(const sf::Event&);
 	void mouseEventReleased(const sf::Event&);
@@ -33,7 +35,6 @@ private:
 	void checkCollision(MovingObjects&);
 	void openTeleport(MovingObjects &activePlayer);
 	void handleDaedObjects();
-	bool checkGameTime(const sf::Clock&)const;
 	bool wonLevel()const;
 	void restartLevel();
 	void clearObjects();
@@ -49,6 +50,6 @@ private:
 	std::vector<std::unique_ptr<StaticObjects>> m_statics;
 	std::vector<std::unique_ptr<TeleporterObject>> m_teleports;
 	int m_activePlayer;
-	int m_teleportIndex = 0;
+	int m_teleportIndex;
 	int m_numOfLevel;
 };

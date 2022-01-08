@@ -8,20 +8,18 @@
 class GateObject;
 class KeyObject;
 
-//________________________________
+//______________________________________
 class ThiefObject : public MovingObjects
 {
 public:
 	ThiefObject(const sf::Vector2f& location, const char key)
-		: MovingObjects(location, key), m_hasKey(0) {}
+		: MovingObjects(location, key), m_hasKey(false) {}
 	~ThiefObject() {};
 	bool thiefHasKey()const { return m_hasKey; }
 	bool doesThiefhasKey() const;
-
 	void collide(GateObject&)override;
 	void collide(KeyObject&)override;
 
 private:
-	int m_hasKey;
-
+	bool m_hasKey;
 };
