@@ -32,7 +32,8 @@ private:
 	void mouseEventMoved(const sf::Event&);
 	void isPlaying(const sf::Event&);
 	void moveObjects(const sf::Event&);
-	void checkCollision(MovingObjects&);
+	void checkDwarfCollision(const sf::Event&);
+	void checkPlayerCollision(MovingObjects&);
 	void openTeleport(MovingObjects &activePlayer);
 	void handleDaedObjects();
 	bool wonLevel()const;
@@ -52,4 +53,5 @@ private:
 	int m_activePlayer;
 	int m_teleportIndex;
 	int m_numOfLevel;
+	bool m_changeDwarfDir;
 };

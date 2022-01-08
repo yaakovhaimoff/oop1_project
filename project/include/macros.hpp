@@ -17,6 +17,7 @@ const float kingSpeed = 110;
 const float mageSpeed = 130;
 const float warriorSpeed = 160;
 const float thiefSpeed = 180;
+const float dwarfSpeed = 170;
 
 const std::string menu_names[] = {"HELP", "PLAY", "EXIT"};
 

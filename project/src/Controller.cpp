@@ -3,7 +3,7 @@
 //______________________
 Controller::Controller()
 	: m_activePlayer(0), m_numOfLevel(0), m_teleportIndex(0),
-	 m_gameTime(sf::seconds(levelTimes[0])) {}
+	  m_gameTime(sf::seconds(levelTimes[0])), m_changeDwarfDir(false) {}
 //________________________
 void Controller::runGame()
 {
@@ -126,7 +126,8 @@ void Controller::isPlaying(const sf::Event &event)
 	if (m_window.isPlaying())
 	{
 		moveObjects(event);
-		checkCollision(*m_players[m_activePlayer]);
+		checkPlayerCollision(*m_players[m_activePlayer]);
+		checkDwarfCollision(event);
 		handleDaedObjects();
 	}
 }
@@ -135,11 +136,25 @@ void Controller::moveObjects(const sf::Event &event)
 {
 	const auto deltaTime = m_moveClock.restart();
 	m_players[m_activePlayer]->move(deltaTime, event);
+	static sf::Clock clock;
+
 	for (int i = numOfPlayers; i < m_players.size(); i++)
+	{
 		m_players[i]->move(deltaTime, event);
+		if (clock.getElapsedTime().asSeconds() > 1.0f)
+		{
+			dynamic_cast<DwarfObject *>(m_players[i].get())->setDirection();
+			m_changeDwarfDir = true;
+		}
+	}
+	if (m_changeDwarfDir)
+	{
+		m_changeDwarfDir = false;
+		clock.restart();
+	}
 }
 //____________________________________________________
-void Controller::checkCollision(MovingObjects &activePlayer)
+void Controller::checkPlayerCollision(MovingObjects &activePlayer)
 {
 	openTeleport(activePlayer);
 
@@ -158,12 +173,14 @@ void Controller::checkCollision(MovingObjects &activePlayer)
 			m_teleports[teleports->getNextTelIndex()]->setLock(false);
 			m_teleportIndex = teleports->getNextTelIndex();
 		}
-
+}
+//___________________________________________________________
+void Controller::checkDwarfCollision(const sf::Event &event)
+{
 	for (int i = numOfPlayers; i < m_players.size(); i++)
 		for (int j = 0; j < m_statics.size(); j++)
 			if (m_players[i]->checkCollision(*m_statics[j]))
-				dynamic_cast<DwarfObject *>(m_players[i].get())->setDirection(rand() % 4);
-	// m_players[i]->collide(*m_statics[j]);
+				m_players[i]->collide(*m_statics[j]);
 }
 //________________________________________________________
 void Controller::openTeleport(MovingObjects &activePlayer)

@@ -25,25 +25,19 @@ namespace
 //______________________________________________________________________
 void DwarfObject::move(const sf::Time &deltaTime, const sf::Event &event)
 {
-	//setDirection(rand() % 4);
+	setPrevPosition(getPosition());
 	updateAnimation();
-	setMove(dirToVector(m_dir) * 40.f * deltaTime.asSeconds());
+	setMove(dirToVector(m_dir) * dwarfSpeed * deltaTime.asSeconds());
+	m_keyDir = m_row;	
 }
-// //_________________________________
-// void DwarfObject::updateAnimation()
-// {
-// 	if (m_keyDir != m_row)
-// 		setSpriteRect(sf::IntRect(0, m_row * 32, 32, 29));
-// 	updateCol();
-// }
-// //___________________________
-// void DwarfObject::updateCol()
-// {
-// 	setSpriteRect(sf::IntRect(32 * m_col, m_row * 32, 32, 29));
-// 	m_col > 2 ? m_col = 0 : m_col++;
-// }
+//______________________________
+void DwarfObject::setDirection()
+{
+	while(m_keyDir == m_row)
+		newDirection(rand()%4);
+}
 //_____________________________________
-void DwarfObject::setDirection(int num)
+void DwarfObject::newDirection(int num)
 {
 	switch (num)
 	{
@@ -67,4 +61,17 @@ void DwarfObject::setDirection(int num)
 		m_dir = Direction::Stay;
 		break;
 	}
+}
+//_________________________________
+void DwarfObject::updateAnimation()
+{
+	if (m_keyDir != m_row)
+		setSpriteRect(sf::IntRect(0, m_row * 32, 32, 29));
+	updateCol();
+}
+//___________________________
+void DwarfObject::updateCol()
+{
+	setSpriteRect(sf::IntRect(32 * m_col, m_row * 32, 32, 29));
+	m_col > 2 ? m_col = 0 : m_col++;
 }

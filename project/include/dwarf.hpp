@@ -12,15 +12,17 @@ public:
     DwarfObject(const sf::Vector2f &location, const int key)
         : MovingObjects(location, key), m_keyDir(0), m_row(0), m_col(0) {}
     void move(const sf::Time&, const sf::Event&) override;
-    void setDirection(int);
-    //void updateAnimation();
-    // void updateCol();
+    void setDirection();
+    void newDirection(int);
+    void collide(TeleporterObject &) override{}
+    void collide(TimeGiftObject &) override{}
+	void collide(RemoveDwarfsObject &) override{}
+    void updateAnimation();
+    void updateCol();
 
 private:
     Direction m_dir;
-    int m_random;
-    sf::Clock m_canMove;
     int m_keyDir;
     int m_row;
-    int m_col;
+   int m_col;
 };
