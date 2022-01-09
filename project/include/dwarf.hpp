@@ -11,7 +11,7 @@ class DwarfObject : public MovingObjects
 public:
     DwarfObject(const sf::Vector2f &location, const int key)
         : MovingObjects(location, key), m_keyDir(0), m_row(0), m_col(0) {}
-    void move(const sf::Time &, const sf::Event &) override;
+    void moving(const sf::Time &, const sf::Event &, const bool);
     void setDirection();
     void collide(TeleporterObject &) override {}
     void collide(TimeGiftObject &) override {}

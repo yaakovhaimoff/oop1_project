@@ -3,7 +3,12 @@
 //______________________
 Controller::Controller()
 	: m_activePlayer(0), m_numOfLevel(0), m_teleportIndex(0),
-	  m_gameTime(levelTimes[0]), m_changeDwarfDir(false) {}
+	  m_gameTime(levelTimes[0]), m_changeDwarfDir(false)
+{
+	m_gameClock.restart();
+	m_moveClock.restart();
+	m_dwarfMoveClock.restart();
+}
 //________________________
 void Controller::runGame()
 {
@@ -36,6 +41,8 @@ void Controller::runLevel()
 				handleGameOver(key);
 				playTime();
 			}
+			else
+				m_moveClock.restart();
 		}
 		handleEvents();
 	}
@@ -149,20 +156,20 @@ void Controller::movePlayerObject(const sf::Event &event, const sf::Time &deltaT
 //___________________________________________________________________________________
 void Controller::moveDwarfsObjects(const sf::Event &event, const sf::Time &deltaTime)
 {
-	static sf::Clock canDwarfMove;
 	for (int i = numOfPlayers; i < m_players.size(); i++)
 	{
-		if (canDwarfMove.getElapsedTime().asSeconds() > 1.5f)
+		if (m_dwarfMoveClock.getElapsedTime().asSeconds() > 1.5f)
 		{
 			dynamic_cast<DwarfObject *>(m_players[i].get())->setDirection();
 			m_changeDwarfDir = true;
 		}
-		m_players[i]->move(deltaTime, event);
+		// m_players[i]->move(deltaTime, event);
+			dynamic_cast<DwarfObject *>(m_players[i].get())->moving(deltaTime, event, m_changeDwarfDir);
 	}
 	if (m_changeDwarfDir)
 	{
 		m_changeDwarfDir = false;
-		canDwarfMove.restart();
+		m_dwarfMoveClock.restart();
 	}
 }
 //________________________________________________________________
