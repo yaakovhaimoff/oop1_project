@@ -19,6 +19,8 @@ configure_file ("play2.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("play3.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("paused.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("pause.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("soundOn.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("soundOff.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 configure_file ("font.ttf" ${CMAKE_BINARY_DIR} COPYONLY)

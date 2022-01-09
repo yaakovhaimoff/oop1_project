@@ -42,8 +42,8 @@ const std::vector SOUNDS_NAMES = {"gamePlay.wav", "menuMusic.wav", "ClickSound.w
 								  "OpenGate.wav", "WinLevel.wav", "fire.wav","OrkDeathSoundEffect.wav"};
 const std::vector NAMES = {"play1.png", "play2.png", "play3.png", "menu.png", "help.png", "king.png", "mage.png",
 						   "thief.png", "warrior.png", "crown.png", "gate.png", "fire.png",
-						   "key.png", "monster.png", "teleport.png", "brickWall.png", "dwarf.png", "gift.png"
-						   "pause.png", "paused.png"};
+						   "key.png", "monster.png", "teleport.png", "brickWall.png", "dwarf.png", "gift.png",
+						   "pause.png", "paused.png", "soundOn.png", "soundOff.png"};
 enum rcsNames
 {
 	BoardBackground1,
@@ -66,6 +66,8 @@ enum rcsNames
 	Gift,
 	Pause,
 	Paused,
+	soundOn,
+	soundOff,
 };
 enum SoundsNames
 {

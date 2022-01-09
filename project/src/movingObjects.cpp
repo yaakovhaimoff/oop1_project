@@ -25,7 +25,7 @@ namespace
 	}
 }
 //_______________________________________________
- sf::Vector2f MovingObjects::getDirFromKey()const { return dirFromKey(); }
+sf::Vector2f MovingObjects::getDirFromKey() const { return dirFromKey(); }
 //___________________________________
 void MovingObjects::updateAnimation()
 {
@@ -36,7 +36,7 @@ void MovingObjects::updateCol()
 {
 	while (m_col < 3)
 	{
-		setSpriteRect(sf::IntRect(m_col*32, m_row * 32, 32, 32));
+		setSpriteRect(sf::IntRect(m_col * 32, m_row * 32, 32, 32));
 		++m_col;
 	}
 	m_col > 3 ? m_col = 0 : ++m_col;
@@ -79,10 +79,10 @@ void MovingObjects::collide(GameObjects &other)
 	other.collide(*this);
 }
 //_______________________________________
-void MovingObjects::collide(WallObject &) 
-{ 
+void MovingObjects::collide(WallObject &)
+{
 	Resources::instance().playSound(DwarfColide);
-	setPosition(); 
+	setPosition();
 }
 // by default a player goes back, unless he's got a special case
 // which will be over written in his class
@@ -91,18 +91,18 @@ void MovingObjects::collide(FireObject &) { setPosition(); }
 void MovingObjects::collide(GateObject &) { setPosition(); }
 void MovingObjects::collide(KeyObject &) {}
 void MovingObjects::collide(MonsterObject &) { setPosition(); }
-void MovingObjects::collide(TeleporterObject &other) 
-{ 
+void MovingObjects::collide(TeleporterObject &other)
+{
 	Resources::instance().playSound(TeleportEnter);
 	setSprite(other.getConnectedTeleportLoc());
- }
-void MovingObjects::collide(TimeGiftObject &other) 
-{ 
-	Resources::instance().playSound(GrabPresent);
-	other.setIsDead(); 
 }
-void MovingObjects::collide(RemoveDwarfsObject &other) 
-{ 
+void MovingObjects::collide(TimeGiftObject &other)
+{
 	Resources::instance().playSound(GrabPresent);
-	other.setIsDead(); 
+	other.setIsDead();
+}
+void MovingObjects::collide(RemoveDwarfsObject &other)
+{
+	Resources::instance().playSound(GrabPresent);
+	other.setIsDead();
 }

@@ -22,8 +22,8 @@ public:
 
 private:
 	void runLevel();
-	void handleGameOver(sf::Clock&, const bool);
-	bool checkGameTime(const sf::Clock&)const;
+	void handleGameOver(const bool);
+	bool checkGameTime()const;
 	void handleEvents();
 	void exitGame(const sf::Event&);
 	void mouseEventReleased(const sf::Event&);
@@ -31,11 +31,13 @@ private:
 	void decideActivePlayer();
 	void mouseEventMoved(const sf::Event&);
 	void isPlaying(const sf::Event&);
+	void playTime();
 	void movePlayerObject(const sf::Event&, const sf::Time&);
 	void moveDwarfsObjects(const sf::Event&, const sf::Time&);
 	void checkDwarfCollision(const sf::Event&);
 	void checkPlayerCollision(MovingObjects&);
-	void checkToopenTeleport(MovingObjects &activePlayer);
+	void checkToOpenTeleport(MovingObjects &activePlayer);
+	bool noOtherPlayerIsOnNextTeleport(const int)const;
 	void handleDaedObjects();
 	bool wonLevel()const;
 	void restartLevel();
@@ -43,8 +45,10 @@ private:
 	int getTimeForGift();
 	void removeDwarfs();
 	sf::RenderWindow m_gameWindow = { { 1920, 1080 }, "Save the king" };
+	sf::Clock m_gameClock;
 	sf::Clock m_moveClock;
-	sf::Time m_gameTime;
+	int m_gameTime;
+	sf::Time pauseTime;
 	sf::Text m_timeInfo;
 	Window m_window;
 	Board m_board;

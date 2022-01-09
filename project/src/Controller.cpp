@@ -3,7 +3,7 @@
 //______________________
 Controller::Controller()
 	: m_activePlayer(0), m_numOfLevel(0), m_teleportIndex(0),
-	  m_gameTime(sf::seconds(levelTimes[0])), m_changeDwarfDir(false) {}
+	  m_gameTime(levelTimes[0]), m_changeDwarfDir(false) {}
 //________________________
 void Controller::runGame()
 {
@@ -14,7 +14,7 @@ void Controller::runGame()
 		clearObjects();
 		m_board.clearBoard();
 		m_numOfLevel++;
-		m_gameTime = sf::seconds(levelTimes[m_numOfLevel]);
+		m_gameTime = levelTimes[m_numOfLevel];
 	}
 }
 //_________________________
@@ -26,38 +26,41 @@ void Controller::runLevel()
 			m_window.drawWindow(m_gameWindow);
 		else
 		{
-			static sf::Clock clock;
 			bool key = dynamic_cast<ThiefObject *>(m_players[THIEF_BOARD_OBJECT].get())->doesThiefhasKey();
-			m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_numOfLevel,
-							  key, m_players, m_statics, m_teleports, false, m_activePlayer);
+			m_window.drawPlay(m_gameWindow, m_gameTime, m_numOfLevel, key, m_players,
+							  m_statics, m_teleports, false, m_activePlayer);
 			if (wonLevel())
-			{
-				clock.restart();
 				break;
+			if (!m_window.isPause())
+			{
+				handleGameOver(key);
+				playTime();
 			}
-			handleGameOver(clock, key);
 		}
 		handleEvents();
 	}
 }
-
-//_______________________________________________________________
-void Controller::handleGameOver(sf::Clock &clock, const bool key)
+//_____________________________________________
+void Controller::handleGameOver(const bool key)
 {
-	if (checkGameTime(clock))
+	if (checkGameTime())
 	{
-		m_window.drawPlay(m_gameWindow, clock, m_gameTime, m_numOfLevel,
+		m_window.drawPlay(m_gameWindow, m_gameTime, m_numOfLevel,
 						  key, m_players, m_statics, m_teleports, true, m_activePlayer);
 		restartLevel();
-		clock.restart();
 	}
+}
+//____________________________________
+bool Controller::checkGameTime() const
+{
+	return m_gameTime < 0;
 }
 //_____________________________
 void Controller::restartLevel()
 {
 	clearObjects();
 	m_board.sendBoardKeysToObjects(m_players, m_statics, m_teleports);
-	m_gameTime = sf::seconds(levelTimes[m_numOfLevel]);
+	m_gameTime = levelTimes[m_numOfLevel];
 	m_activePlayer = 0;
 }
 //_____________________________
@@ -67,10 +70,14 @@ void Controller::clearObjects()
 	m_statics.clear();
 	m_teleports.clear();
 }
-//__________________________________________________________
-bool Controller::checkGameTime(const sf::Clock &clock) const
+//_________________________
+void Controller::playTime()
 {
-	return clock.getElapsedTime() > m_gameTime;
+	if (m_gameClock.getElapsedTime().asSeconds() > 1)
+	{
+		--m_gameTime;
+		m_gameClock.restart();
+	}
 }
 //_____________________________
 void Controller::handleEvents()
@@ -123,12 +130,12 @@ void Controller::decideActivePlayer()
 //________________________________________________
 void Controller::isPlaying(const sf::Event &event)
 {
-	if (m_window.isPlaying())
+	if (m_window.isPlaying() && !m_window.isPause())
 	{
 		const auto deltaTime = m_moveClock.restart();
 		movePlayerObject(event, deltaTime);
 		moveDwarfsObjects(event, deltaTime);
-		checkToopenTeleport(*m_players[m_activePlayer]);
+		checkToOpenTeleport(*m_players[m_activePlayer]);
 		checkPlayerCollision(*m_players[m_activePlayer]);
 		checkDwarfCollision(event);
 		handleDaedObjects();
@@ -170,7 +177,8 @@ void Controller::checkPlayerCollision(MovingObjects &activePlayer)
 			activePlayer.setPosition();
 
 	for (auto &teleports : m_teleports)
-		if (activePlayer.checkCollision(*teleports) && teleports->isTelOpen())
+		if (activePlayer.checkCollision(*teleports) && teleports->isTelOpen() &&
+			noOtherPlayerIsOnNextTeleport(teleports->getNextTelIndex()))
 		{
 			activePlayer.collide(*teleports);
 			m_teleports[teleports->getNextTelIndex()]->setLock(false);
@@ -186,13 +194,25 @@ void Controller::checkDwarfCollision(const sf::Event &event)
 				m_players[i]->collide(*m_statics[j]);
 }
 //_______________________________________________________________
-void Controller::checkToopenTeleport(MovingObjects &activePlayer)
+void Controller::checkToOpenTeleport(MovingObjects &activePlayer)
 {
 	// while the player is on the teleport, the teleport stays closed,
 	//  and the collision is not checked
 	if (activePlayer.checkCollision(*m_teleports[m_teleportIndex]))
 		return;
 	m_teleports[m_teleportIndex]->setLock(true);
+}
+//___________________________________________________________________________
+bool Controller::noOtherPlayerIsOnNextTeleport(const int nextTelelport) const
+{
+	for (int i = 0; i < numOfPlayers; i++)
+	{
+		if (i == m_activePlayer)
+			continue;
+		if (m_players[i]->checkCollision(*m_teleports[nextTelelport]))
+			return false;
+	}
+	return true;
 }
 //__________________________________
 void Controller::handleDaedObjects()
@@ -202,7 +222,7 @@ void Controller::handleDaedObjects()
 		if (typeid(*unmovable) == typeid(MonsterObject) && unmovable->isDead())
 			m_board.addObjects(m_players, m_statics, m_teleports, unmovable->getPosition(), GATE_KEY);
 		else if (typeid(*unmovable) == typeid(TimeGiftObject) && unmovable->isDead())
-			m_gameTime += sf::seconds(getTimeForGift());
+			m_gameTime += getTimeForGift();
 		else if (typeid(*unmovable) == typeid(RemoveDwarfsObject) && unmovable->isDead())
 			removeDwarfs();
 	}

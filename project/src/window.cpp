@@ -2,11 +2,13 @@
 
 //______________
 Window::Window()
+	: m_pauseButton(false)
 {
 	Resources::instance().playInLoop(menuSound);
 	setMenu();
 	setHelp();
 	setPlay();
+	setPause();
 	setActivePlayerInfo();
 }
 //____________________
@@ -71,6 +73,15 @@ void Window::setPlay()
 	m_infoRect.setOutlineThickness(4);
 	m_infoRect.setFillColor(sf::Color(192, 192, 192, 50));
 }
+//_____________________
+void Window::setPause()
+{
+	m_pause.setTexture(Resources::instance().getTexture(Pause));
+	m_pause.setPosition(30, 30);
+	m_paused.setTexture(Resources::instance().getTexture(Paused));
+	m_paused.setPosition(20, 200);
+	m_paused.setScale(2.8, 2.8);
+}
 //________________________________
 void Window::setActivePlayerInfo()
 {
@@ -130,6 +141,8 @@ void Window::handleClickInWindow(const sf::Vector2f &location)
 		checkMenuPressed(location);
 	else if (m_currentWindow[HELP])
 		checkHelpPressed(location);
+	else if (m_currentWindow[PLAY])
+		checkPlayPressed(location);
 }
 //_________________________________________________________
 void Window::checkMenuPressed(const sf::Vector2f &location)
@@ -163,6 +176,20 @@ void Window::checkHelpPressed(const sf::Vector2f &location)
 		Resources::instance().playSound(ClickSound);
 	}
 }
+//_________________________________________________________
+void Window::checkPlayPressed(const sf::Vector2f &location)
+{
+	if (m_pause.getGlobalBounds().contains(location))
+	{
+		m_pauseButton = true;
+		Resources::instance().playSound(ClickSound);
+	}
+	if (m_paused.getGlobalBounds().contains(location))
+	{
+		m_pauseButton = false;
+		Resources::instance().playSound(ClickSound);
+	}
+}
 //____________________________________________________
 void Window::drawWindow(sf::RenderWindow &window) const
 {
@@ -193,19 +220,21 @@ void Window::drawHelp(sf::RenderWindow &window) const
 	window.draw(m_helpText);
 	window.display();
 }
-//___________________________________________________________________________________________________________________________
-void Window::drawPlay(sf::RenderWindow &window, const sf::Clock &clock, const sf::Time &time, const int level, const bool key,
+//____________________________________________________________________________________________________
+void Window::drawPlay(sf::RenderWindow &window, const int &time, const int level, const bool key,
 					  const std::vector<std::unique_ptr<MovingObjects>> &players,
 					  const std::vector<std::unique_ptr<StaticObjects>> &statics,
-					  const std::vector<std::unique_ptr<TeleporterObject>> &teleports, const bool gameOver, const int player) const
+					  const std::vector<std::unique_ptr<TeleporterObject>> &teleports,
+					  const bool gameOver, const int player) const
 {
 	window.clear();
 	window.draw(m_gameSprite[level]);
 	drawObjects(window, players, statics, teleports);
-	drawLevelInfo(window, clock, time, level, key);
+	drawLevelInfo(window, time, level, key);
 	drawActivePlayer(window, player);
 	if (gameOver)
 		gameOverLevelMessage(window);
+	m_pauseButton ? drawPasused(window) : drawPasuse(window);
 	window.display();
 	Resources::instance().stopLoop(menuSound);
 	window.setFramerateLimit(12);
@@ -267,25 +296,34 @@ void Window::drawActivePlayer(sf::RenderWindow &window, const int player) const
 	window.draw(nameText);
 	window.draw(m_activePlayer[player]);
 }
+//____________________________________________________
+void Window::drawPasuse(sf::RenderWindow &window) const
+{
+	window.draw(m_pause);
+}
+//____________________________________________________
+void Window::drawPasused(sf::RenderWindow &window) const
+{
+	window.draw(m_paused);
+}
 //___________________________
 bool Window::isPlaying() const
 {
 	return m_currentWindow[PLAY];
+}
+//__________________________
+bool Window::isPause() const
+{
+	return m_pauseButton;
 }
 //________________________
 bool Window::isExit() const
 {
 	return m_currentWindow[EXIT];
 }
-//_________________________
-void Window::setIsPlaying()
-{
-	m_currentWindow[PLAY] = false;
-	m_currentWindow[MENU] = true;
-}
 //__________________________________________________________________________
-void Window::drawLevelInfo(sf::RenderWindow &window, const sf::Clock &clock,
-						   const sf::Time &levelTime, const int level, const bool key) const
+void Window::drawLevelInfo(sf::RenderWindow &window, const int &levelTime,
+						   const int level, const bool key) const
 {
 	// information on board rectangle
 	window.draw(m_infoRect);
@@ -299,8 +337,7 @@ void Window::drawLevelInfo(sf::RenderWindow &window, const sf::Clock &clock,
 	levelText.setString(textString);
 	window.draw(levelText);
 	// time text
-	sf::Time gameTime = levelTime - clock.getElapsedTime();
-	int time = gameTime.asSeconds();
+	int time = levelTime;
 	textString = "Time 0";
 	textString += std::to_string(time / 60); // time / 60 for minutes
 	textString += " : ";
