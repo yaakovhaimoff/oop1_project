@@ -247,14 +247,15 @@ void Window::drawObjects(sf::RenderWindow &window,
 {
 	for (auto &unmovable : statics)
 	{
-		if (typeid(*unmovable) == typeid(CrownObject))
-			unmovable->updateSpriteRect(3, 72, 65, 50);
-		else if (typeid(*unmovable) == typeid(FireObject))
-			unmovable->updateSpriteRect(8, 25, 25, 50);
-		else if (typeid(*unmovable) == typeid(KeyObject))
-			unmovable->updateSpriteRect(11, 60, 50, 60);
-		else if (typeid(*unmovable) == typeid(MonsterObject))
-			unmovable->updateSpriteRect(8, 65, 52, 58);
+		if (!m_pauseButton)
+			if (typeid(*unmovable) == typeid(CrownObject))
+				unmovable->updateSpriteRect(3, 72, 65, 50);
+			else if (typeid(*unmovable) == typeid(FireObject))
+				unmovable->updateSpriteRect(8, 25, 25, 50);
+			else if (typeid(*unmovable) == typeid(KeyObject))
+				unmovable->updateSpriteRect(11, 60, 50, 60);
+			else if (typeid(*unmovable) == typeid(MonsterObject))
+				unmovable->updateSpriteRect(8, 65, 52, 58);
 
 		unmovable->drawShape(window);
 	}
@@ -264,7 +265,8 @@ void Window::drawObjects(sf::RenderWindow &window,
 
 	for (auto &teleport : teleports)
 	{
-		teleport->updateSpriteRect(5, 48, 48, 60);
+		if (!m_pauseButton)
+			teleport->updateSpriteRect(5, 48, 48, 60);
 		teleport->drawShape(window);
 	}
 }

@@ -23,11 +23,14 @@ namespace
 	}
 }
 //______________________________________________________________________
-void DwarfObject::move(const sf::Time &deltaTime, const sf::Event &event)
+void DwarfObject::moving(const sf::Time &deltaTime, const sf::Event &event, const bool newDir)
 {
 	setPrevPosition(getPosition());
-	saveAnimation(sf::IntRect(32 * m_col, m_row * 32, 32, 29));
-	updateAnimation();
+	if (!newDir)
+	{
+		updateAnimation();
+		updateCol();
+	}
 	setMove(dirToVector(m_dir) * dwarfSpeed * deltaTime.asSeconds());
 	m_keyDir = m_row;
 }
@@ -37,7 +40,8 @@ void DwarfObject::setDirection()
 	// while (m_keyDir == m_row)
 	// 	newDirection(rand() % 4);
 	// updateAnimation();
-	while ((m_row = rand() % 4) != m_keyDir)
+	while ((m_row = rand() % 4) == m_keyDir)
+		;
 	newDirection(m_row);
 }
 //_____________________________________
