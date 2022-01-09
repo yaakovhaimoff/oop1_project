@@ -49,3 +49,17 @@
 692	1109	1641709459656976405	CMakeFiles/project.dir/src/mage.cpp.o	c1856da4bbc6d241
 712	1122	1641709459670789447	CMakeFiles/project.dir/src/dwarf.cpp.o	a01621f31e82dd62
 1122	1172	1641709459722771816	project.app/Contents/MacOS/project	a77e685e7c09e808
+3	709	1641720120657148568	CMakeFiles/project.dir/src/warrior.cpp.o	481a2d2981b292e7
+2	722	1641720120670127654	CMakeFiles/project.dir/src/staticObjects.cpp.o	d28b592be90714f7
+1	833	1641720120779221710	CMakeFiles/project.dir/src/movingObjects.cpp.o	7c65bcd7fc1fe71d
+2	840	1641720120780145297	CMakeFiles/project.dir/src/king.cpp.o	5336b54076821707
+1	843	1641720120790817188	CMakeFiles/project.dir/src/gameObjects.cpp.o	faf0a579f94285ba
+2	951	1641720120894905910	CMakeFiles/project.dir/src/window.cpp.o	7444f0f3ad517805
+2	987	1641720120931974538	CMakeFiles/project.dir/src/Resources.cpp.o	397ce510a515111e
+1	1020	1641720120966561103	CMakeFiles/project.dir/src/main.cpp.o	1cba1c413a0a59b3
+1	1080	1641720121027456493	CMakeFiles/project.dir/src/Controller.cpp.o	d886c416bd899bff
+722	1187	1641720121136410930	CMakeFiles/project.dir/src/mage.cpp.o	c1856da4bbc6d241
+709	1191	1641720121140373724	CMakeFiles/project.dir/src/thief.cpp.o	dc8ce036aaf99e7f
+0	1224	1641720121172709174	CMakeFiles/project.dir/src/board.cpp.o	d4bd477fc73908fb
+833	1260	1641720121210590227	CMakeFiles/project.dir/src/dwarf.cpp.o	a01621f31e82dd62
+1261	1311	1641720121263598486	project.app/Contents/MacOS/project	a77e685e7c09e808
