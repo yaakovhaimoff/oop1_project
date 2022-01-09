@@ -90,7 +90,8 @@ void Controller::handleEvents()
 		mouseEventMoved(event);
 	}
 	keyboardEvent(event);
-	isPlaying(event);
+	if (!m_window.isPause())
+		isPlaying(event);
 }
 //_______________________________________________
 void Controller::exitGame(const sf::Event &event)
