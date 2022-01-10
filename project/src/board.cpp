@@ -117,8 +117,8 @@ void Board::connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &t
 	int index = teleports.size()-1, random;
 	for (int i = 0; i < teleports.size(); i++)
 	{
+		// promising that a teleport won't be matched to it self
 		while((random = rand() % index) == i);
-		//random = rand() % index;
 		teleports[i]->setConnectedTeleport(teleports[random]->getPosition());
 		teleports[i]->setNextIndex(random);
 	}

@@ -7,7 +7,9 @@ Controller::Controller()
 {
 	m_gameClock.restart();
 	m_moveClock.restart();
+	m_moveDwarf.restart();
 }
+sf::Clock Controller::m_moveDwarf;
 //________________________
 void Controller::runGame()
 {
@@ -30,7 +32,7 @@ void Controller::runLevel()
 			m_window.drawWindow(m_gameWindow);
 		else
 		{
-			bool key = dynamic_cast<ThiefObject *>(m_players[THIEF_BOARD_OBJECT].get())->doesThiefhasKey();
+			bool key = static_cast<ThiefObject *>(m_players[THIEF_BOARD_OBJECT].get())->doesThiefhasKey();
 			m_window.drawPlay(m_gameWindow, m_gameTime, m_numOfLevel, key, m_players,
 							  m_statics, m_teleports, false, m_activePlayer);
 			if (wonLevel())
@@ -160,11 +162,11 @@ void Controller::moveDwarfsObjects(const sf::Event &event, const sf::Time &delta
 	{
 		if (canDwarfMove.getElapsedTime().asSeconds() > 1.5f)
 		{
-			dynamic_cast<DwarfObject *>(m_players[i].get())->setDirection();
+			static_cast<DwarfObject *>(m_players[i].get())->setDirection();
 			m_changeDwarfDir = true;
 		}
 		// m_players[i]->move(deltaTime, event);
-		dynamic_cast<DwarfObject *>(m_players[i].get())->moving(deltaTime, event, m_changeDwarfDir);
+		static_cast<DwarfObject *>(m_players[i].get())->moving(deltaTime, event, m_changeDwarfDir);
 	}
 	if (m_changeDwarfDir)
 	{

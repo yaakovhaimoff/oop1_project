@@ -47,6 +47,7 @@ private:
 	sf::RenderWindow m_gameWindow = { { 1920, 1080 }, "Save the king" };
 	sf::Clock m_gameClock;
 	sf::Clock m_moveClock;
+	static sf::Clock m_moveDwarf;
 	int m_gameTime;
 	sf::Time pauseTime;
 	sf::Text m_timeInfo;
