@@ -40,8 +40,7 @@ void DwarfObject::setDirection()
 	// while (m_keyDir == m_row)
 	// 	newDirection(rand() % 4);
 	// updateAnimation();
-	while ((m_row = rand() % 4) == m_keyDir)
-		;
+	while ((m_row = rand() % 4) == m_keyDir);
 	newDirection(m_row);
 }
 //_____________________________________

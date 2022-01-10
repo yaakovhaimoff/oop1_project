@@ -11,12 +11,12 @@ GameObjects::GameObjects(const sf::Vector2f &location, const int key)
 	}
 	m_shape.setPosition(location);
 }
-//________________________________________________________
+//_________________________________________________________
 void GameObjects::drawShape(sf::RenderWindow &window) const
 {
 	window.draw(m_shape);
 }
-//__________________________________________
+//___________________________________________
 sf::Vector2f GameObjects::getPosition() const
 {
 	return m_shape.getPosition();
@@ -26,7 +26,7 @@ void GameObjects::setSprite(const sf::Vector2f &location)
 {
 	m_shape.setPosition(location);
 }
-//____________________________________________________________
+//___________________________________________________
 void GameObjects::setMove(const sf::Vector2f &offset)
 {
 	m_shape.move(offset);
