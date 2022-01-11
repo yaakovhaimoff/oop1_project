@@ -9,30 +9,20 @@
 #include <memory>
 
 #include "macros.hpp"
-#include "movingObjects.hpp"
-#include "staticObjects.hpp"
-#include "dwarf.hpp"
+
+class Data;
 
 class Board
 {
 public:
 	Board();
-	void setObjectsFromBoard(std::vector<std::unique_ptr<MovingObjects>> &,
-							 std::vector<std::unique_ptr<StaticObjects>> &,
-							 std::vector<std::unique_ptr<TeleporterObject>> &);
+	void setObjectsFromBoard(Data&);
 	bool checkEndOfFile() const;
-	void sendBoardKeysToObjects(std::vector<std::unique_ptr<MovingObjects>> &,
-								std::vector<std::unique_ptr<StaticObjects>> &,
-								std::vector<std::unique_ptr<TeleporterObject>> &);
-	void addObjects(std::vector<std::unique_ptr<MovingObjects>> &,
-					std::vector<std::unique_ptr<StaticObjects>> &,
-					std::vector<std::unique_ptr<TeleporterObject>> &,
-					const sf::Vector2f &, const char);
+	void sendBoardKeysToObjects(Data&);
 	void clearBoard();
 
 private:
 	void readBoardFile();
-	void connectToTeleports(std::vector<std::unique_ptr<TeleporterObject>> &);
 	std::ifstream m_boardSrcFiles;
 	std::vector<std::string> m_level;
 };

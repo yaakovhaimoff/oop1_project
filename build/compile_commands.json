@@ -63,5 +63,10 @@
   "directory": "/Users/yaakovhaimoff/Desktop/project/oop1_project/build",
   "command": "/usr/bin/clang++ -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a -o CMakeFiles/project.dir/src/dwarf.cpp.o -c /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/dwarf.cpp",
   "file": "/Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/dwarf.cpp"
+},
+{
+  "directory": "/Users/yaakovhaimoff/Desktop/project/oop1_project/build",
+  "command": "/usr/bin/clang++ -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a -o CMakeFiles/project.dir/src/data.cpp.o -c /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/data.cpp",
+  "file": "/Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/data.cpp"
 }
 ]

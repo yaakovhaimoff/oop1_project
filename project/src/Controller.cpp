@@ -2,23 +2,20 @@
 
 //______________________
 Controller::Controller()
-	: m_activePlayer(0), m_numOfLevel(0), m_teleportIndex(0),
-	  m_gameTime(levelTimes[0]), m_changeDwarfDir(false)
+	: m_activePlayer(0), m_numOfLevel(0), m_gameTime(levelTimes[0])
 {
 	m_gameClock.restart();
 	m_moveClock.restart();
-	m_moveDwarf.restart();
 }
-sf::Clock Controller::m_moveDwarf;
 //________________________
 void Controller::runGame()
 {
-	while (!m_board.checkEndOfFile())
+	while (!m_data.endOfFile())
 	{
-		m_board.setObjectsFromBoard(m_players, m_statics, m_teleports);
+		m_data.setDataObjects();
 		runLevel();
-		clearObjects();
-		m_board.clearBoard();
+		m_data.clearObjects();
+		m_data.clearBoard();
 		m_numOfLevel++;
 		m_gameTime = levelTimes[m_numOfLevel];
 	}
@@ -32,10 +29,10 @@ void Controller::runLevel()
 			m_window.drawWindow(m_gameWindow);
 		else
 		{
-			bool key = static_cast<ThiefObject *>(m_players[THIEF_BOARD_OBJECT].get())->doesThiefhasKey();
-			m_window.drawPlay(m_gameWindow, m_gameTime, m_numOfLevel, key, m_players,
-							  m_statics, m_teleports, false, m_activePlayer);
-			if (wonLevel())
+			bool key = m_data.thiefHasKey();
+			m_window.drawPlay(m_gameWindow, m_gameTime, m_numOfLevel, key, false, m_activePlayer);
+			m_data.drawObjects(m_gameWindow, m_window.isPause());
+			if (m_data.wonLevel())
 				break;
 			if (!m_window.isPause())
 			{
@@ -54,7 +51,8 @@ void Controller::handleGameOver(const bool key)
 	if (checkGameTime())
 	{
 		m_window.drawPlay(m_gameWindow, m_gameTime, m_numOfLevel,
-						  key, m_players, m_statics, m_teleports, true, m_activePlayer);
+						  key, true, m_activePlayer);
+		m_data.drawObjects(m_gameWindow, true);
 		restartLevel();
 	}
 }
@@ -66,17 +64,10 @@ bool Controller::checkGameTime() const
 //_____________________________
 void Controller::restartLevel()
 {
-	clearObjects();
-	m_board.sendBoardKeysToObjects(m_players, m_statics, m_teleports);
+	m_data.clearObjects();
+	m_data.setDataObjects();
 	m_gameTime = levelTimes[m_numOfLevel];
 	m_activePlayer = 0;
-}
-//_____________________________
-void Controller::clearObjects()
-{
-	m_players.clear();
-	m_statics.clear();
-	m_teleports.clear();
 }
 //_________________________
 void Controller::playTime()
@@ -141,121 +132,6 @@ void Controller::isPlaying(const sf::Event &event)
 	if (m_window.isPlaying() && !m_window.isPause())
 	{
 		const auto deltaTime = m_moveClock.restart();
-		movePlayerObject(event, deltaTime);
-		moveDwarfsObjects(event, deltaTime);
-		checkToOpenTeleport(*m_players[m_activePlayer]);
-		checkPlayerCollision(*m_players[m_activePlayer]);
-		checkDwarfCollision(event);
-		handleDaedObjects();
+		m_data.moveData(event, deltaTime, m_activePlayer);
 	}
-}
-//__________________________________________________________________________________
-void Controller::movePlayerObject(const sf::Event &event, const sf::Time &deltaTime)
-{
-	m_players[m_activePlayer]->move(deltaTime, event);
-}
-//___________________________________________________________________________________
-void Controller::moveDwarfsObjects(const sf::Event &event, const sf::Time &deltaTime)
-{
-	static sf::Clock canDwarfMove;
-	for (int i = numOfPlayers; i < m_players.size(); i++)
-	{
-		if (canDwarfMove.getElapsedTime().asSeconds() > 1.5f)
-		{
-			static_cast<DwarfObject *>(m_players[i].get())->setDirection();
-			m_changeDwarfDir = true;
-		}
-		// m_players[i]->move(deltaTime, event);
-		static_cast<DwarfObject *>(m_players[i].get())->moving(deltaTime, event, m_changeDwarfDir);
-	}
-	if (m_changeDwarfDir)
-	{
-		m_changeDwarfDir = false;
-		canDwarfMove.restart();
-	}
-}
-//________________________________________________________________
-void Controller::checkPlayerCollision(MovingObjects &activePlayer)
-{
-	for (auto &unmovable : m_statics)
-		if (activePlayer.checkCollision(*unmovable))
-			activePlayer.collide(*unmovable);
-
-	for (auto &movalbe : m_players)
-		if (activePlayer.checkCollision(*movalbe) && &activePlayer != &(*movalbe))
-			activePlayer.setPosition();
-
-	for (auto &teleports : m_teleports)
-		if (activePlayer.checkCollision(*teleports) && teleports->isTelOpen() &&
-			noOtherPlayerIsOnNextTeleport(teleports->getNextTelIndex()))
-		{
-			activePlayer.collide(*teleports);
-			m_teleports[teleports->getNextTelIndex()]->setLock(false);
-			m_teleportIndex = teleports->getNextTelIndex();
-		}
-}
-//__________________________________________________________
-void Controller::checkDwarfCollision(const sf::Event &event)
-{
-	for (int i = numOfPlayers; i < m_players.size(); i++)
-		for (int j = 0; j < m_statics.size(); j++)
-			if (m_players[i]->checkCollision(*m_statics[j]))
-				m_players[i]->collide(*m_statics[j]);
-}
-//_______________________________________________________________
-void Controller::checkToOpenTeleport(MovingObjects &activePlayer)
-{
-	// while the player is on the teleport, the teleport stays closed,
-	//  and the collision is not checked
-	if (activePlayer.checkCollision(*m_teleports[m_teleportIndex]))
-		return;
-	m_teleports[m_teleportIndex]->setLock(true);
-}
-//___________________________________________________________________________
-bool Controller::noOtherPlayerIsOnNextTeleport(const int nextTelelport) const
-{
-	for (int i = 0; i < numOfPlayers; i++)
-	{
-		if (i == m_activePlayer)
-			continue;
-		if (m_players[i]->checkCollision(*m_teleports[nextTelelport]))
-			return false;
-	}
-	return true;
-}
-//__________________________________
-void Controller::handleDaedObjects()
-{
-	for (auto &unmovable : m_statics)
-	{
-		if (typeid(*unmovable) == typeid(MonsterObject) && unmovable->isDead())
-			m_board.addObjects(m_players, m_statics, m_teleports, unmovable->getPosition(), GATE_KEY);
-		else if (typeid(*unmovable) == typeid(TimeGiftObject) && unmovable->isDead())
-			m_gameTime += getTimeForGift();
-		else if (typeid(*unmovable) == typeid(RemoveDwarfsObject) && unmovable->isDead())
-			removeDwarfs();
-	}
-
-	std::erase_if(m_statics, [](auto &staticObject)
-				  { return staticObject->isDead(); });
-}
-//_____________________________
-void Controller::removeDwarfs()
-{
-	int size = m_players.size() - numOfPlayers;
-	for (int i = numOfPlayers; size < m_players.size();)
-		m_players.erase(m_players.begin() + i);
-}
-//________________________________
-bool Controller::wonLevel() const
-{
-	for (auto &unmovable : m_statics)
-		if (typeid(*unmovable) == typeid(CrownObject))
-			return false;
-	return true;
-}
-//______________________________
-int Controller::getTimeForGift()
-{
-	return (rand() % 30 + (-30));
 }

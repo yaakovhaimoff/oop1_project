@@ -10,5 +10,6 @@
 												"warrior.cpp"
 												"thief.cpp"
 												"mage.cpp"
-												"dwarf.cpp")
+												"dwarf.cpp"
+												"data.cpp")
 												

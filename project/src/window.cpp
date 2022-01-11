@@ -220,56 +220,19 @@ void Window::drawHelp(sf::RenderWindow &window) const
 	window.draw(m_helpText);
 	window.display();
 }
-//____________________________________________________________________________________________________
+//_______________________________________________________________________________________________
 void Window::drawPlay(sf::RenderWindow &window, const int &time, const int level, const bool key,
-					  const std::vector<std::unique_ptr<MovingObjects>> &players,
-					  const std::vector<std::unique_ptr<StaticObjects>> &statics,
-					  const std::vector<std::unique_ptr<TeleporterObject>> &teleports,
 					  const bool gameOver, const int player) const
 {
 	window.clear();
 	window.draw(m_gameSprite[level]);
-	drawObjects(window, players, statics, teleports);
 	drawLevelInfo(window, time, level, key);
 	drawActivePlayer(window, player);
 	if (gameOver)
 		gameOverLevelMessage(window);
 	m_pauseButton ? drawPasused(window) : drawPasuse(window);
-	window.display();
-	Resources::instance().stopLoop(menuSound);
-	window.setFramerateLimit(12);
 }
-//________________________________________________
-void Window::drawObjects(sf::RenderWindow &window,
-						 const std::vector<std::unique_ptr<MovingObjects>> &players,
-						 const std::vector<std::unique_ptr<StaticObjects>> &statics,
-						 const std::vector<std::unique_ptr<TeleporterObject>> &teleports) const
-{
-	for (auto &unmovable : statics)
-	{
-		if (!m_pauseButton)
-			if (typeid(*unmovable) == typeid(CrownObject))
-				unmovable->updateSpriteRect(3, 72, 65, 50);
-			else if (typeid(*unmovable) == typeid(FireObject))
-				unmovable->updateSpriteRect(8, 25, 25, 50);
-			else if (typeid(*unmovable) == typeid(KeyObject))
-				unmovable->updateSpriteRect(11, 60, 50, 60);
-			else if (typeid(*unmovable) == typeid(MonsterObject))
-				unmovable->updateSpriteRect(8, 65, 52, 58);
 
-		unmovable->drawShape(window);
-	}
-
-	for (auto &player : players)
-		player->drawShape(window);
-
-	for (auto &teleport : teleports)
-	{
-		if (!m_pauseButton)
-			teleport->updateSpriteRect(5, 48, 48, 60);
-		teleport->drawShape(window);
-	}
-}
 //____________________________________________________________________________
 void Window::drawActivePlayer(sf::RenderWindow &window, const int player) const
 {
