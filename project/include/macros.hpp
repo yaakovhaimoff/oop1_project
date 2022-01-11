@@ -34,7 +34,7 @@ const int MenuBar = 14;
 const int PLAYER_EXIST = 2;
 
 const int teleportsConnection[LEVELS] = {032145, 0312, 0123};
-const int levelTimes[LEVELS] = {120, 300, 350};
+const int levelTimes[LEVELS] = {6, 300, 350};
 
 const std::string FontName = "font.ttf";
 const std::vector SOUNDS_NAMES = {"gamePlay.wav", "menuMusic.wav", "ClickSound.wav", "FailSound.wav",

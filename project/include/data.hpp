@@ -17,12 +17,13 @@ class Data
 {
 public:
     Data() = default;
-    void setDataObjects();
+    void setDataToLevelStart();
+    void setDataToLevelRestart();
     void setData(const sf::Vector2f &, const char);
     void clearObjects();
     void moveData(const sf::Event &, const sf::Time &, const int);
     bool wonLevel() const;
-    void drawObjects(sf::RenderWindow &, const bool) const;
+    void drawObjects(sf::RenderWindow &, const bool, const bool) const;
     bool thiefHasKey() const;
     bool endOfFile()const;
     void clearBoard();

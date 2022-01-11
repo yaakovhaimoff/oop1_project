@@ -22,7 +22,7 @@ public:
 
 private:
 	void runLevel();
-	void handleGameOver(const bool);
+	void handleGameOver();
 	bool checkGameTime()const;
 	void handleEvents();
 	void exitGame(const sf::Event&);
@@ -33,6 +33,7 @@ private:
 	void isPlaying(const sf::Event&);
 	void playTime();
 	void restartLevel();
+	void drawGame();
 	sf::RenderWindow m_gameWindow = { { 1920, 1080 }, "Save the king" };
 	sf::Clock m_gameClock;
 	sf::Clock m_moveClock;

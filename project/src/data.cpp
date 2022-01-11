@@ -1,11 +1,17 @@
 #include "data.hpp"
-// #include "board.hpp"
 
-//_________________________
-void Data::setDataObjects()
+//______________________________
+void Data::setDataToLevelStart()
 {
     m_players.resize(numOfPlayers);
     m_board.setObjectsFromBoard(*this);
+    connectToTeleports();
+}
+//________________________________
+void Data::setDataToLevelRestart()
+{
+    m_players.resize(numOfPlayers);
+    m_board.sendBoardKeysToObjects(*this);
     connectToTeleports();
 }
 //__________________________________________________________________
@@ -221,14 +227,14 @@ bool Data::wonLevel() const
 //____________________________
 bool Data::thiefHasKey() const
 {
-    return dynamic_cast<ThiefObject *>(m_players[THIEF_BOARD_OBJECT].get())->doesThiefhasKey();
+    return static_cast<ThiefObject *>(m_players[THIEF_BOARD_OBJECT].get())->doesThiefhasKey();
 }
-//_____________________________________________________________________________
-void Data::drawObjects(sf::RenderWindow &window, const bool pauseButton) const
+//_________________________________________________________________________________________________
+void Data::drawObjects(sf::RenderWindow &window, const bool pauseButton, const bool gameOver) const
 {
     for (auto &unmovable : m_statics)
     {
-        if (!pauseButton)
+        if (!pauseButton && !gameOver)
             if (typeid(*unmovable) == typeid(CrownObject))
                 unmovable->updateSpriteRect(3, 72, 65, 50);
             else if (typeid(*unmovable) == typeid(FireObject))
@@ -246,17 +252,13 @@ void Data::drawObjects(sf::RenderWindow &window, const bool pauseButton) const
 
     for (auto &teleport : m_teleports)
     {
-        if (!pauseButton)
+        if (!pauseButton && !gameOver)
             teleport->updateSpriteRect(5, 48, 48, 60);
         teleport->drawShape(window);
     }
-
-    window.display();
-    Resources::instance().stopLoop(menuSound);
-    window.setFramerateLimit(12);
 }
 //________________________
 int Data::getTimeForGift()
 {
-	return (rand() % 30 + (-30));
+    return (rand() % 30 + (-30));
 }

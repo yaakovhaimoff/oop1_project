@@ -16,7 +16,9 @@ class Window
 public:
 	Window();
 	void drawWindow(sf::RenderWindow &) const;
-	void drawPlay(sf::RenderWindow &, const int&, const int, const bool, const bool, const int) const;
+	void drawPlayWindow(sf::RenderWindow &, const int&, const int, const bool, const int) const;
+	void drawPauseMessage(sf::RenderWindow &);
+	void gameOverLevelMessage(sf::RenderWindow &) const;
 	void handleClickInWindow(const sf::Vector2f &);
 	bool isPlaying() const;
 	bool isPause()const;
@@ -37,7 +39,6 @@ private:
 	void checkPlayPressed(const sf::Vector2f &);
 	void drawMenu(sf::RenderWindow &) const;
 	void drawHelp(sf::RenderWindow &) const;
-	void gameOverLevelMessage(sf::RenderWindow &) const;
 	void drawLevelInfo(sf::RenderWindow &, const int &, const int, const bool) const;
 	void drawActivePlayer(sf::RenderWindow&, const int)const;
 	void drawPasuse(sf::RenderWindow&)const;

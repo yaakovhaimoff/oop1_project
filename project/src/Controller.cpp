@@ -12,7 +12,7 @@ void Controller::runGame()
 {
 	while (!m_data.endOfFile())
 	{
-		m_data.setDataObjects();
+		m_data.setDataToLevelStart();
 		runLevel();
 		m_data.clearObjects();
 		m_data.clearBoard();
@@ -29,14 +29,12 @@ void Controller::runLevel()
 			m_window.drawWindow(m_gameWindow);
 		else
 		{
-			bool key = m_data.thiefHasKey();
-			m_window.drawPlay(m_gameWindow, m_gameTime, m_numOfLevel, key, false, m_activePlayer);
-			m_data.drawObjects(m_gameWindow, m_window.isPause());
+			drawGame();
 			if (m_data.wonLevel())
 				break;
 			if (!m_window.isPause())
 			{
-				handleGameOver(key);
+				handleGameOver();
 				playTime();
 			}
 			else
@@ -45,29 +43,30 @@ void Controller::runLevel()
 		handleEvents();
 	}
 }
-//_____________________________________________
-void Controller::handleGameOver(const bool key)
+//_______________________________
+void Controller::handleGameOver()
 {
 	if (checkGameTime())
 	{
-		m_window.drawPlay(m_gameWindow, m_gameTime, m_numOfLevel,
-						  key, true, m_activePlayer);
-		m_data.drawObjects(m_gameWindow, true);
+		drawGame();
+		m_window.gameOverLevelMessage(m_gameWindow);
 		restartLevel();
 	}
 }
 //____________________________________
 bool Controller::checkGameTime() const
 {
-	return m_gameTime < 0;
+	return m_gameTime < 1;
 }
 //_____________________________
 void Controller::restartLevel()
 {
 	m_data.clearObjects();
-	m_data.setDataObjects();
+	m_data.setDataToLevelRestart();
 	m_gameTime = levelTimes[m_numOfLevel];
 	m_activePlayer = 0;
+	m_gameClock.restart();
+	m_moveClock.restart();
 }
 //_________________________
 void Controller::playTime()
@@ -134,4 +133,15 @@ void Controller::isPlaying(const sf::Event &event)
 		const auto deltaTime = m_moveClock.restart();
 		m_data.moveData(event, deltaTime, m_activePlayer);
 	}
+}
+//_________________________
+void Controller::drawGame()
+{
+	m_gameWindow.clear();
+	m_window.drawPlayWindow(m_gameWindow, m_gameTime, m_numOfLevel, m_data.thiefHasKey(), m_activePlayer);
+	m_data.drawObjects(m_gameWindow, m_window.isPause(), checkGameTime());
+	m_window.drawPauseMessage(m_gameWindow);
+	m_gameWindow.display();
+	Resources::instance().stopLoop(menuSound);
+	m_gameWindow.setFramerateLimit(12);
 }

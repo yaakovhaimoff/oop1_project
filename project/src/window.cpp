@@ -221,18 +221,18 @@ void Window::drawHelp(sf::RenderWindow &window) const
 	window.display();
 }
 //_______________________________________________________________________________________________
-void Window::drawPlay(sf::RenderWindow &window, const int &time, const int level, const bool key,
-					  const bool gameOver, const int player) const
+void Window::drawPlayWindow(sf::RenderWindow &window, const int &time, const int level, const bool key,
+					  const int player) const
 {
-	window.clear();
 	window.draw(m_gameSprite[level]);
 	drawLevelInfo(window, time, level, key);
 	drawActivePlayer(window, player);
-	if (gameOver)
-		gameOverLevelMessage(window);
+}
+//______________________________________________
+void Window::drawPauseMessage(sf::RenderWindow &window)
+{
 	m_pauseButton ? drawPasused(window) : drawPasuse(window);
 }
-
 //____________________________________________________________________________
 void Window::drawActivePlayer(sf::RenderWindow &window, const int player) const
 {
@@ -323,16 +323,16 @@ void Window::drawLevelInfo(sf::RenderWindow &window, const int &levelTime,
 //______________________________________________________________
 void Window::gameOverLevelMessage(sf::RenderWindow &window) const
 {
-	std::string restart = "Game Over!";
-	sf::Text restartText;
-	restartText.setFont(Resources::instance().getFont());
-	restartText.setString(restart);
-	restartText.setCharacterSize(100);
-	restartText.setPosition(750, 50);
+	std::string gameOver = "Game Over!";
+	sf::Text gameOverText;
+	gameOverText.setFont(Resources::instance().getFont());
+	gameOverText.setString(gameOver);
+	gameOverText.setCharacterSize(100);
+	gameOverText.setPosition(750, 50);
 	sf::Clock clock;
-	while (clock.getElapsedTime().asSeconds() < 1)
+	while (clock.getElapsedTime().asSeconds() < 2)
 	{
-		window.draw(restartText);
+		window.draw(gameOverText);
 		window.display();
 	}
 }
