@@ -13,10 +13,12 @@
 #include "dwarf.hpp"
 #include "board.hpp"
 
+class Controller;
+
 class Data
 {
 public:
-    Data() = default;
+    Data(Controller &);
     void setDataToLevelStart();
     void setDataToLevelRestart();
     void setData(const sf::Vector2f &, const char);
@@ -25,7 +27,7 @@ public:
     bool wonLevel() const;
     void drawObjects(sf::RenderWindow &, const bool, const bool) const;
     bool thiefHasKey() const;
-    bool endOfFile()const;
+    bool endOfFile() const;
     void clearBoard();
 
 private:
@@ -38,7 +40,7 @@ private:
     bool noOtherPlayerIsOnNextTeleport(const int) const;
     void handleDaedObjects();
     void removeDwarfs();
-	int getTimeForGift();
+    int getTimeForGift();
     std::vector<std::unique_ptr<MovingObjects>> m_players;
     std::vector<std::unique_ptr<StaticObjects>> m_statics;
     std::vector<std::unique_ptr<TeleporterObject>> m_teleports;
@@ -46,4 +48,5 @@ private:
     int m_teleportIndex;
     int m_activePlayer;
     Board m_board;
+    Controller *m_controller;
 };

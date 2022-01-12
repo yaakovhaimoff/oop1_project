@@ -30,6 +30,7 @@ private:
 	void setHelp();
 	void setPlay();
 	void setPause();
+	void setSound();
 	void setActivePlayerInfo();
 	void setPauseGame();
 	void checkMouseOnMenu(const sf::Event &);
@@ -37,6 +38,8 @@ private:
 	void checkMenuPressed(const sf::Vector2f &);
 	void checkHelpPressed(const sf::Vector2f &);
 	void checkPlayPressed(const sf::Vector2f &);
+	void checkPausePressed(const sf::Vector2f &);
+	void checkSoundPressed(const sf::Vector2f &);
 	void drawMenu(sf::RenderWindow &) const;
 	void drawHelp(sf::RenderWindow &) const;
 	void drawLevelInfo(sf::RenderWindow &, const int &, const int, const bool) const;
@@ -45,11 +48,14 @@ private:
 	void drawPasused(sf::RenderWindow&)const;
 	bool m_currentWindow[AmountOfWindows+1] = {true, false, false, false};
 	bool m_pauseButton;
+	bool m_soundButton;
 	sf::Sprite m_background[AmountOfWindows];
 	sf::Sprite m_gameSprite[LEVELS];
 	sf::Sprite m_activePlayer[numOfPlayers];
 	sf::Sprite m_pause;
 	sf::Sprite m_paused;
+	sf::Sprite m_soundOn;
+	sf::Sprite m_soundOff;
 	sf::Text m_gameName;
 	sf::Text m_menuText[AmountOfWindows];
 	sf::Text m_helpText;

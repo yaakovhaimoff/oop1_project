@@ -19,6 +19,7 @@ class Controller
 public:
 	Controller();
 	void runGame();
+	void setTime(const int);
 
 private:
 	void runLevel();

@@ -2,13 +2,14 @@
 
 //______________
 Window::Window()
-	: m_pauseButton(false)
+	: m_pauseButton(false), m_soundButton(false)
 {
 	Resources::instance().playInLoop(menuSound);
 	setMenu();
 	setHelp();
 	setPlay();
 	setPause();
+	setSound();
 	setActivePlayerInfo();
 }
 //____________________
@@ -81,6 +82,16 @@ void Window::setPause()
 	m_paused.setTexture(Resources::instance().getTexture(Paused));
 	m_paused.setPosition(20, 200);
 	m_paused.setScale(2.8, 2.8);
+}
+//_____________________
+void Window::setSound()
+{
+	m_soundOn.setTexture(Resources::instance().getTexture(soundOn));
+	m_soundOn.setPosition(200, 40);
+	m_soundOn.setScale(1.3, 1.3);
+	m_soundOff.setTexture(Resources::instance().getTexture(soundOff));
+	m_soundOff.setPosition(200, 40);
+	m_soundOff.setScale(1.3, 1.3);
 }
 //________________________________
 void Window::setActivePlayerInfo()
@@ -179,6 +190,12 @@ void Window::checkHelpPressed(const sf::Vector2f &location)
 //_________________________________________________________
 void Window::checkPlayPressed(const sf::Vector2f &location)
 {
+	checkPausePressed(location);
+	checkSoundPressed(location);
+}
+//_________________________________________________________
+void Window::checkPausePressed(const sf::Vector2f &location)
+{
 	if (m_pause.getGlobalBounds().contains(location))
 	{
 		m_pauseButton = true;
@@ -188,6 +205,23 @@ void Window::checkPlayPressed(const sf::Vector2f &location)
 	{
 		m_pauseButton = false;
 		Resources::instance().playSound(ClickSound);
+	}
+}
+//_________________________________________________________
+void Window::checkSoundPressed(const sf::Vector2f &location)
+{
+	if (m_soundOn.getGlobalBounds().contains(location))
+	{
+		m_pauseButton = true;
+		Resources::instance().playSound(ClickSound);
+		Resources::instance().stopLoop(GameSound);
+
+	}
+	if (m_soundOff.getGlobalBounds().contains(location))
+	{
+		m_pauseButton = false;
+		Resources::instance().playSound(ClickSound);
+		Resources::instance().playInLoop(GameSound);
 	}
 }
 //____________________________________________________
@@ -225,6 +259,7 @@ void Window::drawPlayWindow(sf::RenderWindow &window, const int &time, const int
 					  const int player) const
 {
 	window.draw(m_gameSprite[level]);
+	m_soundButton ? window.draw(m_soundOn) : window.draw(m_soundOff); 
 	drawLevelInfo(window, time, level, key);
 	drawActivePlayer(window, player);
 }

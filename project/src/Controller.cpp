@@ -2,7 +2,8 @@
 
 //______________________
 Controller::Controller()
-	: m_activePlayer(0), m_numOfLevel(0), m_gameTime(levelTimes[0])
+	: m_activePlayer(0), m_numOfLevel(0),
+	 m_gameTime(levelTimes[0]), m_data(*this)
 {
 	m_gameClock.restart();
 	m_moveClock.restart();
@@ -144,4 +145,9 @@ void Controller::drawGame()
 	m_gameWindow.display();
 	Resources::instance().stopLoop(menuSound);
 	m_gameWindow.setFramerateLimit(12);
+}
+//______________________________________
+void Controller::setTime(const int time)
+{
+	m_gameTime += time;
 }

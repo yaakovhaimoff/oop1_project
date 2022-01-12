@@ -1,5 +1,11 @@
 #include "data.hpp"
+#include "Controller.hpp"
 
+//________________________________
+Data::Data(Controller &controller)
+{
+    m_controller = &controller;
+}
 //______________________________
 void Data::setDataToLevelStart()
 {
@@ -202,8 +208,8 @@ void Data::handleDaedObjects()
             setData(unmovable->getPosition(), GATE_KEY);
         else if (typeid(*unmovable) == typeid(RemoveDwarfsObject) && unmovable->isDead())
             removeDwarfs();
-        //  else if (typeid(*unmovable) == typeid(TimeGiftObject) && unmovable->isDead())
-        //      m_gameTime += getTimeForGift();
+        else if (typeid(*unmovable) == typeid(TimeGiftObject) && unmovable->isDead())
+            m_controller->setTime(getTimeForGift());
     }
 
     std::erase_if(m_statics, [](auto &staticObject)
@@ -212,7 +218,8 @@ void Data::handleDaedObjects()
 //_______________________
 void Data::removeDwarfs()
 {
-    int size = m_players.size() - numOfPlayers;
+    int size = m_players.size() % 2 == 0 ? m_players.size() - numOfPlayers
+                                         : m_players.size() - numOfPlayers - 1;
     for (int i = numOfPlayers; size < m_players.size();)
         m_players.erase(m_players.begin() + i);
 }
@@ -235,9 +242,7 @@ void Data::drawObjects(sf::RenderWindow &window, const bool pauseButton, const b
     for (auto &unmovable : m_statics)
     {
         if (!pauseButton && !gameOver)
-            if (typeid(*unmovable) == typeid(CrownObject))
-                unmovable->updateSpriteRect(3, 72, 65, 50);
-            else if (typeid(*unmovable) == typeid(FireObject))
+            if (typeid(*unmovable) == typeid(FireObject))
                 unmovable->updateSpriteRect(8, 25, 25, 50);
             else if (typeid(*unmovable) == typeid(KeyObject))
                 unmovable->updateSpriteRect(11, 60, 50, 60);
