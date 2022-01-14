@@ -26,20 +26,12 @@ namespace
 }
 //_______________________________________________
 sf::Vector2f MovingObjects::getDirFromKey() const { return dirFromKey(); }
-//___________________________________
-void MovingObjects::updateAnimation()
-{
-	setSpriteRect(sf::IntRect(32, m_row * 32, 32, 32));
-}
 //_____________________________
 void MovingObjects::updateCol()
 {
-	while (m_col < 3)
-	{
-		setSpriteRect(sf::IntRect(m_col * 32, m_row * 32, 32, 32));
-		++m_col;
-	}
-	m_col > 3 ? m_col = 0 : ++m_col;
+	m_col == 2 ? m_col = 0 : ++m_col;
+	setSpriteRect(sf::IntRect(m_col * float(58.66), m_row * float(58.5),
+							  float(58.66), float(58.5)));
 }
 //_______________________________________________________
 void MovingObjects::getDir(const sf::Event &event)
@@ -48,26 +40,19 @@ void MovingObjects::getDir(const sf::Event &event)
 	{
 	case sf::Keyboard::Down:
 		m_row = 0;
-		updateAnimation();
 		updateCol();
 		break;
 	case sf::Keyboard::Left:
 		m_row = 1;
-		updateAnimation();
 		updateCol();
 		break;
 	case sf::Keyboard::Right:
 		m_row = 2;
-		updateAnimation();
 		updateCol();
 		break;
 	case sf::Keyboard::Up:
 		m_row = 3;
-		updateAnimation();
 		updateCol();
-		break;
-	default:
-		updateAnimation();
 		break;
 	}
 }

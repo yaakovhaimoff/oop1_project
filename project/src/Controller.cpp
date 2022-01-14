@@ -3,26 +3,15 @@
 //______________________
 Controller::Controller()
 	: m_activePlayer(0), m_numOfLevel(0),
-	 m_gameTime(levelTimes[0]), m_data(*this)
+	  m_gameTime(levelTimes[0]), m_data(*this)
 {
-	m_gameClock.restart();
+	m_data.setDataToLevelStart(m_numOfLevel);
+	//m_gameTime = m_data.getLevelTime(m_numOfLevel);
 	m_moveClock.restart();
-}
-//________________________
-void Controller::runGame()
-{
-	while (!m_data.endOfFile())
-	{
-		m_data.setDataToLevelStart();
-		runLevel();
-		m_data.clearObjects();
-		m_data.clearBoard();
-		m_numOfLevel++;
-		m_gameTime = levelTimes[m_numOfLevel];
-	}
+	m_gameClock.restart();
 }
 //_________________________
-void Controller::runLevel()
+void Controller::runGame()
 {
 	while (m_gameWindow.isOpen())
 	{
@@ -30,9 +19,17 @@ void Controller::runLevel()
 			m_window.drawWindow(m_gameWindow);
 		else
 		{
+			if (isLevelSelected)
+			{
+				levelSelected();
+			}
 			drawGame();
 			if (m_data.wonLevel())
+			{
+				setNextLevel();
+				if(m_numOfLevel >= LEVELS)
 				break;
+			}
 			if (!m_window.isPause())
 			{
 				handleGameOver();
@@ -43,6 +40,24 @@ void Controller::runLevel()
 		}
 		handleEvents();
 	}
+}
+//______________________________
+void Controller::levelSelected()
+{
+	m_numOfLevel = m_window.getLevelSelected();
+	m_gameTime = m_data.getLevelTime(m_numOfLevel);
+	m_data.clearObjects();
+	m_data.setDataToLevelStart(m_numOfLevel);
+	isLevelSelected = false;
+}
+//_____________________________
+void Controller::setNextLevel()
+{
+	m_gameClock.restart();
+	m_data.clearObjects();
+	m_numOfLevel++;
+	m_gameTime = m_data.getLevelTime(m_numOfLevel);
+	m_data.setDataToLevelStart(m_numOfLevel);
 }
 //_______________________________
 void Controller::handleGameOver()
@@ -63,7 +78,7 @@ bool Controller::checkGameTime() const
 void Controller::restartLevel()
 {
 	m_data.clearObjects();
-	m_data.setDataToLevelRestart();
+	m_data.setDataToLevelRestart(m_numOfLevel);
 	m_gameTime = levelTimes[m_numOfLevel];
 	m_activePlayer = 0;
 	m_gameClock.restart();

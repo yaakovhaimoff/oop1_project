@@ -19,7 +19,6 @@ public:
     void setPrevPosition(const sf::Vector2f& location) { m_prev_location = location; }
     void setPosition() { setSprite(m_prev_location); }
     void getDir(const sf::Event &);
-    virtual void updateAnimation();
     virtual void updateCol();
     sf::Vector2f getPrevPosition() const { return m_prev_location; }
     sf::Vector2f getDirFromKey()const;

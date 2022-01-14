@@ -19,6 +19,7 @@ const float warriorSpeed = 160;
 const float thiefSpeed = 180;
 const float dwarfSpeed = 170;
 
+const std::string selectLevelNames[] = {"Level 1", "Level 2", "Level 3"};
 const std::string menu_names[] = {"HELP", "PLAY", "EXIT"};
 
 // what the tiles in the game can posses
@@ -40,8 +41,8 @@ const std::string FontName = "font.ttf";
 const std::vector SOUNDS_NAMES = {"gamePlay.wav", "menuMusic.wav", "ClickSound.wav", "FailSound.wav",
 								  "ThiefTakeKey.wav", "GrabPresent.wav", "TeleportEnter.wav",
 								  "OpenGate.wav", "WinLevel.wav", "fire.wav","OrkDeathSoundEffect.wav"};
-const std::vector NAMES = {"play1.png", "play2.png", "play3.png", "menu.png", "help.png", "king.png", "mage.png",
-						   "thief.png", "warrior.png", "crown.png", "gate.png", "fire.png",
+const std::vector NAMES = {"play1.png", "play2.png", "play3.png", "menu.png", "help.png", "SelectLevel.png", "king.png", "mage.png",
+						   "warrior.png", "thief.png", "crown.png", "gate.png", "fire.png",
 						   "key.png", "monster.png", "teleport.png", "brickWall.png", "dwarf.png", "gift.png",
 						   "pause.png", "paused.png", "soundOn.png", "soundOff.png"};
 enum rcsNames
@@ -51,10 +52,11 @@ enum rcsNames
 	BoardBackground3,
 	MenuBackground,
 	HelpScreen,
+	SelecetLevel,
 	King,
 	Mage,
-	Thief,
 	Warrior,
+	Thief,
 	Crown,
 	Gate,
 	Fire,

@@ -7,17 +7,17 @@ Data::Data(Controller &controller)
     m_controller = &controller;
 }
 //______________________________
-void Data::setDataToLevelStart()
+void Data::setDataToLevelStart(const int level)
 {
     m_players.resize(numOfPlayers);
-    m_board.setObjectsFromBoard(*this);
+    m_board.sendBoardKeysToObjects(*this, level);
     connectToTeleports();
 }
 //________________________________
-void Data::setDataToLevelRestart()
+void Data::setDataToLevelRestart(const int level)
 {
     m_players.resize(numOfPlayers);
-    m_board.sendBoardKeysToObjects(*this);
+    m_board.sendBoardKeysToObjects(*this, level);
     connectToTeleports();
 }
 //__________________________________________________________________
@@ -91,8 +91,7 @@ void Data::connectToTeleports()
     for (int i = 0; i < m_teleports.size(); i++)
     {
         // promising that a teleport won't be matched to it self
-        while ((random = rand() % index) == i)
-            ;
+        while ((random = rand() % index) == i);
         m_teleports[i]->setConnectedTeleport(m_teleports[random]->getPosition());
         m_teleports[i]->setNextIndex(random);
     }

@@ -40,7 +40,8 @@ void DwarfObject::setDirection()
 	// while (m_keyDir == m_row)
 	// 	newDirection(rand() % 4);
 	// updateAnimation();
-	while ((m_row = rand() % 4) == m_keyDir);
+	while ((m_row = rand() % 4) == m_keyDir)
+		;
 	newDirection(m_row);
 }
 //_____________________________________
@@ -77,14 +78,15 @@ void DwarfObject::newDirection(int num)
 //_________________________________
 void DwarfObject::updateAnimation()
 {
-	setSpriteRect(sf::IntRect(32, m_row * 32, 32, 32));
+	setSpriteRect(sf::IntRect(float(58.66), m_row * float(58.66),
+							  float(58.66), float(58.5)));
 }
 //___________________________
 void DwarfObject::updateCol()
 {
 	while (m_col < 3)
 	{
-		setSpriteRect(sf::IntRect(m_col * 32, m_row * 32, 32, 32));
+		setSpriteRect(sf::IntRect(m_col * float(58.66), m_row * float(58.5), float(58.66), float(58.5)));
 		++m_col;
 	}
 	m_col > 3 ? m_col = 0 : ++m_col;

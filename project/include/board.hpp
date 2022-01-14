@@ -16,13 +16,15 @@ class Board
 {
 public:
 	Board();
-	void setObjectsFromBoard(Data&);
+	void readBoardFile();
 	bool checkEndOfFile() const;
-	void sendBoardKeysToObjects(Data&);
+	void sendBoardKeysToObjects(Data&, const int);
 	void clearBoard();
+	int getLevelTime(const int level)const { return std::stoi(m_levelTime[level]); }
 
 private:
-	void readBoardFile();
 	std::ifstream m_boardSrcFiles;
 	std::vector<std::string> m_level;
+	std::vector<std::string> m_levelTime;
+	std::vector<std::vector<std::string>> m_levels;
 };

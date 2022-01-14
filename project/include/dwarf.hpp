@@ -20,7 +20,7 @@ public:
 private:
     void saveAnimation(const sf::IntRect &currAnimation) { m_prevAnimation = currAnimation; }
     void newDirection(int);
-    void updateAnimation() override;
+    void updateAnimation();
     void updateCol() override;
     Direction m_dir;
     sf::IntRect m_prevAnimation;

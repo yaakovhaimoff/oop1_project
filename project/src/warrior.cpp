@@ -10,7 +10,6 @@ void WarriorObject::collide(MonsterObject& other)
 void WarriorObject::move(const sf::Time &deltaTime, const sf::Event &event)
 {
 	getDir(event);
-	updateAnimation();
 	setPrevPosition(getPosition());
 	setMove(getDirFromKey() * warriorSpeed * deltaTime.asSeconds());
 }

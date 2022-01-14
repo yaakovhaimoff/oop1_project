@@ -19,8 +19,8 @@ class Data
 {
 public:
     Data(Controller &);
-    void setDataToLevelStart();
-    void setDataToLevelRestart();
+    void setDataToLevelStart(const int);
+    void setDataToLevelRestart(const int);
     void setData(const sf::Vector2f &, const char);
     void clearObjects();
     void moveData(const sf::Event &, const sf::Time &, const int);
@@ -29,6 +29,7 @@ public:
     bool thiefHasKey() const;
     bool endOfFile() const;
     void clearBoard();
+    int getLevelTime(const int level)const { return m_board.getLevelTime(level); }
 
 private:
     void connectToTeleports();

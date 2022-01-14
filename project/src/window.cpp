@@ -10,7 +10,14 @@ Window::Window()
 	setPlay();
 	setPause();
 	setSound();
+	setSelectLevel();
 	setActivePlayerInfo();
+}
+//_____________________________
+void Window::setIsLevelSelect()
+{
+	m_levelSelect = false;
+	m_currentWindow[PLAY] = true;
 }
 //____________________
 void Window::setMenu()
@@ -105,10 +112,10 @@ void Window::setActivePlayerInfo()
 	// setting the spriite of the active player
 	for (int i = 0; i < numOfPlayers; i++)
 	{
-		m_activePlayer[i].setTexture(Resources::instance().getTexture(i + 5));
+		m_activePlayer[i].setTexture(Resources::instance().getTexture(i + 6));
 		m_activePlayer[i].setPosition(265, 540);
-		m_activePlayer[i].setTextureRect(sf::IntRect(0, 0, 32, 29));
-		m_activePlayer[i].setScale(3, 3);
+		m_activePlayer[i].setTextureRect(sf::IntRect(0, 0, float(58.66), float(58.5)));
+		m_activePlayer[i].setScale(1.5, 1.5);
 	}
 }
 //____________________________________________________________________________
@@ -118,6 +125,8 @@ void Window::catchMouseEvent(sf::RenderWindow &window, const sf::Event &event)
 		checkMouseOnMenu(event);
 	else if (m_currentWindow[HELP])
 		checkMouseOnBack(event);
+	else if (m_levelSelect)
+		checkMouseOnLevelSelect(event);
 }
 //___________________________________________________
 void Window::checkMouseOnBack(const sf::Event &event)
@@ -154,6 +163,8 @@ void Window::handleClickInWindow(const sf::Vector2f &location)
 		checkHelpPressed(location);
 	else if (m_currentWindow[PLAY])
 		checkPlayPressed(location);
+	else if (m_levelSelect)
+		checkLevelPressed(location);
 }
 //_________________________________________________________
 void Window::checkMenuPressed(const sf::Vector2f &location)
@@ -166,11 +177,12 @@ void Window::checkMenuPressed(const sf::Vector2f &location)
 
 		if (menuButton.getGlobalBounds().contains(location))
 		{
-			m_currentWindow[MENU] = false;
-			m_currentWindow[row + 1] = true;
 			Resources::instance().playSound(ClickSound);
-			if (m_currentWindow[PLAY])
-				Resources::instance().playInLoop(GameSound);
+			m_currentWindow[MENU] = false;
+			if (row + 1 == PLAY)
+				m_levelSelect = true;
+			else
+				m_currentWindow[row + 1] = true;
 			break;
 		}
 	}
@@ -196,12 +208,12 @@ void Window::checkPlayPressed(const sf::Vector2f &location)
 //_________________________________________________________
 void Window::checkPausePressed(const sf::Vector2f &location)
 {
-	if (m_pause.getGlobalBounds().contains(location))
+	if (!m_pauseButton && m_pause.getGlobalBounds().contains(location))
 	{
 		m_pauseButton = true;
 		Resources::instance().playSound(ClickSound);
 	}
-	if (m_paused.getGlobalBounds().contains(location))
+	if (m_pauseButton && m_paused.getGlobalBounds().contains(location))
 	{
 		m_pauseButton = false;
 		Resources::instance().playSound(ClickSound);
@@ -210,18 +222,19 @@ void Window::checkPausePressed(const sf::Vector2f &location)
 //_________________________________________________________
 void Window::checkSoundPressed(const sf::Vector2f &location)
 {
-	if (m_soundOn.getGlobalBounds().contains(location))
+	if (!m_soundButton && m_soundOn.getGlobalBounds().contains(location))
 	{
-		m_pauseButton = true;
+		m_soundButton = true;
 		Resources::instance().playSound(ClickSound);
 		Resources::instance().stopLoop(GameSound);
-
+		return;
 	}
-	if (m_soundOff.getGlobalBounds().contains(location))
+	else if (m_soundButton && m_soundOn.getGlobalBounds().contains(location))
 	{
-		m_pauseButton = false;
+		m_soundButton = false;
 		Resources::instance().playSound(ClickSound);
 		Resources::instance().playInLoop(GameSound);
+		return;
 	}
 }
 //____________________________________________________
@@ -231,6 +244,8 @@ void Window::drawWindow(sf::RenderWindow &window) const
 		drawMenu(window);
 	else if (m_currentWindow[HELP])
 		drawHelp(window);
+	else if (m_levelSelect)
+		drawSelectLevel(window);
 }
 //__________________________________________________
 void Window::drawMenu(sf::RenderWindow &window) const
@@ -256,14 +271,14 @@ void Window::drawHelp(sf::RenderWindow &window) const
 }
 //_______________________________________________________________________________________________
 void Window::drawPlayWindow(sf::RenderWindow &window, const int &time, const int level, const bool key,
-					  const int player) const
+							const int player) const
 {
 	window.draw(m_gameSprite[level]);
-	m_soundButton ? window.draw(m_soundOn) : window.draw(m_soundOff); 
+	m_soundButton ? window.draw(m_soundOff) : window.draw(m_soundOn); 
 	drawLevelInfo(window, time, level, key);
 	drawActivePlayer(window, player);
 }
-//______________________________________________
+//_____________________________________________________
 void Window::drawPauseMessage(sf::RenderWindow &window)
 {
 	m_pauseButton ? drawPasused(window) : drawPasuse(window);
@@ -369,5 +384,73 @@ void Window::gameOverLevelMessage(sf::RenderWindow &window) const
 	{
 		window.draw(gameOverText);
 		window.display();
+	}
+}
+//___________________________
+void Window::setSelectLevel()
+{
+	// set rectangle for the Select Level buttons and texts
+	for (int row = 0; row < AmountOfWindows; row++)
+	{
+		// set Texts
+		m_selectLevelText[row].setFont(Resources::instance().getFont());
+		m_selectLevelText[row].setCharacterSize(100);
+		m_selectLevelText[row].setFillColor(sf::Color::White);
+		m_selectLevelText[row].setPosition(sf::Vector2f(800, 200 * (row + 1.8)));
+		m_selectLevelText[row].setString(selectLevelNames[row]);
+	}
+	// set the game name
+	m_selectLevelName.setFont(Resources::instance().getFont());
+	m_selectLevelName.setCharacterSize(180);
+	m_selectLevelName.setFillColor(sf::Color::Black);
+	m_selectLevelName.setPosition(sf::Vector2f(500, 80));
+	m_selectLevelName.setOutlineColor(sf::Color(0, 0, 0, 100));
+	m_selectLevelName.setOutlineThickness(5);
+	m_selectLevelName.setString("Select Level");
+
+	m_levelSelectBack = Resources::instance().getSprite(SelecetLevel);
+	m_levelSelectBack.setScale(2.5, 2);
+}
+//__________________________________________________
+void Window::drawSelectLevel(sf::RenderWindow &window) const
+{
+	window.clear();
+	window.draw(m_levelSelectBack);
+	window.draw(m_selectLevelName);
+	for (int row = 0; row < LEVELS; row++)
+		window.draw(m_selectLevelText[row]);
+	window.display();
+}
+//__________________________________________________________
+void Window::checkMouseOnLevelSelect(const sf::Event &event)
+{
+	auto location = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
+
+	for (int row = 0; row < LEVELS; row++)
+	{
+		if (m_selectLevelText[row].getGlobalBounds().contains(location))
+		{
+			m_selectLevelText[row].setColor(sf::Color::Black);
+			break;
+		}
+		else
+			m_selectLevelText[row].setColor(sf::Color::White);
+	}
+}
+//_________________________________________________________
+void Window::checkLevelPressed(const sf::Vector2f &location)
+{
+	auto levelSelectBottun = sf::RectangleShape({300, 130});
+
+	for (int row = 0; row < LEVELS; row++)
+	{
+		levelSelectBottun.setPosition(m_selectLevelText[row].getPosition());
+		if (levelSelectBottun.getGlobalBounds().contains(location))
+		{
+			m_levelSelected = row;
+			Resources::instance().playSound(ClickSound);
+			setIsLevelSelect();
+			break;
+		}
 	}
 }
