@@ -108,12 +108,12 @@ void Controller::handleEvents()
 			break;
 		case sf::Event::KeyPressed:
 			keyboardEvent(event);
-			exitGame(event);
 			break;
 		case sf::Event::MouseMoved:
 			mouseEventMoved(event);
 			break;
 		default:
+			exitGame(event);
 			break;
 		}
 	}
