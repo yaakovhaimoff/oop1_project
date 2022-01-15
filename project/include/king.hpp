@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -12,9 +12,14 @@ class Crown;
 class KingObject : public Player
 {
 public:
-	KingObject(const sf::Vector2f& location, const int key)
-		: Player(location, key){}
+	KingObject(const sf::Vector2f &location, const int key)
+		: Player(location, key) {}
 	~KingObject() {}
-	void move(const sf::Time&, const sf::Event&) override;
-	void collide(CrownObject&)override;
+	void move(const sf::Time &, const sf::Event &) override;
+	void collide(CrownObject &) override;
+	bool getKingOnThrone() const { return m_kingOnThrone; }
+	void setKingOnThrone() { m_kingOnThrone = true; }
+
+private:
+	bool m_kingOnThrone = false;
 };

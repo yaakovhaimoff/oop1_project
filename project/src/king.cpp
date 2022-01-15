@@ -3,6 +3,7 @@
 
 void KingObject::collide(CrownObject &other)
 {
+	setKingOnThrone();
 	Resources::instance().playSound(LevelWin);
 	sf::Clock clock;
 	while (clock.getElapsedTime().asSeconds() < 1.0f)

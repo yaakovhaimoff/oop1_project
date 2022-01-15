@@ -15,5 +15,5 @@ public:
 	void setIsDead() { m_isDeaed = true; }
 
 private:
-	bool m_isDeaed;
+	bool m_isDeaed = false;
 };

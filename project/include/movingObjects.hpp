@@ -42,7 +42,6 @@ public:
 
     enum class Direction
     {
-        Stay,
         Up,
         Down,
         Left,

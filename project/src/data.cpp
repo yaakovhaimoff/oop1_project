@@ -233,10 +233,7 @@ void Data::removeDwarfs()
 //_________________________
 bool Data::wonLevel() const
 {
-    for (auto &unmovable : m_statics)
-        if (typeid(*unmovable) == typeid(CrownObject))
-            return false;
-    return true;
+    return static_cast<KingObject *>(m_players[KING_BOARD_OBJECT].get())->getKingOnThrone();
 }
 //____________________________
 bool Data::thiefHasKey() const

@@ -3,7 +3,7 @@
 //______________________
 Controller::Controller()
 	: m_activePlayer(0), m_numOfLevel(0),
-	  m_gameTime(levelTimes[0]), m_data(*this)
+	  m_gameTime(0), m_data(*this)
 {
 	m_data.setDataToLevelStart(m_numOfLevel);
 	m_gameTime = m_data.getLevelTime(m_numOfLevel);
