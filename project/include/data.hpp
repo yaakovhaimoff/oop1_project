@@ -8,11 +8,20 @@
 #include <memory>
 
 #include "macros.hpp"
+#include "board.hpp"
 #include "player.hpp"
 #include "enemy.hpp"
 #include "staticObjects.hpp"
+#include "wall.hpp"
+#include "crown.hpp"
+#include "fire.hpp"
+#include "gate.hpp"
+#include "key.hpp"
+#include "monster.hpp"
+#include "teleport.hpp"
+#include "timeGift.hpp"
+#include "removeDwarfs.hpp"
 #include "dwarf.hpp"
-#include "board.hpp"
 
 class Controller;
 

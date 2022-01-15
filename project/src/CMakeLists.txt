@@ -11,5 +11,14 @@
 												"thief.cpp"
 												"mage.cpp"
 												"dwarf.cpp"
-												"data.cpp")
+												"data.cpp"
+												"wall.cpp"
+												"fire.cpp"
+												"crown.cpp"
+												"gate.cpp"
+												"key.cpp"
+												"monster.cpp"
+												"teleport.cpp"
+												"timeGift.cpp"
+												"removeDwarfs.cpp")
 												

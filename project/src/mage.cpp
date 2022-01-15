@@ -1,5 +1,5 @@
 #include "mage.hpp"
-#include "staticObjects.hpp"
+#include "fire.hpp"
 
 void MageObject::collide(FireObject& other)
 {

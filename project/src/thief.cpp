@@ -1,5 +1,6 @@
 #include "thief.hpp"
-#include "staticObjects.hpp"
+#include "gate.hpp"
+#include "key.hpp"
 
 void ThiefObject::collide(GateObject &other)
 {

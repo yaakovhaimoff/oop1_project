@@ -1,5 +1,8 @@
 #include "movingObjects.hpp"
 #include "staticObjects.hpp"
+#include "teleport.hpp"
+#include "timeGift.hpp"
+#include "removeDwarfs.hpp"
 
 //_______
 namespace

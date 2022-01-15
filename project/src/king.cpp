@@ -1,5 +1,5 @@
 #include "king.hpp"
-#include "staticObjects.hpp"
+#include "crown.hpp"
 
 void KingObject::collide(CrownObject &other)
 {

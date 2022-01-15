@@ -1,5 +1,5 @@
 #include "warrior.hpp"
-#include "staticObjects.hpp"
+#include "monster.hpp"
 
 void WarriorObject::collide(MonsterObject& other)
 {

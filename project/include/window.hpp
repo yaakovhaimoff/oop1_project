@@ -8,8 +8,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <memory>
-#include "movingObjects.hpp"
-#include "staticObjects.hpp"
 
 class Window
 {
