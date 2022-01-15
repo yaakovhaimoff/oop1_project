@@ -17,20 +17,22 @@ namespace
 		case DwarfObject::Direction::Down:
 			return {0, 1};
 		}
-		return {0,1};
+		return {0, 1};
 	}
 }
-//_______________________________________________________________________
+//______________________________________________________________________
 void DwarfObject::move(const sf::Time &deltaTime, const sf::Event &event)
 {
 	setPrevPosition(getPosition());
+	updateAnimation();
 	setMove(dirToVector(m_dir) * dwarfSpeed * deltaTime.asSeconds());
 	m_keyDir = m_row;
 }
 //______________________________
 void DwarfObject::setDirection()
 {
-	while (m_keyDir == (m_row = rand() % 4));
+	while (m_keyDir == (m_row = rand() % 4))
+		;
 	newDirection(m_row);
 }
 //_____________________________________
@@ -66,5 +68,5 @@ void DwarfObject::newDirection(int num)
 void DwarfObject::updateAnimation()
 {
 	m_col == 2 ? m_col = 0 : ++m_col;
-	setSpriteRect(sf::IntRect(m_col*float(58.66),m_row*float(58.66),float(58.66),float(58.5)));
+	setSpriteRect(sf::IntRect(m_col * float(58.66), m_row * float(58.66), float(58.66), float(58.5)));
 }

@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /Users/yaakovhaimoff/Desktop/project/oop1_project/build/
+cmake_ninja_workdir = /Users/yaakovhaimoff/Desktop/project1/oop1_project/build/
 # =============================================================================
 # Object build statements for EXECUTABLE target project
 
@@ -49,131 +49,103 @@ cmake_ninja_workdir = /Users/yaakovhaimoff/Desktop/project/oop1_project/build/
 
 build cmake_object_order_depends_target_project: phony || CMakeFiles/project.dir
 
-build CMakeFiles/project.dir/src/board.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/board.cpp || cmake_object_order_depends_target_project
+build CMakeFiles/project.dir/src/board.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/board.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/board.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
-  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include
+  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
-  TARGET_PDB = project.pdb
 
-build CMakeFiles/project.dir/src/Controller.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/Controller.cpp || cmake_object_order_depends_target_project
+build CMakeFiles/project.dir/src/Controller.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/Controller.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/Controller.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
-  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include
+  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
-  TARGET_PDB = project.pdb
 
-build CMakeFiles/project.dir/src/gameObjects.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/gameObjects.cpp || cmake_object_order_depends_target_project
+build CMakeFiles/project.dir/src/gameObjects.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/gameObjects.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/gameObjects.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
-  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include
+  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
-  TARGET_PDB = project.pdb
 
-build CMakeFiles/project.dir/src/main.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/main.cpp || cmake_object_order_depends_target_project
+build CMakeFiles/project.dir/src/main.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/main.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/main.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
-  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include
+  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
-  TARGET_PDB = project.pdb
 
-build CMakeFiles/project.dir/src/movingObjects.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/movingObjects.cpp || cmake_object_order_depends_target_project
+build CMakeFiles/project.dir/src/movingObjects.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/movingObjects.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/movingObjects.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
-  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include
+  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
-  TARGET_PDB = project.pdb
 
-build CMakeFiles/project.dir/src/window.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/window.cpp || cmake_object_order_depends_target_project
+build CMakeFiles/project.dir/src/window.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/window.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/window.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
-  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include
+  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
-  TARGET_PDB = project.pdb
 
-build CMakeFiles/project.dir/src/Resources.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/Resources.cpp || cmake_object_order_depends_target_project
+build CMakeFiles/project.dir/src/Resources.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/Resources.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/Resources.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
-  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include
+  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
-  TARGET_PDB = project.pdb
 
-build CMakeFiles/project.dir/src/staticObjects.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/staticObjects.cpp || cmake_object_order_depends_target_project
+build CMakeFiles/project.dir/src/staticObjects.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/staticObjects.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/staticObjects.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
-  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include
+  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
-  TARGET_PDB = project.pdb
 
-build CMakeFiles/project.dir/src/king.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/king.cpp || cmake_object_order_depends_target_project
+build CMakeFiles/project.dir/src/king.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/king.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/king.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
-  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include
+  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
-  TARGET_PDB = project.pdb
 
-build CMakeFiles/project.dir/src/warrior.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/warrior.cpp || cmake_object_order_depends_target_project
+build CMakeFiles/project.dir/src/warrior.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/warrior.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/warrior.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
-  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include
+  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
-  TARGET_PDB = project.pdb
 
-build CMakeFiles/project.dir/src/thief.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/thief.cpp || cmake_object_order_depends_target_project
+build CMakeFiles/project.dir/src/thief.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/thief.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/thief.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
-  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include
+  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
-  TARGET_PDB = project.pdb
 
-build CMakeFiles/project.dir/src/mage.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/mage.cpp || cmake_object_order_depends_target_project
+build CMakeFiles/project.dir/src/mage.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/mage.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/mage.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
-  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include
+  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
-  TARGET_PDB = project.pdb
 
-build CMakeFiles/project.dir/src/dwarf.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/dwarf.cpp || cmake_object_order_depends_target_project
+build CMakeFiles/project.dir/src/dwarf.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/dwarf.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/dwarf.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
-  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include
+  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
-  TARGET_PDB = project.pdb
 
-build CMakeFiles/project.dir/src/data.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/data.cpp || cmake_object_order_depends_target_project
+build CMakeFiles/project.dir/src/data.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/data.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/data.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
-  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project/oop1_project/project/include -isystem /opt/homebrew/include
+  INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
-  TARGET_PDB = project.pdb
 
 
 # =============================================================================
@@ -189,16 +161,15 @@ build project.app/Contents/MacOS/project: CXX_EXECUTABLE_LINKER__project_Debug C
   OBJECT_DIR = CMakeFiles/project.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/project.dir/
   TARGET_FILE = project.app/Contents/MacOS/project
-  TARGET_PDB = project.pdb
+  TARGET_PDB = project.dbg
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/yaakovhaimoff/Desktop/project/oop1_project/build && /opt/homebrew/Cellar/cmake/3.22.1/bin/ccmake -S/Users/yaakovhaimoff/Desktop/project/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project/oop1_project/build
+  COMMAND = cd /Users/yaakovhaimoff/Desktop/project1/oop1_project/build && /opt/homebrew/Cellar/cmake/3.22.1/bin/ccmake -S/Users/yaakovhaimoff/Desktop/project1/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project1/oop1_project/build
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -210,7 +181,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/yaakovhaimoff/Desktop/project/oop1_project/build && /opt/homebrew/Cellar/cmake/3.22.1/bin/cmake --regenerate-during-build -S/Users/yaakovhaimoff/Desktop/project/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project/oop1_project/build
+  COMMAND = cd /Users/yaakovhaimoff/Desktop/project1/oop1_project/build && /opt/homebrew/Cellar/cmake/3.22.1/bin/cmake --regenerate-during-build -S/Users/yaakovhaimoff/Desktop/project1/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project1/oop1_project/build
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -219,7 +190,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# /Users/yaakovhaimoff/Desktop/project/oop1_project/project/CMakeLists.txt
+# /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/CMakeLists.txt
 # =============================================================================
 
 
@@ -227,7 +198,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # Utility command for edit_cache
 
 build include/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/yaakovhaimoff/Desktop/project/oop1_project/build/include && /opt/homebrew/Cellar/cmake/3.22.1/bin/ccmake -S/Users/yaakovhaimoff/Desktop/project/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project/oop1_project/build
+  COMMAND = cd /Users/yaakovhaimoff/Desktop/project1/oop1_project/build/include && /opt/homebrew/Cellar/cmake/3.22.1/bin/ccmake -S/Users/yaakovhaimoff/Desktop/project1/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project1/oop1_project/build
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -239,7 +210,7 @@ build include/edit_cache: phony include/CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build include/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/yaakovhaimoff/Desktop/project/oop1_project/build/include && /opt/homebrew/Cellar/cmake/3.22.1/bin/cmake --regenerate-during-build -S/Users/yaakovhaimoff/Desktop/project/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project/oop1_project/build
+  COMMAND = cd /Users/yaakovhaimoff/Desktop/project1/oop1_project/build/include && /opt/homebrew/Cellar/cmake/3.22.1/bin/cmake --regenerate-during-build -S/Users/yaakovhaimoff/Desktop/project1/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project1/oop1_project/build
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -248,7 +219,7 @@ build include/rebuild_cache: phony include/CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# /Users/yaakovhaimoff/Desktop/project/oop1_project/project/CMakeLists.txt
+# /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/CMakeLists.txt
 # =============================================================================
 
 
@@ -256,7 +227,7 @@ build include/rebuild_cache: phony include/CMakeFiles/rebuild_cache.util
 # Utility command for edit_cache
 
 build src/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/yaakovhaimoff/Desktop/project/oop1_project/build/src && /opt/homebrew/Cellar/cmake/3.22.1/bin/ccmake -S/Users/yaakovhaimoff/Desktop/project/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project/oop1_project/build
+  COMMAND = cd /Users/yaakovhaimoff/Desktop/project1/oop1_project/build/src && /opt/homebrew/Cellar/cmake/3.22.1/bin/ccmake -S/Users/yaakovhaimoff/Desktop/project1/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project1/oop1_project/build
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -268,7 +239,7 @@ build src/edit_cache: phony src/CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build src/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/yaakovhaimoff/Desktop/project/oop1_project/build/src && /opt/homebrew/Cellar/cmake/3.22.1/bin/cmake --regenerate-during-build -S/Users/yaakovhaimoff/Desktop/project/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project/oop1_project/build
+  COMMAND = cd /Users/yaakovhaimoff/Desktop/project1/oop1_project/build/src && /opt/homebrew/Cellar/cmake/3.22.1/bin/cmake --regenerate-during-build -S/Users/yaakovhaimoff/Desktop/project1/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project1/oop1_project/build
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -277,7 +248,7 @@ build src/rebuild_cache: phony src/CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# /Users/yaakovhaimoff/Desktop/project/oop1_project/project/CMakeLists.txt
+# /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/CMakeLists.txt
 # =============================================================================
 
 
@@ -285,7 +256,7 @@ build src/rebuild_cache: phony src/CMakeFiles/rebuild_cache.util
 # Utility command for edit_cache
 
 build rcs/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/yaakovhaimoff/Desktop/project/oop1_project/build/rcs && /opt/homebrew/Cellar/cmake/3.22.1/bin/ccmake -S/Users/yaakovhaimoff/Desktop/project/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project/oop1_project/build
+  COMMAND = cd /Users/yaakovhaimoff/Desktop/project1/oop1_project/build/rcs && /opt/homebrew/Cellar/cmake/3.22.1/bin/ccmake -S/Users/yaakovhaimoff/Desktop/project1/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project1/oop1_project/build
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -297,7 +268,7 @@ build rcs/edit_cache: phony rcs/CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build rcs/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/yaakovhaimoff/Desktop/project/oop1_project/build/rcs && /opt/homebrew/Cellar/cmake/3.22.1/bin/cmake --regenerate-during-build -S/Users/yaakovhaimoff/Desktop/project/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project/oop1_project/build
+  COMMAND = cd /Users/yaakovhaimoff/Desktop/project1/oop1_project/build/rcs && /opt/homebrew/Cellar/cmake/3.22.1/bin/cmake --regenerate-during-build -S/Users/yaakovhaimoff/Desktop/project1/oop1_project/project -B/Users/yaakovhaimoff/Desktop/project1/oop1_project/build
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -315,28 +286,28 @@ build project: phony project.app/Contents/MacOS/project
 # =============================================================================
 
 #############################################
-# Folder: /Users/yaakovhaimoff/Desktop/project/oop1_project/build
+# Folder: /Users/yaakovhaimoff/Desktop/project1/oop1_project/build
 
 build all: phony project.app/Contents/MacOS/project include/all src/all rcs/all
 
 # =============================================================================
 
 #############################################
-# Folder: /Users/yaakovhaimoff/Desktop/project/oop1_project/build/include
+# Folder: /Users/yaakovhaimoff/Desktop/project1/oop1_project/build/include
 
 build include/all: phony
 
 # =============================================================================
 
 #############################################
-# Folder: /Users/yaakovhaimoff/Desktop/project/oop1_project/build/rcs
+# Folder: /Users/yaakovhaimoff/Desktop/project1/oop1_project/build/rcs
 
 build rcs/all: phony
 
 # =============================================================================
 
 #############################################
-# Folder: /Users/yaakovhaimoff/Desktop/project/oop1_project/build/src
+# Folder: /Users/yaakovhaimoff/Desktop/project1/oop1_project/build/src
 
 build src/all: phony
 
@@ -347,14 +318,14 @@ build src/all: phony
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /Users/yaakovhaimoff/Desktop/project/oop1_project/project/CMakeLists.txt /Users/yaakovhaimoff/Desktop/project/oop1_project/project/include/CMakeLists.txt /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/Board.txt /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/CMakeLists.txt /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/ClickSound.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/FailSound.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/GrabPresent.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/OpenGate.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/OrkDeathSoundEffect.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/TeleportEnter.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/ThiefTakeKey.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/WinLevel.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/brickWall.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/crown.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/dwarf.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/fire.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/fire.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/font.ttf /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/gamePlay.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/gate.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/gift.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/help.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/key.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/king.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/mage.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/menu.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/menuMusic.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/monster.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/pause.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/paused.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/play1.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/play2.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/play3.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/soundOff.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/soundOn.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/teleport.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/thief.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/warrior.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/CMakeLists.txt /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCCompiler.cmake.in /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCCompilerABI.c /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCXXCompiler.cmake.in /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCXXCompilerABI.cpp /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCompilerIdDetection.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeDetermineCCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeDetermineCompileFeatures.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeDetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeDetermineCompilerABI.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeDetermineCompilerId.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeDetermineSystem.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeFindBinUtils.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeNinjaFindMake.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeParseImplicitIncludeInfo.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeParseLibraryArchitecture.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeSystem.cmake.in /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeTestCCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeTestCXXCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeTestCompilerCommon.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/ADSP-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/ARMCC-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/ARMClang-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/AppleClang-C.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/AppleClang-CXX.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/AppleClang-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Borland-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Clang-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Cray-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/GHS-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/GNU-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/HP-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/IAR-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Intel-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/MSVC-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/NVHPC-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/PGI-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/PathScale-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/SCO-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/TI-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Watcom-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/XL-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/zOS-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Internal/FeatureTesting.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/MacOSXBundleInfo.plist.in /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-AppleClang-C.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-Clang-C.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Darwin-Determine-CXX.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/UnixPaths.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfig.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfigDependencies.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfigVersion.cmake /opt/homebrew/lib/cmake/SFML/SFMLSharedTargets-release.cmake /opt/homebrew/lib/cmake/SFML/SFMLSharedTargets.cmake CMakeCache.txt CMakeFiles/3.22.1/CMakeCCompiler.cmake CMakeFiles/3.22.1/CMakeCXXCompiler.cmake CMakeFiles/3.22.1/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/CMakeLists.txt /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include/CMakeLists.txt /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/Board.txt /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/CMakeLists.txt /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/ClickSound.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/FailSound.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/GrabPresent.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/OpenGate.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/OrkDeathSoundEffect.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/TeleportEnter.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/ThiefTakeKey.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/WinLevel.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/brickWall.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/crown.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/dwarf.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/fire.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/fire.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/font.ttf /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/gamePlay.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/gate.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/gift.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/help.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/key.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/king.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/mage.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/menu.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/menuMusic.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/monster.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/pause.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/paused.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/play1.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/play2.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/play3.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/soundOff.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/soundOn.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/teleport.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/thief.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/warrior.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/CMakeLists.txt /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/AppleClang-C.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/AppleClang-CXX.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/MacOSXBundleInfo.plist.in /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-AppleClang-C.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-Clang-C.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/UnixPaths.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfig.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfigDependencies.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfigVersion.cmake /opt/homebrew/lib/cmake/SFML/SFMLSharedTargets-release.cmake /opt/homebrew/lib/cmake/SFML/SFMLSharedTargets.cmake CMakeCache.txt CMakeFiles/3.22.1/CMakeCCompiler.cmake CMakeFiles/3.22.1/CMakeCXXCompiler.cmake CMakeFiles/3.22.1/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /Users/yaakovhaimoff/Desktop/project/oop1_project/project/CMakeLists.txt /Users/yaakovhaimoff/Desktop/project/oop1_project/project/include/CMakeLists.txt /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/Board.txt /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/CMakeLists.txt /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/ClickSound.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/FailSound.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/GrabPresent.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/OpenGate.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/OrkDeathSoundEffect.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/TeleportEnter.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/ThiefTakeKey.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/WinLevel.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/brickWall.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/crown.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/dwarf.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/fire.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/fire.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/font.ttf /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/gamePlay.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/gate.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/gift.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/help.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/key.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/king.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/mage.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/menu.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/menuMusic.wav /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/monster.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/pause.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/paused.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/play1.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/play2.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/play3.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/soundOff.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/soundOn.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/teleport.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/thief.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/rcs/warrior.png /Users/yaakovhaimoff/Desktop/project/oop1_project/project/src/CMakeLists.txt /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCCompiler.cmake.in /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCCompilerABI.c /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCXXCompiler.cmake.in /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCXXCompilerABI.cpp /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCompilerIdDetection.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeDetermineCCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeDetermineCompileFeatures.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeDetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeDetermineCompilerABI.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeDetermineCompilerId.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeDetermineSystem.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeFindBinUtils.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeNinjaFindMake.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeParseImplicitIncludeInfo.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeParseLibraryArchitecture.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeSystem.cmake.in /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeTestCCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeTestCXXCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeTestCompilerCommon.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/ADSP-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/ARMCC-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/ARMClang-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/AppleClang-C.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/AppleClang-CXX.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/AppleClang-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Borland-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Clang-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Cray-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/GHS-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/GNU-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/HP-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/IAR-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Intel-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/MSVC-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/NVHPC-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/PGI-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/PathScale-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/SCO-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/TI-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Watcom-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/XL-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/zOS-C-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Internal/FeatureTesting.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/MacOSXBundleInfo.plist.in /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-AppleClang-C.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-Clang-C.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Darwin-Determine-CXX.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/UnixPaths.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfig.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfigDependencies.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfigVersion.cmake /opt/homebrew/lib/cmake/SFML/SFMLSharedTargets-release.cmake /opt/homebrew/lib/cmake/SFML/SFMLSharedTargets.cmake CMakeCache.txt CMakeFiles/3.22.1/CMakeCCompiler.cmake CMakeFiles/3.22.1/CMakeCXXCompiler.cmake CMakeFiles/3.22.1/CMakeSystem.cmake: phony
+build /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/CMakeLists.txt /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include/CMakeLists.txt /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/Board.txt /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/CMakeLists.txt /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/ClickSound.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/FailSound.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/GrabPresent.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/OpenGate.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/OrkDeathSoundEffect.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/TeleportEnter.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/ThiefTakeKey.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/WinLevel.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/brickWall.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/crown.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/dwarf.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/fire.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/fire.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/font.ttf /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/gamePlay.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/gate.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/gift.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/help.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/key.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/king.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/mage.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/menu.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/menuMusic.wav /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/monster.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/pause.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/paused.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/play1.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/play2.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/play3.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/soundOff.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/soundOn.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/teleport.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/thief.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/rcs/warrior.png /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/CMakeLists.txt /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/AppleClang-C.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/AppleClang-CXX.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/MacOSXBundleInfo.plist.in /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-AppleClang-C.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-Clang-C.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/Cellar/cmake/3.22.1/share/cmake/Modules/Platform/UnixPaths.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfig.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfigDependencies.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfigVersion.cmake /opt/homebrew/lib/cmake/SFML/SFMLSharedTargets-release.cmake /opt/homebrew/lib/cmake/SFML/SFMLSharedTargets.cmake CMakeCache.txt CMakeFiles/3.22.1/CMakeCCompiler.cmake CMakeFiles/3.22.1/CMakeCXXCompiler.cmake CMakeFiles/3.22.1/CMakeSystem.cmake: phony
 
 
 #############################################

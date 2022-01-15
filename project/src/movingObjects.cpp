@@ -54,6 +54,10 @@ void MovingObjects::getDir(const sf::Event &event)
 		m_row = 3;
 		updateCol();
 		break;
+	default:
+		updateCol();
+		m_col = 1;
+		break;
 	}
 }
 //____________________________________________
@@ -66,7 +70,7 @@ void MovingObjects::collide(GameObjects &other)
 //_______________________________________
 void MovingObjects::collide(WallObject &)
 {
-	Resources::instance().playSound(DwarfColide);
+	//Resources::instance().playSound(DwarfColide);
 	setPosition();
 }
 // by default a player goes back, unless he's got a special case

@@ -247,11 +247,13 @@ void Data::drawObjects(sf::RenderWindow &window, const bool pauseButton, const b
     {
         if (!pauseButton && !gameOver)
             if (typeid(*unmovable) == typeid(FireObject))
-                unmovable->updateSpriteRect(8, 25, 25, 50);
-            else if (typeid(*unmovable) == typeid(KeyObject))
+                unmovable->updateSpriteRect(7, 55, 25, 60);
+            if (typeid(*unmovable) == typeid(KeyObject))
                 unmovable->updateSpriteRect(11, 60, 50, 60);
-            else if (typeid(*unmovable) == typeid(MonsterObject))
-                unmovable->updateSpriteRect(8, 65, 52, 58);
+            if (typeid(*unmovable) == typeid(MonsterObject))
+                unmovable->updateSpriteRect(8, 65, 50, 65);
+            if (typeid(*unmovable) == typeid(TimeGiftObject)||typeid(*unmovable) == typeid(RemoveDwarfsObject))
+                unmovable->updateSpriteRect(2, 49, 50, 50);
 
         unmovable->drawShape(window);
     }

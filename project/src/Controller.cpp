@@ -27,8 +27,8 @@ void Controller::runGame()
 			if (m_data.wonLevel())
 			{
 				setNextLevel();
-				if(m_numOfLevel >= LEVELS)
-				break;
+				if (m_numOfLevel >= LEVELS)
+					break;
 			}
 			if (!m_window.isPause())
 			{
@@ -53,6 +53,8 @@ void Controller::levelSelected()
 //_____________________________
 void Controller::setNextLevel()
 {
+	drawGame();
+	m_window.winLevelMessage(m_gameWindow);
 	m_gameClock.restart();
 	m_data.clearObjects();
 	m_numOfLevel++;

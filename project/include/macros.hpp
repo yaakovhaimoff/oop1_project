@@ -19,7 +19,7 @@ const float warriorSpeed = 160;
 const float thiefSpeed = 180;
 const float dwarfSpeed = 170;
 
-const std::string selectLevelNames[] = {"Level 1", "Level 2", "Level 3"};
+const std::string selectLevelNames[] = {"Easiest", "Medium", "Hardest"};
 const std::string menu_names[] = {"HELP", "PLAY", "EXIT"};
 
 // what the tiles in the game can posses

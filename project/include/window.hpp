@@ -19,6 +19,7 @@ public:
 	void drawPlayWindow(sf::RenderWindow &, const int &, const int, const bool, const int) const;
 	void drawPauseMessage(sf::RenderWindow &);
 	void gameOverLevelMessage(sf::RenderWindow &) const;
+	void winLevelMessage(sf::RenderWindow &) const;
 	void setIsLevelSelect();
 	void handleClickInWindow(const sf::Vector2f &);
 	bool isPlaying() const;
@@ -52,33 +53,28 @@ private:
 	void drawActivePlayer(sf::RenderWindow &, const int) const;
 	void drawPasuse(sf::RenderWindow &) const;
 	void drawPasused(sf::RenderWindow &) const;
-	
 
 	bool m_currentWindow[AmountOfWindows + 1] = {true, false, false, false};
 	bool m_pauseButton;
 	bool m_soundButton;
 	bool m_levelSelect = false;
 	int m_levelSelected = 0;
-	sf::Sprite m_background[AmountOfWindows];
+
 	sf::Sprite m_gameSprite[LEVELS];
 	sf::Sprite m_activePlayer[numOfPlayers];
-	sf::Text m_selectLevelText[AmountOfWindows];
 	sf::Sprite m_pause;
 	sf::Sprite m_paused;
-	sf::Sprite m_soundOn;
-	sf::Sprite m_soundOff;
-	sf::Sprite m_levelSelectBack;
+	sf::Sprite m_sound;
 	sf::Sprite m_key;
 	sf::Sprite m_noKey;
 
 	sf::Text m_gameName;
+	sf::Text m_selectLevelText[AmountOfWindows];
 	sf::Text m_menuText[AmountOfWindows];
 	sf::Text m_selectLevelName;
 	sf::Text m_helpText;
 	sf::Text m_infoText;
 	sf::Text m_activePlayerText;
 
-	sf::RectangleShape m_menuRects[AmountOfWindows];
-	sf::RectangleShape m_helpRect;
 	sf::RectangleShape m_infoRect;
 };
