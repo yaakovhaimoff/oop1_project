@@ -30,7 +30,7 @@ const auto BACKGROUND_COLOR = sf::Color(217, 255, 255);
 const int CELL = 70;
 const int SPACE = 350;
 const int SIDE_WIDTH = 450;
-const int SIDE_LENGTH = 180;
+const int SIDE_LENGTH = 50;
 const int MenuBar = 14;
 const int PLAYER_EXIST = 2;
 

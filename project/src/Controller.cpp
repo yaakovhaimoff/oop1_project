@@ -6,7 +6,7 @@ Controller::Controller()
 	  m_gameTime(levelTimes[0]), m_data(*this)
 {
 	m_data.setDataToLevelStart(m_numOfLevel);
-	//m_gameTime = m_data.getLevelTime(m_numOfLevel);
+	m_gameTime = m_data.getLevelTime(m_numOfLevel);
 	m_moveClock.restart();
 	m_gameClock.restart();
 }

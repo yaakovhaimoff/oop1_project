@@ -3,15 +3,15 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include "movingObjects.hpp"
+#include "enemy.hpp"
 #include "macros.hpp"
 
-class DwarfObject : public MovingObjects
+class DwarfObject : public Enemy
 {
 public:
     DwarfObject(const sf::Vector2f &location, const int key)
-        : MovingObjects(location, key), m_keyDir(0), m_row(0), m_col(0) {}
-    void moving(const sf::Time &, const sf::Event &, const bool);
+        : Enemy(location, key), m_keyDir(0), m_row(3), m_col(0) {}
+    void move(const sf::Time&, const sf::Event&) override;
     void setDirection();
     void collide(TeleporterObject &) override {}
     void collide(TimeGiftObject &) override {}
@@ -21,7 +21,6 @@ private:
     void saveAnimation(const sf::IntRect &currAnimation) { m_prevAnimation = currAnimation; }
     void newDirection(int);
     void updateAnimation();
-    void updateCol() override;
     Direction m_dir;
     sf::IntRect m_prevAnimation;
     int m_keyDir;

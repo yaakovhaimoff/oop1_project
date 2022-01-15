@@ -3,17 +3,17 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include "movingObjects.hpp"
+#include "player.hpp"
 #include "macros.hpp"
 
 class Crown;
 
-//_______________________________
-class KingObject : public MovingObjects
+//______________________________
+class KingObject : public Player
 {
 public:
 	KingObject(const sf::Vector2f& location, const int key)
-		: MovingObjects(location, key){}
+		: Player(location, key){}
 	~KingObject() {}
 	void move(const sf::Time&, const sf::Event&) override;
 	void collide(CrownObject&)override;

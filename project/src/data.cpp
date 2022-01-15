@@ -42,7 +42,7 @@ void Data::setData(const sf::Vector2f &location, const char object)
         break;
 
     case DWARF:
-        m_players.push_back(std::make_unique<DwarfObject>(location, Dwarf));
+        m_dwarfs.push_back(std::make_unique<DwarfObject>(location, Dwarf));
         break;
 
     case WALL:
@@ -91,7 +91,8 @@ void Data::connectToTeleports()
     for (int i = 0; i < m_teleports.size(); i++)
     {
         // promising that a teleport won't be matched to it self
-        while ((random = rand() % index) == i);
+        while ((random = rand() % index) == i)
+            ;
         m_teleports[i]->setConnectedTeleport(m_teleports[random]->getPosition());
         m_teleports[i]->setNextIndex(random);
     }
@@ -102,6 +103,8 @@ void Data::clearObjects()
     m_players.clear();
     m_statics.clear();
     m_teleports.clear();
+    if(m_dwarfs.size()!=0)
+        m_dwarfs.clear();
 }
 //__________________________
 bool Data::endOfFile() const
@@ -133,15 +136,14 @@ void Data::movePlayerObject(const sf::Event &event, const sf::Time &deltaTime)
 void Data::moveDwarfsObjects(const sf::Event &event, const sf::Time &deltaTime)
 {
     static sf::Clock canDwarfMove;
-    for (int i = numOfPlayers; i < m_players.size(); i++)
+    for (auto &dwarfs : m_dwarfs)
     {
         if (canDwarfMove.getElapsedTime().asSeconds() > 1.5f)
         {
-            static_cast<DwarfObject *>(m_players[i].get())->setDirection();
+            static_cast<DwarfObject *>(dwarfs.get())->setDirection();
             m_changeDwarfDir = true;
         }
-        // m_players[i]->move(deltaTime, event);
-        static_cast<DwarfObject *>(m_players[i].get())->moving(deltaTime, event, m_changeDwarfDir);
+        dwarfs->move(deltaTime, event);
     }
     if (m_changeDwarfDir)
     {
@@ -172,10 +174,15 @@ void Data::checkPlayerCollision(MovingObjects &activePlayer)
 //____________________________________________________
 void Data::checkDwarfCollision(const sf::Event &event)
 {
-    for (int i = numOfPlayers; i < m_players.size(); i++)
-        for (int j = 0; j < m_statics.size(); j++)
-            if (m_players[i]->checkCollision(*m_statics[j]))
-                m_players[i]->collide(*m_statics[j]);
+    for (auto &dwarfs : m_dwarfs)
+        for (auto &statics : m_statics)
+            if (dwarfs->checkCollision(*statics))
+                dwarfs->collide(*statics);
+
+    // for (auto &dwarfs : m_dwarfs)
+    //     for (auto &players : m_players)
+    //         if (dwarfs->checkCollision(*players))
+    //             dwarfs->collide(*players);
 }
 //_________________________________________________________
 void Data::checkToOpenTeleport(MovingObjects &activePlayer)
@@ -189,7 +196,7 @@ void Data::checkToOpenTeleport(MovingObjects &activePlayer)
 //_____________________________________________________________________
 bool Data::noOtherPlayerIsOnNextTeleport(const int nextTelelport) const
 {
-    for (int i = 0; i < numOfPlayers; i++)
+    for (int i = 0; i < m_players.size(); i++)
     {
         if (i == m_activePlayer)
             continue;
@@ -213,14 +220,15 @@ void Data::handleDaedObjects()
 
     std::erase_if(m_statics, [](auto &staticObject)
                   { return staticObject->isDead(); });
+
+    std::erase_if(m_dwarfs, [](auto &dwarfsObject)
+                  { return dwarfsObject->isDead(); });
 }
 //_______________________
 void Data::removeDwarfs()
 {
-    int size = m_players.size() % 2 == 0 ? m_players.size() - numOfPlayers
-                                         : m_players.size() - numOfPlayers - 1;
-    for (int i = numOfPlayers; size < m_players.size();)
-        m_players.erase(m_players.begin() + i);
+    for (auto &dwarfs : m_dwarfs)
+        dwarfs->setIsDead();
 }
 //_________________________
 bool Data::wonLevel() const
@@ -253,6 +261,9 @@ void Data::drawObjects(sf::RenderWindow &window, const bool pauseButton, const b
 
     for (auto &player : m_players)
         player->drawShape(window);
+
+    for (auto &dwarfs : m_dwarfs)
+        dwarfs->drawShape(window);
 
     for (auto &teleport : m_teleports)
     {

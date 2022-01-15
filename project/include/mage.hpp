@@ -1,17 +1,17 @@
 #pragma once 
 
 #include <SFML/Graphics.hpp>
-#include "movingObjects.hpp"
+#include "player.hpp"
 #include "macros.hpp"
 
 class FireObject;
 
 //_______________________________
-class MageObject : public MovingObjects
+class MageObject : public Player
 {
 public:
 	MageObject(const sf::Vector2f& location, const char key)
-		: MovingObjects(location, key) {}
+		: Player(location, key) {}
 	~MageObject() {}
 	void move(const sf::Time&, const sf::Event&) override;
 	void collide(FireObject&)override;

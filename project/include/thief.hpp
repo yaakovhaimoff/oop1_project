@@ -2,18 +2,18 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "movingObjects.hpp"
+#include "player.hpp"
 #include "macros.hpp"
 
 class GateObject;
 class KeyObject;
 
-//______________________________________
-class ThiefObject : public MovingObjects
+//_______________________________
+class ThiefObject : public Player
 {
 public:
 	ThiefObject(const sf::Vector2f& location, const char key)
-		: MovingObjects(location, key), m_hasKey(false) {}
+		: Player(location, key), m_hasKey(false) {}
 	~ThiefObject() {};
 	bool thiefHasKey()const { return m_hasKey; }
 	bool doesThiefhasKey() const;

@@ -8,7 +8,8 @@
 #include <memory>
 
 #include "macros.hpp"
-#include "movingObjects.hpp"
+#include "player.hpp"
+#include "enemy.hpp"
 #include "staticObjects.hpp"
 #include "dwarf.hpp"
 #include "board.hpp"
@@ -29,7 +30,7 @@ public:
     bool thiefHasKey() const;
     bool endOfFile() const;
     void clearBoard();
-    int getLevelTime(const int level)const { return m_board.getLevelTime(level); }
+    int getLevelTime(const int level) const { return m_board.getLevelTime(level); }
 
 private:
     void connectToTeleports();
@@ -42,12 +43,13 @@ private:
     void handleDaedObjects();
     void removeDwarfs();
     int getTimeForGift();
-    std::vector<std::unique_ptr<MovingObjects>> m_players;
+    std::vector<std::unique_ptr<Player>> m_players;
+    std::vector<std::unique_ptr<Enemy>> m_dwarfs;
     std::vector<std::unique_ptr<StaticObjects>> m_statics;
     std::vector<std::unique_ptr<TeleporterObject>> m_teleports;
-    bool m_changeDwarfDir;
-    int m_teleportIndex;
-    int m_activePlayer;
+    bool m_changeDwarfDir = false;
+    int m_teleportIndex = 0;
+    int m_activePlayer = 0;
     Board m_board;
     Controller *m_controller;
 };
