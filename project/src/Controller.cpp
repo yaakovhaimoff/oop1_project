@@ -103,43 +103,40 @@ void Controller::handleEvents()
 	{
 		switch (event.type)
 		{
-		case /* constant-expression */:
-			/* code */
+		case sf::Event::MouseButtonReleased:
+			mouseEventReleased(event);
 			break;
-		
+		case sf::Event::KeyPressed:
+			keyboardEvent(event);
+			exitGame(event);
+			break;
+		case sf::Event::MouseMoved:
+			mouseEventMoved(event);
+			break;
 		default:
 			break;
 		}
-		exitGame(event);
-		mouseEventReleased(event);
-		mouseEventMoved(event);
-		keyboardEvent(event);
 	}
 	isPlaying(event);
 }
 //_______________________________________________
 void Controller::exitGame(const sf::Event &event)
 {
-	if ((event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) ||
-		event.type == sf::Event::Closed || m_window.isExit())
+	if (event.key.code == sf::Keyboard::Escape || event.type == sf::Event::Closed || m_window.isExit())
 		m_gameWindow.close();
 }
 //_________________________________________________________
 void Controller::mouseEventReleased(const sf::Event &event)
 {
-	if (sf::Event::MouseButtonReleased)
-	{
-		// getting the location of where the mouse was pressed
-		auto location = m_gameWindow.mapPixelToCoords(
-			{event.mouseButton.x, event.mouseButton.y});
-		m_window.handleClickInWindow(location);
-	}
+	// getting the location of where the mouse was pressed
+	auto location = m_gameWindow.mapPixelToCoords(
+		{event.mouseButton.x, event.mouseButton.y});
+	m_window.handleClickInWindow(location);
 }
 //______________________________________________________
 void Controller::mouseEventMoved(const sf::Event &event)
 {
-	if (event.type == sf::Event::MouseMoved)
-		m_window.catchMouseEvent(m_gameWindow, event);
+	m_window.catchMouseEvent(m_gameWindow, event);
 }
 //____________________________________________________
 void Controller::keyboardEvent(const sf::Event &event)
