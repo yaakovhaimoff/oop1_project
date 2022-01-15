@@ -111,7 +111,11 @@
 				19,
 				20,
 				21,
-				22
+				22,
+				23,
+				24,
+				25,
+				26
 			]
 		}
 	],
@@ -188,7 +192,11 @@
 				19,
 				20,
 				21,
-				22
+				22,
+				23,
+				24,
+				25,
+				26
 			]
 		}
 	],
@@ -222,12 +230,6 @@
 			"backtrace" : 5,
 			"compileGroupIndex" : 0,
 			"path" : "src/movingObjects.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 5,
-			"compileGroupIndex" : 0,
-			"path" : "src/window.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -330,6 +332,36 @@
 			"backtrace" : 5,
 			"compileGroupIndex" : 0,
 			"path" : "src/removeDwarfs.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/menuWindow.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/helpWindow.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/windowManager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/playWindow.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/selectLevel.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
