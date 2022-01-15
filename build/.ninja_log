@@ -32,3 +32,12 @@
 368	421	1642273071209136196	project.app/Contents/MacOS/project	3bb8465042e47fbf
 2	345	1642273503239858300	CMakeFiles/project.dir/src/dwarf.cpp.o	4e9d44e3dbc5ef6b
 345	398	1642273503293999667	project.app/Contents/MacOS/project	3bb8465042e47fbf
+2	394	1642275988799955155	CMakeFiles/project.dir/src/window.cpp.o	3fbcd8fe0188cd9a
+2	476	1642275988880990463	CMakeFiles/project.dir/src/Controller.cpp.o	26d9616032f870ac
+476	527	1642275988935155397	project.app/Contents/MacOS/project	3bb8465042e47fbf
+2	379	1642276025581457995	CMakeFiles/project.dir/src/window.cpp.o	3fbcd8fe0188cd9a
+379	427	1642276025631375223	project.app/Contents/MacOS/project	3bb8465042e47fbf
+2	371	1642276057162425070	CMakeFiles/project.dir/src/window.cpp.o	3fbcd8fe0188cd9a
+371	418	1642276057211181815	project.app/Contents/MacOS/project	3bb8465042e47fbf
+2	370	1642276104654615631	CMakeFiles/project.dir/src/window.cpp.o	3fbcd8fe0188cd9a
+370	417	1642276104703318045	project.app/Contents/MacOS/project	3bb8465042e47fbf

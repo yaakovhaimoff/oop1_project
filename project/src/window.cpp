@@ -199,21 +199,21 @@ void Window::checkPausePressed(const sf::Vector2f &location)
 //_________________________________________________________
 void Window::checkSoundPressed(const sf::Vector2f &location)
 {
-	static sf::Clock clock;
 	if (m_sound.getGlobalBounds().contains(location))
 	{
 		if (!m_soundButton)
 		{
+			//m_soundButton = true;
 			m_sound.setTexture(Resources::instance().getTexture(soundOff));
-			Resources::instance().playSound(ClickSound);
 			Resources::instance().stopLoop(GameSound);
 		}
 		else
 		{
+			//m_soundButton = false;
 			m_sound.setTexture(Resources::instance().getTexture(soundOn));
-			Resources::instance().playSound(ClickSound);
 			Resources::instance().playInLoop(GameSound);
 		}
+		Resources::instance().playSound(ClickSound);
 		m_soundButton = !m_soundButton;
 	}
 }

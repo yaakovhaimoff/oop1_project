@@ -101,11 +101,20 @@ void Controller::handleEvents()
 	auto event = sf::Event();
 	while (m_gameWindow.pollEvent(event))
 	{
+		switch (event.type)
+		{
+		case /* constant-expression */:
+			/* code */
+			break;
+		
+		default:
+			break;
+		}
 		exitGame(event);
 		mouseEventReleased(event);
 		mouseEventMoved(event);
+		keyboardEvent(event);
 	}
-	keyboardEvent(event);
 	isPlaying(event);
 }
 //_______________________________________________
