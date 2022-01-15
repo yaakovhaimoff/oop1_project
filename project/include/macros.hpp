@@ -29,8 +29,8 @@ const auto MENU_COLOR = sf::Color(214, 217, 213);
 const auto BACKGROUND_COLOR = sf::Color(217, 255, 255);
 const int CELL = 70;
 const int SPACE = 350;
-const int SIDE_WIDTH = 450;
-const int SIDE_LENGTH = 50;
+const int SIDE_WIDTH = 60;
+const int SIDE_LENGTH = 200;
 const int MenuBar = 14;
 const int PLAYER_EXIST = 2;
 
@@ -44,7 +44,7 @@ const std::vector SOUNDS_NAMES = {"gamePlay.wav", "menuMusic.wav", "ClickSound.w
 const std::vector NAMES = {"play1.png", "play2.png", "play3.png", "menu.png", "help.png", "SelectLevel.png", "king.png", "mage.png",
 						   "warrior.png", "thief.png", "crown.png", "gate.png", "fire.png",
 						   "key.png", "monster.png", "teleport.png", "brickWall.png", "dwarf.png", "gift.png",
-						   "pause.png", "paused.png", "soundOn.png", "soundOff.png"};
+						   "pause.png", "paused.png", "soundOn.png", "soundOff.png", "noKey.png"};
 enum rcsNames
 {
 	BoardBackground1,
@@ -70,6 +70,7 @@ enum rcsNames
 	Paused,
 	soundOn,
 	soundOff,
+	noKey,
 };
 enum SoundsNames
 {
