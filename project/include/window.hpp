@@ -68,6 +68,8 @@ private:
 	sf::Sprite m_soundOn;
 	sf::Sprite m_soundOff;
 	sf::Sprite m_levelSelectBack;
+	sf::Sprite m_key;
+	sf::Sprite m_noKey;
 
 	sf::Text m_gameName;
 	sf::Text m_menuText[AmountOfWindows];
