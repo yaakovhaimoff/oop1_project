@@ -81,7 +81,7 @@ void Controller::restartLevel()
 {
 	m_data.clearObjects();
 	m_data.setDataToLevelRestart(m_numOfLevel);
-	m_gameTime = levelTimes[m_numOfLevel];
+	m_gameTime = m_data.getLevelTime(m_numOfLevel);
 	m_activePlayer = 0;
 	m_gameClock.restart();
 	m_moveClock.restart();

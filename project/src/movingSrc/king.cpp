@@ -9,7 +9,7 @@ void KingObject::collide(CrownObject &other)
 	while (clock.getElapsedTime().asSeconds() < 1.0f)
 		other.setIsDead();
 }
-//_________________________________________________________________________
+//______________________________________________________________________
 void KingObject::move(const sf::Time &deltaTime, const sf::Event &event)
 {
 	getDir(event);

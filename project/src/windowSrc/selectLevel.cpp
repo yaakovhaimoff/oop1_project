@@ -6,7 +6,7 @@ SelectLevel::SelectLevel()
 {
     setSelectLevel();
 }
-//___________________________
+//________________________________
 void SelectLevel::setSelectLevel()
 {
 	// set rectangle for the Select Level buttons and texts

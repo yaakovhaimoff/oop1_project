@@ -1,12 +1,13 @@
 #include "movingInclude/mage.hpp"
 #include "staticsInclude/fire.hpp"
 
+//_________________________________________
 void MageObject::collide(FireObject& other)
 {
     Resources::instance().playSound(MageFire);
     other.setIsDead();
 }
-//_________________________________________________________________________
+//______________________________________________________________________
 void MageObject::move(const sf::Time &deltaTime, const sf::Event &event)
 {
 	getDir(event);

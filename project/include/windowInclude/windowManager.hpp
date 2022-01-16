@@ -39,5 +39,4 @@ private:
     MenuWindow m_menuWindow;
     SelectLevel m_selectLevel;
     PlayWindow m_playWindow;
-    bool m_levelSelect=false;
 };

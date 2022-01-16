@@ -23,5 +23,4 @@ private:
     void setMenu();
     sf::Text m_menuText[AmountOfWindows];
     sf::Text m_gameName;
-    bool m_levelSelect = false;
 };

@@ -36,7 +36,7 @@ void MovingObjects::updateCol()
 	setSpriteRect(sf::IntRect(m_col * float(58.66), m_row * float(58.5),
 							  float(58.66), float(58.5)));
 }
-//_______________________________________________________
+//________________________________________________
 void MovingObjects::getDir(const sf::Event &event)
 {
 	switch (event.key.code)

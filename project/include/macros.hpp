@@ -15,10 +15,10 @@ const int EXIT = 3;
 const int SELECT = 4;
 
 const float kingSpeed = 110;
-const float mageSpeed = 130;
-const float warriorSpeed = 160;
-const float thiefSpeed = 180;
-const float dwarfSpeed = 170;
+const float mageSpeed = 120;
+const float warriorSpeed = 140;
+const float thiefSpeed = 150;
+const float dwarfSpeed = 150;
 
 const std::string selectLevelNames[] = {"Easiest", "Medium", "Hardest"};
 const std::string menu_names[] = {"HELP", "PLAY", "EXIT"};
@@ -35,17 +35,16 @@ const int SIDE_LENGTH = 200;
 const int MenuBar = 14;
 const int PLAYER_EXIST = 2;
 
-const int teleportsConnection[LEVELS] = {032145, 0312, 0123};
-const int levelTimes[LEVELS] = {180, 240, 300};
-
 const std::string FontName = "font.ttf";
-const std::vector SOUNDS_NAMES = {"gamePlay.wav", "menuMusic.wav", "ClickSound.wav", "FailSound.wav",
-								  "ThiefTakeKey.wav", "GrabPresent.wav", "TeleportEnter.wav",
-								  "OpenGate.wav", "WinLevel.wav", "fire.wav","OrkDeathSoundEffect.wav"};
-const std::vector NAMES = {"play1.png", "play2.png", "play3.png", "menu.png", "help.png", "SelectLevel.png", "king.png", "mage.png",
-						   "warrior.png", "thief.png", "crown.png", "gate.png", "fire.png",
-						   "key.png", "monster.png", "teleport.png", "brickWall.png", "dwarf.png", "gift.png",
-						   "pause.png", "paused.png", "soundOn.png", "soundOff.png", "noKey.png"};
+
+const std::vector SOUNDS_NAMES = {"sounds/gamePlay.wav", "sounds/menuMusic.wav", "sounds/ClickSound.wav", "sounds/FailSound.wav",
+								  "sounds/ThiefTakeKey.wav", "sounds/GrabPresent.wav", "sounds/TeleportEnter.wav",
+								  "sounds/OpenGate.wav", "sounds/WinLevel.wav", "sounds/fire.wav", "sounds/OrkDeathSoundEffect.wav"};
+
+const std::vector NAMES = {"images/play1.png", "images/play2.png", "images/play3.png", "images/menu.png", "images/help.png", "images/SelectLevel.png",
+						   "images/king.png", "images/mage.png", "images/warrior.png", "images/thief.png", "images/crown.png", "images/gate.png", "images/fire.png",
+						   "images/key.png", "images/monster.png", "images/teleport.png", "images/brickWall.png", "images/dwarf.png", "images/gift.png",
+						   "images/pause.png", "images/paused.png", "images/soundOn.png", "images/soundOff.png", "images/noKey.png"};
 enum rcsNames
 {
 	BoardBackground1,

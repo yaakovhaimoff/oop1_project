@@ -35,7 +35,7 @@ void HelpWindow::checkMouseOnBack(const sf::Event &event)
         m_helpText.setFillColor(sf::Color::White);
 }
 
-//___________________________________________________
+//_______________________________________________________
 void HelpWindow::drawHelp(sf::RenderWindow &window) const
 {
 	window.clear();

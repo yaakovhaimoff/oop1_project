@@ -38,14 +38,14 @@ void PlayWindow::setPause()
 	m_paused.setPosition(20, 200);
 	m_paused.setScale(2.8, 2.8);
 }
-//_____________________
+//_________________________
 void PlayWindow::setSound()
 {
 	m_sound.setTexture(Resources::instance().getTexture(soundOn));
 	m_sound.setPosition(150, 40);
 	m_sound.setScale(1.3, 1.3);
 }
-//________________________________
+//____________________________________
 void PlayWindow::setActivePlayerInfo()
 {
 	// active player name on board
@@ -69,7 +69,7 @@ void PlayWindow::checkPlayPressed(const sf::Vector2f &location)
 	checkPausePressed(location);
 	checkSoundPressed(location);
 }
-//_________________________________________________________
+//______________________________________________________________
 void PlayWindow::checkPausePressed(const sf::Vector2f &location)
 {
 	if (!m_pauseButton && m_pause.getGlobalBounds().contains(location))
@@ -83,7 +83,7 @@ void PlayWindow::checkPausePressed(const sf::Vector2f &location)
 		Resources::instance().playSound(ClickSound);
 	}
 }
-//_________________________________________________________
+//______________________________________________________________
 void PlayWindow::checkSoundPressed(const sf::Vector2f &location)
 {
 	if (m_sound.getGlobalBounds().contains(location))
@@ -102,7 +102,7 @@ void PlayWindow::checkSoundPressed(const sf::Vector2f &location)
 		m_soundButton = !m_soundButton;
 	}
 }
-//_______________________________________________________________________________________________
+//________________________________________________________________________________________________________
 void PlayWindow::drawPlayWindow(sf::RenderWindow &window, const int &time, const int level, const bool key,
 							const int player) const
 {
@@ -116,7 +116,7 @@ void PlayWindow::drawPauseMessage(sf::RenderWindow &window)const
 {
 	m_pauseButton ? drawPasused(window) : drawPasuse(window);
 }
-//____________________________________________________________________________
+//_________________________________________________________________________________
 void PlayWindow::drawActivePlayer(sf::RenderWindow &window, const int player) const
 {
 	sf::Text nameText;
@@ -144,12 +144,12 @@ void PlayWindow::drawActivePlayer(sf::RenderWindow &window, const int player) co
 	window.draw(nameText);
 	window.draw(m_activePlayer[player]);
 }
-//____________________________________________________
+//_________________________________________________________
 void PlayWindow::drawPasuse(sf::RenderWindow &window) const
 {
 	window.draw(m_pause);
 }
-//____________________________________________________
+//__________________________________________________________
 void PlayWindow::drawPasused(sf::RenderWindow &window) const
 {
 	window.draw(m_paused);
@@ -196,7 +196,7 @@ void PlayWindow::drawLevelInfo(sf::RenderWindow &window, const int &levelTime,
 	if (!key)
 		window.draw(m_noKey);
 }
-//______________________________________________________________
+//___________________________________________________________________
 void PlayWindow::gameOverLevelMessage(sf::RenderWindow &window) const
 {
 	std::string gameOver = "Game Over!";
@@ -212,7 +212,7 @@ void PlayWindow::gameOverLevelMessage(sf::RenderWindow &window) const
 		window.display();
 	}
 }
-//___________________________________________________________
+//______________________________________________________________
 void PlayWindow::winLevelMessage(sf::RenderWindow &window) const
 {
 	std::string gameOver = "You Win!";

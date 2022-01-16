@@ -103,7 +103,7 @@ void Data::clearObjects()
     m_players.clear();
     m_statics.clear();
     m_teleports.clear();
-    if(m_dwarfs.size()!=0)
+    if (m_dwarfs.size() != 0)
         m_dwarfs.clear();
 }
 //__________________________
@@ -170,6 +170,9 @@ void Data::checkPlayerCollision(MovingObjects &activePlayer)
             m_teleports[teleports->getNextTelIndex()]->setLock(false);
             m_teleportIndex = teleports->getNextTelIndex();
         }
+    for (auto &dwarfs : m_dwarfs)
+        if (activePlayer.checkCollision(*dwarfs))
+            activePlayer.setPosition();
 }
 //____________________________________________________
 void Data::checkDwarfCollision(const sf::Event &event)
@@ -248,12 +251,12 @@ void Data::drawObjects(sf::RenderWindow &window, const bool pauseButton, const b
         if (!pauseButton && !gameOver)
             if (typeid(*unmovable) == typeid(FireObject))
                 unmovable->updateSpriteRect(7, 55, 25, 60);
-            if (typeid(*unmovable) == typeid(KeyObject))
-                unmovable->updateSpriteRect(11, 60, 50, 60);
-            if (typeid(*unmovable) == typeid(MonsterObject))
-                unmovable->updateSpriteRect(8, 65, 50, 65);
-            if (typeid(*unmovable) == typeid(TimeGiftObject)||typeid(*unmovable) == typeid(RemoveDwarfsObject))
-                unmovable->updateSpriteRect(2, 49, 50, 50);
+        if (typeid(*unmovable) == typeid(KeyObject))
+            unmovable->updateSpriteRect(11, 60, 50, 60);
+        if (typeid(*unmovable) == typeid(MonsterObject))
+            unmovable->updateSpriteRect(8, 65, 50, 65);
+        if (typeid(*unmovable) == typeid(TimeGiftObject) || typeid(*unmovable) == typeid(RemoveDwarfsObject))
+            unmovable->updateSpriteRect(2, 49, 50, 50);
 
         unmovable->drawShape(window);
     }

@@ -48,22 +48,22 @@ void WindowManager::setWindow(const int curr, const int prev)
     m_currentWindow[curr] = true;
     m_currentWindow[prev] = false;
 }
-//___________________________________________________________
+//__________________________________________________________________
 void WindowManager::winLevelMessage(sf::RenderWindow &window) const
 {
     m_playWindow.winLevelMessage(window);
 }
-//________________________________________________________________
+//______________________________________________________________________
 void WindowManager::gameOverLevelMessage(sf::RenderWindow &window) const
 {
     m_playWindow.gameOverLevelMessage(window);
 }
-//____________________________________________________________
+//__________________________________________________________________
 void WindowManager::drawPauseMessage(sf::RenderWindow &window) const
 {
     m_playWindow.drawPauseMessage(window);
 }
-//_______________________________________________________________________________________________
+//____________________________________________________________________________________________________________
 void WindowManager::drawPlayWindow(sf::RenderWindow &window, const int &time, const int level, const bool key,
 							const int player) const
 {
