@@ -77,12 +77,12 @@ build CMakeFiles/project.dir/src/main.cpp.o: CXX_COMPILER__project_Debug /Users/
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
 
-build CMakeFiles/project.dir/src/movingObjects.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/movingObjects.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/movingObjects.cpp.o.d
+build CMakeFiles/project.dir/src/movingSrc/movingObjects.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/movingSrc/movingObjects.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/movingSrc/movingObjects.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/movingSrc
 
 build CMakeFiles/project.dir/src/Resources.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/Resources.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/Resources.cpp.o.d
@@ -91,47 +91,47 @@ build CMakeFiles/project.dir/src/Resources.cpp.o: CXX_COMPILER__project_Debug /U
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
 
-build CMakeFiles/project.dir/src/staticObjects.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/staticObjects.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/staticObjects.cpp.o.d
+build CMakeFiles/project.dir/src/staticsSrc/staticObjects.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/staticsSrc/staticObjects.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/staticsSrc/staticObjects.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/staticsSrc
 
-build CMakeFiles/project.dir/src/king.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/king.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/king.cpp.o.d
+build CMakeFiles/project.dir/src/movingSrc/king.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/movingSrc/king.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/movingSrc/king.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/movingSrc
 
-build CMakeFiles/project.dir/src/warrior.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/warrior.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/warrior.cpp.o.d
+build CMakeFiles/project.dir/src/movingSrc/warrior.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/movingSrc/warrior.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/movingSrc/warrior.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/movingSrc
 
-build CMakeFiles/project.dir/src/thief.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/thief.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/thief.cpp.o.d
+build CMakeFiles/project.dir/src/movingSrc/thief.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/movingSrc/thief.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/movingSrc/thief.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/movingSrc
 
-build CMakeFiles/project.dir/src/mage.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/mage.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/mage.cpp.o.d
+build CMakeFiles/project.dir/src/movingSrc/mage.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/movingSrc/mage.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/movingSrc/mage.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/movingSrc
 
-build CMakeFiles/project.dir/src/dwarf.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/dwarf.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/dwarf.cpp.o.d
+build CMakeFiles/project.dir/src/movingSrc/dwarf.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/movingSrc/dwarf.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/movingSrc/dwarf.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/movingSrc
 
 build CMakeFiles/project.dir/src/data.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/data.cpp || cmake_object_order_depends_target_project
   DEP_FILE = CMakeFiles/project.dir/src/data.cpp.o.d
@@ -140,103 +140,103 @@ build CMakeFiles/project.dir/src/data.cpp.o: CXX_COMPILER__project_Debug /Users/
   OBJECT_DIR = CMakeFiles/project.dir
   OBJECT_FILE_DIR = CMakeFiles/project.dir/src
 
-build CMakeFiles/project.dir/src/wall.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/wall.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/wall.cpp.o.d
+build CMakeFiles/project.dir/src/staticsSrc/wall.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/staticsSrc/wall.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/staticsSrc/wall.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/staticsSrc
 
-build CMakeFiles/project.dir/src/fire.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/fire.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/fire.cpp.o.d
+build CMakeFiles/project.dir/src/staticsSrc/fire.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/staticsSrc/fire.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/staticsSrc/fire.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/staticsSrc
 
-build CMakeFiles/project.dir/src/crown.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/crown.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/crown.cpp.o.d
+build CMakeFiles/project.dir/src/staticsSrc/crown.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/staticsSrc/crown.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/staticsSrc/crown.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/staticsSrc
 
-build CMakeFiles/project.dir/src/gate.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/gate.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/gate.cpp.o.d
+build CMakeFiles/project.dir/src/staticsSrc/gate.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/staticsSrc/gate.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/staticsSrc/gate.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/staticsSrc
 
-build CMakeFiles/project.dir/src/key.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/key.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/key.cpp.o.d
+build CMakeFiles/project.dir/src/staticsSrc/key.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/staticsSrc/key.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/staticsSrc/key.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/staticsSrc
 
-build CMakeFiles/project.dir/src/monster.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/monster.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/monster.cpp.o.d
+build CMakeFiles/project.dir/src/staticsSrc/monster.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/staticsSrc/monster.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/staticsSrc/monster.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/staticsSrc
 
-build CMakeFiles/project.dir/src/teleport.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/teleport.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/teleport.cpp.o.d
+build CMakeFiles/project.dir/src/staticsSrc/teleport.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/staticsSrc/teleport.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/staticsSrc/teleport.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/staticsSrc
 
-build CMakeFiles/project.dir/src/timeGift.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/timeGift.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/timeGift.cpp.o.d
+build CMakeFiles/project.dir/src/staticsSrc/timeGift.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/staticsSrc/timeGift.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/staticsSrc/timeGift.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/staticsSrc
 
-build CMakeFiles/project.dir/src/removeDwarfs.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/removeDwarfs.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/removeDwarfs.cpp.o.d
+build CMakeFiles/project.dir/src/staticsSrc/removeDwarfs.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/staticsSrc/removeDwarfs.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/staticsSrc/removeDwarfs.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/staticsSrc
 
-build CMakeFiles/project.dir/src/menuWindow.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/menuWindow.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/menuWindow.cpp.o.d
+build CMakeFiles/project.dir/src/windowSrc/menuWindow.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/windowSrc/menuWindow.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/windowSrc/menuWindow.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/windowSrc
 
-build CMakeFiles/project.dir/src/helpWindow.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/helpWindow.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/helpWindow.cpp.o.d
+build CMakeFiles/project.dir/src/windowSrc/helpWindow.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/windowSrc/helpWindow.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/windowSrc/helpWindow.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/windowSrc
 
-build CMakeFiles/project.dir/src/windowManager.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/windowManager.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/windowManager.cpp.o.d
+build CMakeFiles/project.dir/src/windowSrc/windowManager.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/windowSrc/windowManager.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/windowSrc/windowManager.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/windowSrc
 
-build CMakeFiles/project.dir/src/playWindow.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/playWindow.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/playWindow.cpp.o.d
+build CMakeFiles/project.dir/src/windowSrc/playWindow.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/windowSrc/playWindow.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/windowSrc/playWindow.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/windowSrc
 
-build CMakeFiles/project.dir/src/selectLevel.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/selectLevel.cpp || cmake_object_order_depends_target_project
-  DEP_FILE = CMakeFiles/project.dir/src/selectLevel.cpp.o.d
+build CMakeFiles/project.dir/src/windowSrc/selectLevel.cpp.o: CXX_COMPILER__project_Debug /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/windowSrc/selectLevel.cpp || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles/project.dir/src/windowSrc/selectLevel.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a
   INCLUDES = -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/project.dir
-  OBJECT_FILE_DIR = CMakeFiles/project.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/project.dir/src/windowSrc
 
 
 # =============================================================================
@@ -246,7 +246,7 @@ build CMakeFiles/project.dir/src/selectLevel.cpp.o: CXX_COMPILER__project_Debug 
 #############################################
 # Link the executable project.app/Contents/MacOS/project
 
-build project.app/Contents/MacOS/project: CXX_EXECUTABLE_LINKER__project_Debug CMakeFiles/project.dir/src/board.cpp.o CMakeFiles/project.dir/src/Controller.cpp.o CMakeFiles/project.dir/src/gameObjects.cpp.o CMakeFiles/project.dir/src/main.cpp.o CMakeFiles/project.dir/src/movingObjects.cpp.o CMakeFiles/project.dir/src/Resources.cpp.o CMakeFiles/project.dir/src/staticObjects.cpp.o CMakeFiles/project.dir/src/king.cpp.o CMakeFiles/project.dir/src/warrior.cpp.o CMakeFiles/project.dir/src/thief.cpp.o CMakeFiles/project.dir/src/mage.cpp.o CMakeFiles/project.dir/src/dwarf.cpp.o CMakeFiles/project.dir/src/data.cpp.o CMakeFiles/project.dir/src/wall.cpp.o CMakeFiles/project.dir/src/fire.cpp.o CMakeFiles/project.dir/src/crown.cpp.o CMakeFiles/project.dir/src/gate.cpp.o CMakeFiles/project.dir/src/key.cpp.o CMakeFiles/project.dir/src/monster.cpp.o CMakeFiles/project.dir/src/teleport.cpp.o CMakeFiles/project.dir/src/timeGift.cpp.o CMakeFiles/project.dir/src/removeDwarfs.cpp.o CMakeFiles/project.dir/src/menuWindow.cpp.o CMakeFiles/project.dir/src/helpWindow.cpp.o CMakeFiles/project.dir/src/windowManager.cpp.o CMakeFiles/project.dir/src/playWindow.cpp.o CMakeFiles/project.dir/src/selectLevel.cpp.o | /opt/homebrew/lib/libsfml-graphics.2.5.1.dylib /opt/homebrew/lib/libsfml-audio.2.5.1.dylib /opt/homebrew/lib/libsfml-window.2.5.1.dylib /opt/homebrew/lib/libsfml-system.2.5.1.dylib
+build project.app/Contents/MacOS/project: CXX_EXECUTABLE_LINKER__project_Debug CMakeFiles/project.dir/src/board.cpp.o CMakeFiles/project.dir/src/Controller.cpp.o CMakeFiles/project.dir/src/gameObjects.cpp.o CMakeFiles/project.dir/src/main.cpp.o CMakeFiles/project.dir/src/movingSrc/movingObjects.cpp.o CMakeFiles/project.dir/src/Resources.cpp.o CMakeFiles/project.dir/src/staticsSrc/staticObjects.cpp.o CMakeFiles/project.dir/src/movingSrc/king.cpp.o CMakeFiles/project.dir/src/movingSrc/warrior.cpp.o CMakeFiles/project.dir/src/movingSrc/thief.cpp.o CMakeFiles/project.dir/src/movingSrc/mage.cpp.o CMakeFiles/project.dir/src/movingSrc/dwarf.cpp.o CMakeFiles/project.dir/src/data.cpp.o CMakeFiles/project.dir/src/staticsSrc/wall.cpp.o CMakeFiles/project.dir/src/staticsSrc/fire.cpp.o CMakeFiles/project.dir/src/staticsSrc/crown.cpp.o CMakeFiles/project.dir/src/staticsSrc/gate.cpp.o CMakeFiles/project.dir/src/staticsSrc/key.cpp.o CMakeFiles/project.dir/src/staticsSrc/monster.cpp.o CMakeFiles/project.dir/src/staticsSrc/teleport.cpp.o CMakeFiles/project.dir/src/staticsSrc/timeGift.cpp.o CMakeFiles/project.dir/src/staticsSrc/removeDwarfs.cpp.o CMakeFiles/project.dir/src/windowSrc/menuWindow.cpp.o CMakeFiles/project.dir/src/windowSrc/helpWindow.cpp.o CMakeFiles/project.dir/src/windowSrc/windowManager.cpp.o CMakeFiles/project.dir/src/windowSrc/playWindow.cpp.o CMakeFiles/project.dir/src/windowSrc/selectLevel.cpp.o | /opt/homebrew/lib/libsfml-graphics.2.5.1.dylib /opt/homebrew/lib/libsfml-audio.2.5.1.dylib /opt/homebrew/lib/libsfml-window.2.5.1.dylib /opt/homebrew/lib/libsfml-system.2.5.1.dylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6
   LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/lib  /opt/homebrew/lib/libsfml-graphics.2.5.1.dylib  /opt/homebrew/lib/libsfml-audio.2.5.1.dylib  /opt/homebrew/lib/libsfml-window.2.5.1.dylib  /opt/homebrew/lib/libsfml-system.2.5.1.dylib
   OBJECT_DIR = CMakeFiles/project.dir
