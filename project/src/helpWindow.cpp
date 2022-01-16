@@ -1,11 +1,12 @@
 #include "helpWindow.hpp"
+#include "windowManager.hpp"
 
-//______________
+//______________________
 HelpWindow::HelpWindow()
 {
 	setHelp();
 }
-//____________________
+//________________________
 void HelpWindow::setHelp()
 {
 	// set back string text
@@ -15,16 +16,25 @@ void HelpWindow::setHelp()
 	m_helpText.setPosition(sf::Vector2f(25, 20));
 	m_helpText.setString("BACK");
 }
-//_________________________________________________________
-void HelpWindow::checkHelpPressed(const sf::Vector2f &location)
+//_____________________________________________________________________________________
+void HelpWindow::checkHelpPressed(const sf::Vector2f &location, WindowManager& manager)
 {
 	if (m_helpText.getGlobalBounds().contains(location))
 	{
-		m_currentWindow[HELP] = false;
-		m_currentWindow[MENU] = true;
+		manager.setWindow(MENU, HELP);
 		Resources::instance().playSound(ClickSound);
 	}
 }
+//_______________________________________________________
+void HelpWindow::checkMouseOnBack(const sf::Event &event)
+{
+    auto location = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
+    if (m_helpText.getGlobalBounds().contains(location))
+        m_helpText.setFillColor(sf::Color::Black);
+    else
+        m_helpText.setFillColor(sf::Color::White);
+}
+
 //___________________________________________________
 void HelpWindow::drawHelp(sf::RenderWindow &window) const
 {

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "windowManager.hpp"
 #include <iostream>
 #include <stdio.h>
 #include <string>
@@ -14,7 +13,7 @@ class PlayWindow
 {
 public:
     PlayWindow();
-    void drawPauseMessage(sf::RenderWindow &);
+    void drawPauseMessage(sf::RenderWindow &)const;
     void drawPlayWindow(sf::RenderWindow &, const int &,
                         const int, const bool, const int) const;
     void gameOverLevelMessage(sf::RenderWindow &) const;
@@ -31,7 +30,6 @@ public:
     void drawPasused(sf::RenderWindow &) const;
 
 private:
-    void setPlay();
     void setPlay();
     void setPause();
     void setSound();

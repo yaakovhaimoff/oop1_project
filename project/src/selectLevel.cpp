@@ -1,15 +1,10 @@
-#include "SelectLevel.hpp"
+#include "selectLevel.hpp"
+#include "windowManager.hpp"
 
 //________________________
 SelectLevel::SelectLevel()
 {
     setSelectLevel();
-}
-//_____________________________
-void SelectLevel::setIsLevelSelect()
-{
-	m_levelSelect = false;
-	m_currentWindow[PLAY] = true;
 }
 //___________________________
 void SelectLevel::setSelectLevel()
@@ -33,7 +28,7 @@ void SelectLevel::setSelectLevel()
 	m_selectLevelName.setOutlineThickness(5);
 	m_selectLevelName.setString("Select Level");
 }
-//__________________________________________________
+//_______________________________________________________________
 void SelectLevel::drawSelectLevel(sf::RenderWindow &window) const
 {
 	window.clear();
@@ -43,7 +38,7 @@ void SelectLevel::drawSelectLevel(sf::RenderWindow &window) const
 		window.draw(m_selectLevelText[row]);
 	window.display();
 }
-//__________________________________________________________
+//_______________________________________________________________
 void SelectLevel::checkMouseOnLevelSelect(const sf::Event &event)
 {
 	auto location = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
@@ -59,8 +54,8 @@ void SelectLevel::checkMouseOnLevelSelect(const sf::Event &event)
 			m_selectLevelText[row].setColor(sf::Color::White);
 	}
 }
-//_________________________________________________________
-void SelectLevel::checkLevelPressed(const sf::Vector2f &location)
+//_______________________________________________________________________________________
+void SelectLevel::checkLevelPressed(const sf::Vector2f &location, WindowManager& manager)
 {
 	auto levelSelectBottun = sf::RectangleShape({300, 130});
 
@@ -72,7 +67,7 @@ void SelectLevel::checkLevelPressed(const sf::Vector2f &location)
 			m_levelSelected = row;
 			Resources::instance().playSound(ClickSound);
 			Resources::instance().playInLoop(GameSound);
-			setIsLevelSelect();
+			manager.setWindow(PLAY, SELECT);
 			break;
 		}
 	}

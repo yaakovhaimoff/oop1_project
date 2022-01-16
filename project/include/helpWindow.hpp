@@ -1,6 +1,5 @@
 #pragma once
 
-#include "windowManager.hpp"
 #include <iostream>
 #include <stdio.h>
 #include <string>
@@ -10,12 +9,15 @@
 #include <SFML/Audio.hpp>
 #include <memory>
 
+class WindowManager;
+
 class HelpWindow
 {
 public:
     HelpWindow();
     void drawHelp(sf::RenderWindow &) const;
-    void checkHelpPressed(const sf::Vector2f &);
+    void checkMouseOnBack(const sf::Event &);
+    void checkHelpPressed(const sf::Vector2f &, WindowManager &);
 
 private:
     void setHelp();

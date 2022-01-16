@@ -7,11 +7,12 @@
 const int numOfPlayers = 4;
 const int LEVELS = 3;
 
-const int AmountOfWindows = 3;
+const int AmountOfWindows = 4;
 const int MENU = 0;
 const int HELP = 1;
 const int PLAY = 2;
 const int EXIT = 3;
+const int SELECT = 4;
 
 const float kingSpeed = 110;
 const float mageSpeed = 130;

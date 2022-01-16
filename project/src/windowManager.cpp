@@ -9,54 +9,73 @@ WindowManager::WindowManager()
 void WindowManager::catchMouseEvent(sf::RenderWindow &window, const sf::Event &event)
 {
     if (m_currentWindow[MENU])
-        checkMouseOnMenu(event);
+        m_menuWindow.checkMouseOnMenu(event);
     else if (m_currentWindow[HELP])
-        checkMouseOnBack(event);
-    else if (m_levelSelect)
-        checkMouseOnLevelSelect(event);
+        m_helpWindow.checkMouseOnBack(event);
+    else if (m_currentWindow[SELECT])
+        m_selectLevel.checkMouseOnLevelSelect(event);
 }
-//___________________________________________________
-void WindowManager::checkMouseOnBack(const sf::Event &event)
-{
-    auto location = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
-    if (m_helpText.getGlobalBounds().contains(location))
-        m_helpText.setFillColor(sf::Color::Black);
-    else
-        m_helpText.setFillColor(sf::Color::White);
-}
-
-//___________________________________________________________
+//___________________________________________________________________
 void WindowManager::handleClickInWindow(const sf::Vector2f &location)
 {
     if (m_currentWindow[MENU])
-        checkMenuPressed(location);
+        m_menuWindow.checkMenuPressed(location, *this);
     else if (m_currentWindow[HELP])
-        checkHelpPressed(location);
+        m_helpWindow.checkHelpPressed(location, *this);
     else if (m_currentWindow[PLAY])
-        checkPlayPressed(location);
-    else if (m_levelSelect)
-        checkLevelPressed(location);
+        m_playWindow.checkPlayPressed(location);
+    else if (m_currentWindow[SELECT])
+        m_selectLevel.checkLevelPressed(location, *this);
 }
-
-//____________________________________________________
+//____________________________________________________________
 void WindowManager::drawWindow(sf::RenderWindow &window) const
 {
     if (m_currentWindow[MENU])
-        drawMenu(window);
+        m_menuWindow.drawMenu(window);
     else if (m_currentWindow[HELP])
-        drawHelp(window);
-    else if (m_levelSelect)
-        drawSelectLevel(window);
+        m_helpWindow.drawHelp(window);
+    else if (m_currentWindow[SELECT])
+        m_selectLevel.drawSelectLevel(window);
 }
 //________________________________
 bool WindowManager::isExit() const
 {
     return m_currentWindow[EXIT];
 }
-//_________________________________________________________________________
-void WindowManager::setWindow(const bool currWindow, const bool prevWindow,
-                              const int curr, const int prev)
+//___________________________________________________________
+void WindowManager::setWindow(const int curr, const int prev)
 {
-    m_currentWindow[curr] = currWindow;
-    m_currentWindow[prev] = prevWindow;
+    m_currentWindow[curr] = true;
+    m_currentWindow[prev] = false;
+}
+//___________________________________________________________
+void WindowManager::winLevelMessage(sf::RenderWindow &window) const
+{
+    m_playWindow.winLevelMessage(window);
+}
+//________________________________________________________________
+void WindowManager::gameOverLevelMessage(sf::RenderWindow &window) const
+{
+    m_playWindow.gameOverLevelMessage(window);
+}
+//____________________________________________________________
+void WindowManager::drawPauseMessage(sf::RenderWindow &window) const
+{
+    m_playWindow.drawPauseMessage(window);
+}
+//_______________________________________________________________________________________________
+void WindowManager::drawPlayWindow(sf::RenderWindow &window, const int &time, const int level, const bool key,
+							const int player) const
+{
+    m_playWindow.drawPlayWindow(window, time, level, key, player);
+}
+//___________________________________
+bool WindowManager::isPlaying() const
+{
+    return m_currentWindow[PLAY];
+}
+//_________________________________
+bool WindowManager::isPause() const
+{
+	return m_playWindow.isPause();
 }

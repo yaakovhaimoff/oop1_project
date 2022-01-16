@@ -9,7 +9,7 @@
 
 #include "Resources.hpp"
 #include "macros.hpp"
-#include "window.hpp"
+#include "windowManager.hpp"
 #include "data.hpp"
 #include "board.hpp"
 
@@ -35,7 +35,7 @@ private:
 	void restartLevel();
 	void drawGame();
 	void setNextLevel();
-	Window m_window;
+	WindowManager m_window;
 	Data m_data;
 	sf::RenderWindow m_gameWindow = {{1920, 1080}, "Save the king"};
 	sf::Clock m_gameClock;

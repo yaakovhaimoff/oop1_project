@@ -10,7 +10,7 @@ PlayWindow::PlayWindow()
 	setSound();
 	setActivePlayerInfo();
 }
-//____________________
+//_______________________
 void PlayWindow::setPlay()
 {
 	// setting the levels backgrounds
@@ -29,7 +29,7 @@ void PlayWindow::setPlay()
 	m_noKey.setTexture(Resources::instance().getTexture(noKey));
 	m_noKey.setPosition(1050, 50);
 }
-//_____________________
+//________________________
 void PlayWindow::setPause()
 {
 	m_pause.setTexture(Resources::instance().getTexture(Pause));
@@ -63,7 +63,7 @@ void PlayWindow::setActivePlayerInfo()
 		m_activePlayer[i].setScale(1.5, 1.5);
 	}
 }
-//_________________________________________________________
+//_____________________________________________________________
 void PlayWindow::checkPlayPressed(const sf::Vector2f &location)
 {
 	checkPausePressed(location);
@@ -111,8 +111,8 @@ void PlayWindow::drawPlayWindow(sf::RenderWindow &window, const int &time, const
 	drawLevelInfo(window, time, level, key);
 	drawActivePlayer(window, player);
 }
-//_____________________________________________________
-void PlayWindow::drawPauseMessage(sf::RenderWindow &window)
+//______________________________________________________________
+void PlayWindow::drawPauseMessage(sf::RenderWindow &window)const
 {
 	m_pauseButton ? drawPasused(window) : drawPasuse(window);
 }

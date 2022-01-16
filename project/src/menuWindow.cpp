@@ -1,4 +1,5 @@
 #include "menuWindow.hpp"
+#include "windowManager.hpp"
 
 //______________
 MenuWindow::MenuWindow()
@@ -49,11 +50,10 @@ void MenuWindow::checkMenuPressed(const sf::Vector2f &location, WindowManager& m
 		if (m_menuText[row].getGlobalBounds().contains(location))
 		{
 			Resources::instance().playSound(ClickSound);
-			m_currentWindow[MENU] = false;
 			if (row + 1 == PLAY)
-				m_levelSelect = true;
+				manager.setWindow(SELECT, MENU);
 			else
-				m_currentWindow[row + 1] = true;
+				manager.setWindow(row + 1, MENU);
 			break;
 		}
 	}

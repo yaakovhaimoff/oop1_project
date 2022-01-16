@@ -25,15 +25,19 @@ public:
     bool isPlaying() const;
     bool isPause() const;
     bool isExit() const;
-    void setWindow(const bool, const bool, const int, const int);
+    void setWindow(const int, const int);
+    int getLevelSelected()const{return m_selectLevel.getLevelSelected();}
+    void winLevelMessage(sf::RenderWindow &)const;
+    void gameOverLevelMessage(sf::RenderWindow &)const;
+    void drawPauseMessage(sf::RenderWindow &)const;
+    void drawPlayWindow(sf::RenderWindow &, const int &,
+                        const int, const bool, const int) const;
 
 private:
-    void checkMouseOnMenu(const sf::Event &);
-    void checkMouseOnBack(const sf::Event &);
-    void checkMouseOnLevelSelect(const sf::Event &);
-    bool m_currentWindow[AmountOfWindows + 1] = {true, false, false, false};
+    bool m_currentWindow[AmountOfWindows + 1] = {true, false, false, false, false};
     HelpWindow m_helpWindow;
     MenuWindow m_menuWindow;
     SelectLevel m_selectLevel;
     PlayWindow m_playWindow;
+    bool m_levelSelect=false;
 };

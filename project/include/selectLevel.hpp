@@ -1,6 +1,5 @@
 #pragma once 
 
-#include "windowManager.hpp"
 #include <iostream>
 #include <stdio.h>
 #include <string>
@@ -10,16 +9,17 @@
 #include <SFML/Audio.hpp>
 #include <memory>
 
+class WindowManager;
+
 class SelectLevel
 {
     public:
     SelectLevel();
-    void setIsLevelSelect();
-    int getLevelSelected() const { return m_levelSelected; }
     void setSelectLevel();
     void checkMouseOnLevelSelect(const sf::Event &);
-    void checkLevelPressed(const sf::Vector2f &location);
+    void checkLevelPressed(const sf::Vector2f &location, WindowManager&);
     void drawSelectLevel(sf::RenderWindow &) const;
+    int getLevelSelected() const { return m_levelSelected; }
 
     private:
     sf::Text m_selectLevelText[AmountOfWindows];
