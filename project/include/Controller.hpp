@@ -9,7 +9,7 @@
 
 #include "Resources.hpp"
 #include "macros.hpp"
-#include "windowManager.hpp"
+#include "windowInclude/windowManager.hpp"
 #include "data.hpp"
 #include "board.hpp"
 
