@@ -6,21 +6,21 @@ Data::Data(Controller &controller)
 {
     m_controller = &controller;
 }
-//______________________________
+//_____________________________________________
 void Data::setDataToLevelStart(const int level)
 {
     m_players.resize(numOfPlayers);
     m_board.sendBoardKeysToObjects(*this, level);
     connectToTeleports();
 }
-//________________________________
+//_______________________________________________
 void Data::setDataToLevelRestart(const int level)
 {
     m_players.resize(numOfPlayers);
     m_board.sendBoardKeysToObjects(*this, level);
     connectToTeleports();
 }
-//__________________________________________________________________
+//_________________________________________________________________
 void Data::setData(const sf::Vector2f &location, const char object)
 {
     switch (object)
@@ -154,22 +154,27 @@ void Data::moveDwarfsObjects(const sf::Event &event, const sf::Time &deltaTime)
 //___________________________________________________________
 void Data::checkPlayerCollision(MovingObjects &activePlayer)
 {
+    //player with statics
     for (auto &unmovable : m_statics)
         if (activePlayer.checkCollision(*unmovable))
             activePlayer.collide(*unmovable);
 
+    //player with other player
     for (auto &movalbe : m_players)
         if (activePlayer.checkCollision(*movalbe) && &activePlayer != &(*movalbe))
             activePlayer.setPosition();
 
+    //player with a teleport
     for (auto &teleports : m_teleports)
         if (activePlayer.checkCollision(*teleports) && teleports->isTelOpen() &&
             noOtherPlayerIsOnNextTeleport(teleports->getNextTelIndex()))
         {
             activePlayer.collide(*teleports);
             m_teleports[teleports->getNextTelIndex()]->setLock(false);
+            m_teleports[teleports->getNextTelIndex()]->setLock(false);
             m_teleportIndex = teleports->getNextTelIndex();
         }
+    //player with a dwarf
     for (auto &dwarfs : m_dwarfs)
         if (activePlayer.checkCollision(*dwarfs))
             activePlayer.setPosition();
@@ -177,15 +182,23 @@ void Data::checkPlayerCollision(MovingObjects &activePlayer)
 //____________________________________________________
 void Data::checkDwarfCollision(const sf::Event &event)
 {
+    //dwarf with statics
     for (auto &dwarfs : m_dwarfs)
         for (auto &statics : m_statics)
             if (dwarfs->checkCollision(*statics))
                 dwarfs->collide(*statics);
 
-    // for (auto &dwarfs : m_dwarfs)
-    //     for (auto &players : m_players)
-    //         if (dwarfs->checkCollision(*players))
-    //             dwarfs->collide(*players);
+    //dwarf with other dwarfs
+    for (auto &dwarf : m_dwarfs)
+        for (auto &dwarfs : m_dwarfs)
+            if (dwarf->checkCollision(*dwarfs) && &dwarf != &dwarfs )
+                dwarf->setPosition();
+
+    //dwarf with players
+    for (auto &dwarf : m_dwarfs)
+        for (auto &player : m_players)
+            if (dwarf->checkCollision(*player))
+                dwarf->setPosition();        
 }
 //_________________________________________________________
 void Data::checkToOpenTeleport(MovingObjects &activePlayer)

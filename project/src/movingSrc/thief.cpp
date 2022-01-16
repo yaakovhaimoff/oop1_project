@@ -2,6 +2,7 @@
 #include "staticsInclude/gate.hpp"
 #include "staticsInclude/key.hpp"
 
+//_________________________________________
 void ThiefObject::collide(GateObject &other)
 {
 	if (m_hasKey)
@@ -13,6 +14,7 @@ void ThiefObject::collide(GateObject &other)
 	else
 		setPosition();
 }
+//_________________________________________
 void ThiefObject::collide(KeyObject &other)
 {
 	Resources::instance().playSound(ThiefTake);
@@ -27,7 +29,7 @@ bool ThiefObject::doesThiefhasKey() const
 {
 	return m_hasKey;
 }
-//_________________________________________________________________________
+//_______________________________________________________________________
 void ThiefObject::move(const sf::Time &deltaTime, const sf::Event &event)
 {
 	getDir(event);

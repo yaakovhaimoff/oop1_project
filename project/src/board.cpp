@@ -39,9 +39,6 @@ void Board::sendBoardKeysToObjects(Data &data, const int level)
 		}
 	}
 }
-// returning if the file has ended
-// the games will run until the end of file
-// unless the player will choose to quit
 //_______________________________
 bool Board::checkEndOfFile() const
 {

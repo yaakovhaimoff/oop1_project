@@ -1,6 +1,7 @@
 #include "movingInclude/warrior.hpp"
 #include "staticsInclude/monster.hpp"
 
+//_______________________________________________
 void WarriorObject::collide(MonsterObject& other)
 {
     Resources::instance().playSound(KillOrk);

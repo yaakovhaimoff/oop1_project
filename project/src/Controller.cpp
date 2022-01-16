@@ -10,7 +10,7 @@ Controller::Controller()
 	m_moveClock.restart();
 	m_gameClock.restart();
 }
-//_________________________
+//________________________
 void Controller::runGame()
 {
 	while (m_gameWindow.isOpen())
@@ -56,6 +56,7 @@ void Controller::setNextLevel()
 	drawGame();
 	m_window.winLevelMessage(m_gameWindow);
 	m_gameClock.restart();
+	m_moveClock.restart();
 	m_data.clearObjects();
 	m_numOfLevel++;
 	m_gameTime = m_data.getLevelTime(m_numOfLevel);
@@ -162,7 +163,8 @@ void Controller::isPlaying(const sf::Event &event)
 void Controller::drawGame()
 {
 	m_gameWindow.clear();
-	m_window.drawPlayWindow(m_gameWindow, m_gameTime, m_numOfLevel, m_data.thiefHasKey(), m_activePlayer);
+	m_window.drawPlayWindow(m_gameWindow, m_gameTime, m_numOfLevel,
+							m_data.thiefHasKey(), m_activePlayer);
 	m_data.drawObjects(m_gameWindow, m_window.isPause(), checkGameTime());
 	m_window.drawPauseMessage(m_gameWindow);
 	m_gameWindow.display();

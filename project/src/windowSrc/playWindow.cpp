@@ -102,9 +102,9 @@ void PlayWindow::checkSoundPressed(const sf::Vector2f &location)
 		m_soundButton = !m_soundButton;
 	}
 }
-//________________________________________________________________________________________________________
-void PlayWindow::drawPlayWindow(sf::RenderWindow &window, const int &time, const int level, const bool key,
-							const int player) const
+//_________________________________________________________________________________________
+void PlayWindow::drawPlayWindow(sf::RenderWindow &window, const int &time, const int level,
+								const bool key, const int player) const
 {
 	window.draw(m_gameSprite[level]);
 	window.draw(m_sound);
@@ -112,7 +112,7 @@ void PlayWindow::drawPlayWindow(sf::RenderWindow &window, const int &time, const
 	drawActivePlayer(window, player);
 }
 //______________________________________________________________
-void PlayWindow::drawPauseMessage(sf::RenderWindow &window)const
+void PlayWindow::drawPauseMessage(sf::RenderWindow &window) const
 {
 	m_pauseButton ? drawPasused(window) : drawPasuse(window);
 }
@@ -161,7 +161,7 @@ bool PlayWindow::isPause() const
 }
 //__________________________________________________________________________
 void PlayWindow::drawLevelInfo(sf::RenderWindow &window, const int &levelTime,
-						   const int level, const bool key) const
+							   const int level, const bool key) const
 {
 	// information on board rectangle
 	window.draw(m_infoRect);

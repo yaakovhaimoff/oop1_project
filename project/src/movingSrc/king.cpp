@@ -1,6 +1,7 @@
 #include "movingInclude/king.hpp"
 #include "staticsInclude/crown.hpp"
 
+//__________________________________________
 void KingObject::collide(CrownObject &other)
 {
 	setKingOnThrone();
