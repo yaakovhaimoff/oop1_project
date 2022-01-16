@@ -26,11 +26,6 @@
 },
 {
   "directory": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/build",
-  "command": "/usr/bin/clang++ -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a -o CMakeFiles/project.dir/src/window.cpp.o -c /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/window.cpp",
-  "file": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/window.cpp"
-},
-{
-  "directory": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/build",
   "command": "/usr/bin/clang++ -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a -o CMakeFiles/project.dir/src/Resources.cpp.o -c /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/Resources.cpp",
   "file": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/Resources.cpp"
 },
@@ -113,5 +108,30 @@
   "directory": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/build",
   "command": "/usr/bin/clang++ -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a -o CMakeFiles/project.dir/src/removeDwarfs.cpp.o -c /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/removeDwarfs.cpp",
   "file": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/removeDwarfs.cpp"
+},
+{
+  "directory": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/build",
+  "command": "/usr/bin/clang++ -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a -o CMakeFiles/project.dir/src/menuWindow.cpp.o -c /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/menuWindow.cpp",
+  "file": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/menuWindow.cpp"
+},
+{
+  "directory": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/build",
+  "command": "/usr/bin/clang++ -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a -o CMakeFiles/project.dir/src/helpWindow.cpp.o -c /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/helpWindow.cpp",
+  "file": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/helpWindow.cpp"
+},
+{
+  "directory": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/build",
+  "command": "/usr/bin/clang++ -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a -o CMakeFiles/project.dir/src/windowManager.cpp.o -c /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/windowManager.cpp",
+  "file": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/windowManager.cpp"
+},
+{
+  "directory": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/build",
+  "command": "/usr/bin/clang++ -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a -o CMakeFiles/project.dir/src/playWindow.cpp.o -c /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/playWindow.cpp",
+  "file": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/playWindow.cpp"
+},
+{
+  "directory": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/build",
+  "command": "/usr/bin/clang++ -I/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/include -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk -mmacosx-version-min=11.6 -std=c++2a -o CMakeFiles/project.dir/src/selectLevel.cpp.o -c /Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/selectLevel.cpp",
+  "file": "/Users/yaakovhaimoff/Desktop/project1/oop1_project/project/src/selectLevel.cpp"
 }
 ]

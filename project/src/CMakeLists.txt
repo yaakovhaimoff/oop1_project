@@ -3,7 +3,6 @@
 												"gameObjects.cpp"
 												"main.cpp"
 												"movingObjects.cpp"
-												"window.cpp"
 												"Resources.cpp"
 												"staticObjects.cpp"
 												"king.cpp"
@@ -20,5 +19,10 @@
 												"monster.cpp"
 												"teleport.cpp"
 												"timeGift.cpp"
-												"removeDwarfs.cpp")
+												"removeDwarfs.cpp"
+												"menuWindow.cpp"
+												"helpWindow.cpp"
+												"windowManager.cpp"
+												"playWindow.cpp"
+												"selectLevel.cpp")
 												
